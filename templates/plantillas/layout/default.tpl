@@ -83,6 +83,7 @@
 					<li class="header">MENÚ PRINCIPAL</li>
 					{if $PAGE.tipoUsuario eq 1}
 					<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+					<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
 					{/if}
 				</ul>
 			</section>
