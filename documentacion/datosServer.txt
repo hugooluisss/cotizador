@@ -1,0 +1,19 @@
+[sistema]
+debug = "false"
+caching = "off"
+nombreEmpresa = "Ideactiva"
+acronimoEmpresa = "IA"
+template = "default"
+nombre = "Cotizador"
+
+[conexion]
+server = "localhost"
+user = "ideactiv_cotizad"
+pass = "LFeAcA@a8}Et"
+db = "ideactiv_cotizador"
+
+
+
+www.ideactiva.uy/cpanel ohttp://67.225.214.111/cpanel
+Username: ideactiva
+Password: 8g6p3yiiuz9k

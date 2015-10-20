@@ -95,24 +95,22 @@ class TRopa extends TItem{
 	public function guardar(){
 		$db = TBase::conectaDB();
 		
-		if ($this->getId() == '')
+		if ($this->idItem == '')
 			if (! parent::guardar()) return false;
 		
-		if ($this->getId() == ''){
-			$rs = $db->Execute("select idItem from ropa where idItem = ".$this->getId());
-			if ($rs->EOF){
-				$rs = $db->Execute("INSERT INTO ropa(idItem) VALUES(".$this->getId().");");
-				if (!$rs) return false;
-			}
-		}		
-		echo 'asdf';
+		$rs = $db->Execute("select idItem from ropa where idItem = ".$this->idItem);
+		if ($rs->EOF){
+			$rs = $db->Execute("INSERT INTO ropa(idItem) VALUES(".$this->idItem.");");
+			if (!$rs) return false;
+		}
+		
 		if ($this->getId() == '')
 			return false;
 			
 		$rs = $db->Execute("UPDATE ropa
 			SET
 				descripcion = '".$this->getNombre()."'
-			WHERE idItem = ".$this->getId());
+			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;
 	}

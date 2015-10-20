@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-20 00:02:05
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-20 18:03:19
          compiled from "templates/plantillas/modulos/ropa/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19797703695625cacd085e73-17676650%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff7880531fe9fd98aa25e89a16201aa6e3ec4394' => 
     array (
       0 => 'templates/plantillas/modulos/ropa/panel.tpl',
-      1 => 1445314751,
+      1 => 1445382186,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_5625cacd0dbed4_46899577',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5625cacd0dbed4_46899577')) {function content_5625cacd0dbed4_46899577($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtDescripcion" class="col-lg-2">Descripción larga</label>
+						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
 						<div class="col-lg-3">
 							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
 						</div>

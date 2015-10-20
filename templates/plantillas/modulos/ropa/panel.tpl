@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtDescripcion" class="col-lg-2">Descripción larga</label>
+						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
 						<div class="col-lg-3">
 							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
 						</div>

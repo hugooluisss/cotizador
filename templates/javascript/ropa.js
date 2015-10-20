@@ -64,7 +64,7 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idItem);
 				$("#txtNombre").val(el.nombre);
-				$("#txtDescripcion").val(el.rfc);
+				$("#txtDescripcion").html(el.descripcion);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
