@@ -94,4 +94,27 @@ $conf['cclientes'] = array(
 	'descripcion' => 'Controlador de clientes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Ropa*/
+$conf['ropa'] = array(
+	'controlador' => 'ropa.php',
+	'vista' => 'ropa/panel.tpl',
+	'descripcion' => 'Catalogo de ropa',
+	'seguridad' => true,
+	'js' => array('ropa.class.js'),
+	'jsTemplate' => array('ropa.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaRopa'] = array(
+	'controlador' => 'ropa.php',
+	'vista' => 'ropa/lista.tpl',
+	'descripcion' => 'Lista de ropa',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cropa'] = array(
+	'controlador' => 'ropa.php',
+	'descripcion' => 'Controlador de ropa',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-18 20:44:04
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-19 23:17:58
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1445219043,
+      1 => 1445314676,
       2 => 'file',
     ),
   ),
@@ -128,6 +128,7 @@ img/logo-min.png" class="img-rounded"/><b>C</b>otizador</span></span>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
 					<?php }?>
 				</ul>
 			</section>
