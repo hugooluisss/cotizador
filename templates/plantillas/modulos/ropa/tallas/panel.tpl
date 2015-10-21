@@ -1,8 +1,15 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Catálogo de ropa</h1>
+		<h1 class="page-header">Tallas</h1>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<a href="?mod=ropa" class="btn btn-success">Regresar</a>
+	</div>
+</div>
+<br />
 
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
@@ -27,15 +34,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPrecio" class="col-lg-2">Precio</label>
+						<label for="txtAdicional" class="col-lg-2">Adicional</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtPrecio" name="txtPrecio">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
-						<div class="col-lg-3">
-							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
+							<input class="form-control" id="txtAdicional" name="txtAdicional">
+							<small class="text-muted">Este se le suma al precio de la prenda
 						</div>
 					</div>
 				</div>
@@ -43,6 +45,7 @@
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 					<button type="submit" class="btn btn-info pull-right">Guardar</button>
 					<input type="hidden" id="id"/>
+					<input type="hidden" id="item" value="{$item}"/>
 				</div>
 			</div>
 		</form>

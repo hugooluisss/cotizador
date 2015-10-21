@@ -1,9 +1,13 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'listaRopa':
+	case 'tallas':
+			$smarty->assign("item", $_GET['id']);
+	break;
+	case 'listaTallas':
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from ropa a join item b using(idItem)");
+		$obj = new TRopa($_GET['item']);
+		$rs = $db->Execute("select * from talla where idItem = ".$_GET['item']);
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -12,23 +16,23 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("lista", $datos);
+		
+		$smarty->assign("precio", $obj->getPrecio());
 	break;
-	case 'cropa':
+	case 'ctalla':
 		switch($objModulo->getAction()){
 			case 'add':
 				$db = TBase::conectaDB();
-				$obj = new TRopa();
-				
+				$obj = new TTalla();
 				$obj->setId($_POST['id']);
+				$obj->setRopa($_POST['item']);
 				$obj->setNombre($_POST['nombre']);
-				$obj->setTipo(1);
-				$obj->setPrecio($_POST['precio']);
-				$obj->setDescripcion($_POST['descripcion']);
+				$obj->setAdicional($_POST['adicional']);
 
 				echo json_encode(array("band" => $obj->guardar()));
 			break;
 			case 'del':
-				$obj = new TRopa($_POST['item']);
+				$obj = new TTalla($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
 		}

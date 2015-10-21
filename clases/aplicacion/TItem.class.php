@@ -10,6 +10,7 @@ class TItem{
 	protected $idItem;
 	private $idTipo;
 	private $nombre;
+	private $precio;
 	
 	/**
 	* Constructor de la clase
@@ -20,6 +21,7 @@ class TItem{
 	*/
 	public function TItem($id = ''){
 		$this->setId($id);		
+		$this->precio = 0;
 		return true;
 	}
 	
@@ -109,6 +111,32 @@ class TItem{
 	}
 	
 	/**
+	* Establece el precio
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPrecio($val = 0){
+		$this->precio = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el precio
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getPrecio(){
+		return $this->precio;
+	}
+	
+	/**
 	* Retorna el nombre del tipo
 	*
 	* @autor Hugo
@@ -148,7 +176,8 @@ class TItem{
 		
 		$rs = $db->Execute("UPDATE item
 			SET
-				nombre = '".$this->getNombre()."'
+				nombre = '".$this->getNombre()."',
+				precio = ".($this->getPrecio() <> ''?$this->getPrecio():0)."
 			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;

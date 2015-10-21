@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-20 18:05:27
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 09:45:09
          compiled from "templates/plantillas/modulos/ropa/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19285930045625cc8d044d29-55292921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '191802cae1dc2fc59947367b7b6038869c87507c' => 
     array (
       0 => 'templates/plantillas/modulos/ropa/lista.tpl',
-      1 => 1445382323,
+      1 => 1445438706,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Descripción</th>
+					<th>Precio</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -46,7 +46,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['descripcion'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
 </td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-success btn-circle" action="tallas" title="Tallas" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>

@@ -14,20 +14,24 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtNombre: "required",
+			txtAdicional: {
+				required: true,
+				number: true
+			}
 		},
 		wrapper: 'span', 
 		messages: {
-			txtNombre: "Este campo es necesario"
+			txtNombre: "Este campo es necesario",
+			txtAdicional: "Este campo es necesario y solo debe de ser numérico"
 		},
 		submitHandler: function(form){
-			var obj = new TCliente;
+			var obj = new TTalla;
 			obj.add(
 				$("#id").val(), 
+				$("#item").val(), 
 				$("#txtNombre").val(), 
-				$("#txtEmail").val(),
-				$("#txtRFC").val(),
-				$("#txtDireccion").val(),
+				$("#txtAdicional").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -45,13 +49,13 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("?mod=listaClientes", function( data ) {
+		$.get("?mod=listaTallas&item=" + $("#item").val(), function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TCliente;
-					obj.del($(this).attr("cliente"), {
+					var obj = new TTalla;
+					obj.del($(this).attr("talla"), {
 						after: function(data){
 							getLista();
 						}
@@ -62,23 +66,21 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idCliente);
+				$("#id").val(el.idTalla);
 				$("#txtNombre").val(el.nombre);
-				$("#txtRFC").val(el.rfc);
-				$("#txtDireccion").val(el.direccion);
-				$("#txtEmail").val(el.email);
+				$("#txtAdicional").val(el.adicional);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
-			$("#tblClientes").DataTable({
+			$("#tblTallas").DataTable({
 				"responsive": true,
 				"language": espaniol,
-				"paging": true,
+				"paging": false,
 				"lengthChange": false,
 				"ordering": true,
 				"info": true,
 				"autoWidth": false
 			});
 		});
-	}
+	};
 });

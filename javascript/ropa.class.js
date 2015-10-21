@@ -1,12 +1,13 @@
 TRopa = function(){
 	var self = this;
 	
-	this.add = function(id,	nombre, descripcion, fn){
+	this.add = function(id,	nombre, precio, descripcion, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('?mod=cropa&action=add', {
 				"id": id,
 				"nombre": nombre,
+				"precio": precio,
 				"descripcion": descripcion
 			}, function(data){
 				if (data.band == 'false')

@@ -117,4 +117,27 @@ $conf['cropa'] = array(
 	'descripcion' => 'Controlador de ropa',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Tallas*/
+$conf['tallas'] = array(
+	'controlador' => 'talla.php',
+	'vista' => 'ropa/tallas/panel.tpl',
+	'descripcion' => 'Lista de tallas',
+	'seguridad' => true,
+	'js' => array('talla.class.js'),
+	'jsTemplate' => array('talla.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaTallas'] = array(
+	'controlador' => 'talla.php',
+	'vista' => 'ropa/tallas/lista.tpl',
+	'descripcion' => 'Lista de tallas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['ctalla'] = array(
+	'controlador' => 'talla.php',
+	'descripcion' => 'Controlador de tallas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

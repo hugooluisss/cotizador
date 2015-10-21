@@ -38,7 +38,7 @@ class TRopa extends TItem{
 		if (! parent::setId($id)) return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select descripcion from ropa where idItem = ".$id);
+		$rs = $db->Execute("select * from ropa where idItem = ".$id);
 		
 		foreach($rs->fields as $field => $val)
 			$this->$field = $val;
@@ -95,8 +95,8 @@ class TRopa extends TItem{
 	public function guardar(){
 		$db = TBase::conectaDB();
 		
-		if ($this->idItem == '')
-			if (! parent::guardar()) return false;
+		//if ($this->idItem == '')
+		if (! parent::guardar()) return false;
 		
 		$rs = $db->Execute("select idItem from ropa where idItem = ".$this->idItem);
 		if ($rs->EOF){
@@ -109,7 +109,7 @@ class TRopa extends TItem{
 			
 		$rs = $db->Execute("UPDATE ropa
 			SET
-				descripcion = '".$this->getNombre()."'
+				descripcion = '".$this->getDescripcion()."'
 			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;

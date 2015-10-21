@@ -1,18 +1,15 @@
 <?php
 /**
-* TCliente
-* Clientes
+* TTalla
+* Tallas de la ropa
 * @package aplicacion
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
 
-class TCliente{
-	private $idCliente;
+class TTalla{
 	private $nombre;
-	private $email;
-	private $rfc;
-	private $direccion;
-	
+	private $precio;
+	private $ropa;
 	/**
 	* Constructor de la clase
 	*
@@ -20,8 +17,9 @@ class TCliente{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TCliente($id = ''){
-		$this->setId($id);		
+	public function TTalla($id = ''){
+		$this->setId($id);
+		
 		return true;
 	}
 	
@@ -38,10 +36,17 @@ class TCliente{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from cliente where idCliente = ".$id);
+		$rs = $db->Execute("select * from talla where idTalla = ".$id);
 		
-		foreach($rs->fields as $field => $val)
-			$this->$field = $val;
+		foreach($rs->fields as $field => $val){
+			switch($fields){
+				case 'idItem':
+					$this->ropa = $val;
+				break;
+				default:
+					$this->$field = $val;
+			}
+		}
 		
 		return true;
 	}
@@ -55,7 +60,7 @@ class TCliente{
 	*/
 	
 	public function getId(){
-		return $this->idCliente;
+		return $this->idTalla;
 	}
 	
 	/**
@@ -85,81 +90,72 @@ class TCliente{
 	}
 	
 	/**
-	* Establece el email
+	* Establece el precio adicional
 	*
 	* @autor Hugo
 	* @access public
-	* @param string $val Valor a asignar
+	* @param integer $val Valor a asignar
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setEmail($val = ''){
-		$this->email = $val;
+	public function setAdicional($val = ''){
+		$this->adicional = $val;
 		return true;
 	}
 	
 	/**
-	* Retorna el email
+	* Retorna el precio adicional
 	*
 	* @autor Hugo
-	* @access public
+	* @access integer
 	* @return string Texto
 	*/
 	
-	public function getEmail(){
-		return $this->email;
+	public function getAdicional(){
+		return $this->adicional;
 	}
 	
 	/**
-	* Establece el rfc
+	* Retorna el precio neto
+	*
+	* @autor Hugo
+	* @access integer
+	* @return string Texto
+	*/
+	
+	public function getNeto(){
+		if ($this->getRopa() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select precio from item where idItem = ".$this->getRopa());
+		return ($this->getAdicional() == ''?0:$this->getAdicional()) + $rs->fields['precio'];
+	}
+	
+	/**
+	* Establece el item de tipo ropa
 	*
 	* @autor Hugo
 	* @access public
-	* @param string $val Valor a asignar
+	* @param integer $val Valor a asignar
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setRFC($val = ''){
-		$this->rfc = $val;
+	public function setRopa($val = ''){
+		$this->ropa = $val;
 		return true;
 	}
 	
 	/**
-	* Retorna el rfc
+	* Retorna el identificador del padre
 	*
 	* @autor Hugo
-	* @access public
+	* @access integer
 	* @return string Texto
 	*/
 	
-	public function getRFC(){
-		return $this->rfc;
-	}
-	
-	/**
-	* Establece la direccion
-	*
-	* @autor Hugo
-	* @access public
-	* @param string $val Valor a asignar
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setDireccion($val = ''){
-		$this->direccion = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna la direccion
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getDireccion(){
-		return $this->direccion;
+	public function getRopa(){
+		return $this->ropa;
 	}
 	
 	/**
@@ -174,22 +170,21 @@ class TCliente{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO cliente(nombre) VALUES('".$this->getNombre()."');");
+			if ($this->getRopa() == '') return false;
+			$rs = $db->Execute("INSERT INTO talla(idItem) VALUES(".$this->getRopa().");");
 			if (!$rs) return false;
-				
-			$this->idCliente = $db->Insert_ID();
-		}		
+			
+			$this->idTalla = $db->Insert_ID();
+		}
 		
 		if ($this->getId() == '')
 			return false;
 			
-		$rs = $db->Execute("UPDATE cliente
+		$rs = $db->Execute("UPDATE talla
 			SET
 				nombre = '".$this->getNombre()."',
-				direccion = '".$this->getDireccion()."',
-				email = '".$this->getEmail()."',
-				rfc = '".$this->getRFC()."'
-			WHERE idCliente = ".$this->getId());
+				adicional = ".$this->getAdicional()."
+			WHERE idTalla = ".$this->idTalla);
 			
 		return $rs?true:false;
 	}
@@ -206,7 +201,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("delete from cliente where idCliente = ".$this->getId());
+		$rs = $db->Execute("delete from talla where idTalla = ".$this->getId());
 		
 		return $rs?true:false;
 	}

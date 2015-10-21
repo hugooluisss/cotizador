@@ -27,6 +27,7 @@ $(document).ready(function(){
 			obj.add(
 				$("#id").val(), 
 				$("#txtNombre").val(), 
+				$("#txtPrecio").val(), 
 				$("#txtDescripcion").val(),
 				{
 					after: function(datos){
@@ -64,8 +65,14 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idItem);
 				$("#txtNombre").val(el.nombre);
+				$("#txtPrecio").val(el.precio);
 				$("#txtDescripcion").html(el.descripcion);
 				$('#panelTabs a[href="#add"]').tab('show');
+			});
+			
+			$("[action=tallas]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				location.href = "?mod=tallas&id=" + el.idItem;
 			});
 			
 			$("#tblRopa").DataTable({
