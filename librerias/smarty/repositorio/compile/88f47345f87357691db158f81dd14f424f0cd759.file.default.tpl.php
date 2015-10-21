@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 09:35:42
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 13:06:11
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1445360353,
+      1 => 1445450769,
       2 => 'file',
     ),
   ),
@@ -130,6 +130,7 @@ img/logo-min.png" class="img-rounded"/><b>C</b>otizador</span></span>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
 					<?php }?>
+					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->

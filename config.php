@@ -140,4 +140,21 @@ $conf['ctalla'] = array(
 	'descripcion' => 'Controlador de tallas',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+/*Cotizador*/
+$conf['cotizador'] = array(
+	'controlador' => 'cotizador.php',
+	'vista' => 'cotizador/panel.tpl',
+	'descripcion' => 'cotizador',
+	'seguridad' => true,
+	#'js' => array('talla.class.js'),
+	'jsTemplate' => array('cotizador.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['cotizador_tallas'] = array(
+	'controlador' => 'cotizador.php',
+	'vista' => 'cotizador/tallas.tpl',
+	'descripcion' => 'Lista de tallas en la cotización',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

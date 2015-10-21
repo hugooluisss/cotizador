@@ -86,6 +86,7 @@
 					<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
 					<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
 					{/if}
+					<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->
