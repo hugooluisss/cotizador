@@ -42,7 +42,7 @@
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>C</b>otizador</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><img src="{$PAGE.ruta}img/logo-min.png" class="img-rounded"/><b>C</b>otizador</span></span>
+				<span class="logo-lg"><img src="{$PAGE.ruta}img/logo-min.png" class="img-rounded"/></span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">

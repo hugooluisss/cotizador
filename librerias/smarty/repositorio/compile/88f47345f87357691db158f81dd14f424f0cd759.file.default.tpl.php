@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 13:06:11
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 10:31:08
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1445450769,
+      1 => 1445527866,
       2 => 'file',
     ),
   ),
@@ -85,7 +85,7 @@ plugins/upload/css/jquery.fileupload.css">
 				<span class="logo-mini"><b>C</b>otizador</span>
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-lg"><img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-img/logo-min.png" class="img-rounded"/><b>C</b>otizador</span></span>
+img/logo-min.png" class="img-rounded"/></span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
