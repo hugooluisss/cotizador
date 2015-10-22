@@ -23,7 +23,21 @@
 					</div>
 					<div class="col-xs-2"><button type="button" id="btnBuscarTallas" class="btn btn-default">Obtener tallas</button></div>
 				</div>
+				<br />
 				<div class="row" id="dvTallas">
+				</div>
+				<br />
+				<div>
+					<table id="tblCotizacion" class="table table-bordered table-hover">
+						<thead>
+							<th>Nombre</th>
+							<th>Detalle</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

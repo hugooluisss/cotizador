@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 13:39:04
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 23:50:16
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1445452224,
+      1 => 1445489414,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,21 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					</div>
 					<div class="col-xs-2"><button type="button" id="btnBuscarTallas" class="btn btn-default">Obtener tallas</button></div>
 				</div>
+				<br />
 				<div class="row" id="dvTallas">
+				</div>
+				<br />
+				<div>
+					<table id="tblCotizacion" class="table table-bordered table-hover">
+						<thead>
+							<th>Nombre</th>
+							<th>Detalle</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
