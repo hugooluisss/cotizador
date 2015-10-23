@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 23:37:26
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-21 13:48:41
          compiled from "templates/plantillas/modulos/cotizador/tallas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15466083685627dc08ea5b41-90292082%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9f72bc95215fee358287989e94c145e6d31e52f4' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/tallas.tpl',
-      1 => 1445488464,
+      1 => 1445453121,
       2 => 'file',
     ),
   ),
@@ -32,20 +32,17 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['row']->key;
 ?>
 <div class="col-xs-4 col-lg-2 text-center">
-	<div class="panel panel-primary">
-		<div class="panel-heading"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
-<small> ($ <?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['row']->value['precio']);?>
-)</small></div>
-		<div class="panel-body"><input class="form-control talla" value="0" talla="<?php echo $_smarty_tpl->tpl_vars['row']->value['idTalla'];?>
-" precio="<?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
-" nombre="<?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
-"/></div>
+	<label class=""><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</label>
+	<div class="col-xs-12">
+		<input class="form-control talla" value="0" talla="<?php echo $_smarty_tpl->tpl_vars['row']->value['idTalla'];?>
+"/>
 	</div>
 </div>
 <?php } ?>
 
 <div class="row">
 	<div class="col-xs-2 text-right">
-		<div class="btn btn-success" id="addRopa"><i class="fa fa-plus-circle"></i> Agregar</div>
+		<div class="btn btn-success"><i class="fa fa-plus-circle"></i></div>
 	</div>
 </div><?php }} ?>

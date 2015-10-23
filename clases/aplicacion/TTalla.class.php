@@ -8,7 +8,7 @@
 
 class TTalla{
 	private $nombre;
-	private $adicional;
+	private $precio;
 	private $ropa;
 	/**
 	* Constructor de la clase
@@ -39,7 +39,7 @@ class TTalla{
 		$rs = $db->Execute("select * from talla where idTalla = ".$id);
 		
 		foreach($rs->fields as $field => $val){
-			switch($field){
+			switch($fields){
 				case 'idItem':
 					$this->ropa = $val;
 				break;

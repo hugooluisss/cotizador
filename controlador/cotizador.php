@@ -17,9 +17,6 @@ switch($objModulo->getId()){
 		$rs = $db->Execute("select * from talla where idItem = ".$_GET['id']);
 		$datos = array();
 		while(!$rs->EOF){
-			$obj = new TTalla($rs->fields['idTalla']);
-			$rs->fields['precio'] = $obj->getNeto();
-			
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
