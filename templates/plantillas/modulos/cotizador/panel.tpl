@@ -5,26 +5,23 @@
 </div>
 
 <ul id="panelTabs" class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#ropa">Ropa</a></li>
+	<li class="active"><a data-toggle="tab" href="#cotizacion">Cotización general</a></li>
+	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
 </ul>
 
 <div class="tab-content">
-	<div id="ropa" class="tab-pane fade in active">
+	<div id="cotizacion" class="tab-pane fade in active">
 		<div class="box">
 			<div class="box-body">
-				<div class="row">
-					<div class="col-xs-2"><label for="selRopa">Artículo</label></div>
-					<div class="col-xs-6">
-						<select id="selRopa" name="selRopa" class="form-control">
-							{foreach key=key item=item from=$ropa}
-							<option value="{$item.idItem}">{$item.nombre}</option>
-							{/foreach}
-						</select>
-					</div>
-					<div class="col-xs-2"><button type="button" id="btnBuscarTallas" class="btn btn-default">Obtener tallas</button></div>
-				</div>
-				<div class="row" id="dvTallas">
-				</div>
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/general.tpl"}
+			</div>
+		</div>
+	</div>
+	
+	<div id="ropa" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/ropa.tpl"}
 			</div>
 		</div>
 	</div>
