@@ -1,33 +1,33 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 22:33:21
-         compiled from "templates/plantillas/modulos/ropa/panel.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19797703695625cacd085e73-17676650%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 23:19:55
+         compiled from "templates/plantillas/modulos/serigrafia/panel.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:4636364355629b56b11c981-53313419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'ff7880531fe9fd98aa25e89a16201aa6e3ec4394' => 
+    '211de2ddf06b90ada33066f036d18a189dfb1077' => 
     array (
-      0 => 'templates/plantillas/modulos/ropa/panel.tpl',
-      1 => 1445468086,
+      0 => 'templates/plantillas/modulos/serigrafia/panel.tpl',
+      1 => 1445573509,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19797703695625cacd085e73-17676650',
+  'nocache_hash' => '4636364355629b56b11c981-53313419',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5625cacd0dbed4_46899577',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5629b56b152924_63766466',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5625cacd0dbed4_46899577')) {function content_5625cacd0dbed4_46899577($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_5629b56b152924_63766466')) {function content_5629b56b152924_63766466($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Catálogo de ropa</h1>
+		<h1 class="page-header">Serigrafía</h1>
 	</div>
 </div>
 
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
+  <li><a data-toggle="tab" href="#add">Agregar o Modificar posiciones</a></li>
 </ul>
 
 <div class="tab-content">
@@ -45,12 +45,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtNombre" class="col-lg-2">Nombre</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtNombre" name="txtNombre">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtPrecio" class="col-lg-2">Precio</label>
-						<div class="col-lg-3">
-							<input class="form-control" id="txtPrecio" name="txtPrecio">
 						</div>
 					</div>
 					<div class="form-group">

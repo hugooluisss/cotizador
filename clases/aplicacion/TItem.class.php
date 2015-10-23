@@ -10,7 +10,6 @@ class TItem{
 	protected $idItem;
 	private $idTipo;
 	private $nombre;
-	private $precio;
 	
 	/**
 	* Constructor de la clase
@@ -20,8 +19,7 @@ class TItem{
 	* @param int $id identificador del objeto
 	*/
 	public function TItem($id = ''){
-		$this->setId($id);		
-		$this->precio = 0;
+		$this->setId($id);
 		return true;
 	}
 	
@@ -176,8 +174,7 @@ class TItem{
 		
 		$rs = $db->Execute("UPDATE item
 			SET
-				nombre = '".$this->getNombre()."',
-				precio = ".($this->getPrecio() <> ''?$this->getPrecio():0)."
+				nombre = '".$this->getNombre()."'
 			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;

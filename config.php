@@ -157,4 +157,36 @@ $conf['cotizador_tallas'] = array(
 	'descripcion' => 'Lista de tallas en la cotización',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Ropa*/
+$conf['serigrafia'] = array(
+	'controlador' => 'serigrafia.php',
+	'vista' => 'serigrafia/panel.tpl',
+	'descripcion' => 'Posiciones para serigrafia',
+	'seguridad' => true,
+	'js' => array('serigrafia.class.js'),
+	'jsTemplate' => array('serigrafia.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaSerigrafia'] = array(
+	'controlador' => 'serigrafia.php',
+	'vista' => 'serigrafia/lista.tpl',
+	'descripcion' => 'Lista de posiciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cserigrafia'] = array(
+	'controlador' => 'serigrafia.php',
+	'descripcion' => 'Controlador de serigrafia',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['serigrafiaPrecios'] = array(
+	'controlador' => 'serigrafia.php',
+	'vista' => 'serigrafia/precios.tpl',
+	'descripcion' => 'Precios por cada posicion, color y tamaño',
+	'seguridad' => true,
+	'js' => array('serigrafia.class.js'),
+	'jsTemplate' => array('preciosSerigrafia.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

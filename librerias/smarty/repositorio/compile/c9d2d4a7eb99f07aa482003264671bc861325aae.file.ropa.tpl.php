@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 10:47:32
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 21:05:52
          compiled from "templates/plantillas/modulos/cotizador/ropa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:469277975629051436f911-66904102%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c9d2d4a7eb99f07aa482003264671bc861325aae' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/ropa.tpl',
-      1 => 1445528739,
+      1 => 1445565785,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56290514387e27_35910126',
   'variables' => 
   array (
     'ropa' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56290514387e27_35910126',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56290514387e27_35910126')) {function content_56290514387e27_35910126($_smarty_tpl) {?><div class="row">
 	<div class="col-xs-2"><label for="selRopa">Artículo</label></div>

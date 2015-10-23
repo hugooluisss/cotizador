@@ -126,10 +126,8 @@ class TTalla{
 	public function getNeto(){
 		if ($this->getRopa() == '') return false;
 		
-		$db = TBase::conectaDB();
-		
-		$rs = $db->Execute("select precio from item where idItem = ".$this->getRopa());
-		return ($this->getAdicional() == ''?0:$this->getAdicional()) + $rs->fields['precio'];
+		$ropa = new TRopa($this->getRopa());
+		return ($this->getAdicional() == ''?0:$this->getAdicional()) + $ropa->getPrecio();
 	}
 	
 	/**

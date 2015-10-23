@@ -1,14 +1,13 @@
 <?php
 /**
-* TRopa
-* Ropa que extiende de TItem
+* TSerigrafia
+* Impresión con serigrafia, el control de precios
 * @package aplicacion
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
 
-class TRopa extends TItem{
+class TSerigrafia extends TItem{
 	private $descripcion;
-	private $precio;
 	
 	/**
 	* Constructor de la clase
@@ -17,10 +16,10 @@ class TRopa extends TItem{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TRopa($id = ''){
+	public function TSerigrafia($id = ''){
 		parent::TItem();
-		$this->precio = 0;
 		$this->setId($id);
+		$this->setTipo(2);
 		
 		return true;
 	}
@@ -40,7 +39,7 @@ class TRopa extends TItem{
 		if (! parent::setId($id)) return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from ropa where idItem = ".$id);
+		$rs = $db->Execute("select * from serigrafia where idItem = ".$id);
 		
 		foreach($rs->fields as $field => $val)
 			$this->$field = $val;
@@ -49,19 +48,7 @@ class TRopa extends TItem{
 	}
 	
 	/**
-	* Retorna el identificador del objeto
-	*
-	* @autor Hugo
-	* @access public
-	* @return integer identificador
-	*/
-	
-	public function getId(){
-		return $this->idItem;
-	}
-	
-	/**
-	* Establece el descripcion
+	* Establece la descripción
 	*
 	* @autor Hugo
 	* @access public
@@ -75,41 +62,15 @@ class TRopa extends TItem{
 	}
 	
 	/**
-	* Retorna el descripcion
+	* Retorna la descripcion
 	*
 	* @autor Hugo
 	* @access public
-	* @return string Texto
+	* @return string Descripcion
 	*/
 	
 	public function getDescripcion(){
 		return $this->descripcion;
-	}
-	
-	/**
-	* Establece el precio
-	*
-	* @autor Hugo
-	* @access public
-	* @param string $val Valor a asignar
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setPrecio($val = 0){
-		$this->precio = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna el precio
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getPrecio(){
-		return $this->precio;
 	}
 	
 	/**
@@ -126,19 +87,18 @@ class TRopa extends TItem{
 		//if ($this->idItem == '')
 		if (! parent::guardar()) return false;
 		
-		$rs = $db->Execute("select idItem from ropa where idItem = ".$this->idItem);
+		$rs = $db->Execute("select idItem from serigrafia where idItem = ".$this->idItem);
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO ropa(idItem) VALUES(".$this->idItem.");");
+			$rs = $db->Execute("INSERT INTO serigrafia(idItem) VALUES(".$this->idItem.");");
 			if (!$rs) return false;
 		}
 		
 		if ($this->getId() == '')
 			return false;
 			
-		$rs = $db->Execute("UPDATE ropa
+		$rs = $db->Execute("UPDATE serigrafia
 			SET
-				descripcion = '".$this->getDescripcion()."',
-				precio = ".($this->getPrecio() <> ''?$this->getPrecio():0)."
+				descripcion = '".$this->getDescripcion()."'
 			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;
