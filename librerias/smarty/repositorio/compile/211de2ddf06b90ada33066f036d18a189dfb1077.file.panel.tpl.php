@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 23:19:55
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-24 08:51:33
          compiled from "templates/plantillas/modulos/serigrafia/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4636364355629b56b11c981-53313419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '211de2ddf06b90ada33066f036d18a189dfb1077' => 
     array (
       0 => 'templates/plantillas/modulos/serigrafia/panel.tpl',
-      1 => 1445573509,
+      1 => 1445694246,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_5629b56b152924_63766466',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5629b56b152924_63766466')) {function content_5629b56b152924_63766466($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
@@ -28,6 +28,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
   <li><a data-toggle="tab" href="#add">Agregar o Modificar posiciones</a></li>
+  <li><a data-toggle="tab" href="#limites">Límites de mayoreo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -61,5 +62,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 			</div>
 		</form>
+	</div>
+	
+	<div id="limites" class="tab-panel fade">
+		<div class="box">
+			<div class="box-body">			
+				<div class="form-group">
+					<label for="txtInferior" class="col-lg-2 col-xs-5">A partir de</label>
+					<div class="col-xs-1">
+						<input class="form-control" id="txtInferior" name="txtInferior">
+					</div>
+					<div class="col-xs-4">
+						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="box-body" id="dvListaLimites">
+			</div>
+		</div>
 	</div>
 </div><?php }} ?>

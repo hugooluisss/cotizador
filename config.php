@@ -164,7 +164,7 @@ $conf['serigrafia'] = array(
 	'vista' => 'serigrafia/panel.tpl',
 	'descripcion' => 'Posiciones para serigrafia',
 	'seguridad' => true,
-	'js' => array('serigrafia.class.js'),
+	'js' => array('serigrafia.class.js', 'limite.class.js'),
 	'jsTemplate' => array('serigrafia.js'),
 	'capa' => LAYOUT_DEFECTO);
 
@@ -181,12 +181,32 @@ $conf['cserigrafia'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+$conf['listaLimites'] = array(
+	'controlador' => 'limites.php',
+	'vista' => 'serigrafia/listaLimites.tpl',
+	'descripcion' => 'Lista de limites de precios para serigrafia',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['climites'] = array(
+	'controlador' => 'limites.php',
+	'descripcion' => 'Controlador de limites de precios',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 $conf['serigrafiaPrecios'] = array(
 	'controlador' => 'serigrafia.php',
-	'vista' => 'serigrafia/precios.tpl',
-	'descripcion' => 'Precios por cada posicion, color y tamaño',
+	'vista' => 'serigrafia/panelPrecios.tpl',
+	'descripcion' => 'Panel de definición de precios',
 	'seguridad' => true,
 	'js' => array('serigrafia.class.js'),
 	'jsTemplate' => array('preciosSerigrafia.js'),
 	'capa' => LAYOUT_DEFECTO);
+
+$conf['definicionPrecios'] = array(
+	'controlador' => 'serigrafia.php',
+	'vista' => 'serigrafia/precios.tpl',
+	'descripcion' => 'Lista de limites de precios para serigrafia',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

@@ -103,5 +103,30 @@ class TSerigrafia extends TItem{
 			
 		return $rs?true:false;
 	}
+	
+	/**
+	* Establece el precio
+	*
+	* @autor Hugo
+	* @param integer $limite id del Limite
+	* @param integer $colores Colores
+	* @param integer $tam Identificador del tamaño
+	* @param decimal $precio Precio definido
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPrecio($limite, $colores, $tam, $precio){
+		if ($this->getId() == '') return false;
+		if (!($precio > 0 and is_numeric($precio))) return false;
+		
+		$db = TBase::conectaDB();
+		
+		$db->Execute("delete from precioserigrafia where idItem = ".$this->getId()." and idTamano = ".$tam." and idLimite = ".$limite." and colores = ".$colores);
+		
+		$rs = $db->Execute("insert into precioserigrafia (idItem, idTamano, idLimite, colores, precio) values (".$this->getId().", ".$tam.", ".$limite.", ".$colores.", ".$precio.")");
+		
+		return $rs?true:false;
+	}
 }
 ?>

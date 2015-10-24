@@ -28,4 +28,22 @@ TSerigrafia = function(){
 			}
 		}, "json");
 	};
+	
+	this.setPrecio = function(item, color, tam, limite, precio, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('?mod=cserigrafia&action=setPrecio', {
+				"item": item,
+				"color": color,
+				"tam": tam,
+				"limite": limite,
+				"precio": precio
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	};
 };

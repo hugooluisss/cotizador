@@ -84,4 +84,51 @@ $(document).ready(function(){
 			});
 		});
 	}
+	
+	$("#btnAddLimite").click(function(){
+		var obj = new TLimite();
+		obj.add(
+			$("#txtInferior").val(),
+			{
+				after: function(datos){
+					if (datos.band){
+						getListaLimites();
+						$("#txtInferior").val("");
+						$("#txtInferior").focus();
+					}else{
+						alert("Upps... " + datos.mensaje);
+					}
+				}
+			}
+		);
+	});
+	
+	function getListaLimites(){
+		$.get("?mod=listaLimites", function( data ) {
+			$("#dvListaLimites").html(data);
+			
+			$("[action=eliminar]").click(function(){
+				if(confirm("¿Seguro?")){
+					var obj = new TLimite;
+					obj.del($(this).attr("item"), {
+						after: function(data){
+							getListaLimites();
+						}
+					});
+				}
+			});
+			
+			$("#tblLimites").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
+				"lengthChange": false,
+				"ordering": false,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+	}
+	
+	getListaLimites();
 });

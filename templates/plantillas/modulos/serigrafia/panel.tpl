@@ -7,6 +7,7 @@
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
   <li><a data-toggle="tab" href="#add">Agregar o Modificar posiciones</a></li>
+  <li><a data-toggle="tab" href="#limites">Límites de mayoreo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -40,5 +41,26 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	
+	<div id="limites" class="tab-panel fade">
+		<div class="box">
+			<div class="box-body">			
+				<div class="form-group">
+					<label for="txtInferior" class="col-lg-2 col-xs-5">A partir de</label>
+					<div class="col-xs-1">
+						<input class="form-control" id="txtInferior" name="txtInferior">
+					</div>
+					<div class="col-xs-4">
+						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="box-body" id="dvListaLimites">
+			</div>
+		</div>
 	</div>
 </div>
