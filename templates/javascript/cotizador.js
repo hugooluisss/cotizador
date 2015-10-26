@@ -64,7 +64,7 @@ $(document).ready(function(){
 	});
 	
 	$("#btnAgregarSerigrafia").click(function(){
-		if(cotizacion.add($("#talla_concepto").val(), $("#talla_cantidad").val(), $("#talla_precio").val())){
+		if(cotizacion.add($("#serigrafia_concepto").val(), $("#talla_cantidad").val(), $("#talla_precio").val())){
 			$("#dvTallas").html("");
 			$('#panelTabs a[href="#cotizacion"]').tab('show');
 		}else
