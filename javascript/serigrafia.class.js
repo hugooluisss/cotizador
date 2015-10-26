@@ -46,4 +46,21 @@ TSerigrafia = function(){
 					fn.after(data);
 			}, "json");
 	};
+	
+	this.getPrecio = function(posicion, tamano, colores, cantidad, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('?mod=cserigrafia&action=getPrecio', {
+				"posicion": posicion,
+				"colores": colores,
+				"tam": tamano,
+				"cantidad": cantidad
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 };

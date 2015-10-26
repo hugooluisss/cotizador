@@ -128,5 +128,32 @@ class TSerigrafia extends TItem{
 		
 		return $rs?true:false;
 	}
+	
+	/**
+	* Retorna el precio
+	*
+	* @autor Hugo
+	* @param integer $limite id del Limite
+	* @param integer $colores Colores
+	* @param integer $tam Identificador del tamaño
+	* @param decimal $precio Precio definido
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getPrecio($colores, $tam, $cantidad){
+		if ($this->getId() == '') return false;
+		if (!($cantidad > 0 and is_numeric($cantidad))) return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select precio
+from item a join serigrafia b using(idItem) join precioserigrafia c using(idItem) join limite d using(idLimite)
+where idItem = ".$this->getId()." and idTamano = ".$tam." and colores = ".$colores." and inferior <= ".$cantidad." order by inferior desc;");
+		
+		if($rs->EOF) return false;
+		
+		return $rs->fields["precio"];
+	}
 }
 ?>

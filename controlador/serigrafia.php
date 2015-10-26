@@ -68,6 +68,13 @@ switch($objModulo->getId()){
 				$obj->setId($_POST['item']);
 				echo json_encode(array("band" => $obj->setPrecio($_POST['limite'], $_POST['color'], $_POST['tam'], $_POST['precio']), "mensaje" => "Recuerde que el valor debe de ser numérico", "precio" => sprintf("%.2f", $_POST['precio'])));
 			break;
+			case 'getPrecio':
+				$obj = new TSerigrafia();
+				$obj->setId($_POST['posicion']);
+				$precio = $obj->getPrecio($_POST['colores'], $_POST['tam'], $_POST['cantidad']);
+				
+				echo json_encode(array("precio" => $precio, "band" => !$precio?"No existe un precio definido para esa cantidad":""));
+			break;
 		}
 	break;
 }

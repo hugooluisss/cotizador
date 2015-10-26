@@ -1,7 +1,7 @@
 //Tallas
 var cotizacion = "";
+cotizacion = new TCotizacion();
 $(document).ready(function(){
-	cotizacion = new TCotizacion();
 	$("#selRopa").change(function(){
 		$("#dvRopa").html("");
 	});
@@ -27,7 +27,7 @@ $(document).ready(function(){
 				
 				precio = precio.toFixed(2)
 				
-				$("#talla_concepto").val($( "select option:selected" ).attr("nombre") + ": " + concepto);
+				$("#talla_concepto").val($( "select#selRopa option:selected" ).attr("nombre") + ": " + concepto);
 				$("#talla_cantidad").val(cantidad);
 				$("#talla_precio").val(precio);
 			});
@@ -40,6 +40,35 @@ $(document).ready(function(){
 					alert("Ocurrió un error al agregar a la cotización");
 			});
 		});
+	});
+});
+
+//Serigrafia
+$(document).ready(function(){
+	$("#btnBuscarPrecioSerigrafia").click(function(){
+		var obj = new TSerigrafia;
+		obj.getPrecio($("#selPosicion").val(), $("#selTamano").val(), $("#selColores").val(), $("#txtCantidad").val(), {
+			before: function(){
+				$("#frmAddSerigrafia").prop("disabled", true);
+			},
+			after: function(datos){
+				$("#frmAddSerigrafia").prop("disabled", false);
+				
+				if (datos.band == ""){
+					$("#serigrafia_concepto").val("DP " + $("select#selPosicion option:selected" ).attr("nombre") + " (Tamaño: " + $("select#selTamano option:selected" ).attr("nombre") + "; No de colores: " + $("select#selColores").val() + ")");
+					$("#serigrafia_cantidad").val($("#txtCantidad").val());
+					$("#serigrafia_precio").val(datos.precio);
+				}
+			}
+		});
+	});
+	
+	$("#btnAgregarSerigrafia").click(function(){
+		if(cotizacion.add($("#talla_concepto").val(), $("#talla_cantidad").val(), $("#talla_precio").val())){
+			$("#dvTallas").html("");
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
 	});
 });
 

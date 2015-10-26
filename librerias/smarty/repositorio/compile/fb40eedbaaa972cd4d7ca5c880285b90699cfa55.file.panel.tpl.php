@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-22 21:05:52
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 11:53:22
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1445565785,
+      1 => 1445879685,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <ul id="panelTabs" class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#cotizacion">Cotización general</a></li>
 	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
+	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 </ul>
 
 <div class="tab-content">
@@ -48,6 +49,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="box">
 			<div class="box-body">
 				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/ropa.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+			</div>
+		</div>
+	</div>
+	
+	<div id="serigrafia" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/serigrafia.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 			</div>
 		</div>

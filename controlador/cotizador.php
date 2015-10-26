@@ -3,6 +3,8 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'cotizador':
 		$db = TBase::conectaDB();
+		
+		/*Ropa*/
 		$rs = $db->Execute("select * from item a join ropa b using(idItem) order by nombre");
 		$datos = array();
 		while(!$rs->EOF){
@@ -11,6 +13,25 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("ropa", $datos);
+		
+		/*Serigrafia*/
+		$rs = $db->Execute("select * from item a join serigrafia b using(idItem) order by nombre");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("posiciones", $datos);
+		
+		$rs = $db->Execute("select * from tamano");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("tamanos", $datos);
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();
