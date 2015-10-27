@@ -232,4 +232,27 @@ $conf['cserigrafiadigital'] = array(
 	'descripcion' => 'Controlador de serigrafia digital',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Vinilo*/
+$conf['corteVinilo'] = array(
+	'controlador' => 'vinilo.php',
+	'vista' => 'vinilo/panel.tpl',
+	'descripcion' => 'Cortes de vinil',
+	'seguridad' => true,
+	'js' => array('vinilo.class.js'),
+	'jsTemplate' => array('vinilo.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaVinilo'] = array(
+	'controlador' => 'vinilo.php',
+	'vista' => 'vinilo/lista.tpl',
+	'descripcion' => 'Lista de cortes de vinilo',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cvinilo'] = array(
+	'controlador' => 'vinilo.php',
+	'descripcion' => 'Controlador de vinilos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

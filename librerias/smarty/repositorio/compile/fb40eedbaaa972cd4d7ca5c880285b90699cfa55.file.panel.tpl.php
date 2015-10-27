@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 10:47:02
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 13:13:27
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1445964420,
+      1 => 1445973196,
       2 => 'file',
     ),
   ),
@@ -34,6 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
+	<li><a data-toggle="tab" href="#vinilo">Vinilo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -64,10 +65,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 	</div>
 	
-	<div id="seriDig" class="tab-pane fade">
+	<div id="vinilo" class="tab-pane fade">
 		<div class="box">
 			<div class="box-body">
-				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/serigrafiaDigital.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/vinilo.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 			</div>
 		</div>

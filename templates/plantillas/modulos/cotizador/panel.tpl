@@ -9,6 +9,7 @@
 	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
+	<li><a data-toggle="tab" href="#vinilo">Vinilo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -36,10 +37,10 @@
 		</div>
 	</div>
 	
-	<div id="seriDig" class="tab-pane fade">
+	<div id="vinilo" class="tab-pane fade">
 		<div class="box">
 			<div class="box-body">
-				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/serigrafiaDigital.tpl"}
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/vinilo.tpl"}
 			</div>
 		</div>
 	</div>

@@ -87,6 +87,7 @@
 					<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
 					<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
 					<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
+					<li {if $PAGE.modulo eq 'corteVinilo'}class="active"{/if}><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Corte de vinilo</a></li>
 					{/if}
 					<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
 				</ul>

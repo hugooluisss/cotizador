@@ -104,6 +104,32 @@ $(document).ready(function(){
 	});
 });
 
+//Vinilo
+$(document).ready(function(){
+	$("#vinilo #txtPU").val($("#vinilo select#selItem option:selected" ).attr("precio"));
+	
+	$("#vinilo #selItem").change(function(){
+		$("#seriDig #txtPU").val($("#seriDig select#selItem option:selected" ).attr("precio"));
+	});
+	
+	$("#vinilo #txtCantidad").change(function(){
+		$("#vinilo #txtCantidad").val(parseInt($("#vinilo #txtCantidad").val()));
+		$("#vinilo #txtTotal").val(parseFloat($("#vinilo select#selItem option:selected" ).attr("precio") * $("#vinilo #txtCantidad").val()).toFixed(2));
+	});
+	
+	$("#vinilo #btnAgregar").click(function(){
+		var concepto = "Vinilo " + $("#vinilo select#selItem option:selected" ).attr("nombre") + " (P. U.: " + $("#vinilo #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, $("#vinilo #txtCantidad").val(), $("#vinilo #txtTotal").val())){
+			$("#vinilo #txtCantidad").val("");
+			$("#vinilo #txtTotal").val("");
+			
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+});
+
 //General
 $(document).ready(function(){
 	$("#eliminarDeCotizacion").click(function(){

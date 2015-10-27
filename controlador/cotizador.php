@@ -41,6 +41,16 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("serigrafia", $datos);
+		
+		#vinilo
+		$rs = $db->Execute("select * from item a join vinilo b using(idItem) order by nombre");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("vinilo", $datos);
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();
