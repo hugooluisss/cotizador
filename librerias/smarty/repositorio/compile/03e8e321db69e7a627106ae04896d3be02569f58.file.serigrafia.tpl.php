@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 19:22:38
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 10:43:22
          compiled from "templates/plantillas/modulos/cotizador/serigrafia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:884607774562e68cab41e08-02864492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '03e8e321db69e7a627106ae04896d3be02569f58' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/serigrafia.tpl',
-      1 => 1445908901,
+      1 => 1445964198,
       2 => 'file',
     ),
   ),
@@ -91,7 +91,7 @@ $_smarty_tpl->tpl_vars['color']->first = $_smarty_tpl->tpl_vars['color']->iterat
 	<div class="row">
 		<div class="col-xs-12"><button type="button" id="btnBuscarPrecioSerigrafia" class="btn btn-default">Obtener precio</button></div>
 	</div>
-</div>
+</form>
 <br />
 
 <div class="row">

@@ -158,7 +158,7 @@ $conf['cotizador_tallas'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-/*Ropa*/
+/*serigrafia*/
 $conf['serigrafia'] = array(
 	'controlador' => 'serigrafia.php',
 	'vista' => 'serigrafia/panel.tpl',
@@ -207,6 +207,29 @@ $conf['definicionPrecios'] = array(
 	'controlador' => 'serigrafia.php',
 	'vista' => 'serigrafia/precios.tpl',
 	'descripcion' => 'Lista de limites de precios para serigrafia',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+/*Serigrafía digital*/
+$conf['serigrafiaDigital'] = array(
+	'controlador' => 'serigrafiaDigital.php',
+	'vista' => 'serigrafiaDigital/panel.tpl',
+	'descripcion' => 'Servicios de serigrafía digital',
+	'seguridad' => true,
+	'js' => array('serigrafiaDigital.class.js'),
+	'jsTemplate' => array('serigrafiaDigital.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaSerigrafiaDigital'] = array(
+	'controlador' => 'serigrafiaDigital.php',
+	'vista' => 'serigrafiaDigital/lista.tpl',
+	'descripcion' => 'Lista de posiciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cserigrafiadigital'] = array(
+	'controlador' => 'serigrafiaDigital.php',
+	'descripcion' => 'Controlador de serigrafia digital',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-xs-12"><button type="button" id="btnBuscarPrecioSerigrafia" class="btn btn-default">Obtener precio</button></div>
 	</div>
-</div>
+</form>
 <br />
 
 <div class="row">

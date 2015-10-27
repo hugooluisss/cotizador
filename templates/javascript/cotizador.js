@@ -78,6 +78,32 @@ $(document).ready(function(){
 	});
 });
 
+//Serigrafia digital
+$(document).ready(function(){
+	$("#seriDig #txtPU").val($("#seriDig select#selItem option:selected" ).attr("precio"));
+	
+	$("#seriDig #selItem").change(function(){
+		$("#seriDig #txtPU").val($("#seriDig select#selItem option:selected" ).attr("precio"));
+	});
+	
+	$("#seriDig #txtCantidad").change(function(){
+		$("#seriDig #txtCantidad").val(parseInt($("#seriDig #txtCantidad").val()));
+		$("#seriDig #txtTotal").val(parseFloat($("#seriDig select#selItem option:selected" ).attr("precio") * $("#seriDig #txtCantidad").val()).toFixed(2));
+	});
+	
+	$("#seriDig #btnAgregar").click(function(){
+		var concepto = $("#seriDig select#selItem option:selected" ).attr("nombre") + " (P. U.: " + $("#seriDig #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, $("#seriDig #txtCantidad").val(), $("#seriDig #txtTotal").val())){
+			$("#seriDig #txtCantidad").val("");
+			$("#seriDig #txtTotal").val("");
+			
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+});
+
 //General
 $(document).ready(function(){
 	$("#eliminarDeCotizacion").click(function(){

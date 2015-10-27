@@ -8,6 +8,7 @@
 	<li class="active"><a data-toggle="tab" href="#cotizacion">Cotización general</a></li>
 	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
+	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
 </ul>
 
 <div class="tab-content">
@@ -31,6 +32,14 @@
 		<div class="box">
 			<div class="box-body">
 				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/serigrafia.tpl"}
+			</div>
+		</div>
+	</div>
+	
+	<div id="seriDig" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/serigrafiaDigital.tpl"}
 			</div>
 		</div>
 	</div>
