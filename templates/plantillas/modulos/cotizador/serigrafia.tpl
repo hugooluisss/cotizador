@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-xs-2"><label for="txtCantidad">Cantidad</label></div>
+		<div class="col-xs-2"><label for="txtCantidad_s">Cantidad</label></div>
 		<div class="col-xs-2">
 			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off">
 		</div>

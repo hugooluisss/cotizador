@@ -19,17 +19,17 @@ $(document).ready(function(){
 				$("#ropa #dvTallas .panel .panel-body input.talla").each(function(){
 					var el = $(this);
 					
-					precio += parseFloat(el.attr("precio") * el.val());
+					precio += parseFloat(el.attr("precio") * el.val()).toFixed(2);
 					cantidad += parseInt(el.val());
 					if (el.val() > 0)
 						concepto += (concepto == ''?'':", ") + el.attr("nombre") + " (" + el.val() + " - " + parseFloat(el.attr("precio") * el.val()).toFixed(2) + ")";
 				});
 				
-				precio = precio.toFixed(2)
+				precio = parseFloat(precio).toFixed(2);
 				
 				$("#talla_concepto").val($( "select#selRopa option:selected" ).attr("nombre") + ": " + concepto);
 				$("#talla_cantidad").val(cantidad);
-				$("#talla_precio").val(precio);
+				$("#talla_precio").val(parseFloat(precio).toFixed(2));
 			});
 			
 			$("#btnAgregarRopa").click(function(){
@@ -55,17 +55,23 @@ $(document).ready(function(){
 				$("#frmAddSerigrafia").prop("disabled", false);
 				
 				if (datos.band == ""){
-					$("#serigrafia_concepto").val("DP " + $("select#selPosicion option:selected" ).attr("nombre") + " (Tamaño: " + $("select#selTamano option:selected" ).attr("nombre") + "; No de colores: " + $("select#selColores").val() + ")");
-					$("#serigrafia_cantidad").val($("#txtCantidad").val());
-					$("#serigrafia_precio").val(datos.precio);
+					$("#serigrafia_concepto").val("DP " + $("#frmAddSerigrafia select#selPosicion option:selected" ).attr("nombre") + " (Tamaño: " + $("#frmAddSerigrafia select#selTamano option:selected" ).attr("nombre") + "; No de colores: " + $("#frmAddSerigrafia select#selColores").val() + "; P. U.: " + datos.precio + ")");
+					$("#serigrafia_cantidad").val($("#frmAddSerigrafia #txtCantidad").val());
+					$("#serigrafia_precio").val(parseFloat(datos.precio * $("#frmAddSerigrafia #txtCantidad").val()).toFixed(2));
+					
+					$("#btnAgregarSerigrafia").focus();
 				}
 			}
 		});
 	});
 	
 	$("#btnAgregarSerigrafia").click(function(){
-		if(cotizacion.add($("#serigrafia_concepto").val(), $("#talla_cantidad").val(), $("#talla_precio").val())){
-			$("#dvTallas").html("");
+		if(cotizacion.add($("#serigrafia_concepto").val(), $("#serigrafia_cantidad").val(), $("#serigrafia_precio").val())){
+			$("#serigrafia_concepto").val("");
+			$("#serigrafia_cantidad").val("");
+			$("#serigrafia_precio").val("");
+			
+			$("#frmAddSerigrafia #txtCantidad").val("");
 			$('#panelTabs a[href="#cotizacion"]').tab('show');
 		}else
 			alert("Ocurrió un error al agregar a la cotización");

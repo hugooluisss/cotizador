@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 13:40:46
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 19:22:38
          compiled from "templates/plantillas/modulos/cotizador/serigrafia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:884607774562e68cab41e08-02864492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '03e8e321db69e7a627106ae04896d3be02569f58' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/serigrafia.tpl',
-      1 => 1445888445,
+      1 => 1445908901,
       2 => 'file',
     ),
   ),
@@ -82,7 +82,7 @@ $_smarty_tpl->tpl_vars['color']->first = $_smarty_tpl->tpl_vars['color']->iterat
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-xs-2"><label for="txtCantidad">Cantidad</label></div>
+		<div class="col-xs-2"><label for="txtCantidad_s">Cantidad</label></div>
 		<div class="col-xs-2">
 			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off">
 		</div>
