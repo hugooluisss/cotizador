@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 11:49:28
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 11:23:12
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1445968167,
+      1 => 1446052989,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_562905d4b320b2_67588572',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><button type="button" class="btn btn-danger" id="eliminarDeCotizacion"><i class="fa fa-times"></i> Eliminar</button>
-<br />
+<?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><div class="btn-toolbar" role="toolbar">
+	<div class="btn-group">
+		<button type="button" class="btn btn-danger" id="eliminarDeCotizacion"><i class="fa fa-times"></i> Eliminar item</button>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
+	</div>
+</div>
 <table id="cotizacion" class="table table-bordered">
 	<thead>
 		<tr>

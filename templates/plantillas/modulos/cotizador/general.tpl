@@ -1,5 +1,11 @@
-<button type="button" class="btn btn-danger" id="eliminarDeCotizacion"><i class="fa fa-times"></i> Eliminar</button>
-<br />
+<div class="btn-toolbar" role="toolbar">
+	<div class="btn-group">
+		<button type="button" class="btn btn-danger" id="eliminarDeCotizacion"><i class="fa fa-times"></i> Eliminar item</button>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
+	</div>
+</div>
 <table id="cotizacion" class="table table-bordered">
 	<thead>
 		<tr>

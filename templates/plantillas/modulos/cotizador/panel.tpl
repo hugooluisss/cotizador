@@ -38,6 +38,14 @@
 		</div>
 	</div>
 	
+	<div id="seriDig" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/serigrafiaDigital.tpl"}
+			</div>
+		</div>
+	</div>
+	
 	<div id="vinilo" class="tab-pane fade">
 		<div class="box">
 			<div class="box-body">

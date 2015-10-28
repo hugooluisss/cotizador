@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 10:10:16
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 10:49:10
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1446048615,
+      1 => 1446050946,
       2 => 'file',
     ),
   ),
@@ -61,6 +61,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="box">
 			<div class="box-body">
 				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/serigrafia.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+			</div>
+		</div>
+	</div>
+	
+	<div id="seriDig" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/serigrafiaDigital.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 			</div>
 		</div>
