@@ -11,10 +11,10 @@ $(document).ready(function(){
 		$('#panelTabs a[href="#listas"]').tab('show');
 	});
 	
-	$("#txtPrecio").change(function(){
+	$("#frmAdd #txtPrecio").change(function(){
 		$(this).val(parseFloat($(this).val()).toFixed(2));
 	});
-			
+	
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
@@ -35,11 +35,11 @@ $(document).ready(function(){
 			}
 		},
 		submitHandler: function(form){
-			var obj = new TSerigrafiaDigital;
+			var obj = new TOtros;
 			obj.add(
 				$("#id").val(), 
 				$("#txtNombre").val(), 
-				parseFloat($("#txtPrecio").val()).toFixed(2), 
+				$("#txtPrecio").val(), 
 				$("#txtDescripcion").val(),
 				{
 					after: function(datos){
@@ -58,12 +58,12 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("?mod=listaSerigrafiaDigital", function( data ) {
+		$.get("?mod=listaOtros", function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TSerigrafiaDigital;
+					var obj = new TOtros;
 					obj.del($(this).attr("item"), {
 						after: function(data){
 							getLista();
@@ -77,12 +77,12 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idItem);
 				$("#txtNombre").val(el.nombre);
+				$("#txtPrecio").val(el.precio);
 				$("#txtDescripcion").html(el.descripcion);
-				$("#txtPrecio").val(parseFloat(el.precio).toFixed(2));
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
-			
-			$("#tblSerigrafia").DataTable({
+		
+			$("#tblOtros").DataTable({
 				"responsive": true,
 				"language": espaniol,
 				"paging": true,

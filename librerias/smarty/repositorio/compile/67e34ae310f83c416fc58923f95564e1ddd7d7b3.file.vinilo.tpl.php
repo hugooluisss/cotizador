@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 13:15:59
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 09:39:11
          compiled from "templates/plantillas/modulos/cotizador/vinilo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1227522951562fccd7d68587-20572526%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '67e34ae310f83c416fc58923f95564e1ddd7d7b3' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/vinilo.tpl',
-      1 => 1445973357,
+      1 => 1446046748,
       2 => 'file',
     ),
   ),
@@ -52,9 +52,21 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		</div>
 	</div>
 	<div class="form-group">
+		<div class="col-xs-2"><label for="txtAncho">Ancho</label></div>
+		<div class="col-xs-2">
+			<input class="form-control" id="txtAncho" name="txtAncho" autocomplete="off" placeholder="metros">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-2"><label for="txtAlto">Alto</label></div>
+		<div class="col-xs-2">
+			<input class="form-control" id="txtAlto" name="txtAlto" autocomplete="off" placeholder="metros">
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-xs-2"><label for="txtCantidad">Cantidad</label></div>
 		<div class="col-xs-2">
-			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off">
+			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off"  disabled="true">
 		</div>
 	</div>
 	<div class="form-group">

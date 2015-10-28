@@ -112,18 +112,47 @@ $(document).ready(function(){
 		$("#seriDig #txtPU").val($("#seriDig select#selItem option:selected" ).attr("precio"));
 	});
 	
-	$("#vinilo #txtCantidad").change(function(){
-		$("#vinilo #txtCantidad").val(parseInt($("#vinilo #txtCantidad").val()));
-		$("#vinilo #txtTotal").val(parseFloat($("#vinilo select#selItem option:selected" ).attr("precio") * $("#vinilo #txtCantidad").val()).toFixed(2));
+	$.each(["#vinilo #txtAncho", "#vinilo #txtAlto"], function(i, el){
+		$(el).change(function(){
+			$(this).val(parseFloat($(this).val()).toFixed(2));
+			
+			calcularCantidad();
+		});
 	});
 	
 	$("#vinilo #btnAgregar").click(function(){
-		var concepto = "Vinilo " + $("#vinilo select#selItem option:selected" ).attr("nombre") + " (P. U.: " + $("#vinilo #txtPU").val() + ")";
+		var concepto = "Vinilo " + $("#vinilo select#selItem option:selected" ).attr("nombre") + " (" + $("#vinilo #txtAlto").val() + " x " + $("#vinilo #txtAncho").val() + " P. U.: " + $("#vinilo #txtPU").val() + ")";
 	
 		if(cotizacion.add(concepto, $("#vinilo #txtCantidad").val(), $("#vinilo #txtTotal").val())){
 			$("#vinilo #txtCantidad").val("");
 			$("#vinilo #txtTotal").val("");
 			
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+	
+	function calcularCantidad(){
+		var cantidad = $("#vinilo #txtAncho").val() * $("#vinilo #txtAlto").val();
+		$("#vinilo #txtCantidad").val(cantidad);
+		
+		$("#vinilo #txtCantidad").val(parseFloat($("#vinilo #txtCantidad").val()).toFixed(2));
+		$("#vinilo #txtTotal").val(parseFloat($("#vinilo select#selItem option:selected" ).attr("precio") * $("#vinilo #txtCantidad").val()).toFixed(2));
+	}
+});
+
+//Otros
+$(document).ready(function(){
+	$("#adicionales #txtPU").val($("#adicionales select#selItem option:selected" ).attr("precio"));
+	
+	$("#adicionales #selItem").change(function(){
+		$("#adicionales #txtPU").val($("#adicionales select#selItem option:selected" ).attr("precio"));
+	});
+	
+	$("#adicionales #btnAgregar").click(function(){
+		var concepto = $("#adicionales select#selItem option:selected" ).attr("nombre") + " ( P. U.: " + $("#adicionales #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, 1, $("#adicionales #txtPU").val())){
 			$('#panelTabs a[href="#cotizacion"]').tab('show');
 		}else
 			alert("Ocurrió un error al agregar a la cotización");

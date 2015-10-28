@@ -16,9 +16,21 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<div class="col-xs-2"><label for="txtAncho">Ancho</label></div>
+		<div class="col-xs-2">
+			<input class="form-control" id="txtAncho" name="txtAncho" autocomplete="off" placeholder="metros">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-2"><label for="txtAlto">Alto</label></div>
+		<div class="col-xs-2">
+			<input class="form-control" id="txtAlto" name="txtAlto" autocomplete="off" placeholder="metros">
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-xs-2"><label for="txtCantidad">Cantidad</label></div>
 		<div class="col-xs-2">
-			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off">
+			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off"  disabled="true">
 		</div>
 	</div>
 	<div class="form-group">

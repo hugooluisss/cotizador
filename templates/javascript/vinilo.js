@@ -11,6 +11,10 @@ $(document).ready(function(){
 		$('#panelTabs a[href="#listas"]').tab('show');
 	});
 	
+	$("#txtPrecio").change(function(){
+		$(this).val(parseFloat($(this).val()).toFixed(2));
+	});
+	
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {

@@ -255,4 +255,27 @@ $conf['cvinilo'] = array(
 	'descripcion' => 'Controlador de vinilos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+/*Vinilo*/
+$conf['otrosServicios'] = array(
+	'controlador' => 'otros.php',
+	'vista' => 'otros/panel.tpl',
+	'descripcion' => 'Otros servicios',
+	'seguridad' => true,
+	'js' => array('otros.class.js'),
+	'jsTemplate' => array('otros.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaOtros'] = array(
+	'controlador' => 'otros.php',
+	'vista' => 'otros/lista.tpl',
+	'descripcion' => 'Lista de otros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cotros'] = array(
+	'controlador' => 'otros.php',
+	'descripcion' => 'Controlador de otros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

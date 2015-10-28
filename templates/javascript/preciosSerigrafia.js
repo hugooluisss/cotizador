@@ -17,7 +17,7 @@ $(document).ready(function(){
 					el.attr("color"),
 					el.attr("tamano"),
 					$("#selLimite").val(),
-					el.val(),
+					parseFloat(el.val()).toFixed(2),
 					{
 						before: function(){
 							el.prop( "disabled", true);
@@ -26,7 +26,7 @@ $(document).ready(function(){
 							el.prop( "disabled", false);
 							if (datos.band){
 								el.attr("anterior", datos.precio);
-								el.val(datos.precio);
+								el.val(parseFloat(datos.precio).toFixed(2));
 							}else{
 								alert("Upps... " + datos.mensaje);
 								el.focus();
