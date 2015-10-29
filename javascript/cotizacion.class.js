@@ -12,6 +12,8 @@ TCotizacion = function(){
 				var el = $(this);
 				el.attr("setAction", 1);
 				el.change(function(){
+					if (el.val() == '')
+						el.val("0.00");
 					if (el.val() > 100 || el.val() < 0){
 						alert("El descuento no puede ser mayor al 100% ni menor al 0%");
 						el.val(el.attr("anterior"));

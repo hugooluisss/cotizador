@@ -10,6 +10,7 @@
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
 	<li><a data-toggle="tab" href="#vinilo">Vinilo</a></li>
+	<li><a data-toggle="tab" href="#estampado">Números y letras</a></li>
 	<li><a data-toggle="tab" href="#adicionales">Servicios adicionales</a></li>
 </ul>
 
@@ -54,6 +55,14 @@
 		</div>
 	</div>
 	
+	<div id="estampado" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/estampado.tpl"}
+			</div>
+		</div>
+	</div>
+	
 	<div id="adicionales" class="tab-pane fade">
 		<div class="box">
 			<div class="box-body">
@@ -62,3 +71,4 @@
 		</div>
 	</div>
 </div>
+{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/clientes.tpl"}

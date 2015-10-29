@@ -159,6 +159,32 @@ $(document).ready(function(){
 	});
 });
 
+//Estampado
+$(document).ready(function(){
+	$("#estampado #txtPU").val($("#estampado select#selItem option:selected" ).attr("precio"));
+	
+	$("#estampado #selItem").change(function(){
+		$("#estampado #txtPU").val($("#estampado select#selItem option:selected" ).attr("precio"));
+	});
+	
+	$("#estampado #txtCantidad").change(function(){
+		$("#estampado #txtCantidad").val(parseInt($("#estampado #txtCantidad").val()));
+		$("#estampado #txtTotal").val(parseFloat($("#estampado select#selItem option:selected" ).attr("precio") * $("#estampado #txtCantidad").val()).toFixed(2));
+	});
+	
+	$("#estampado #btnAgregar").click(function(){
+		var concepto = "Estampado " + $("#estampado select#selItem option:selected" ).attr("nombre") + " (P. U.: " + $("#estampado #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, $("#estampado #txtCantidad").val(), $("#estampado #txtTotal").val())){
+			$("#estampado #txtCantidad").val("");
+			$("#estampado #txtTotal").val("");
+			
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+});
+
 //General
 $(document).ready(function(){
 	$("#eliminarDeCotizacion").click(function(){
@@ -168,5 +194,41 @@ $(document).ready(function(){
 		});
 		
 		cotizacion.total();
+	});
+	
+	$("#tblClientes tr[cliente]").click(function(){
+		var el = jQuery.parseJSON($(this).attr("cliente"));
+		
+		$('#winClientes').modal('hide');
+		
+		$("#txtNombre[cliente]").val(el.nombre);
+		$("#txtEmail[cliente]").val(el.email);
+	});
+	
+	$("#frmAddCliente").submit(function(){
+		if ($("#frmAddCliente #txtNombre").val() == ''){
+			alert("Escribe el nombre del cliente");
+			$("#frmAddCliente #txtNombre").focus();
+		}else{
+			var obj = new TCliente;
+			
+			obj.this.add("",	$("#frmAddCliente #txtNombre").val(), $("#frmAddCliente #txtEmail").val(), "", "", {
+				after: function(data){
+					if (datos.band){
+						$("#frmAddCliente").get(0).reset();
+						$('#winClientes').modal('hide');
+		
+						$("#txtNombre[cliente]").val($("#frmAddCliente #txtNombre").val());
+						$("#txtEmail[cliente]").val($("#frmAddCliente #txtEmail").val());
+						
+						$("#frmAddCliente #txtNombre").val("");
+						$("#frmAddCliente #txtEmail").val("");
+					}else{
+						alert("Upps... " + datos.mensaje);
+					}
+				}
+			});
+		}
+		
 	});
 });

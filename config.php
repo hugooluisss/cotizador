@@ -278,4 +278,27 @@ $conf['cotros'] = array(
 	'descripcion' => 'Controlador de otros',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Vinilo*/
+$conf['numerosLetras'] = array(
+	'controlador' => 'estampado.php',
+	'vista' => 'estampado/panel.tpl',
+	'descripcion' => 'Otros servicios',
+	'seguridad' => true,
+	'js' => array('estampado.class.js'),
+	'jsTemplate' => array('estampado.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaEstampado'] = array(
+	'controlador' => 'estampado.php',
+	'vista' => 'estampado/lista.tpl',
+	'descripcion' => 'Lista de otros',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cEstampado'] = array(
+	'controlador' => 'estampado.php',
+	'descripcion' => 'Controlador de números y letras',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

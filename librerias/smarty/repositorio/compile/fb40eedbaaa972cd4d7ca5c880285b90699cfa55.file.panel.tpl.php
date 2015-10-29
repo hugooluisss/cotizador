@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 10:49:10
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-29 13:38:41
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1446050946,
+      1 => 1446147520,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
 	<li><a data-toggle="tab" href="#vinilo">Vinilo</a></li>
+	<li><a data-toggle="tab" href="#estampado">Números y letras</a></li>
 	<li><a data-toggle="tab" href="#adicionales">Servicios adicionales</a></li>
 </ul>
 
@@ -84,6 +85,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 	</div>
 	
+	<div id="estampado" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/estampado.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+			</div>
+		</div>
+	</div>
+	
 	<div id="adicionales" class="tab-pane fade">
 		<div class="box">
 			<div class="box-body">
@@ -92,4 +102,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/clientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

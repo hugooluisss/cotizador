@@ -6,6 +6,31 @@
 		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
 	</div>
 </div>
+<br />
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group">
+					<label for="txtCliente">Cliente</label>
+					<input type="text" class="form-control" id="txtNombre" cliente placeholder="Nombre del cliente" disabled="true">
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="form-group">
+					<label for="txtEmail">Email</label>
+					<input type="email" class="form-control" id="txtEmail" cliente placeholder="Email" disabled="true">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <table id="cotizacion" class="table table-bordered">
 	<thead>
 		<tr>

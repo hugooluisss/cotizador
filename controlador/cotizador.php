@@ -61,6 +61,28 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("otros", $datos);
+		
+		#otros
+		$rs = $db->Execute("select * from item a join estampado b using(idItem) order by nombre");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("estampado", $datos);
+		
+		#clientes
+		$rs = $db->Execute("select * from cliente");
+		$datos = array();
+		while(!$rs->EOF){
+			$rs->fields['json'] = json_encode($rs->fields);
+			
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("clientes", $datos);
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();

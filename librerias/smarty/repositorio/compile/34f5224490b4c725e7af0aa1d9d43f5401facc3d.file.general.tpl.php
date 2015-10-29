@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-28 11:23:12
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-29 13:33:20
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1446052989,
+      1 => 1446147185,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
 	</div>
 </div>
+<br />
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group">
+					<label for="txtCliente">Cliente</label>
+					<input type="text" class="form-control" id="txtNombre" cliente placeholder="Nombre del cliente" disabled="true">
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="form-group">
+					<label for="txtEmail">Email</label>
+					<input type="email" class="form-control" id="txtEmail" cliente placeholder="Email" disabled="true">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <table id="cotizacion" class="table table-bordered">
 	<thead>
 		<tr>
