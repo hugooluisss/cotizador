@@ -19,12 +19,11 @@ $(document).ready(function(){
 				$("#ropa #dvTallas .panel .panel-body input.talla").each(function(){
 					var el = $(this);
 					
-					precio += parseFloat(el.attr("precio") * el.val()).toFixed(2);
+					precio += Number(parseFloat(el.attr("precio") * el.val()).toFixed(2));
 					cantidad += parseInt(el.val());
 					if (el.val() > 0)
 						concepto += (concepto == ''?'':", ") + el.attr("nombre") + " (" + el.val() + " - " + parseFloat(el.attr("precio") * el.val()).toFixed(2) + ")";
 				});
-				
 				precio = parseFloat(precio).toFixed(2);
 				
 				$("#talla_concepto").val($( "select#selRopa option:selected" ).attr("nombre") + ": " + concepto);
@@ -205,6 +204,16 @@ $(document).ready(function(){
 		$("#txtEmail[cliente]").val(el.email);
 	});
 	
+	$("#tblClientes").DataTable({
+		"responsive": true,
+		"language": espaniol,
+		"paging": true,
+		"lengthChange": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false
+	});
+	
 	$("#frmAddCliente").submit(function(){
 		if ($("#frmAddCliente #txtNombre").val() == ''){
 			alert("Escribe el nombre del cliente");
@@ -212,10 +221,9 @@ $(document).ready(function(){
 		}else{
 			var obj = new TCliente;
 			
-			obj.this.add("",	$("#frmAddCliente #txtNombre").val(), $("#frmAddCliente #txtEmail").val(), "", "", {
-				after: function(data){
+			obj.add("",	$("#frmAddCliente #txtNombre").val(), $("#frmAddCliente #txtEmail").val(), "", "", {
+				after: function(datos){
 					if (datos.band){
-						$("#frmAddCliente").get(0).reset();
 						$('#winClientes').modal('hide');
 		
 						$("#txtNombre[cliente]").val($("#frmAddCliente #txtNombre").val());
@@ -223,12 +231,38 @@ $(document).ready(function(){
 						
 						$("#frmAddCliente #txtNombre").val("");
 						$("#frmAddCliente #txtEmail").val("");
+												
+						$("#frmAddCliente").get(0).reset();
 					}else{
 						alert("Upps... " + datos.mensaje);
 					}
 				}
 			});
 		}
+	});
+	
+	$("#saveCotizacion").click(function(){
+		total = parseFloat($("table#cotizacion #total").html());
 		
+		if (total < 0.01)
+			alert("La cotización está vacia");
+		else{
+			var cotizacion = new Array();
+		
+			$("table#cotizacion > tbody > tr").each(function(){
+				var tr = $(this);
+				
+				var tds = tr.children("td");
+				var el = new Array();
+				el.concepto = tds.eq(1).html();
+				el.cantidad = tds.eq(2).html();
+				el.descuento = tds.eq(3).children("input.descuento").val();
+				el.neto = tds.eq(3).children("input.descuento").attr("precio");
+				el.total = tds.eq(4).html();
+				cotizacion.push(el);
+			});
+			
+			console.log(cotizacion);
+		}
 	});
 });

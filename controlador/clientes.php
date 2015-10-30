@@ -21,12 +21,12 @@ switch($objModulo->getId()){
 				$db = TBase::conectaDB();
 				$obj = new TCliente();
 				
-				$rs = $db->Execute("select idCliente from cliente where rfc = '".$_POST['rfc']."'");
+				$rs = $db->Execute("select idCliente from cliente where email = '".$_POST['email']."'");
 				
 				if (!$rs->EOF){ #si es que encontró el rfc
 					if ($rs->fields["idCliente"] <> $_POST['id']){
 						$obj->setId($rs->fields['idCliente']);
-						echo json_encode(array("band" => false, "mensaje" => "El RFC ya se encuentra registrado con el cliente ".$obj->getNombreCompleto()));
+						echo json_encode(array("band" => false, "mensaje" => "El correo electrónico ya se encuentra registrado con el cliente ".$obj->getNombre()));
 						exit(1);
 					}
 				}

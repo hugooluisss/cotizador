@@ -147,7 +147,7 @@ $conf['cotizador'] = array(
 	'vista' => 'cotizador/panel.tpl',
 	'descripcion' => 'cotizador',
 	'seguridad' => true,
-	'js' => array('cotizacion.class.js', 'serigrafia.class.js'),
+	'js' => array('cotizacion.class.js', 'serigrafia.class.js', 'cliente.class.js'),
 	'jsTemplate' => array('cotizador.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
