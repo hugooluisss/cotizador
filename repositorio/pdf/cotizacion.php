@@ -78,7 +78,7 @@ class RCotizacion extends tFPDF{
 		$this->Cell(0, 5, "______________________________________________", 0, 1, 'C');
 		global $sesion;
 		$usuario = new TUsuario($sesion['usuario']);
-		$this->Cell(0, 5, utf8_decode($usuario->getNombre()), 0, 1, 'C');
+		$this->Cell(0, 5, utf8_decode($usuario->getNombre().' '.$usuario->getApp()), 0, 1, 'C');
 	}
 	
 	private function cleanFiles(){
