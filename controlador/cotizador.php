@@ -152,8 +152,29 @@ switch($objModulo->getId()){
 				
 				$obj = new RCotizacion;
 				$obj->generar($_GET['id']);
+				$documento = $obj->Output();
 				
-				$result = array("band" => true, "documento" => $obj->Output());
+				
+				if ($documento == '')
+					$result = array("doc" => "", "band" => false);
+				else{
+					if ($_GET['email'] == 'no')
+						$result = array("band" => true, "documento" => $obj->Output());
+					else{
+						global $sesion;
+						$email = new TMail;
+						$cotizacion = new TCotizacion($_GET['id']);
+						$email->setTema("Su cotización");
+						$email->setDestino($cotizacion->cliente->getEmail(), utf8_decode($cotizacion->cliente->getNombre()));
+						
+						$datos = array();
+						$datos['nombreCompleto'] = $cotizacion->cliente->getNombre();
+						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/cotizacion.txt"), $datos)));
+						$email->adjuntar($documento);
+						
+						$result = array("doc" => $documento, "band" => $email->send(), "email" => $cotizacion->cliente->getEmail());
+					}
+				}
 				print json_encode($result);
 			break;
 		}

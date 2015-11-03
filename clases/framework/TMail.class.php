@@ -11,7 +11,7 @@
 
 class TMail{
 	private $phpMailer;
-	private $permitir = false;
+	private $permitir = true;
 	
 /**
 * Metodo Constructor
@@ -35,6 +35,7 @@ class TMail{
 		$this->phpMailer->IsHTML (true);
 		$this->phpMailer->FromName = utf8_decode($ini['sistema']['nombre']);
 		$this->setDirOrigen($ini['mail']['user']);
+		$this->phpMailer->SMTPSecure = 'tls';
 		$this->permitir = true;
 	}
 	

@@ -362,4 +362,22 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	$("#email").click(function(){
+		if ($("#idCotizacion").val() == '')
+			alert("Guarda primero los cambios de la cotización");
+		else if ($("#txtEmail[cliente]").val() == '')
+			alert("No se puede enviar un correo electrónico al cliente por que no se indicó este. Guarde su cotización y haga los cambios en el catálogo de clientes para poder continuar");
+		else{
+			var obj = new TCotizacion;
+			obj.print($("#idCotizacion").val(), "si", {
+				after: function(data){
+					if (data.band){
+						alert("La cotización fue enviada por correo electrónico");
+					}else
+						alert("No se pudo enviar el correo electrónico, por favor comuniquese con el administrador del sistema");
+				}
+			});
+		}
+	});
 });

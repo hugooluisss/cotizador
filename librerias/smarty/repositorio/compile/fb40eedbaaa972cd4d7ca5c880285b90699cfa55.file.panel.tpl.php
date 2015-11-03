@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-01 11:34:14
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-03 08:46:08
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1446399023,
+      1 => 1446561641,
       2 => 'file',
     ),
   ),
