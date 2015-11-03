@@ -157,6 +157,19 @@ $conf['cotizador_tallas'] = array(
 	'descripcion' => 'Lista de tallas en la cotización',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+$conf['ccotizacion'] = array(
+	'controlador' => 'cotizador.php',
+	'descripcion' => 'Cotizador',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaCotizaciones'] = array(
+	'controlador' => 'cotizador.php',
+	'vista' => 'cotizador/lista.tpl',
+	'descripcion' => 'Lista de cotizaciones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 	
 /*serigrafia*/
 $conf['serigrafia'] = array(

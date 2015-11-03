@@ -72,3 +72,6 @@
 	</div>
 </div>
 {include file=$PAGE.rutaModulos|cat:"modulos/cotizador/clientes.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/cotizaciones.tpl"}
+
+<input id="idCotizacion" name="idCotizacion" type="hidden" />

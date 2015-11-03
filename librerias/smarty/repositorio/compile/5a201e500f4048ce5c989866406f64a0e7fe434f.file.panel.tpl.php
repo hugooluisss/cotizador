@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 13:10:36
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-31 12:34:49
          compiled from "templates/plantillas/modulos/vinilo/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:765090442562fcc2ce54452-49295227%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5a201e500f4048ce5c989866406f64a0e7fe434f' => 
     array (
       0 => 'templates/plantillas/modulos/vinilo/panel.tpl',
-      1 => 1445972818,
+      1 => 1446082212,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_562fcc2cec6816_73813217',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_562fcc2cec6816_73813217')) {function content_562fcc2cec6816_73813217($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">

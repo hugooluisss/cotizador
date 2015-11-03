@@ -202,6 +202,7 @@ $(document).ready(function(){
 		
 		$("#txtNombre[cliente]").val(el.nombre);
 		$("#txtEmail[cliente]").val(el.email);
+		$("#txtNombre[cliente]").attr("idCliente", el.idCliente);
 	});
 	
 	$("#tblClientes").DataTable({
@@ -227,6 +228,7 @@ $(document).ready(function(){
 						$('#winClientes').modal('hide');
 		
 						$("#txtNombre[cliente]").val($("#frmAddCliente #txtNombre").val());
+						$("#txtNombre[cliente]").attr("idCliente", datos.cliente);
 						$("#txtEmail[cliente]").val($("#frmAddCliente #txtEmail").val());
 						
 						$("#frmAddCliente #txtNombre").val("");
@@ -246,14 +248,16 @@ $(document).ready(function(){
 		
 		if (total < 0.01)
 			alert("La cotización está vacia");
-		else{
+		else if($("#txtNombre[cliente]").val() == ''){
+			alert("Selecciona un cliente");
+		}else{
 			var cotizacion = new Array();
 		
 			$("table#cotizacion > tbody > tr").each(function(){
 				var tr = $(this);
 				
 				var tds = tr.children("td");
-				var el = new Array();
+				var el = new Object();
 				el.concepto = tds.eq(1).html();
 				el.cantidad = tds.eq(2).html();
 				el.descuento = tds.eq(3).children("input.descuento").val();
@@ -262,7 +266,100 @@ $(document).ready(function(){
 				cotizacion.push(el);
 			});
 			
-			console.log(cotizacion);
+			var encabezado = new Object();
+			encabezado.cliente = $("#txtNombre[cliente]").attr("idCliente");
+			encabezado.subtotal = $("table#cotizacion #subtotal").html();
+			encabezado.total = $("table#cotizacion #total").html();
+			encabezado.adicional = $("#selCargo").val();
+			
+			var obj = new TCotizacion;
+			
+			obj.save($("#idCotizacion").val(), JSON.stringify(encabezado), JSON.stringify(cotizacion), {
+				after: function(datos){
+					if (datos.band == true){
+						$("#idCotizacion").val(datos.cotizacion);
+						alert("Cotización guardada con éxito");
+					}
+						
+				}
+			});
+		}
+	});
+	
+	$("#selCargo").change(function(){
+		var obj = new TCotizacion;
+		obj.total();
+	});
+	
+	function getCotizaciones(){
+		$("#winCotizaciones .modal-body").html("Actualizando lista...");
+		$.get("?mod=listaCotizaciones", function( data ) {
+			$("#winCotizaciones .modal-body").html(data);
+			
+			$("#tblCotizaciones").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+			
+			$("#winCotizaciones .modal-body tr[cotizacion]").click(function(){
+				var obj = new TCotizacion;
+				
+				$('#winCotizaciones').modal('hide');
+				
+				obj.setId($(this).attr("cotizacion"),{
+					before: function(){
+						
+					},
+					after: function(cotizacion){
+						$("#idCotizacion").val(cotizacion.idCotizacion);
+						$("#txtNombre[cliente]").val(cotizacion.nombre);
+						$("#txtNombre[cliente]").attr("idCliente", cotizacion.idCliente);
+						$("#txtEmail[cliente]").val(cotizacion.email);
+						$("#selCargo").val(parseInt(cotizacion.adicional));
+						$("#txtEmail[cliente]").val(cotizacion.email);
+						
+						obj.total();
+					}
+				});
+			});
+		});
+	}
+	
+	$("#lstCotizaciones").click(function(){
+		getCotizaciones();
+	});
+	
+	getCotizaciones();
+	
+	var ventana = undefined;
+	$("#pdf").click(function(){
+		if ($("#idCotizacion").val() == '')
+			alert("Guarda primero los cambios de la cotización");
+		else{
+			var obj = new TCotizacion;
+			obj.print($("#idCotizacion").val(), "no", {
+				after: function(data){
+					if (data.band){
+						if (ventana == undefined || ventana == null)
+							ventana = window.open(data.documento,'_blank');
+						else{
+							try{
+								ventana.location.href = data.documento;
+							}catch(er){
+								ventana = window.open(data.documento,'_blank');
+							}
+						}
+							
+							
+						ventana.focus();
+					}
+				}
+			});
 		}
 	});
 });

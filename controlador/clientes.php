@@ -39,7 +39,7 @@ switch($objModulo->getId()){
 				$obj->setEmail($_POST['email']);
 				$obj->setDireccion($_POST['direccion']);
 
-				echo json_encode(array("band" => $obj->guardar()));
+				echo json_encode(array("band" => $obj->guardar(), "cliente" => $obj->getid()));
 			break;
 			case 'del':
 				$obj = new TCliente($_POST['cliente']);

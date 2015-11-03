@@ -1,11 +1,36 @@
 TCotizacion = function(){
 	var self = this;
 	
-	this.add = function(concepto, cantidad, precio){
+	this.setId = function(id, fn){
+		if (fn.before !== undefined)
+			fn.before();
+					
+		$.get("?mod=ccotizacion&action=getCotizacion&id=" + id, function( data ) {
+			//primero borrar todo
+			$("table#cotizacion .eliminar").each(function(){
+				$(this).parent().parent().remove();
+			});
+			
+			console.log(data);
+			var cotizacion = data;
+			
+			$.each(cotizacion.movimientos, function(i, el){
+				self.add(el.concepto, el.cantidad, el.neto, el.descuento, el.total);
+			});
+		
+			if (fn.after !== undefined)
+				fn.after(data);
+		}, "json");
+	}
+	
+	this.add = function(concepto, cantidad, precio, descuento, totalDescuento){
 		if (concepto == '')
 			return false;
 		else{
-			var s = '<tr><td style="text-align: center"><input type="checkbox" value="" class="eliminar"></td><td>'+ concepto + '</td><td style="text-align: right">' + cantidad + '</td><td><input class="form-control descuento" setAction="0" precio="' + precio + '" value="0" anterior="0"></td><td style="text-align: right" class="precio">' + precio + '</td></tr>';
+			if (descuento == undefined) descuento = 0;
+			if (totalDescuento == undefined) totalDescuento = precio;
+			
+			var s = '<tr><td style="text-align: center"><input type="checkbox" value="" class="eliminar"></td><td>'+ concepto + '</td><td style="text-align: right">' + cantidad + '</td><td><input class="form-control descuento" setAction="0" precio="' + precio + '" value="' + descuento + '" anterior="0"></td><td style="text-align: right" class="precio">' + totalDescuento + '</td></tr>';
 			$("table#cotizacion > tbody:last").append(s);
 			
 			$(".descuento[setAction=0]").each(function(){
@@ -37,12 +62,48 @@ TCotizacion = function(){
 	};
 	
 	this.total = function(){
-		var total = 0;
+		var subtotal = 0;
 		
 		$("table#cotizacion .precio").each(function(){
-			total += parseFloat($(this).html());
+			subtotal += parseFloat($(this).html());
 		});
 		
-		$("table#cotizacion #total").html(total.toFixed(2));
+		console.log("Subtotal: " + subtotal);
+		
+		$("table#cotizacion #subtotal").html(subtotal.toFixed(2));
+		
+		var total = 0;
+		total = parseFloat(subtotal + $("#selCargo").val() * subtotal / 100).toFixed(2);
+		$("table#cotizacion #total").html(total);
+	}
+	
+	this.save = function(id, encabezado, cuerpo, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('?mod=ccotizacion&action=save', {
+				"encabezado": encodeURIComponent(encabezado),
+				"cuerpo": encodeURIComponent(cuerpo),
+				"id": id
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
+	
+	this.print = function(id, email, fn){
+		if (fn.before != undefined)
+			fn.before();
+			
+		email = email == undefined?"no":email
+		$.get('?mod=ccotizacion&action=pdf&email=' + email + '&id=' + id, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+				
+			console.log(data);
+		}, "json");
 	}
 };

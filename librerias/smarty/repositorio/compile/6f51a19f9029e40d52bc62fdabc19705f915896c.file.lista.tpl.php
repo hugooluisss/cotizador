@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-27 13:11:57
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-31 12:34:51
          compiled from "templates/plantillas/modulos/vinilo/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1853392425562fcc3201bba3-29104503%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6f51a19f9029e40d52bc62fdabc19705f915896c' => 
     array (
       0 => 'templates/plantillas/modulos/vinilo/lista.tpl',
-      1 => 1445973110,
+      1 => 1446082212,
       2 => 'file',
     ),
   ),

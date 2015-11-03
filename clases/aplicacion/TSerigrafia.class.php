@@ -118,14 +118,13 @@ class TSerigrafia extends TItem{
 	
 	public function setPrecio($limite, $colores, $tam, $precio){
 		if ($this->getId() == '') return false;
-		if (!($precio > 0 and is_numeric($precio))) return false;
+		if (!($precio > 0 and is_numeric(sprintf("%0.2f", $precio)))) return false;
 		
 		$db = TBase::conectaDB();
 		
 		$db->Execute("delete from precioserigrafia where idItem = ".$this->getId()." and idTamano = ".$tam." and idLimite = ".$limite." and colores = ".$colores);
 		
 		$rs = $db->Execute("insert into precioserigrafia (idItem, idTamano, idLimite, colores, precio) values (".$this->getId().", ".$tam.", ".$limite.", ".$colores.", ".$precio.")");
-		
 		return $rs?true:false;
 	}
 	

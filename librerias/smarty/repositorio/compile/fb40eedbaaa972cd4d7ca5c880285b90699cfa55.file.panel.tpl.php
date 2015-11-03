@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-29 13:38:41
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-01 11:34:14
          compiled from "templates/plantillas/modulos/cotizador/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16673014955627d49016d9f5-60308485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb40eedbaaa972cd4d7ca5c880285b90699cfa55' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/panel.tpl',
-      1 => 1446147520,
+      1 => 1446399023,
       2 => 'file',
     ),
   ),
@@ -104,4 +104,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 </div>
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/clientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-<?php }} ?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/cotizaciones.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
+<input id="idCotizacion" name="idCotizacion" type="hidden" /><?php }} ?>
