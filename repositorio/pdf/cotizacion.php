@@ -20,13 +20,13 @@ class RCotizacion extends tFPDF{
 	public function Header($nombre){   	
     	$this->SetFont('Arial', 'B', 20);
     	$this->Ln(10);
-    	$this->Cell(0, 5, utf8_decode(".:: COTIZACIÓN ::."), 0, 1, 'C');
+    	$this->Image('repositorio/img/logo.jpg', 90, 5, 35, 55);
+    	$this->SetFont('Sans', '', 12);
+    	$this->SetY(65);
+    	$this->Cell(0, 5, ".:: COTIZACIÓN ::.", 0, 1, 'C');
     	$this->SetFont('Arial', '', 10);
     	$this->Cell(0, 5, date("d-m-Y"), 0, 1, 'C');
-    	
-    	$this->Image('repositorio/img/logo.jpg', 15, 10, 15, 25);
-    	$this->SetFont('Sans', '', 12);
-    	$this->SetY(50);
+    	$this->SetY(75);
     	$this->Ln(5);
 	}
 	
@@ -34,9 +34,9 @@ class RCotizacion extends tFPDF{
 		$this->AddPage();
 		
 		$cotizacion = new TCotizacion($id);
-		$this->Cell(0, 5, "C. ".utf8_decode($cotizacion->cliente->getNombre()), 0, 1);
+		$this->Cell(0, 5, "C. ".$cotizacion->cliente->getNombre(), 0, 1);
 		$this->Ln(10);
-		$this->Write(5, "Estimado cliente, por medio del presente, le hago entrega de la cotización que nos ha solicitado. Cualquier duda favor de contactarnos, con gusto se las resolveremos");
+		$this->Write(5, utf8_decode("Estimado cliente, por medio del presente, le hago entrega de la cotización que nos ha solicitado. Cualquier duda favor de contactarnos, con gusto se las resolveremos"));
 		
 		
 		$this->SetFillColor(0, 150, 0);
