@@ -60,9 +60,17 @@
 			<td style="text-align: right" colspan="4">Cargo adicional (% sobre el subtotal)</td>
 			<td style="text-align: right">
 				<select id="selCargo">
-					{for $cargo=0 to 10}
-						<option value="{$cargo*10}">{$cargo*10}%
-					{/for}
+					<option value="0">0% (sin cargos)
+					<option value="10">10%
+					<option value="20">20%
+					<option value="30">30%
+					<option value="40">40%
+					<option value="50">50%
+					<option value="60">60%
+					<option value="70">70%
+					<option value="80">80%
+					<option value="90">90%
+					<option value="100">100%
 				</select>
 			</td>
 		</tr>
