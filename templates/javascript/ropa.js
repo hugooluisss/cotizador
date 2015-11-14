@@ -27,6 +27,7 @@ $(document).ready(function(){
 			obj.add(
 				$("#id").val(), 
 				$("#txtNombre").val(), 
+				$("#txtMarca").val(), 
 				$("#txtPrecio").val(), 
 				$("#txtDescripcion").val(),
 				{
@@ -65,6 +66,7 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idItem);
 				$("#txtNombre").val(el.nombre);
+				$("#txtMarca").val(el.marca);
 				$("#txtPrecio").val(el.precio);
 				$("#txtDescripcion").html(el.descripcion);
 				$('#panelTabs a[href="#add"]').tab('show');

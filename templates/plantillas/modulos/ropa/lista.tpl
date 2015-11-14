@@ -5,6 +5,7 @@
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
+					<th>Marca</th>
 					<th>Precio</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -14,6 +15,7 @@
 					<tr>
 						<td>{$row.idItem}</td>
 						<td>{$row.nombre}</td>
+						<td>{$row.marca}</td>
 						<td>{$row.precio}</td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-success btn-circle" action="tallas" title="Tallas" datos='{$row.json}'>T</button>

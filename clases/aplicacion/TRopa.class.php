@@ -9,6 +9,7 @@
 class TRopa extends TItem{
 	private $descripcion;
 	private $precio;
+	private $marca;
 	
 	/**
 	* Constructor de la clase
@@ -113,6 +114,33 @@ class TRopa extends TItem{
 	}
 	
 	/**
+	* Establece la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setMarca($val = ''){
+		$this->marca = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getMarca(){
+		return $this->marca;
+	}
+
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -138,6 +166,7 @@ class TRopa extends TItem{
 		$rs = $db->Execute("UPDATE ropa
 			SET
 				descripcion = '".$this->getDescripcion()."',
+				marca = '".$this->getMarca()."',
 				precio = ".($this->getPrecio() <> ''?$this->getPrecio():0)."
 			WHERE idItem = ".$this->idItem);
 			

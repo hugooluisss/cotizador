@@ -27,6 +27,13 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtMarca" class="col-lg-2">Marca</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtMarca" name="txtMarca">
+						</div>
+					</div>
+
+					<div class="form-group">
 						<label for="txtPrecio" class="col-lg-2">Precio</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtPrecio" name="txtPrecio">
