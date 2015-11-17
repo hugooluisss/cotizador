@@ -3,6 +3,7 @@
 		<table id="tblTallas" class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Talla</th>
 					<th>Adicional</th>
 					<th>Precio neto</th>
@@ -12,6 +13,7 @@
 			<tbody>
 				{foreach from=$lista item="row"}
 					<tr>
+						<td>{$row.idTalla}</td>
 						<td>{$row.nombre}</td>
 						<td>{$row.adicional|string_format:"%.2f"}</td>
 						<td>{($row.adicional+$precio)|string_format:"%.2f"}</td>
