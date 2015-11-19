@@ -36,6 +36,9 @@ class TMail{
 		$this->phpMailer->FromName = utf8_decode($ini['sistema']['nombre']);
 		$this->setDirOrigen($ini['mail']['user']);
 		$this->phpMailer->SMTPSecure = 'tls';
+		if ($ini['mail']['contestarA'] <> '')
+			$this->phpMailer->AddReplyTo($ini['mail']['contestarA']);
+			
 		$this->permitir = true;
 	}
 	

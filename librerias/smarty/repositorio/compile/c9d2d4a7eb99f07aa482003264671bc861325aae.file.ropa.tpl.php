@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-03 08:46:08
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-19 08:45:50
          compiled from "templates/plantillas/modulos/cotizador/ropa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:469277975629051436f911-66904102%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c9d2d4a7eb99f07aa482003264671bc861325aae' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/ropa.tpl',
-      1 => 1446561641,
+      1 => 1447944349,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
 			<option value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idItem'];?>
 " nombre="<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
+ <?php echo $_smarty_tpl->tpl_vars['item']->value['marca'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
+ <?php echo $_smarty_tpl->tpl_vars['item']->value['marca'];?>
 </option>
 			<?php } ?>
 		</select>

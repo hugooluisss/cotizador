@@ -3,7 +3,7 @@
 	<div class="col-xs-10">
 		<select id="selRopa" name="selRopa" class="form-control">
 			{foreach key=key item=item from=$ropa}
-			<option value="{$item.idItem}" nombre="{$item.nombre}">{$item.nombre}</option>
+			<option value="{$item.idItem}" nombre="{$item.nombre} {$item.marca}">{$item.nombre} {$item.marca}</option>
 			{/foreach}
 		</select>
 	</div>

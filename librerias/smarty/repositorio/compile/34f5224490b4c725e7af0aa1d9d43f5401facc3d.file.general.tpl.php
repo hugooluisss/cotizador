@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-03 08:46:08
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-19 08:42:48
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1446561641,
+      1 => 1446652145,
       2 => 'file',
     ),
   ),
@@ -17,10 +17,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_562905d4b320b2_67588572',
-  'variables' => 
-  array (
-    'cargo' => 0,
-  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><div class="btn-toolbar" role="toolbar">
@@ -85,14 +81,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<td style="text-align: right" colspan="4">Cargo adicional (% sobre el subtotal)</td>
 			<td style="text-align: right">
 				<select id="selCargo">
-					<?php $_smarty_tpl->tpl_vars['cargo'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['cargo']->step = 1;$_smarty_tpl->tpl_vars['cargo']->total = (int)ceil(($_smarty_tpl->tpl_vars['cargo']->step > 0 ? 10+1 - (0) : 0-(10)+1)/abs($_smarty_tpl->tpl_vars['cargo']->step));
-if ($_smarty_tpl->tpl_vars['cargo']->total > 0){
-for ($_smarty_tpl->tpl_vars['cargo']->value = 0, $_smarty_tpl->tpl_vars['cargo']->iteration = 1;$_smarty_tpl->tpl_vars['cargo']->iteration <= $_smarty_tpl->tpl_vars['cargo']->total;$_smarty_tpl->tpl_vars['cargo']->value += $_smarty_tpl->tpl_vars['cargo']->step, $_smarty_tpl->tpl_vars['cargo']->iteration++){
-$_smarty_tpl->tpl_vars['cargo']->first = $_smarty_tpl->tpl_vars['cargo']->iteration == 1;$_smarty_tpl->tpl_vars['cargo']->last = $_smarty_tpl->tpl_vars['cargo']->iteration == $_smarty_tpl->tpl_vars['cargo']->total;?>
-						<option value="<?php echo $_smarty_tpl->tpl_vars['cargo']->value*10;?>
-"><?php echo $_smarty_tpl->tpl_vars['cargo']->value*10;?>
-%
-					<?php }} ?>
+					<option value="0">0% (sin cargos)
+					<option value="10">10%
+					<option value="20">20%
+					<option value="30">30%
+					<option value="40">40%
+					<option value="50">50%
+					<option value="60">60%
+					<option value="70">70%
+					<option value="80">80%
+					<option value="90">90%
+					<option value="100">100%
 				</select>
 			</td>
 		</tr>
