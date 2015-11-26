@@ -314,4 +314,27 @@ $conf['cEstampado'] = array(
 	'descripcion' => 'Controlador de números y letras',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Otros servicios*/
+$conf['tecnicasImpresion'] = array(
+	'controlador' => 'tecnicasImpresion.php',
+	'vista' => 'tecnicasImpresion/panel.tpl',
+	'descripcion' => 'tecnicasImpresion',
+	'seguridad' => true,
+	'js' => array('otrastecnicas.class.js'),
+	'jsTemplate' => array('otrasTecnicas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaTecnicas'] = array(
+	'controlador' => 'tecnicasImpresion.php',
+	'vista' => 'tecnicasImpresion/lista.tpl',
+	'descripcion' => 'Lista de tecnicasImpresion',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cTecnicas'] = array(
+	'controlador' => 'tecnicasImpresion.php',
+	'descripcion' => 'Controlador de tecnicasImpresion',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

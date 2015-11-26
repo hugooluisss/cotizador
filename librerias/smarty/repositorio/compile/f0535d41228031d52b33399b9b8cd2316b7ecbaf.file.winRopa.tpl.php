@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-25 23:43:06
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-26 09:50:49
          compiled from "templates/plantillas/modulos/cotizador/winRopa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:94301179056569bea8e5058-04863388%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f0535d41228031d52b33399b9b8cd2316b7ecbaf' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/winRopa.tpl',
-      1 => 1448515473,
+      1 => 1448547635,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56569bea907549_30786708',
   'variables' => 
   array (
     'ropa' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56569bea907549_30786708',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56569bea907549_30786708')) {function content_56569bea907549_30786708($_smarty_tpl) {?><div class="modal fade" id="winRopa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">

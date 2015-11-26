@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-19 08:42:37
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-26 09:09:06
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1447769528,
+      1 => 1448550510,
       2 => 'file',
     ),
   ),
@@ -133,6 +133,7 @@ img/logo-min.png" class="img-rounded"/></span>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafiaDigital'){?>class="active"<?php }?>><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='corteVinilo'){?>class="active"<?php }?>><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='numerosLetras'){?>class="active"<?php }?>><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
+					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tecnicasImpresion'){?>class="active"<?php }?>><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='otrosServicios'){?>class="active"<?php }?>><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
 					<?php }?>
 					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>

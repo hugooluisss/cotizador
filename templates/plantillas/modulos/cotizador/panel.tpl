@@ -9,6 +9,8 @@
 	<li><a data-toggle="tab" href="#ropa">Ropa</a></li>
 	<li><a data-toggle="tab" href="#serigrafia">Serigrafía</a></li>
 	<li><a data-toggle="tab" href="#seriDig">Serigrafía digital</a></li>
+	<li><a data-toggle="tab" href="#transfer">Transfer</a></li>
+	<li><a data-toggle="tab" href="#sublimacion">Sublimación</a></li>
 	<li><a data-toggle="tab" href="#vinilo">Vinilo</a></li>
 	<li><a data-toggle="tab" href="#estampado">Números y letras</a></li>
 	<li><a data-toggle="tab" href="#adicionales">Servicios adicionales</a></li>
@@ -43,6 +45,22 @@
 		<div class="box">
 			<div class="box-body">
 				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/serigrafiaDigital.tpl"}
+			</div>
+		</div>
+	</div>
+	
+	<div id="transfer" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/transfer.tpl"}
+			</div>
+		</div>
+	</div>
+	
+	<div id="sublimacion" class="tab-pane fade">
+		<div class="box">
+			<div class="box-body">
+				{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/sublimacion.tpl"}
 			</div>
 		</div>
 	</div>

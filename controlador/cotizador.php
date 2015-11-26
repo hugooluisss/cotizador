@@ -83,6 +83,13 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("clientes", $datos);
+		
+		$rs = $db->Execute("select * from otrastecnicas a join item b using(idItem)");
+		while(!$rs->EOF){
+			$smarty->assign(strtolower($rs->fields['nombre']), $rs->fields['precio']);
+			$rs->moveNext();
+		}
+		
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();

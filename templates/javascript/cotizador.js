@@ -217,6 +217,39 @@ $(document).ready(function(){
 	});
 });
 
+//Otras tecnicas
+$(document).ready(function(){
+	$("#transfer #txtCantidad").change(function(){
+		$("#transfer #txtCantidad").val(parseInt($("#transfer #txtCantidad").val()));
+		$("#transfer #txtTotal").val(parseFloat($("#transfer #txtPU").val() * $("#transfer #txtCantidad").val()).toFixed(2));
+	});
+	
+	$("#transfer #btnAgregar").click(function(){
+		var concepto = "Transfer" + " ( P. U.: " + $("#transfer #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, $("#transfer #txtCantidad").val(), parseFloat($("#transfer #txtTotal").val()).toFixed(2))){
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+});
+
+$(document).ready(function(){
+	$("#sublimacion #txtCantidad").change(function(){
+		$("#sublimacion #txtCantidad").val(parseInt($("#sublimacion #txtCantidad").val()));
+		$("#sublimacion #txtTotal").val(parseFloat($("#sublimacion #txtPU").val() * $("#sublimacion #txtCantidad").val()).toFixed(2));
+	});
+	
+	$("#sublimacion #btnAgregar").click(function(){
+		var concepto = "Sublimación" + " ( P. U.: " + $("#sublimacion #txtPU").val() + ")";
+	
+		if(cotizacion.add(concepto, $("#sublimacion #txtCantidad").val(), parseFloat($("#sublimacion #txtTotal").val()).toFixed(2))){
+			$('#panelTabs a[href="#cotizacion"]').tab('show');
+		}else
+			alert("Ocurrió un error al agregar a la cotización");
+	});
+});
+
 //General
 $(document).ready(function(){
 	$("#eliminarDeCotizacion").click(function(){
