@@ -73,5 +73,6 @@
 </div>
 {include file=$PAGE.rutaModulos|cat:"modulos/cotizador/clientes.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/cotizador/cotizaciones.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/winRopa.tpl"}
 
 <input id="idCotizacion" name="idCotizacion" type="hidden" />

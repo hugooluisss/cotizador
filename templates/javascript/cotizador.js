@@ -2,14 +2,43 @@
 var cotizacion = "";
 cotizacion = new TCotizacion();
 $(document).ready(function(){
-	$("#selRopa").change(function(){
-		$("#dvRopa").html("");
+	$("#txtRopa").change(function(){
+		$("#dvTallas").html("");
+	});
+	
+	$("#txtRopa").autocomplete({
+		source: "index.php?mod=ccotizacion&action=autocompleteRopa",
+		minLength: 2,
+		select: function(e, el){
+			$("#txtRopa").val(el.item.label);
+			$("#txtRopa").attr("idRopa", el.item.identificador);
+			
+			$("#dvTallas").html("");
+		}
+	});
+	
+	$("#tblWinRopa tbody tr").click(function(){
+		$("#txtRopa").val($(this).children(".descripcion").html() + "Marca: " + $(this).children(".marca").html());
+		$("#txtRopa").attr("idRopa", $(this).children(".identificador").html());
+		
+		$("#winRopa").modal("hide");
+		$("#dvTallas").html("");
+	});
+	
+	$("#tblWinRopa").DataTable({
+		"responsive": true,
+		"language": espaniol,
+		"paging": true,
+		"lengthChange": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false
 	});
 	
 	$("#btnBuscarTallas").click(function(){
 		$("#dvTallas").html("Actualizando, por favor espere un momento...");
 		
-		$.get("?mod=cotizador_tallas&id=" + $("#selRopa").val(), function( data ) {
+		$.get("?mod=cotizador_tallas&id=" + $("#txtRopa").attr("idRopa"), function( data ) {
 			$("#dvTallas").html(data);
 			
 			$("#ropa #dvTallas .panel .panel-body input.talla").change(function(){
@@ -111,7 +140,7 @@ $(document).ready(function(){
 		$("#seriDig #txtPU").val($("#seriDig select#selItem option:selected" ).attr("precio"));
 	});
 	
-	$.each(["#vinilo #txtAncho", "#vinilo #txtAlto"], function(i, el){
+	$.each(["#vinilo #txtAncho", "#vinilo #txtAlto", "#vinilo #txtUnidades"], function(i, el){
 		$(el).change(function(){
 			$(this).val(parseFloat($(this).val()).toFixed(2));
 			
@@ -121,10 +150,14 @@ $(document).ready(function(){
 	
 	$("#vinilo #btnAgregar").click(function(){
 		var concepto = "Vinilo " + $("#vinilo select#selItem option:selected" ).attr("nombre") + " (" + $("#vinilo #txtAlto").val() + " x " + $("#vinilo #txtAncho").val() + " P. U.: " + $("#vinilo #txtPU").val() + ")";
-	
-		if(cotizacion.add(concepto, $("#vinilo #txtCantidad").val(), $("#vinilo #txtTotal").val())){
+		if ($("#vinilo #txtTotal").val() == '')
+			alert("Ingresar valores para realizar el cálculo");
+		else if(cotizacion.add(concepto, $("#vinilo #txtUnidades").val(), $("#vinilo #txtTotal").val())){
 			$("#vinilo #txtCantidad").val("");
 			$("#vinilo #txtTotal").val("");
+			$("#vinilo #txtAncho").val("");
+			$("#vinilo #txtAlto").val("");
+			$("#vinilo #txtUnidades").val("");
 			
 			$('#panelTabs a[href="#cotizacion"]').tab('show');
 		}else
@@ -136,7 +169,7 @@ $(document).ready(function(){
 		$("#vinilo #txtCantidad").val(cantidad);
 		
 		$("#vinilo #txtCantidad").val(parseFloat($("#vinilo #txtCantidad").val()).toFixed(2));
-		$("#vinilo #txtTotal").val(parseFloat($("#vinilo select#selItem option:selected" ).attr("precio") * $("#vinilo #txtCantidad").val()).toFixed(2));
+		$("#vinilo #txtTotal").val(parseFloat($("#vinilo select#selItem option:selected" ).attr("precio") * $("#vinilo #txtCantidad").val() * $("#vinilo #txtUnidades").val()).toFixed(2));
 	}
 });
 
@@ -243,6 +276,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#nuevaCotizacion").click(function(){
+		if(confirm("¿Seguro?"))
+			location.reload();
+	});
+	
 	$("#saveCotizacion").click(function(){
 		total = parseFloat($("table#cotizacion #total").html());
 		
@@ -279,6 +317,8 @@ $(document).ready(function(){
 					if (datos.band == true){
 						$("#idCotizacion").val(datos.cotizacion);
 						alert("Cotización guardada con éxito");
+						
+						generarPDF();
 					}
 						
 				}
@@ -338,6 +378,10 @@ $(document).ready(function(){
 	
 	var ventana = undefined;
 	$("#pdf").click(function(){
+		generarPDF();
+	});
+	
+	function generarPDF(){
 		if ($("#idCotizacion").val() == '')
 			alert("Guarda primero los cambios de la cotización");
 		else{
@@ -361,7 +405,7 @@ $(document).ready(function(){
 				}
 			});
 		}
-	});
+	}
 	
 	$("#email").click(function(){
 		if ($("#idCotizacion").val() == '')

@@ -28,9 +28,15 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-xs-2"><label for="txtCantidad">Cantidad</label></div>
+		<div class="col-xs-2"><label for="txtCantidad">Cantidad de cm<sup>2</sup></label></div>
 		<div class="col-xs-2">
 			<input class="form-control" id="txtCantidad" name="txtCantidad" autocomplete="off"  disabled="true">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-2"><label for="txtUnidades">Unidades</label></div>
+		<div class="col-xs-2">
+			<input class="form-control" id="txtUnidades" name="txtUnidades" autocomplete="off">
 		</div>
 	</div>
 	<div class="form-group">

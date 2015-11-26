@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-19 08:45:50
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-25 23:44:48
          compiled from "templates/plantillas/modulos/cotizador/ropa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:469277975629051436f911-66904102%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c9d2d4a7eb99f07aa482003264671bc861325aae' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/ropa.tpl',
-      1 => 1447944349,
+      1 => 1448516683,
       2 => 'file',
     ),
   ),
@@ -17,32 +17,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_56290514387e27_35910126',
-  'variables' => 
-  array (
-    'ropa' => 0,
-    'item' => 0,
-  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56290514387e27_35910126')) {function content_56290514387e27_35910126($_smarty_tpl) {?><div class="row">
 	<div class="col-xs-2"><label for="selRopa">Artículo</label></div>
-	<div class="col-xs-10">
-		<select id="selRopa" name="selRopa" class="form-control">
-			<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
- $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
- $_from = $_smarty_tpl->tpl_vars['ropa']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
-$_smarty_tpl->tpl_vars['item']->_loop = true;
- $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
-?>
-			<option value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idItem'];?>
-" nombre="<?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
- <?php echo $_smarty_tpl->tpl_vars['item']->value['marca'];?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
- <?php echo $_smarty_tpl->tpl_vars['item']->value['marca'];?>
-</option>
-			<?php } ?>
-		</select>
+	<div class="col-xs-9">
+		<input type="text" id="txtRopa" name="txtRopa" autocomplete="false" class="form-control">
+	</div>
+	<div class="col-xs-1">
+		<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winRopa" id="lstCotizaciones" title="Catálogo de ropa"><i class="fa fa-list"></i></a>
 	</div>
 	<div class="col-xs-12"><button type="button" id="btnBuscarTallas" class="btn btn-default">Obtener tallas</button></div>
 </div>

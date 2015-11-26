@@ -1,6 +1,7 @@
 <div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
+		<button type="button" class="btn btn-danger" id="nuevaCotizacion"><i class="fa fa-sticky-note-o"></i> Nueva cotización</button>
 		<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winCotizaciones" id="lstCotizaciones"><i class="fa fa-bars"></i> Listar de cotizaciones</a>
 	</div>
 	<div class="btn-group">

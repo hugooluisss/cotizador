@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-19 08:42:48
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-25 23:43:06
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1446652145,
+      1 => 1448511666,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
+		<button type="button" class="btn btn-danger" id="nuevaCotizacion"><i class="fa fa-sticky-note-o"></i> Nueva cotización</button>
 		<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winCotizaciones" id="lstCotizaciones"><i class="fa fa-bars"></i> Listar de cotizaciones</a>
 	</div>
 	<div class="btn-group">

@@ -177,6 +177,22 @@ switch($objModulo->getId()){
 				}
 				print json_encode($result);
 			break;
+			case 'autocompleteRopa':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from ropa a join item b using(idItem) where descripcion like '%".$_GET['term']."%' or marca like '%".$_GET['term']."%' or nombre like '%".$_GET['term']."%'");
+				
+				$datos = array();
+				while(!$rs->EOF){
+					$el = array();
+					$el['id'] = $rs->fields['idItem'];
+					$el['label'] = $rs->fields['nombre'].' Marca: '.$rs->fields['marca'];
+					$el['identificador'] = $rs->fields['idItem'];
+					array_push($datos, $el);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }
