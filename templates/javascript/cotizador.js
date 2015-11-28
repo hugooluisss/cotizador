@@ -6,6 +6,10 @@ $(document).ready(function(){
 		$("#dvTallas").html("");
 	});
 	
+	$("[data-mask]").inputmask({
+		mask: '9999-99-99'
+	});
+	
 	$("#txtRopa").autocomplete({
 		source: "index.php?mod=ccotizacion&action=autocompleteRopa",
 		minLength: 2,
@@ -342,6 +346,8 @@ $(document).ready(function(){
 			encabezado.subtotal = $("table#cotizacion #subtotal").html();
 			encabezado.total = $("table#cotizacion #total").html();
 			encabezado.adicional = $("#selCargo").val();
+			encabezado.fecha = $("#txtFecha").val();
+			encabezado.comentarios = $("#txtObservaciones").val();
 			
 			var obj = new TCotizacion;
 			
@@ -383,7 +389,7 @@ $(document).ready(function(){
 				var obj = new TCotizacion;
 				
 				$('#winCotizaciones').modal('hide');
-				
+				var el = $(this);
 				obj.setId($(this).attr("cotizacion"),{
 					before: function(){
 						
@@ -395,6 +401,11 @@ $(document).ready(function(){
 						$("#txtEmail[cliente]").val(cotizacion.email);
 						$("#selCargo").val(parseInt(cotizacion.adicional));
 						$("#txtEmail[cliente]").val(cotizacion.email);
+						obj.getComentarios(el.attr("cotizacion"), {
+							after: function(data){
+								$("#txtObservaciones").val(data.comentarios);
+							}
+						});
 						
 						obj.total();
 					}

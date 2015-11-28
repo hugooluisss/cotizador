@@ -110,6 +110,8 @@ switch($objModulo->getId()){
 		$rs = $db->Execute("select * from cotizacion a join cliente b using(idCliente)");
 		$datos = array();
 		while(!$rs->EOF){
+			$rs->fields['comentarios'] = '';
+			
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
@@ -128,6 +130,8 @@ switch($objModulo->getId()){
 				$obj->setSubtotal($enc['subtotal']);
 				$obj->setTotal($enc['total']);
 				$obj->setAdicional($enc['adicional']);
+				$obj->setFecha($enc['fecha']);
+				$obj->setComentarios($enc['comentarios']);
 				
 				$obj->truncateMovimientos(true);
 				foreach($movimientos as $mov){
@@ -199,6 +203,10 @@ switch($objModulo->getId()){
 				}
 				
 				echo json_encode($datos);
+			break;
+			case 'getComentarios':
+				$cotizacion = new TCotizacion($_POST['id']);
+				echo json_encode(array("comentarios" => $cotizacion->getComentarios()));
 			break;
 		}
 	break;

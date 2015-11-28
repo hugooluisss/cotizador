@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-26 09:50:49
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-28 02:49:22
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1448547635,
+      1 => 1448700445,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_562905d4b320b2_67588572',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><div class="btn-toolbar" role="toolbar">
+<?php if ($_valid && !is_callable('content_562905d4b320b2_67588572')) {function content_562905d4b320b2_67588572($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/cotizador/librerias/smarty/plugins/modifier.date_format.php';
+?><div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
 		<button type="button" class="btn btn-danger" id="nuevaCotizacion"><i class="fa fa-sticky-note-o"></i> Nueva cotización</button>
@@ -34,13 +35,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="txtFecha">Fecha</label>
+					<input type="text" class="form-control" id="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+" data-mask>
+				</div>
+			</div>
+			<div class="col-xs-5">
 				<div class="form-group">
 					<label for="txtNombre">Cliente</label>
 					<input type="text" class="form-control" id="txtNombre" cliente placeholder="Nombre del cliente" disabled="true">
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-5">
 				<div class="form-group">
 					<label for="txtEmail">Email</label>
 					<input type="email" class="form-control" id="txtEmail" cliente placeholder="Email" disabled="true">
@@ -50,6 +58,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="txtObservaciones">Observaciones</label>
+					<textarea id="txtObservaciones" name="txtObservaciones" class="form-control"></textarea>
+				</div>
 			</div>
 		</div>
 	</div>

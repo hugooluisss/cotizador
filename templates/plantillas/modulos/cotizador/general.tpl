@@ -13,13 +13,19 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="txtFecha">Fecha</label>
+					<input type="text" class="form-control" id="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" data-mask>
+				</div>
+			</div>
+			<div class="col-xs-5">
 				<div class="form-group">
 					<label for="txtNombre">Cliente</label>
 					<input type="text" class="form-control" id="txtNombre" cliente placeholder="Nombre del cliente" disabled="true">
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-5">
 				<div class="form-group">
 					<label for="txtEmail">Email</label>
 					<input type="email" class="form-control" id="txtEmail" cliente placeholder="Email" disabled="true">
@@ -29,6 +35,14 @@
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="txtObservaciones">Observaciones</label>
+					<textarea id="txtObservaciones" name="txtObservaciones" class="form-control"></textarea>
+				</div>
 			</div>
 		</div>
 	</div>

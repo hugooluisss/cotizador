@@ -106,4 +106,14 @@ TCotizacion = function(){
 			console.log(data);
 		}, "json");
 	}
+	
+	this.getComentarios = function(id, fn){
+		$.post('?mod=ccotizacion&action=getComentarios', {
+				"id": id
+			}, function(data){
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 };

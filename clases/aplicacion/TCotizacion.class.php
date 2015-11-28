@@ -10,6 +10,8 @@ class TCotizacion{
 	public $cliente;
 	private $item;
 	private $fecha;
+	private $registro;
+	private $comentarios;
 	public $movimientos;
 	private $subtotal;
 	private $adicional;
@@ -192,6 +194,32 @@ class TCotizacion{
 	public function getTotal(){
 		return $this->total;
 	}
+	
+	/**
+	* Establece los comentarios
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setComentarios($val = ""){
+		$this->comentarios = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna los comentarios
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getComentarios(){
+		return $this->comentarios;
+	}
 		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -206,7 +234,7 @@ class TCotizacion{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO cotizacion(idCliente, fecha) VALUES(".$this->cliente->getId().", now());");
+			$rs = $db->Execute("INSERT INTO cotizacion(idCliente, registro) VALUES(".$this->cliente->getId().", now());");
 			$this->idCotizacion = $db->Insert_ID();
 			if (!$rs) return false;
 		}
@@ -219,6 +247,8 @@ class TCotizacion{
 				idCliente = ".$this->cliente->getId().",
 				subtotal = ".$this->getSubtotal().",
 				adicional = ".$this->getAdicional().",
+				fecha = '".$this->getFecha()."',
+				comentarios = '".$this->getComentarios()."',
 				total = ".$this->getTotal()."
 			WHERE idCotizacion = ".$this->getId());
 		
