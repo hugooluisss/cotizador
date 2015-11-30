@@ -1,11 +1,13 @@
 $(document).ready(function(){
-	getLista();
+	if ($("#dvLista").length){
+		getLista();
 	
-	$("#panelTabs li a[href=#add]").click(function(){
-		$("#frmAdd").get(0).reset();
-		$("#id").val("");
-		$("form:not(.filter) :input:visible:enabled:first").focus();
-	});
+		$("#panelTabs li a[href=#add]").click(function(){
+			$("#frmAdd").get(0).reset();
+			$("#id").val("");
+			$("form:not(.filter) :input:visible:enabled:first").focus();
+		});
+	}
 	
 	$("#btnReset").click(function(){
 		$('#panelTabs a[href="#listas"]').tab('show');
@@ -14,11 +16,25 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtNombre: "required",
+			txtTelefono: {
+				required : false,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			},
+			txtCelular: {
+				required : false,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			}
 		},
 		wrapper: 'span', 
 		messages: {
-			txtNombre: "Este campo es necesario"
+			txtNombre: "Este campo es necesario",
+			txtTelefono: "Solo acepta número de entre 7 y 15 dígitos",
+			txtCelular: "Solo acepta número de entre 7 y 15 dígitos"
 		},
 		submitHandler: function(form){
 			var obj = new TCliente;
@@ -28,12 +44,23 @@ $(document).ready(function(){
 				$("#txtEmail").val(),
 				$("#txtRFC").val(),
 				$("#txtDireccion").val(),
+				$("#txtRUT").val(),
+				$("#txtRazonSocial").val(),
+				$("#txtLocalidad").val(),
+				$("#txtTelefono").val(),
+				$("#txtCelular").val(),
+				$("#txtObservaciones").val(),
 				{
 					after: function(datos){
 						if (datos.band){
-							getLista();
-							$("#frmAdd").get(0).reset();
-							$('#panelTabs a[href="#listas"]').tab('show');
+							if ($("#dvLista").length){
+								getLista();
+								$("#frmAdd").get(0).reset();
+								$('#panelTabs a[href="#listas"]').tab('show');
+							}else{
+								alert("Muchas gracias por actualizar sus datos dentro del sistema...");
+								location.href = "index.php?mod=logout";
+							}
 						}else{
 							alert("Upps... " + datos.mensaje);
 						}
@@ -67,6 +94,12 @@ $(document).ready(function(){
 				$("#txtRFC").val(el.rfc);
 				$("#txtDireccion").val(el.direccion);
 				$("#txtEmail").val(el.email);
+				$("#txtRUT").val(el.rut);
+				$("#txtRazonSocial").val(el.razonsocial);
+				$("#txtLocalidad").val(el.localidad);
+				$("#txtTelefono").val(el.tel);
+				$("#txtCelular").val(el.cel);
+				$("#txtObservaciones").val(el.observaciones);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			

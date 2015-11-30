@@ -92,7 +92,7 @@ $conf['listaClientes'] = array(
 $conf['cclientes'] = array(
 	'controlador' => 'clientes.php',
 	'descripcion' => 'Controlador de clientes',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 	
 /*Ropa*/
@@ -337,4 +337,13 @@ $conf['cTecnicas'] = array(
 	'descripcion' => 'Controlador de tecnicasImpresion',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+$conf['clienteDatos'] = array(
+	'descripcion' => '',
+	'seguridad' => false,
+	'controlador' => 'clientes.php',
+	'js' => array('cliente.class.js'),
+	'jsTemplate' => array('clientes.js'),
+	'capa' => LAYOUT_DEFECTO,
+	'vista' => 'clientes/modificar.tpl');
 ?>

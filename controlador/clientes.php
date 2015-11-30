@@ -1,7 +1,8 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'admonUsuarios':
+	case 'clientes':
+		$smarty->assign("cliente", new TCliente);
 	break;
 	case 'listaClientes':
 		$db = TBase::conectaDB();
@@ -15,19 +16,27 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
+	case 'clienteDatos':
+		$id = base64_decode($_GET['data']);
+		$obj = new TCliente($id);
+		
+		$smarty->assign("cliente", $obj);
+	break;
 	case 'cclientes':
 		switch($objModulo->getAction()){
 			case 'add':
 				$db = TBase::conectaDB();
 				$obj = new TCliente();
 				
-				$rs = $db->Execute("select idCliente from cliente where email = '".$_POST['email']."'");
-				
-				if (!$rs->EOF){ #si es que encontró el rfc
-					if ($rs->fields["idCliente"] <> $_POST['id']){
-						$obj->setId($rs->fields['idCliente']);
-						echo json_encode(array("band" => false, "mensaje" => "El correo electrónico ya se encuentra registrado con el cliente ".$obj->getNombre()));
-						exit(1);
+				if ($_POST['cliente'] <> ''){
+					$rs = $db->Execute("select idCliente from cliente where email = '".$_POST['email']."'");
+					
+					if (!$rs->EOF){ #si es que encontró el email
+						if ($rs->fields["idCliente"] <> $_POST['id']){
+							$obj->setId($rs->fields['idCliente']);
+							echo json_encode(array("band" => false, "mensaje" => "El correo electrónico ya se encuentra registrado con el cliente ".$obj->getNombre()));
+							exit(1);
+						}
 					}
 				}
 
@@ -38,6 +47,12 @@ switch($objModulo->getId()){
 				$obj->setRFC($_POST['rfc']);
 				$obj->setEmail($_POST['email']);
 				$obj->setDireccion($_POST['direccion']);
+				$obj->setRUT($_POST['rut']);
+				$obj->setRazonSocial($_POST['razonSocial']);
+				$obj->setLocalidad($_POST['localidad']);
+				$obj->setTelefono($_POST['telefono']);
+				$obj->setCelular($_POST['celular']);
+				$obj->setObservaciones($_POST['observaciones']);
 
 				echo json_encode(array("band" => $obj->guardar(), "cliente" => $obj->getid()));
 			break;

@@ -4,6 +4,12 @@ Estimado(a) /#nombreCompleto#/:
 Le hacemos llegar la cotización que nos solicitó por medio de este correo. Esperando su aprobación para iniciar con el trabajo quedamos a sus ordenes
 </p>
 
+<p>
+De igual forma, lo invitamos a actualizar sus datos personales en nuestro sistema con el fin de tener actualizada su información y poder realizarle cotizaciones de forma más rápida. Puede hacerlo haciendo click en la siguiente liga
+</p>
+
+<a href="/#ligaActualizacionDatosCliente#/">Actualizar datos personales</a>
+
 <br><br><br> 
 <small>
 <b>Información importante</b>

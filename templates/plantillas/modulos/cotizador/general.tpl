@@ -72,6 +72,10 @@
 			<td style="text-align: right" id="subtotal">0.00</td>
 		</tr>
 		<tr>
+			<td style="text-align: right" colspan="4">Costo por unidad</td>
+			<td style="text-align: right" id="costoUnidad">0.00</td>
+		</tr>
+		<tr>
 			<td style="text-align: right" colspan="4">Cargo adicional (% sobre el subtotal)</td>
 			<td style="text-align: right">
 				<select id="selCargo">

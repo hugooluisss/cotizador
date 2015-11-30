@@ -50,54 +50,57 @@
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
 				</a>
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-						<li class="dropdown messages-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-gears"></i> {$PAGE.nombreUsuario}
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<!-- inner menu: contains the actual data -->
-									<ul class="menu">
-										<li><a href="?mod=usuarioDatosPersonales"><i class="fa fa-edit text-green"></i> <span style="color: black">Cambiar datos personales</span></a></li>
-										<li><a href="#" action="changePass"><i class="fa fa-warning text-orange"></i> <span style="color: black">Cambiar contraseña</span></a></li>
-										<li><a href="?mod=logout"><i class="fa fa-sign-out text-green"></i> <span style="color: black">Salir del sistema</span></a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+				{if $PAGE.tipoUsuario neq ''}
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<li class="dropdown messages-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-gears"></i> {$PAGE.nombreUsuario}
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu">
+											<li><a href="?mod=usuarioDatosPersonales"><i class="fa fa-edit text-green"></i> <span style="color: black">Cambiar datos personales</span></a></li>
+											<li><a href="#" action="changePass"><i class="fa fa-warning text-orange"></i> <span style="color: black">Cambiar contraseña</span></a></li>
+											<li><a href="?mod=logout"><i class="fa fa-sign-out text-green"></i> <span style="color: black">Salir del sistema</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				{/if}
 			</nav>
 		</header>
 		
-		
-		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-			<!-- Sidebar user panel -->
-			<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu">
-					<li class="header">MENÚ PRINCIPAL</li>
-					{if $PAGE.tipoUsuario eq 1}
-					<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
-					<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
-					<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
-					<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
-					<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
-					<li {if $PAGE.modulo eq 'corteVinilo'}class="active"{/if}><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
-					<li {if $PAGE.modulo eq 'numerosLetras'}class="active"{/if}><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
-					<li {if $PAGE.modulo eq 'tecnicasImpresion'}class="active"{/if}><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
-					<li {if $PAGE.modulo eq 'otrosServicios'}class="active"{/if}><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
-					{/if}
-					<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
-		
+		{if $PAGE.tipoUsuario neq ""}
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu">
+						<li class="header">MENÚ PRINCIPAL</li>
+						{if $PAGE.tipoUsuario eq 1}
+						<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+						<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+						<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
+						<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
+						<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
+						<li {if $PAGE.modulo eq 'corteVinilo'}class="active"{/if}><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
+						<li {if $PAGE.modulo eq 'numerosLetras'}class="active"{/if}><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
+						<li {if $PAGE.modulo eq 'tecnicasImpresion'}class="active"{/if}><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
+						<li {if $PAGE.modulo eq 'otrosServicios'}class="active"{/if}><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
+						{/if}
+						
+						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
+					</ul>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
+		{/if}
 		
 		
 		<!-- Content Wrapper. Contains page content -->
@@ -178,7 +181,7 @@
     <script src="{$PAGE.ruta}dist/js/app.js" type="text/javascript"></script>
     
     {foreach from=$PAGE.scriptsJS item=script}
-		<script type="text/javascript" src="{$script}"></script>
+		<script type="text/javascript" src="{$script}?{rand()}"></script>
 	{/foreach}
 	
 	<script src="javascript/usuario.class.js"></script>

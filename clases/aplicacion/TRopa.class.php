@@ -156,7 +156,7 @@ class TRopa extends TItem{
 		
 		$rs = $db->Execute("select idItem from ropa where idItem = ".$this->idItem);
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO ropa(idItem) VALUES(".$this->idItem.");");
+			$rs = $db->Execute("INSERT INTO ropa(idItem, marca) VALUES(".$this->idItem.", '');");
 			if (!$rs) return false;
 		}
 		

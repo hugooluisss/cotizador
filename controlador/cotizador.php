@@ -161,8 +161,8 @@ switch($objModulo->getId()){
 			case 'pdf':
 				require_once(getcwd()."/repositorio/pdf/cotizacion.php");
 				
-				$obj = new RCotizacion;
-				$obj->generar($_GET['id']);
+				$obj = new RCotizacion($_GET['id']);
+				$obj->generar();
 				$documento = $obj->Output();
 				
 				
@@ -180,6 +180,7 @@ switch($objModulo->getId()){
 						
 						$datos = array();
 						$datos['nombreCompleto'] = $cotizacion->cliente->getNombre();
+						$datos['ligaActualizacionDatosCliente'] = $ini["sistema"]["url"]."?mod=clienteDatos&data=".base64_encode($cotizacion->cliente->getId());
 						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/cotizacion.txt"), $datos)));
 						$email->adjuntar($documento);
 						

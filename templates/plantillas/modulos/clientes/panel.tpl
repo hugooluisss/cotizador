@@ -17,40 +17,6 @@
 	</div>
 	
 	<div id="add" class="tab-pane fade">
-		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
-			<div class="box">
-				<div class="box-body">			
-					<div class="form-group">
-						<label for="txtNombre" class="col-lg-2">Nombre completo</label>
-						<div class="col-lg-3">
-							<input class="form-control" id="txtNombre" name="txtNombre">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtEmail" class="col-lg-2">Correo electrónico</label>
-						<div class="col-lg-3">
-							<input class="form-control" id="txtEmail" name="txtEmail" type="email">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtRFC" class="col-lg-2">RFC</label>
-						<div class="col-lg-3">
-							<input class="form-control" id="txtRFC" name="txtRFC" type="text">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtDirección" class="col-lg-2">Direccion</label>
-						<div class="col-lg-3">
-							<textarea class="form-control" id="txtDireccion" name="txtDireccion"></textarea>
-						</div>
-					</div>
-				</div>
-				<div class="box-footer">
-					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
-					<button type="submit" class="btn btn-info pull-right">Guardar</button>
-					<input type="hidden" id="id"/>
-				</div>
-			</div>
-		</form>
+		{include file=$PAGE.rutaModulos|cat:"modulos/clientes/modificar.tpl"}
 	</div>
 </div>

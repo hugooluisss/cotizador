@@ -59,7 +59,7 @@ $(document).ready(function(){
 				});
 				precio = parseFloat(precio).toFixed(2);
 				
-				$("#talla_concepto").val($( "select#selRopa option:selected" ).attr("nombre") + ": " + concepto);
+				$("#talla_concepto").val($("#txtRopa").val() + ": " + concepto);
 				$("#talla_cantidad").val(cantidad);
 				$("#talla_precio").val(parseFloat(precio).toFixed(2));
 			});

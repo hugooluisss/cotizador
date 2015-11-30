@@ -30,7 +30,7 @@ TCotizacion = function(){
 			if (descuento == undefined) descuento = 0;
 			if (totalDescuento == undefined) totalDescuento = precio;
 			
-			var s = '<tr><td style="text-align: center"><input type="checkbox" value="" class="eliminar"></td><td>'+ concepto + '</td><td style="text-align: right">' + cantidad + '</td><td><input class="form-control descuento" setAction="0" precio="' + precio + '" value="' + descuento + '" anterior="0"></td><td style="text-align: right" class="precio">' + totalDescuento + '</td></tr>';
+			var s = '<tr><td style="text-align: center"><input type="checkbox" value="" class="eliminar"></td><td>'+ concepto + '</td><td style="text-align: right" class="cantidad">' + cantidad + '</td><td><input class="form-control descuento" setAction="0" precio="' + precio + '" value="' + descuento + '" anterior="0"></td><td style="text-align: right" class="precio">' + totalDescuento + '</td></tr>';
 			$("table#cotizacion > tbody:last").append(s);
 			
 			$(".descuento[setAction=0]").each(function(){
@@ -68,9 +68,16 @@ TCotizacion = function(){
 			subtotal += parseFloat($(this).html());
 		});
 		
+		var cantidad = 0;
+		$("table#cotizacion .cantidad").each(function(){
+			cantidad += parseFloat($(this).html());
+		});
+		
 		console.log("Subtotal: " + subtotal);
+		console.log("Costo por unidad: " + subtotal / cantidad);
 		
 		$("table#cotizacion #subtotal").html(subtotal.toFixed(2));
+		$("table#cotizacion #costoUnidad").html((subtotal / cantidad).toFixed(2));
 		
 		var total = 0;
 		total = parseFloat(subtotal + $("#selCargo").val() * subtotal / 100).toFixed(2);

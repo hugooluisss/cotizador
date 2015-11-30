@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-28 02:49:22
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 14:00:43
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1448700445,
+      1 => 1448907465,
       2 => 'file',
     ),
   ),
@@ -93,6 +93,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<tr>
 			<td style="text-align: right" colspan="4">Subtotal</td>
 			<td style="text-align: right" id="subtotal">0.00</td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="4">Costo por unidad</td>
+			<td style="text-align: right" id="costoUnidad">0.00</td>
 		</tr>
 		<tr>
 			<td style="text-align: right" colspan="4">Cargo adicional (% sobre el subtotal)</td>

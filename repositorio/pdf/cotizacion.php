@@ -7,8 +7,11 @@
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
 class RCotizacion extends tFPDF{
+	private $cotizacion;
 	
-	public function RCotizacion(){
+	public function RCotizacion($id){
+		$this->cotizacion = new TCotizacion($id);
+		
 		parent::tFPDF('P', 'mm', 'Letter');
 		$this->AddFont('Sans','', 'DejaVuSans.ttf', true);
 		$this->AddFont('Sans','B', 'DejaVuSans-Bold.ttf', true);
@@ -25,7 +28,7 @@ class RCotizacion extends tFPDF{
     	$this->SetY(65);
     	$this->Cell(0, 5, ".:: COTIZACIÓN ::.", 0, 1, 'C');
     	$this->SetFont('Arial', '', 10);
-    	$this->Cell(0, 5, date("d-m-Y"), 0, 1, 'C');
+    	$this->Cell(0, 5, $this->cotizacion->getFecha(), 0, 1, 'C');
     	$this->SetY(75);
     	$this->Ln(5);
 	}
@@ -33,7 +36,7 @@ class RCotizacion extends tFPDF{
 	public function generar($id){
 		$this->AddPage();
 		
-		$cotizacion = new TCotizacion($id);
+		$cotizacion = $this->cotizacion;
 		$this->Cell(0, 5, "C. ".$cotizacion->cliente->getNombre(), 0, 1);
 		$this->Ln(10);
 		$this->Write(5, utf8_decode("Estimado cliente, por medio del presente, le hago entrega de la cotización que nos ha solicitado. Cualquier duda favor de contactarnos, con gusto se las resolveremos"));
@@ -48,22 +51,26 @@ class RCotizacion extends tFPDF{
 		$this->Cell(20, 8, "Total", 0, 1, 'C', 1);
 		
 		$this->SetFont('Sans', '', 6);
+		$cantidad = 0;
 		foreach($cotizacion->movimientos as $mov){
 			$this->Cell(135, 8, $mov['concepto'], "B", 0, 'L');
 			$this->Cell(20, 8, $mov["neto"], "B", 0, 'R');
 			$this->Cell(20, 8, $mov["descuento"]."%", "B", 0, 'R');
 			$this->Cell(20, 8, $mov["total"], "B", 1, 'R');
+			$cantidad += $mov["cantidad"];
 		}
 		
+		$this->SetFont('Sans', '', 10);
+		$this->Cell(165, 12, "Costo por unidad", 0, 0, 'R');
+		$this->SetFont('Sans', 'B', 11);
+		$this->Cell(30, 12, "$ ".sprintf("%0.2f", $cotizacion->getSubtotal() / $cantidad), "B", 1, 'R');
+		
 		$this->SetFont('Sans', 'B', 6);
-		$this->Cell(175, 8, "Subtotal", 0, 0, 'R');
-		$this->Cell(20, 8, $cotizacion->getSubtotal(), "B", 1, 'R');
+		$this->Cell(165, 8, "Cargos por servicios adicionales", 0, 0, 'R');
+		$this->Cell(30, 8, (string) ($cotizacion->getTotal() - $cotizacion->getSubtotal()), "B", 1, 'R');
 		
-		$this->Cell(175, 8, "Cargos por servicios adicionales", 0, 0, 'R');
-		$this->Cell(20, 8, (string) ($cotizacion->getTotal() - $cotizacion->getSubtotal()), "B", 1, 'R');
-		
-		$this->Cell(175, 8, "Total", 0, 0, 'R');
-		$this->Cell(20, 8, $cotizacion->getTotal(), "B", 1, 'R');
+		$this->Cell(165, 8, "Total", 0, 0, 'R');
+		$this->Cell(30, 8, $cotizacion->getTotal(), "B", 1, 'R');
 	}
 	
 	function Footer(){
@@ -98,8 +105,9 @@ class RCotizacion extends tFPDF{
 	public function Output(){
 		$file = "temporal/".basename(tempnam("temporal/", 'tmp'));
 		rename($file, $file.'.pdf');
-		$file .= '.pdf';		
+		$file .= '.pdf';
 		parent::Output($file, 'F');
+		chmod($file, 0555);
 		//header('Location: temporal/'.$file);
 		
 		return $file;

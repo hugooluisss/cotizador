@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-28 02:32:28
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 12:39:05
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1448699474,
+      1 => 1448908743,
       2 => 'file',
     ),
   ),
@@ -93,55 +93,58 @@ img/logo-min.png" class="img-rounded"/></span>
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
 				</a>
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-						<li class="dropdown messages-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-gears"></i> <?php echo $_smarty_tpl->tpl_vars['PAGE']->value['nombreUsuario'];?>
+				<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']!=''){?>
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<li class="dropdown messages-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-gears"></i> <?php echo $_smarty_tpl->tpl_vars['PAGE']->value['nombreUsuario'];?>
 
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<!-- inner menu: contains the actual data -->
-									<ul class="menu">
-										<li><a href="?mod=usuarioDatosPersonales"><i class="fa fa-edit text-green"></i> <span style="color: black">Cambiar datos personales</span></a></li>
-										<li><a href="#" action="changePass"><i class="fa fa-warning text-orange"></i> <span style="color: black">Cambiar contraseña</span></a></li>
-										<li><a href="?mod=logout"><i class="fa fa-sign-out text-green"></i> <span style="color: black">Salir del sistema</span></a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu">
+											<li><a href="?mod=usuarioDatosPersonales"><i class="fa fa-edit text-green"></i> <span style="color: black">Cambiar datos personales</span></a></li>
+											<li><a href="#" action="changePass"><i class="fa fa-warning text-orange"></i> <span style="color: black">Cambiar contraseña</span></a></li>
+											<li><a href="?mod=logout"><i class="fa fa-sign-out text-green"></i> <span style="color: black">Salir del sistema</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				<?php }?>
 			</nav>
 		</header>
 		
-		
-		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-			<!-- Sidebar user panel -->
-			<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu">
-					<li class="header">MENÚ PRINCIPAL</li>
-					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafia'){?>class="active"<?php }?>><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafiaDigital'){?>class="active"<?php }?>><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='corteVinilo'){?>class="active"<?php }?>><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='numerosLetras'){?>class="active"<?php }?>><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tecnicasImpresion'){?>class="active"<?php }?>><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='otrosServicios'){?>class="active"<?php }?>><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
-					<?php }?>
-					<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
-		
+		<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']!=''){?>
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu">
+						<li class="header">MENÚ PRINCIPAL</li>
+						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafia'){?>class="active"<?php }?>><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafiaDigital'){?>class="active"<?php }?>><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='corteVinilo'){?>class="active"<?php }?>><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='numerosLetras'){?>class="active"<?php }?>><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tecnicasImpresion'){?>class="active"<?php }?>><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='otrosServicios'){?>class="active"<?php }?>><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
+						<?php }?>
+						
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
+					</ul>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
+		<?php }?>
 		
 		
 		<!-- Content Wrapper. Contains page content -->
@@ -259,6 +262,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['script']->key => $_smarty_tpl->tpl_va
 $_smarty_tpl->tpl_vars['script']->_loop = true;
 ?>
 		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['script']->value;?>
+?<?php echo rand();?>
 "></script>
 	<?php } ?>
 	
