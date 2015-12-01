@@ -60,10 +60,12 @@ class RCotizacion extends tFPDF{
 			$cantidad += $mov["cantidad"];
 		}
 		
-		$this->SetFont('Sans', '', 10);
-		$this->Cell(165, 12, "Costo por unidad", 0, 0, 'R');
-		$this->SetFont('Sans', 'B', 11);
-		$this->Cell(30, 12, "$ ".sprintf("%0.2f", $cotizacion->getSubtotal() / $cantidad), "B", 1, 'R');
+		if ($cotizacion->getUnidades() > 0){
+			$this->SetFont('Sans', '', 10);
+			$this->Cell(165, 12, "Costo por unidad", 0, 0, 'R');
+			$this->SetFont('Sans', 'B', 11);
+			$this->Cell(30, 12, "$ ".sprintf("%0.2f", $cotizacion->getSubtotal() / $cotizacion->getUnidades()), "B", 1, 'R');
+		}
 		
 		$this->SetFont('Sans', 'B', 6);
 		$this->Cell(165, 8, "Cargos por servicios adicionales", 0, 0, 'R');

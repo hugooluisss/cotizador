@@ -74,10 +74,19 @@ TCotizacion = function(){
 		});
 		
 		console.log("Subtotal: " + subtotal);
+		
+		if ($("#txtCantidadCosto").attr("cambiar") == "si")
+			$("#txtCantidadCosto").val(cantidad);
+		else
+			cantidad = $("#txtCantidadCosto").val();
+			
 		console.log("Costo por unidad: " + subtotal / cantidad);
 		
 		$("table#cotizacion #subtotal").html(subtotal.toFixed(2));
-		$("table#cotizacion #costoUnidad").html((subtotal / cantidad).toFixed(2));
+		var val = (subtotal / cantidad).toFixed(2);
+		val = cantidad == 0?0.00:val;
+		
+		$("table#cotizacion #costoUnidad").html(val);
 		
 		var total = 0;
 		total = parseFloat(subtotal + $("#selCargo").val() * subtotal / 100).toFixed(2);

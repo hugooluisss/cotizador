@@ -53,8 +53,13 @@ switch($objModulo->getId()){
 				$obj->setTelefono($_POST['telefono']);
 				$obj->setCelular($_POST['celular']);
 				$obj->setObservaciones($_POST['observaciones']);
-
-				echo json_encode(array("band" => $obj->guardar(), "cliente" => $obj->getid()));
+				
+				if ($obj->guardar()){
+					$rs = $db->Execute("select * from cliente where idCliente = ".$obj->getId());
+					echo json_encode(array("band" => true, "cliente" => $obj->getid(), "data" => json_encode($rs->fields)));
+				}else
+					echo json_encode(array("band" => false, "cliente" => $obj->getid()));
+				
 			break;
 			case 'del':
 				$obj = new TCliente($_POST['cliente']);

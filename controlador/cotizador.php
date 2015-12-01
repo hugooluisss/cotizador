@@ -89,8 +89,6 @@ switch($objModulo->getId()){
 			$smarty->assign(strtolower($rs->fields['nombre']), $rs->fields['precio']);
 			$rs->moveNext();
 		}
-		
-		$smarty->assign("cliente", new TCliente);
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();
@@ -132,6 +130,7 @@ switch($objModulo->getId()){
 				$obj->setTotal($enc['total']);
 				$obj->setAdicional($enc['adicional']);
 				$obj->setFecha($enc['fecha']);
+				$obj->setUnidades($enc['unidades']);
 				$obj->setComentarios($enc['comentarios']);
 				
 				$obj->truncateMovimientos(true);

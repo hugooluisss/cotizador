@@ -16,6 +16,7 @@ class TCotizacion{
 	private $subtotal;
 	private $adicional;
 	private $total;
+	private $unidades;
 	
 	/**
 	* Constructor de la clase
@@ -220,6 +221,32 @@ class TCotizacion{
 	public function getComentarios(){
 		return $this->comentarios;
 	}
+	
+	/**
+	* Establece las unidades para el costo por unidad
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setUnidades($val = 0){
+		$this->unidades = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna las unidades
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getUnidades(){
+		return $this->unidades;
+	}
 		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -249,7 +276,8 @@ class TCotizacion{
 				adicional = ".$this->getAdicional().",
 				fecha = '".$this->getFecha()."',
 				comentarios = '".$this->getComentarios()."',
-				total = ".$this->getTotal()."
+				total = ".$this->getTotal().",
+				unidades = ".$this->getUnidades()."
 			WHERE idCotizacion = ".$this->getId());
 		
 		#Ahora van los items
