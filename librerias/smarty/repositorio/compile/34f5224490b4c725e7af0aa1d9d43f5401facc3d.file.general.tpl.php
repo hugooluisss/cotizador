@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 14:00:43
+<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 23:35:13
          compiled from "templates/plantillas/modulos/cotizador/general.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2060960726562905d4b30822-84610777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34f5224490b4c725e7af0aa1d9d43f5401facc3d' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/general.tpl',
-      1 => 1448907465,
+      1 => 1448948110,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 		<div class="row">
 			<div class="col-xs-12 text-right">
+				<a href="#" class="btn btn-success" id="btnModificarCliente" data-toggle="modal" data-target="#winModificarCliente">Modificar cliente</a>
 				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
 			</div>
 		</div>

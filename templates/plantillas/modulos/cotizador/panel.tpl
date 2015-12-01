@@ -93,4 +93,6 @@
 {include file=$PAGE.rutaModulos|cat:"modulos/cotizador/cotizaciones.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/cotizador/winRopa.tpl"}
 
+{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/modificarCliente.tpl"}
+
 <input id="idCotizacion" name="idCotizacion" type="hidden" />

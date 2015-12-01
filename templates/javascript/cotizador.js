@@ -273,6 +273,10 @@ $(document).ready(function(){
 		$("#txtNombre[cliente]").val(el.nombre);
 		$("#txtEmail[cliente]").val(el.email);
 		$("#txtNombre[cliente]").attr("idCliente", el.idCliente);
+		
+		$("#btnModificarCliente").show();
+		
+		$("#txtNombre[cliente]").attr("data", $(this).attr("cliente"));
 	});
 	
 	$("#tblClientes").DataTable({
@@ -284,6 +288,8 @@ $(document).ready(function(){
 		"info": true,
 		"autoWidth": false
 	});
+	
+	$("#btnModificarCliente").hide();
 	
 	$("#frmAddCliente").submit(function(){
 		if ($("#frmAddCliente #txtNombre").val() == ''){
@@ -311,6 +317,9 @@ $(document).ready(function(){
 				}
 			});
 		}
+	});
+	
+	$("#btnModificarCliente").click(function(){
 	});
 	
 	$("#nuevaCotizacion").click(function(){
@@ -401,6 +410,9 @@ $(document).ready(function(){
 						$("#txtEmail[cliente]").val(cotizacion.email);
 						$("#selCargo").val(parseInt(cotizacion.adicional));
 						$("#txtEmail[cliente]").val(cotizacion.email);
+						
+						$("#btnModificarCliente").show();
+						
 						obj.getComentarios(el.attr("cotizacion"), {
 							after: function(data){
 								$("#txtObservaciones").val(data.comentarios);

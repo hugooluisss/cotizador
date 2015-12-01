@@ -90,6 +90,7 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		
+		$smarty->assign("cliente", new TCliente);
 	break;
 	case 'cotizador_tallas':
 		$db = TBase::conectaDB();
