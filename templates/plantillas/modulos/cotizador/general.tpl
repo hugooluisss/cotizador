@@ -1,8 +1,8 @@
 <div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
-		<button type="button" class="btn btn-success" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
-		<button type="button" class="btn btn-danger" id="nuevaCotizacion"><i class="fa fa-sticky-note-o"></i> Nueva cotización</button>
-		<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winCotizaciones" id="lstCotizaciones"><i class="fa fa-bars"></i> Listar de cotizaciones</a>
+		<button type="button" class="btn" id="saveCotizacion"><i class="fa fa-save"></i> Guardar</button>
+		<button type="button" class="btn" id="nuevaCotizacion"><i class="fa fa-sticky-note-o"></i> Nueva cotización</button>
+		<a href="#" class="btn" data-toggle="modal" data-target="#winCotizaciones" id="lstCotizaciones"><i class="fa fa-bars"></i> Listar de cotizaciones</a>
 	</div>
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" id="pdf"><i class="fa fa-file-pdf-o"></i> PDF</button>
@@ -73,7 +73,15 @@
 			<td style="text-align: right" id="subtotal">0.00</td>
 		</tr>
 		<tr>
-			<td style="text-align: right" colspan="4">Costo por unidad</td>
+			<td style="text-align: right" colspan="4">
+				Unidades
+			</td>
+			<td style="text-align: right"><input class="form-control" style="text-align: right" id="txtCantidadCosto" value="0" cambiar="si"/></td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="4">
+				Costo por unidad
+			</td>
 			<td style="text-align: right" id="costoUnidad">0.00</td>
 		</tr>
 		<tr>

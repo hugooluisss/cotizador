@@ -256,6 +256,66 @@ $(document).ready(function(){
 
 //General
 $(document).ready(function(){
+	$("#frmAdd").validate({
+		debug: true,
+		rules: {
+			txtNombre: "required",
+			txtTelefono: {
+				required : false,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			},
+			txtCelular: {
+				required : false,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			}
+		},
+		wrapper: 'span', 
+		messages: {
+			txtNombre: "Este campo es necesario",
+			txtTelefono: "Solo acepta número de entre 7 y 15 dígitos",
+			txtCelular: "Solo acepta número de entre 7 y 15 dígitos"
+		},
+		submitHandler: function(form){
+			var obj = new TCliente;
+			obj.add(
+				$("#winModificarCliente #id").val(), 
+				$("#winModificarCliente #txtNombre").val(), 
+				$("#winModificarCliente #txtEmail").val(),
+				$("#winModificarCliente #txtRFC").val(),
+				$("#winModificarCliente #txtDireccion").val(),
+				$("#winModificarCliente #txtRUT").val(),
+				$("#winModificarCliente #txtRazonSocial").val(),
+				$("#winModificarCliente #txtLocalidad").val(),
+				$("#winModificarCliente #txtTelefono").val(),
+				$("#winModificarCliente #txtCelular").val(),
+				$("#winModificarCliente #txtObservaciones").val(),
+				{
+					after: function(datos){
+						if (datos.band){
+							$("#txtEmail").val($("#winModificarCliente #txtEmail").val());
+							$("#txtNombre").val($("#winModificarCliente #txtNombre").val());
+							$("#txtNombre[cliente]").attr("data", datos.data);
+							$("#winModificarCliente #frmAdd").get(0).reset();
+							
+							$("#winModificarCliente").modal('hide');
+						}else{
+							alert("Upps... " + datos.mensaje);
+						}
+					}
+				}
+			);
+		}
+    });
+    
+    $("#winModificarCliente #frmAdd #btnReset").click(function(){
+    	$("#winModificarCliente #frmAdd").get(0).reset();
+    	$("#winModificarCliente").modal('hide');
+    });
+    
 	$("#eliminarDeCotizacion").click(function(){
 		$("table#cotizacion .eliminar").each(function(){
 			if ($(this).prop("checked"))
@@ -290,6 +350,21 @@ $(document).ready(function(){
 	});
 	
 	$("#btnModificarCliente").hide();
+	$("#btnModificarCliente").click(function(){
+		var el = jQuery.parseJSON($("#txtNombre[cliente]").attr("data"));
+		
+		$("#winModificarCliente #frmAdd #txtNombre").val(el.nombre);
+		$("#winModificarCliente #frmAdd #txtRUT").val(el.rut);
+		$("#winModificarCliente #frmAdd #txtRazonSocial").val(el.razonsocial);
+		$("#winModificarCliente #frmAdd #txtDireccion").val(el.direccion);
+		$("#winModificarCliente #frmAdd #txtLocalidad").val(el.localidad);
+		$("#winModificarCliente #frmAdd #txtTelefono").val(el.tel);
+		$("#winModificarCliente #frmAdd #txtCelular").val(el.cel);
+		$("#winModificarCliente #frmAdd #txtEmail").val(el.email);
+		$("#winModificarCliente #frmAdd #txtRFC").val(el.rfc);
+		$("#winModificarCliente #frmAdd #txtObservaciones").val(el.observaciones);
+		$("#winModificarCliente #frmAdd #id").val(el.idCliente);
+	});
 	
 	$("#frmAddCliente").submit(function(){
 		if ($("#frmAddCliente #txtNombre").val() == ''){
@@ -319,7 +394,12 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#btnModificarCliente").click(function(){
+	$("#txtCantidadCosto").change(function(){
+		$("#txtCantidadCosto").val(parseInt($("#txtCantidadCosto").val()));
+		$("#txtCantidadCosto").attr("cambiar", "no");
+		
+		var obj = new TCotizacion;
+		obj.total();
 	});
 	
 	$("#nuevaCotizacion").click(function(){
@@ -357,6 +437,7 @@ $(document).ready(function(){
 			encabezado.adicional = $("#selCargo").val();
 			encabezado.fecha = $("#txtFecha").val();
 			encabezado.comentarios = $("#txtObservaciones").val();
+			encabezado.unidades = $("#txtCantidadCosto").val();
 			
 			var obj = new TCotizacion;
 			
@@ -410,6 +491,8 @@ $(document).ready(function(){
 						$("#txtEmail[cliente]").val(cotizacion.email);
 						$("#selCargo").val(parseInt(cotizacion.adicional));
 						$("#txtEmail[cliente]").val(cotizacion.email);
+						$("#txtCantidadCosto").val(cotizacion.unidades);
+						$("#txtCantidadCosto").attr("cambiar", "no");
 						
 						$("#btnModificarCliente").show();
 						

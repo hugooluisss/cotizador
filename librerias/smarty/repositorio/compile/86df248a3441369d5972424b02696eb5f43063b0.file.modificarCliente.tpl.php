@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 23:41:05
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-01 11:11:11
          compiled from "templates/plantillas/modulos/cotizador/modificarCliente.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1832655399565d30c3d5b8c0-54018829%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '86df248a3441369d5972424b02696eb5f43063b0' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/modificarCliente.tpl',
-      1 => 1448948463,
+      1 => 1448989862,
       2 => 'file',
     ),
   ),
@@ -17,10 +17,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_565d30c3d70f64_06944274',
-  'variables' => 
-  array (
-    'cliente' => 0,
-  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_565d30c3d70f64_06944274')) {function content_565d30c3d70f64_06944274($_smarty_tpl) {?><div class="modal fade" id="winModificarCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -32,86 +28,76 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="modal-body">
 				<div class="well">
-					<div class="box-body">
-						<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
+					<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
+						<div class="box-body">
+						
 							<div class="form-group">
 								<label for="txtRUT" class="col-lg-4">RUT</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtRUT" name="txtRUT" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getRUT();?>
-">
+									<input class="form-control" id="txtRUT" name="txtRUT">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtRazonSocial" class="col-lg-4">Razón social</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getRazonSocial();?>
-">
+									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
 								</div>
 							</div>		
 							<div class="form-group">
 								<label for="txtNombre" class="col-lg-4">Nombre completo</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtNombre" name="txtNombre" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getNombre();?>
-">
+									<input class="form-control" id="txtNombre" name="txtNombre">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtDireccion" class="col-lg-4">Dirección</label>
 								<div class="col-lg-7">
-									<textarea class="form-control" id="txtDireccion" name="txtDireccion"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getDireccion();?>
-</textarea>
+									<textarea class="form-control" id="txtDireccion" name="txtDireccion"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtLocalidad" class="col-lg-4">Localidad</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtLocalidad" name="txtLocalidad" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getLocalidad();?>
-">
+									<input class="form-control" id="txtLocalidad" name="txtLocalidad">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtTelefono" class="col-lg-4">Teléfono</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtTelefono" name="txtTelefono" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getTelefono();?>
-">
+									<input class="form-control" id="txtTelefono" name="txtTelefono">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtCelular" class="col-lg-4">Celular</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtCelular" name="txtCelular" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getCelular();?>
-">
+									<input class="form-control" id="txtCelular" name="txtCelular">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtEmail" class="col-lg-4">Correo electrónico</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtEmail" name="txtEmail" type="email" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getEmail();?>
-">
+									<input class="form-control" id="txtEmail" name="txtEmail" type="email">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtRFC" class="col-lg-4">RFC</label>
 								<div class="col-lg-7">
-									<input class="form-control" id="txtRFC" name="txtRFC" type="text" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getRFC();?>
-">
+									<input class="form-control" id="txtRFC" name="txtRFC" type="text">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="txtObservaciones" class="col-lg-4">Observaciones</label>
 								<div class="col-lg-7">
-									<textarea class="form-control" id="txtObservaciones" name="txtObservaciones"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getObservaciones();?>
-</textarea>
+									<textarea class="form-control" id="txtObservaciones" name="txtObservaciones"></textarea>
 								</div>
 							</div>
-						</form>
-					</div>
-					<div class="box-footer">
-						<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
-						<button type="submit" class="btn btn-info pull-right">Guardar</button>
-						<input type="hidden" id="id" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getId();?>
-"/>
-					</div>
+						</div>
+						<div class="box-footer">
+							<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
+							<button type="submit" class="btn btn-info pull-right">Guardar</button>
+							<input type="hidden" id="id" value=""/>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
