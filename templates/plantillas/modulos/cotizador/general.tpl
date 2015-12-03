@@ -35,7 +35,7 @@
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<a href="#" class="btn btn-success" id="btnModificarCliente" data-toggle="modal" data-target="#winModificarCliente">Modificar cliente</a>
-				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Listar clientes</a>
+				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#winClientes">Agregar clientes</a>
 			</div>
 		</div>
 		<div class="row">

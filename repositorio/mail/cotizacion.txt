@@ -10,11 +10,7 @@ De igual forma, lo invitamos a actualizar sus datos personales en nuestro sistem
 
 <a href="/#ligaActualizacionDatosCliente#/">Actualizar datos personales</a>
 
-<br><br><br> 
-
-Depositos: 
-
-Cuenta X: 9812348714387618234
+<br><br><br>
 
 <small>
 <b>Información importante</b>

@@ -373,7 +373,7 @@ $(document).ready(function(){
 		}else{
 			var obj = new TCliente;
 			
-			obj.add("",	$("#frmAddCliente #txtNombre").val(), $("#frmAddCliente #txtEmail").val(), "", "", {
+			obj.add("",	$("#frmAddCliente #txtNombre").val(), $("#frmAddCliente #txtEmail").val(), "", "", "", "", "", "", "", "",{
 				after: function(datos){
 					if (datos.band){
 						$('#winClientes').modal('hide');
