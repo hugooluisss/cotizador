@@ -89,6 +89,7 @@ $(document).ready(function(){
 		var obj = new TLimite();
 		obj.add(
 			$("#txtInferior").val(),
+			2,
 			{
 				after: function(datos){
 					if (datos.band){
@@ -104,7 +105,7 @@ $(document).ready(function(){
 	});
 	
 	function getListaLimites(){
-		$.get("?mod=listaLimites", function( data ) {
+		$.get("?mod=listaLimites&tipo=2", function( data ) {
 			$("#dvListaLimites").html(data);
 			
 			$("[action=eliminar]").click(function(){

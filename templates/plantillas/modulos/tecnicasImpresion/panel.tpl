@@ -6,7 +6,8 @@
 
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
+  <li><a data-toggle="tab" href="#add">Modificar</a></li>
+  <li><a data-toggle="tab" href="#limites">Límites de mayoreo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -27,9 +28,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPrecio" class="col-lg-2">Precio</label>
+						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtPrecio" name="txtPrecio">
+							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
 						</div>
 					</div>
 				</div>
@@ -40,5 +41,25 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	<div id="limites" class="tab-panel fade">
+		<div class="box">
+			<div class="box-body">			
+				<div class="form-group">
+					<label for="txtInferior" class="col-lg-2 col-xs-5">A partir de</label>
+					<div class="col-xs-1">
+						<input class="form-control" id="txtInferior" name="txtInferior">
+					</div>
+					<div class="col-xs-4">
+						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="box-body" id="dvListaLimites">
+			</div>
+		</div>
 	</div>
 </div>

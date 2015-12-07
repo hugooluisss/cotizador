@@ -40,6 +40,9 @@ class TLimite{
 		
 		foreach($rs->fields as $field => $val){
 			switch($field){
+				case 'idTipoItem':
+					$this->tipo = $val;
+				break;
 				default:
 					$this->$field = $val;
 			}
@@ -104,6 +107,33 @@ class TLimite{
 	}
 	
 	/**
+	* Establece el tipo de item
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setTipo($val = ''){
+		if ($val == '') return false;
+		
+		$this->tipo = $val;
+	}
+	
+	/**
+	* Retorna el tipo de item 
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getTipo(){
+		return $this->tipo;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -115,7 +145,7 @@ class TLimite{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO limite() VALUES();");
+			$rs = $db->Execute("INSERT INTO limite(idTipoItem) VALUES(".$this->getTipo().");");
 			if (!$rs) return false;
 			
 			$this->idLimite = $db->Insert_ID();

@@ -1,11 +1,12 @@
 TLimite = function(){
 	var self = this;
 	
-	this.add = function(inferior, fn){
+	this.add = function(inferior, tipo, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('?mod=climites&action=add', {
-				"inferior": inferior
+				"inferior": inferior, 
+				"tipo": tipo
 			}, function(data){
 				if (data.band == 'false')
 					console.log(data.mensaje);

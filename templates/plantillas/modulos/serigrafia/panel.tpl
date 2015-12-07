@@ -52,6 +52,7 @@
 						<input class="form-control" id="txtInferior" name="txtInferior">
 					</div>
 					<div class="col-xs-4">
+						<input type="hidden" id="tipoItem" value="{$tipoItem}" />
 						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
 					</div>
 				</div>

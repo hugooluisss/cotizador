@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-26 09:48:14
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-07 10:35:26
          compiled from "templates/plantillas/modulos/tecnicasImpresion/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1611467614565720b05ba7d5-64903670%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a59f30248a81c1169cfb318827ee55446d23085d' => 
     array (
       0 => 'templates/plantillas/modulos/tecnicasImpresion/panel.tpl',
-      1 => 1448552892,
+      1 => 1449506125,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
+  <li><a data-toggle="tab" href="#add">Modificar</a></li>
+  <li><a data-toggle="tab" href="#limites">Límites de mayoreo</a></li>
 </ul>
 
 <div class="tab-content">
@@ -48,9 +49,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPrecio" class="col-lg-2">Precio</label>
+						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtPrecio" name="txtPrecio">
+							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
 						</div>
 					</div>
 				</div>
@@ -61,5 +62,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 			</div>
 		</form>
+	</div>
+	<div id="limites" class="tab-panel fade">
+		<div class="box">
+			<div class="box-body">			
+				<div class="form-group">
+					<label for="txtInferior" class="col-lg-2 col-xs-5">A partir de</label>
+					<div class="col-xs-1">
+						<input class="form-control" id="txtInferior" name="txtInferior">
+					</div>
+					<div class="col-xs-4">
+						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="box-body" id="dvListaLimites">
+			</div>
+		</div>
 	</div>
 </div><?php }} ?>

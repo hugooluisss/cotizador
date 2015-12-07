@@ -3,7 +3,7 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'listaLimites':
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from limite order by inferior");
+		$rs = $db->Execute("select * from limite where idTipoItem = ".$_GET['tipo']." order by inferior");
 		$datos = array();
 		while(!$rs->EOF){
 			array_push($datos, $rs->fields);
@@ -21,6 +21,7 @@ switch($objModulo->getId()){
 					$obj = new TLimite();
 					
 					$obj->setInferior($_POST['inferior']);
+					$obj->setTipo($_POST['tipo']);
 					echo json_encode(array("band" => $obj->guardar()));
 				}
 			break;

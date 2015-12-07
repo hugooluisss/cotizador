@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	getLista();
+	getListaLimites();
 	
 	$("#panelTabs li a[href=#add]").click(function(){
 		$("#frmAdd").get(0).reset();
@@ -11,30 +12,24 @@ $(document).ready(function(){
 		$('#panelTabs a[href="#listas"]').tab('show');
 	});
 	
-	$("#frmAdd #txtPrecio").change(function(){
-		$(this).val(parseFloat($(this).val()).toFixed(2));
-	});
-	
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtPrecio: {
-				required: true,
-				number: true
+			txtNombre: {
+				required: true
 			}
 		},
 		wrapper: 'span', 
 		messages: {
-			txtPrecio: {
-				required: "Este campo es necesario",
-				number: "Solo se aceptan números"
+			txtNombre: {
+				required: "Este campo es necesario"
 			}
 		},
 		submitHandler: function(form){
 			var obj = new TOtrasTecnicas;
 			obj.add(
 				$("#id").val(), 
-				$("#txtPrecio").val(), 
+				$("#txtDescripcion").val(), 
 				{
 					after: function(datos){
 						if (datos.band){
@@ -70,9 +65,14 @@ $(document).ready(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
 				$("#id").val(el.idItem);
-				$("#txtPrecio").val(el.precio);
+				$("#txtDescripcion").val(el.descripcion);
 				$("#txtNombre").val(el.nombre);
 				$('#panelTabs a[href="#add"]').tab('show');
+			});
+			
+			$("[action=precios]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				location.href = "?mod=tecnicasPrecios&id=" + el.idItem;
 			});
 		
 			$("#tblOtros").DataTable({
@@ -81,6 +81,52 @@ $(document).ready(function(){
 				"paging": true,
 				"lengthChange": true,
 				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+	}
+	
+	$("#btnAddLimite").click(function(){
+		var obj = new TLimite();
+		obj.add(
+			$("#txtInferior").val(),
+			7,
+			{
+				after: function(datos){
+					if (datos.band){
+						getListaLimites();
+						$("#txtInferior").val("");
+						$("#txtInferior").focus();
+					}else{
+						alert("Upps... " + datos.mensaje);
+					}
+				}
+			}
+		);
+	});
+
+	function getListaLimites(){
+		$.get("?mod=listaLimites&tipo=7", function( data ) {
+			$("#dvListaLimites").html(data);
+			
+			$("[action=eliminar]").click(function(){
+				if(confirm("¿Seguro?")){
+					var obj = new TLimite;
+					obj.del($(this).attr("item"), {
+						after: function(data){
+							getListaLimites();
+						}
+					});
+				}
+			});
+			
+			$("#tblLimites").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
+				"lengthChange": false,
+				"ordering": false,
 				"info": true,
 				"autoWidth": false
 			});

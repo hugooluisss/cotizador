@@ -86,7 +86,7 @@ switch($objModulo->getId()){
 		
 		$rs = $db->Execute("select * from otrastecnicas a join item b using(idItem)");
 		while(!$rs->EOF){
-			$smarty->assign(strtolower($rs->fields['nombre']), $rs->fields['precio']);
+			$smarty->assign(strtr(strtolower($rs->fields['nombre']),'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ', 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'), $rs->fields['idItem']);
 			$rs->moveNext();
 		}
 	break;

@@ -7,7 +7,7 @@
 **/
 
 class TTecnicas extends TItem{
-	private $precio;
+	private $descripcion;
 	
 	/**
 	* Constructor de la clase
@@ -18,7 +18,6 @@ class TTecnicas extends TItem{
 	*/
 	public function TTecnicas($id = ''){
 		parent::TItem();
-		$this->precio = 0;
 		$this->setId($id);
 		
 		return true;
@@ -59,7 +58,7 @@ class TTecnicas extends TItem{
 		return $this->idItem;
 	}	
 	/**
-	* Establece el precio
+	* Establece la descripcion
 	*
 	* @autor Hugo
 	* @access public
@@ -67,21 +66,21 @@ class TTecnicas extends TItem{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setPrecio($val = 0){
-		$this->precio = $val;
+	public function setDescripcion($val = 0){
+		$this->descripcion = $val;
 		return true;
 	}
 	
 	/**
-	* Retorna el precio
+	* Retorna la descripcion
 	*
 	* @autor Hugo
 	* @access public
 	* @return string Texto
 	*/
 	
-	public function getPrecio(){
-		return $this->precio;
+	public function getDescripcion(){
+		return $this->descripcion;
 	}
 	
 	/**
@@ -103,10 +102,56 @@ class TTecnicas extends TItem{
 			
 		$rs = $db->Execute("UPDATE otrastecnicas
 			SET
-				precio = ".($this->getPrecio() <> ''?$this->getPrecio():0)."
+				descripcion = '".$this->getDescripcion()."'
 			WHERE idItem = ".$this->idItem);
 			
 		return $rs?true:false;
+	}
+	
+	/**
+	* Establece el precio
+	*
+	* @autor Hugo
+	* @param integer $limite id del Limite
+	* @param decimal $precio Precio definido
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPrecio($limite, $precio){
+		if ($this->getId() == '') return false;
+		if (!($precio > 0 and is_numeric(sprintf("%0.2f", $precio)))) return false;
+		
+		$db = TBase::conectaDB();
+		
+		$db->Execute("delete from preciootrastecnicas where idItem = ".$this->getId()." and idLimite = ".$limite);
+		
+		$rs = $db->Execute("insert into preciootrastecnicas (idItem, idLimite, precio) values (".$this->getId().", ".$limite.", ".$precio.")");
+		return $rs?true:false;
+	}
+	
+	/**
+	* Retorna el precio
+	*
+	* @autor Hugo
+	* @param integer $cantidad 
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getPrecio($cantidad){
+		if ($this->getId() == '') return false;
+		if (!($cantidad > 0 and is_numeric($cantidad))) return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select precio
+from item a join otrastecnicas b using(idItem) join preciootrastecnicas c using(idItem) join limite d using(idLimite)
+where idItem = ".$this->getId()." and inferior <= ".$cantidad." order by inferior desc;");
+		
+		if($rs->EOF) return false;
+		
+		return $rs->fields["precio"];
 	}
 }
 ?>

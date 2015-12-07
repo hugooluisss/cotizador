@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 12:18:25
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-07 10:08:34
          compiled from "templates/plantillas/modulos/serigrafia/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4636364355629b56b11c981-53313419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '211de2ddf06b90ada33066f036d18a189dfb1077' => 
     array (
       0 => 'templates/plantillas/modulos/serigrafia/panel.tpl',
-      1 => 1445874753,
+      1 => 1449504204,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_5629b56b152924_63766466',
+  'variables' => 
+  array (
+    'tipoItem' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5629b56b152924_63766466')) {function content_5629b56b152924_63766466($_smarty_tpl) {?><div class="row">
@@ -73,6 +77,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<input class="form-control" id="txtInferior" name="txtInferior">
 					</div>
 					<div class="col-xs-4">
+						<input type="hidden" id="tipoItem" value="<?php echo $_smarty_tpl->tpl_vars['tipoItem']->value;?>
+" />
 						<button class="btn btn-success" id="btnAddLimite"><i class="fa fa-plus-circle"></i></button>
 					</div>
 				</div>

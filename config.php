@@ -147,7 +147,7 @@ $conf['cotizador'] = array(
 	'vista' => 'cotizador/panel.tpl',
 	'descripcion' => 'cotizador',
 	'seguridad' => true,
-	'js' => array('cotizacion.class.js', 'serigrafia.class.js', 'cliente.class.js'),
+	'js' => array('cotizacion.class.js', 'serigrafia.class.js', 'cliente.class.js', 'otrastecnicas.class.js'),
 	'jsTemplate' => array('cotizador.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
@@ -321,7 +321,7 @@ $conf['tecnicasImpresion'] = array(
 	'vista' => 'tecnicasImpresion/panel.tpl',
 	'descripcion' => 'tecnicasImpresion',
 	'seguridad' => true,
-	'js' => array('otrastecnicas.class.js'),
+	'js' => array('otrastecnicas.class.js', 'limite.class.js'),
 	'jsTemplate' => array('otrasTecnicas.js'),
 	'capa' => LAYOUT_DEFECTO);
 
@@ -346,4 +346,13 @@ $conf['clienteDatos'] = array(
 	'jsTemplate' => array('clientes.js'),
 	'capa' => LAYOUT_DEFECTO,
 	'vista' => 'clientes/modificar.tpl');
+	
+$conf['tecnicasPrecios'] = array(
+	'controlador' => 'tecnicasImpresion.php',
+	'vista' => 'tecnicasImpresion/panelPrecios.tpl',
+	'descripcion' => 'Panel de definición de precios',
+	'seguridad' => true,
+	'js' => array('otrastecnicas.class.js'),
+	'jsTemplate' => array('preciosOtrasTecnicas.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

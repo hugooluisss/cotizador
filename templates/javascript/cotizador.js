@@ -225,7 +225,24 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#transfer #txtCantidad").change(function(){
 		$("#transfer #txtCantidad").val(parseInt($("#transfer #txtCantidad").val()));
-		$("#transfer #txtTotal").val(parseFloat($("#transfer #txtPU").val() * $("#transfer #txtCantidad").val()).toFixed(2));
+		var obj = new TOtrasTecnicas;
+		obj.getPrecio($("#transfer #idTransfer").val(), $("#transfer #txtCantidad").val(), {
+			before: function(){
+				$("#transfer #txtCantidad").prop("disabled", true);
+				$("#transfer #txtPU").val("");
+			},
+			after: function(data){
+				$("#transfer #txtCantidad").prop("disabled", false);
+				
+				if (data.band == ""){
+					$("#transfer #txtPU").val(data.precio);
+					$("#transfer #txtTotal").val(parseFloat($("#transfer #txtPU").val() * $("#transfer #txtCantidad").val()).toFixed(2));
+				}else{
+					alert(data.band);
+					$("#transfer #txtTotal").val("0.00");
+				}
+			}
+		});
 	});
 	
 	$("#transfer #btnAgregar").click(function(){
@@ -241,7 +258,24 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#sublimacion #txtCantidad").change(function(){
 		$("#sublimacion #txtCantidad").val(parseInt($("#sublimacion #txtCantidad").val()));
-		$("#sublimacion #txtTotal").val(parseFloat($("#sublimacion #txtPU").val() * $("#sublimacion #txtCantidad").val()).toFixed(2));
+		var obj = new TOtrasTecnicas;
+		obj.getPrecio($("#sublimacion #idSublimacion").val(), $("#sublimacion #txtCantidad").val(), {
+			before: function(){
+				$("#sublimacion #txtCantidad").prop("disabled", true);
+				$("#sublimacion #txtPU").val("");
+			},
+			after: function(data){
+				$("#sublimacion #txtCantidad").prop("disabled", false);
+				
+				if (data.band == ""){
+					$("#sublimacion #txtPU").val(data.precio);
+					$("#sublimacion #txtTotal").val(parseFloat($("#sublimacion #txtPU").val() * $("#sublimacion #txtCantidad").val()).toFixed(2));
+				}else{
+					alert(data.band);
+					$("#sublimacion #txtTotal").val("0.00");
+				}
+			}
+		});
 	});
 	
 	$("#sublimacion #btnAgregar").click(function(){

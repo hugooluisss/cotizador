@@ -31,6 +31,12 @@ switch($objModulo->getId()){
 				$obj = new TRopa($_POST['item']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'setPrecio':
+				$obj = new TTecnicas();
+				$obj->setId($_POST['item']);
+				
+				echo json_encode(array("band" => $obj->setPrecio($_POST['limite'], $_POST['precio']), "mensaje" => "Recuerde que el valor debe de ser numérico", "precio" => sprintf("%.2f", $_POST['precio'])));
+			break;
 		}
 	break;
 }

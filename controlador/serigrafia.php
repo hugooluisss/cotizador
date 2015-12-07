@@ -12,6 +12,7 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("lista", $datos);
+		$smarty->assign("tipoItem", 2);
 	break;
 	case 'serigrafiaPrecios':
 		$obj = new TSerigrafia($_GET['id']);
@@ -19,7 +20,7 @@ switch($objModulo->getId()){
 		$smarty->assign("id", $obj->getId());
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from limite");
+		$rs = $db->Execute("select * from limite where idTipoItem = 2");
 		$datos = array();
 		while(!$rs->EOF){
 			array_push($datos, $rs->fields);
