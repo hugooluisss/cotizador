@@ -65,6 +65,22 @@ switch($objModulo->getId()){
 				$obj = new TCliente($_POST['cliente']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'autocomplete':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from cliente where nombre like '%".$_GET['term']."%'");
+				
+				$datos = array();
+				while(!$rs->EOF){
+					$el = array();
+					$el['id'] = $rs->fields['idCliente'];
+					$el['label'] = $rs->fields['nombre'];
+					$el['identificador'] = $rs->fields['idCliente'];
+					array_push($datos, $el);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }

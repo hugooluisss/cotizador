@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-03 09:05:36
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-09 12:29:25
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1449152175,
+      1 => 1449685675,
       2 => 'file',
     ),
   ),
@@ -142,6 +142,7 @@ img/logo-min.png" class="img-rounded"/></span>
 						<?php }?>
 						
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->

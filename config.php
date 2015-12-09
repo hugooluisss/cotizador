@@ -355,4 +355,23 @@ $conf['tecnicasPrecios'] = array(
 	'js' => array('otrastecnicas.class.js'),
 	'jsTemplate' => array('preciosOtrasTecnicas.js'),
 	'capa' => LAYOUT_DEFECTO);
+
+/* Pedidos clientes */
+$conf['pedidos'] = array(
+	'controlador' => 'pedidos.php',
+	'vista' => 'pedidos/panel.tpl',
+	'descripcion' => 'Pedidos',
+	'seguridad' => true,
+	'js' => array('pedidos.class.js'),
+	'jsTemplate' => array('pedidos.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['clientesListaBusqueda'] = array(
+	'controlador' => 'pedidos.php',
+	'vista' => 'pedidos/clientesLista.tpl',
+	'descripcion' => 'Pedidos',
+	'seguridad' => true,
+	'js' => array('pedidos.class.js'),
+	'jsTemplate' => array('pedidos.js'),
+	'capa' => LAYOUT_AJAX);
 ?>

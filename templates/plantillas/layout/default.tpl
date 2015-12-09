@@ -98,6 +98,7 @@
 						{/if}
 						
 						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
+						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
