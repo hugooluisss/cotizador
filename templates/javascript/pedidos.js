@@ -28,5 +28,12 @@ function getClientes(){
 			"info": true,
 			"autoWidth": false
 		});
+		
+		$("#winClientes #tblClientes tr").click(function(){
+			var el =  $(this).attr("cliente");
+			
+			$("#txtCliente").val(el.item.label);
+			$("#txtCliente").attr("idCliente", el.item.identificador);
+		});
 	});
 }
