@@ -12,6 +12,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#btnNuevoCliente").click(function(){
+		$("#winModificarCliente").modal();
+		$("#winModificarCliente #frmAdd").reset();
+		$("#winModificarCliente #txtNombre").focus();
+	});
 	getClientes();
 });
 
@@ -30,10 +35,12 @@ function getClientes(){
 		});
 		
 		$("#winClientes #tblClientes tr").click(function(){
-			var el =  $(this).attr("cliente");
+			var el =  jQuery.parseJSON($(this).attr("cliente"));
 			
-			$("#txtCliente").val(el.item.label);
-			$("#txtCliente").attr("idCliente", el.item.identificador);
+			$("#txtCliente").val(el.nombre);
+			$("#txtCliente").attr("idCliente", el.idCliente);
+			
+			$("#winClientes").modal("hide");
 		});
 	});
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-09 13:43:05
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-16 12:36:06
          compiled from "templates/plantillas/modulos/pedidos/clientes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1920990795566880a6926b21-39718597%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3342ee211d81b10c76f3d832050f95fcaaca266d' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/clientes.tpl',
-      1 => 1449690145,
+      1 => 1450290794,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_566880a697ef76_32376038',
+  'variables' => 
+  array (
+    'PAGE' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_566880a697ef76_32376038')) {function content_566880a697ef76_32376038($_smarty_tpl) {?><div class="modal fade" id="winClientes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -35,4 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/cotizador/modificarCliente.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

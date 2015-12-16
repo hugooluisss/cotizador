@@ -7,7 +7,7 @@
 			</div>
 			<div class="col-xs-5">
 				<input type="button" class="btn btn-success" id="btnLstClientes" value="Buscar" />
-				<input type="button" class="btn btn-success" value="Nuevo" />
+				<input type="button" class="btn btn-success" id="btnNuevoCliente" value="Nuevo" />
 			</div>
 		</div>
 	</div>

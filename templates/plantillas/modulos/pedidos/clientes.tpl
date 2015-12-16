@@ -15,3 +15,5 @@
 		</div>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/cotizador/modificarCliente.tpl"}

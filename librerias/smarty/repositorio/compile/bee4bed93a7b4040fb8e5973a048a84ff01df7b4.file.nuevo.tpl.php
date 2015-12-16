@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-09 13:27:34
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-16 12:36:06
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1449689253,
+      1 => 1450290830,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="col-xs-5">
 				<input type="button" class="btn btn-success" id="btnLstClientes" value="Buscar" />
-				<input type="button" class="btn btn-success" value="Nuevo" />
+				<input type="button" class="btn btn-success" id="btnNuevoCliente" value="Nuevo" />
 			</div>
 		</div>
 	</div>
