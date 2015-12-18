@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-16 12:25:08
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-18 13:30:22
          compiled from "templates/plantillas/modulos/pedidos/clientesLista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2037936342566884e2655461-48769858%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '298f957542bc7f93f9cad7579cde2a807ccbf2fd' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/clientesLista.tpl',
-      1 => 1449757278,
+      1 => 1450466558,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<tr>
 			<th>#</th>
 			<th>Nombre</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -43,6 +44,16 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
+			<td>
+				<button type="button" class="btn btn-success" action="seleccionar" title="Seleccionar" cliente='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'>
+					<i class="fa fa-hand-pointer-o"></i>
+				</button>
+				<button type="button" class="btn btn-success" action="modificar" title="Modificar" cliente="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
+">
+					<i class="fa fa-pencil"></i>
+				</button>
+			</td>
 		</tr>
 		<?php } ?>
 	</tbody>

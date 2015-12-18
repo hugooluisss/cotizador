@@ -356,13 +356,36 @@ $conf['tecnicasPrecios'] = array(
 	'jsTemplate' => array('preciosOtrasTecnicas.js'),
 	'capa' => LAYOUT_DEFECTO);
 
+/*Catalogo de impresiones de pedidos*/
+$conf['catImpresionesPed'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'catalogoImpresiones/panel.tpl',
+	'descripcion' => 'Catalogo de impresiones de pedidos',
+	'seguridad' => true,
+	'js' => array('impresionPedidos.class.js'),
+	'jsTemplate' => array('impresionPedidos.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listadoImpresiones'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'catalogoImpresiones/lista.tpl',
+	'descripcion' => 'Lista de servicios de impresion',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cCatalogoPedidos'] = array(
+	'controlador' => 'configPedidos.php',
+	'descripcion' => 'Controlador de servicios en pedidos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 /* Pedidos clientes */
 $conf['pedidos'] = array(
 	'controlador' => 'pedidos.php',
 	'vista' => 'pedidos/panel.tpl',
 	'descripcion' => 'Pedidos',
 	'seguridad' => true,
-	'js' => array('pedidos.class.js'),
+	'js' => array('pedidos.class.js', 'cliente.class.js'),
 	'jsTemplate' => array('pedidos.js'),
 	'capa' => LAYOUT_DEFECTO);
 

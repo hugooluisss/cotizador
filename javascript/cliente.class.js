@@ -36,4 +36,15 @@ TCliente = function(){
 			}
 		}, "json");
 	};
+	
+	this.getData = function(id, event){
+		if (event.before !== undefined)
+			event.before();
+			
+		$.get('?mod=cclientes&action=getData&id=' + id, function(data){
+			if (event.after !== undefined)
+				event.after(data);
+
+		}, "json");
+	}
 };

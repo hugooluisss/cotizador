@@ -95,6 +95,10 @@
 						<li {if $PAGE.modulo eq 'numerosLetras'}class="active"{/if}><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
 						<li {if $PAGE.modulo eq 'tecnicasImpresion'}class="active"{/if}><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
 						<li {if $PAGE.modulo eq 'otrosServicios'}class="active"{/if}><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
+						<br />
+						
+						<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
+						<br />
 						{/if}
 						
 						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>

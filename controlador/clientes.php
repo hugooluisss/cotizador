@@ -81,6 +81,12 @@ switch($objModulo->getId()){
 				
 				echo json_encode($datos);
 			break;
+			case 'getData':
+				$db = TBase::conectaDB();
+				
+				$rs = $db->Execute("select * from cliente where idCliente = ".$_GET['id']);
+				echo json_encode($rs->fields);
+			break;
 		}
 	break;
 }
