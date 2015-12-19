@@ -98,11 +98,12 @@
 						<br />
 						
 						<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
+						<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
 						<br />
 						{/if}
 						
 						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
-						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
+						<li {if $PAGE.modulo eq 'pedidos'}class="active"{/if}><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->

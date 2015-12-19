@@ -128,6 +128,39 @@ $(document).ready(function(){
 				}
 			);
 		}
-    });
+	});
 });
-    
+   
+//Remeras
+$(document).ready(function(){
+	$("#txtNombreRemera").autocomplete({
+		source: "index.php?mod=cropa&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
+			$("#txtNombreRemera").val(el.item.label);
+			$("#txtNombreRemera").attr("idRemera", el.item.identificador);
+		}
+	});
+	
+	$("#winRemeras #tblRemeras button[action=seleccionar]").click(function(){
+		var el =  jQuery.parseJSON($(this).attr("item"));
+		
+		$("#txtNombreRemera").val(el.nombre);
+		$("#txtNombreRemera").attr("idRemera", el.idItem);
+		$("#winRemeras").modal("hide");
+	});
+		
+	$("#tblRemeras").DataTable({
+		"responsive": true,
+		"language": espaniol,
+		"paging": true,
+		"lengthChange": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false
+	});
+	
+	$("#btnLstRemeras").click(function(){
+		$("#winRemeras").modal();
+	});
+});

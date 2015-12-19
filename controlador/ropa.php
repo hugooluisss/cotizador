@@ -32,6 +32,22 @@ switch($objModulo->getId()){
 				$obj = new TRopa($_POST['item']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'autocomplete':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from item a join ropa b using(idItem) where nombre like '%".$_GET['term']."%'");
+				
+				$datos = array();
+				while(!$rs->EOF){
+					$el = array();
+					$el['id'] = $rs->fields['idItem'];
+					$el['label'] = $rs->fields['nombre'];
+					$el['identificador'] = $rs->fields['idItem'];
+					array_push($datos, $el);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }

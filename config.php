@@ -378,6 +378,29 @@ $conf['cCatalogoPedidos'] = array(
 	'descripcion' => 'Controlador de servicios en pedidos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/*Entregables en pedidos*/
+$conf['entregablesPed'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'entregables/panel.tpl',
+	'descripcion' => 'Catalogo de entregables',
+	'seguridad' => true,
+	'js' => array('entregables.class.js'),
+	'jsTemplate' => array('entregables.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listadoEntregables'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'entregables/lista.tpl',
+	'descripcion' => 'Lista de entregables',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['centregables'] = array(
+	'controlador' => 'configPedidos.php',
+	'descripcion' => 'Controlador de entregables en pedidos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 
 /* Pedidos clientes */
 $conf['pedidos'] = array(

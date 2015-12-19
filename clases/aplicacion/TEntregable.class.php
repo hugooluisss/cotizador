@@ -1,12 +1,12 @@
 <?php
 /**
-* TImpresion
+* TEntregable
 * @package aplicacion
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
 
-class TImpresion{
-	private $idImpresion;
+class TEntregable{
+	private $idEntregable;
 	private $nombre;
 	
 	/**
@@ -16,7 +16,7 @@ class TImpresion{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TImpresion($id = ''){
+	public function TEntregable($id = ''){
 		$this->setId($id);
 		
 		return true;
@@ -35,7 +35,7 @@ class TImpresion{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from catalogoimpresion where idImpresion = ".$id);
+		$rs = $db->Execute("select * from entregable where idEntregable = ".$id);
 		
 		foreach($rs->fields as $field => $val)
 			$this->$field = $val;
@@ -52,7 +52,7 @@ class TImpresion{
 	*/
 	
 	public function getId(){
-		return $this->idImpresion;
+		return $this->idEntregable;
 	}
 	
 	/**
@@ -93,19 +93,19 @@ class TImpresion{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO catalogoimpresion(nombre) VALUES('".$this->getNombre()."');");
+			$rs = $db->Execute("INSERT INTO entregable(nombre) VALUES('".$this->getNombre()."');");
 			if (!$rs) return false;
 			
-			$this->idImpresion = $db->Insert_ID();
+			$this->idEntregable = $db->Insert_ID();
 		}
 		
 		if ($this->getId() == '')
 			return false;
 			
-		$rs = $db->Execute("UPDATE catalogoimpresion
+		$rs = $db->Execute("UPDATE entregable
 			SET
 				nombre = '".$this->getNombre()."'
-			WHERE idImpresion = ".$this->getId());
+			WHERE idEntregable = ".$this->getId());
 			
 		return $rs?true:false;
 	}
@@ -122,7 +122,7 @@ class TImpresion{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("delete from catalogoimpresion where idImpresion = ".$this->getId());
+		$rs = $db->Execute("delete from entregable where idEntregable = ".$this->getId());
 		
 		return $rs?true:false;
 	}
