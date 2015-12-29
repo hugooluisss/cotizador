@@ -17,10 +17,10 @@
 			</div>
 		</div>
 	</div>
-	<div id="lista" class="tab-pane fade in active">
+	<div id="lista" class="tab-pane fade in">
 		<div class="box">
 			<div class="box-body">
-				{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/lista.tpl"}
+				{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/listaPanel.tpl"}
 			</div>
 		</div>
 	</div>

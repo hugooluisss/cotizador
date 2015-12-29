@@ -99,6 +99,7 @@
 						
 						<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
 						<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
+						<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 						<br />
 						{/if}
 						
@@ -186,8 +187,16 @@
     <script src="{$PAGE.ruta}plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
     <script src="{$PAGE.ruta}plugins/input-mask/jquery.inputmask.extensions.js"></script>
     
-    <script src="{$PAGE.ruta}dist/js/app.js" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" type="text/css" href="{$PAGE.ruta}plugins/colorpicker/bootstrap-colorpicker.css" />
+    <script type="text/javascript" src="{$PAGE.ruta}plugins/colorpicker/bootstrap-colorpicker.js"></script>
     
+    <script src="{$PAGE.ruta}dist/js/app.js" type="text/javascript"></script>
+    <script src="{$PAGE.ruta}plugins/upload/js/jquery.fileupload.js" type="javascript"></script>
+    
+	<script src="{$PAGE.ruta}plugins/upload/js/jquery.iframe-transport.js"></script>
+	<script src="{$PAGE.ruta}plugins/upload/js/jquery.fileupload.js"></script>
+		
+		
     {foreach from=$PAGE.scriptsJS item=script}
 		<script type="text/javascript" src="{$script}?{rand()}"></script>
 	{/foreach}
@@ -204,5 +213,9 @@
       $.widget.bridge('uibutton', $.ui.button);
     </script>
     {/if}
+    
+    <style type="text/css"> 
+    	.ui-autocomplete { z-index:2147483647; }
+    </style>
   </body>
 </html>

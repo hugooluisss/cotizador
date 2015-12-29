@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-18 22:41:54
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-29 09:02:53
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1450500113,
+      1 => 1451401367,
       2 => 'file',
     ),
   ),
@@ -143,6 +143,7 @@ img/logo-min.png" class="img-rounded"/></span>
 						
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='catImpresionesPed'){?>class="active"<?php }?>><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='entregablesPed'){?>class="active"<?php }?>><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estadoPedidos'){?>class="active"<?php }?>><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 						<br />
 						<?php }?>
 						
@@ -261,9 +262,22 @@ plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/input-mask/jquery.inputmask.extensions.js"></script>
     
+    <link rel="stylesheet" media="screen" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/colorpicker/bootstrap-colorpicker.css" />
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/colorpicker/bootstrap-colorpicker.js"></script>
+    
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 dist/js/app.js" type="text/javascript"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/upload/js/jquery.fileupload.js" type="javascript"></script>
     
+	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/upload/js/jquery.iframe-transport.js"></script>
+	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/upload/js/jquery.fileupload.js"></script>
+		
+		
     <?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['PAGE']->value['scriptsJS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['script']->key => $_smarty_tpl->tpl_vars['script']->value){
@@ -287,6 +301,10 @@ javascript/cambiarPass.js"></script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
     <?php }?>
+    
+    <style type="text/css"> 
+    	.ui-autocomplete { z-index:2147483647; }
+    </style>
   </body>
 </html>
 <?php }} ?>

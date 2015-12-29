@@ -13,6 +13,7 @@ class TModulo{
 	private $vista;
 	private $controlador;
 	private $capa;
+	private $debugSeg;
 	
 	public function TModulo($id = null){
 		$this->setId($id);
@@ -29,6 +30,7 @@ class TModulo{
 		$this->idModulo = $id;
 		$this->categoria = $conf[$id]["categoria"] == ''?"Sin especificar":$conf[$id]["categoria"];
 		$this->seguridad = $conf[$id]["seguridad"];
+		$this->debugSeg = $conf[$id]["debugSeg"];
 		$this->scriptsJS = array();
 		
 		if (isset($conf[$id]['js'])){
@@ -116,5 +118,9 @@ class TModulo{
 	
 	public function getAction(){
 		return $_GET['action'];
+	}
+	
+	public function getDebugSeguridad(){
+		return $this->debugSeg == false?false:true;
 	}
 }

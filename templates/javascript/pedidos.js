@@ -1,5 +1,7 @@
 $(document).ready(function(){
-	$("#txtFecha, #txtEntrega").inputmask("9999-99-99");
+	getLista();
+	$('#panelTabs a[href="#nuevo"]').tab('show');
+	$("#txtFecha, #txtEntrega").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
 	$("#btnLstClientes").click(function(){
 		$("#winClientes").modal();
@@ -22,7 +24,36 @@ $(document).ready(function(){
 		});
 		$("#winModificarCliente #txtNombre").focus();
 	});
+	
+	$("#winModificarCliente #txtNombre").autocomplete({
+		source: "index.php?mod=cclientes&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
+			$("#winModificarCliente #txtNombre").val(el.item.nombre);
+			$("#winModificarCliente #id").val(el.item.identificador);
+			$("#winModificarCliente #txtRUT").val(el.item.rut);
+			$("#winModificarCliente #txtRazonSocial").val(el.item.razonsocial);
+			$("#winModificarCliente #txtRFC").val(el.item.rfc);
+			$("#winModificarCliente #txtEmail").val(el.item.email);
+			$("#winModificarCliente #txtDireccion").val(el.item.direccion);
+			$("#winModificarCliente #txtLocalidad").val(el.item.localidad);
+			$("#winModificarCliente #txtTelefono").val(el.item.tel);
+			$("#winModificarCliente #txtCelular").val(el.item.cel);
+			$("#winModificarCliente #txtObservaciones").val(el.item.observaciones);
+		}
+	});
+	
 	getClientes();
+	
+	$.each(["total", "sena"], function(index, elemento){
+		$("#" + elemento).change(function(){
+			var el = $(this);
+			el.val(parseFloat(el.val()).toFixed(2));
+			
+			$("#saldo").val($("#total").val() - $("#sena").val());
+			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+		});
+	});
 });
 
 function getClientes(){
@@ -137,16 +168,22 @@ $(document).ready(function(){
 		source: "index.php?mod=cropa&action=autocomplete",
 		minLength: 2,
 		select: function(e, el){
-			$("#txtNombreRemera").val(el.item.label);
-			$("#txtNombreRemera").attr("idRemera", el.item.identificador);
+			var obj = new TPedido;
+			obj.addRemera(el.item.identificador, $("#pedido").val(), {
+				after: function(data){
+					$("#txtNombreRemera").val("");
+				}
+			});
 		}
 	});
 	
 	$("#winRemeras #tblRemeras button[action=seleccionar]").click(function(){
 		var el =  jQuery.parseJSON($(this).attr("item"));
 		
-		$("#txtNombreRemera").val(el.nombre);
-		$("#txtNombreRemera").attr("idRemera", el.idItem);
+		$("#txtNombreRemera").val("");
+		var obj = new TPedido;
+		obj.addRemera(el.idItem);
+		
 		$("#winRemeras").modal("hide");
 	});
 		
@@ -163,4 +200,333 @@ $(document).ready(function(){
 	$("#btnLstRemeras").click(function(){
 		$("#winRemeras").modal();
 	});
+});
+
+//Guardar
+$(document).ready(function(){
+	$("#btnGuardar").click(function(){
+		var band = true;
+		if ($("#txtCliente").attr("idCliente") == '' || $("#txtCliente").attr("idCliente") === undefined){
+			alert("Debes de indicar un cliente");
+			$("#winClientes").modal();
+			band = false;
+		}
+		
+		if ($("#txtFecha").val() == '' || $("#txtRegistro").val() == ''){
+			alert("La fecha de registro y entrega son necesarias");
+			$("#txtFecha").focus();
+			band = false;
+		}
+		
+		if ($("#txtPrecio").val() == ''){
+			alert("Indica un precio");
+			$("#txtPrecio").focus();
+			
+			band = false;
+		}
+		
+		if (band){
+			var obj = new TPedido;
+			var entrega = $("#txtEntrega").val() + " " + $("#selHora").val() + ":" + $("#selMinuto").val() + ":00";
+			var colores = new Object();
+			colores.c1 = $("#txtColor1").val();
+			colores.c2 = $("#txtColor2").val();
+			colores.c3 = $("#txtColor3").val();
+			colores.c4 = $("#txtColor4").val();
+			
+			//todas las tallas
+			var tallas = new Array();
+			$(".totalTalla").each(function(){
+				if ($(this).val() > 0){
+					var talla = new Object();
+					
+					talla.id = $(this).attr("idTalla");
+					talla.cantidad = $(this).val();
+					
+					tallas.push(talla);
+				}
+			});
+			
+			var impresiones = new Array();
+			$(".serviciosImpresion:checked").each(function(){
+				var impresion = new Object();
+				
+				impresion.id = $(this).val();
+				impresiones.push(impresion);
+			});
+			
+			var entregables = new Array();
+			$(".entregables:checked").each(function(){
+				var entregable = new Object();
+				
+				entregable.id = $(this).val();
+				entregables.push(entregable);
+			});
+			
+			obj.guardar(
+				$("#pedido").val(), 
+				$("#selEstado").val(), 
+				$("#txtCliente").attr("idCliente"), 
+				$("#txtRegistro").val(), 
+				entrega, 
+				$("#txtEntregables").val(), 
+				$("#selDiseno").val(), 
+				JSON.stringify(colores), 
+				$("#txtObservaciones").val(), 
+				$("#total").val(), 
+				$("#sena").val(), 
+				JSON.stringify(tallas), 
+				JSON.stringify(impresiones), 
+				JSON.stringify(entregables), {
+					before: function(){
+						
+					},
+					after: function(data){
+						if (data.band){
+							$("#pedido").val(data.pedido);
+							getLista();
+							alert("Pedido guardado");
+						}
+					}
+				});
+		}
+	});
+});
+
+
+$(document).ready(function(){
+	$("#txtInicioBus, #txtFinBus").datepicker( "option", "dateFormat", "yy-mm-dd" );
+	
+	$("#btnBuscar").click(function(){
+		getLista();
+	});
+	
+	$("#btnNuevoPedido").click(function(){
+		if (confirm("¿Seguro?")){
+			$("#pedido").val("");
+			$("#txtCliente").val("");
+			$("#txtCliente").attr("idCliente", "");
+			var f = new Date();
+			fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+			$("#txtFecha").val(fecha);
+			$("#txtEntrega").val(fecha);
+			$("#selHora").val(0);
+			$("#selMinuto").val(0);
+			$("#selEstado").val($("#selEstado option:first").val());
+			
+			$(".serviciosImpresion").prop("checked", false);
+			$(".entregables").prop("checked", false);
+			$("#txtEntregable").val("");
+			
+			var tabla = new TPedido();
+			
+			tabla.clearTable();
+			
+			$("#selDiseno").val($("#selDiseno option:first").val());
+			$("#txtColor1").val("");
+			$("#txtColor2").val("");
+			$("#txtColor3").val("");
+			$("#txtColor4").val("");
+			$("#txtObservaciones").val("");
+			$("#total").val("0.00");
+			$("#sena").val("0.00");
+			
+			$("#saldo").val($("#total").val() - $("#sena").val());
+			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+		}
+	});
+});
+
+function getLista(){
+	$.get("?mod=listaPedidos&inicio=" + $("#txtInicioBus").val() + "&fin=" + $("#txtFinBus").val() + "&tipo=" + $("#selTipoBusqueda").val(), function( data ) {
+		$("#dvLista").html(data);
+		
+		$("[action=eliminar]").click(function(){
+			if(confirm("¿Seguro?")){
+				var obj = new TPedido;
+				obj.del($(this).attr("pedido"), {
+					after: function(data){
+						getLista();
+					}
+				});
+			}
+		});
+		
+		$("[action=modificar]").click(function(){
+			$.post("?mod=cpedidos&action=getData", {
+					"id": $(this).attr("pedido")
+				},function(datos){
+					$("#pedido").val(datos.idPedido);
+					$("#txtCliente").val(datos.nombreCliente);
+					$("#txtCliente").attr("idCliente", datos.idCliente);
+					$("#txtFecha").val(datos.registro);
+					$("#txtEntrega").val(datos.entrega);
+					$("#selHora").val(datos.horaEntrega);
+					$("#selMinuto").val(datos.minutosEntrega);
+					$("#selEstado").val(datos.idEstado);
+					
+					$(".serviciosImpresion").prop("checked", false);
+					datos.impresion.forEach(function(el){
+						$(".serviciosImpresion[value=" + el.idImpresion + "]").prop("checked", true);
+					});
+					
+					$(".entregables").prop("checked", false);
+					datos.entregables.forEach(function(el){
+						$(".entregables[value=" + el.idEntregable + "]").prop("checked", true);
+					});
+					
+					$("#txtEntregable").val(datos.entregable);
+					
+					var tabla = new TPedido();
+					
+					tabla.clearTable();
+					datos.remeras.forEach(function(el){
+						tabla.addRemera(el.idItem, datos.idPedido, {});
+					});
+					
+					$("#selDiseno").val(datos.diseno);
+					var colores = jQuery.parseJSON(datos.colores);
+					$("#txtColor1").val(colores.c1);
+					$("#txtColor2").val(colores.c2);
+					$("#txtColor3").val(colores.c3);
+					$("#txtColor4").val(colores.c4);
+					$("#txtObservaciones").val(datos.observaciones);
+					$("#total").val(datos.precio);
+					$("#sena").val(datos.anticipo);
+					
+					$("#saldo").val($("#total").val() - $("#sena").val());
+					$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+					
+					datos.archivos.forEach(function(el){
+					
+						var tpl = $('<li class="list-group-item">'+''+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a><a class="btn btn-danger btn-xs eliminar">Eliminar</a></li>' );
+			            
+			            // Append the file name and file size
+						tpl.find('p').text(el);
+						tpl.find("a.eliminar").click(function(){
+							if (confirm("¿Seguro?")){
+								$.post('?mod=cpedidos&action=delfile', {
+									"pedido": $("#pedido").val(),
+									"archivo": el
+								}, function(data){
+									if(data.band)
+										tpl.remove();
+								}, "json");
+							}
+						});
+			    
+						tpl.find("a.vista").click(function(){
+							url = 'repositorio/pedidos/orden_' + $("#pedido").val() + '/' + el;
+							var win = window.open(url, '_blank');
+							win.focus();
+						});
+						
+						 // Add the HTML to the UL element
+						data.context = tpl.appendTo($('#upload .elementos'));
+					});
+							
+					$('#panelTabs a[href="#nuevo"]').tab('show');
+				},
+				"json"
+			);
+		});
+		
+		$("#tblPedidos").DataTable({
+			"responsive": true,
+			"language": espaniol,
+			"paging": true,
+			"lengthChange": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
+		});
+	});
+}
+
+$(document).ready(function(){
+	$('#upload').fileupload({
+		// This function is called when a file is added to the queue
+		add: function (e, data) {
+			if($("#pedido").val() == ''){
+				alert("Primero debes de crear la orden, indica los datos principales y presiona guardar para despues poder subir archivos");
+				$("#txtCliente").focus();
+			}else{
+				//This area will contain file list and progress information.
+				var tpl = $('<li class="working list-group-item">'+
+			            '<input type="text" value="0" data-width="48" data-height="48" data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" />'+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a><a class="btn btn-danger btn-xs eliminar">Eliminar</a></li>' );
+			            
+			     // Append the file name and file size
+			    tpl.find('p').text(data.files[0].name).append('<i>' + formatFileSize(data.files[0].size) + '</i>');
+			    tpl.find("a.eliminar").click(function(){
+			    	if (confirm("¿Seguro?")){
+				    	$.post('?mod=cpedidos&action=delfile', {
+					    	"pedido": $("#pedido").val(),
+					    	"archivo": data.files[0].name
+					    }, function(data){
+					    	if(data.band)
+					    		tpl.remove();
+						}, "json");
+			    	}
+			    });
+			    
+			    tpl.find("a.vista").click(function(){
+			    	url = 'repositorio/pedidos/orden_' + $("#pedido").val() + '/' + data.files[0].name;
+			    	var win = window.open(url, '_blank');
+			    	win.focus();
+			    });
+			
+			     // Add the HTML to the UL element
+				data.context = tpl.appendTo($('#upload .elementos'));
+				
+				// Initialize the knob plugin. This part can be ignored, if you are showing progress in some other way.
+				tpl.find('input').knob();
+				
+				// Listen for clicks on the cancel icon
+				tpl.find('span').click(function(){
+					if(tpl.hasClass('working')){
+						jqXHR.abort();
+					}
+					tpl.fadeOut(function(){
+						tpl.remove();
+					});
+				});
+			
+				// Automatically upload the file once it is added to the queue
+				var jqXHR = data.submit();
+			}
+		},
+		progress: function(e, data){
+		    // Calculate the completion percentage of the upload
+		    var progress = parseInt(data.loaded / data.total * 100, 10);
+		
+		    // Update the hidden input field and trigger a change
+		    // so that the jQuery knob plugin knows to update the dial
+		    data.context.find('input').val(progress).change();
+		
+		    if(progress == 100){
+		        data.context.removeClass('working');
+		    }
+		},
+		fail: function(){
+			alert("Ocurrió un problema en el servidor, contacta al administrador del sistema");
+			
+			console.log("Error en el servidor al subir el archivo, checa permisos de la carpeta repositorio");
+		}
+	});
+	
+	//Helper function for calculation of progress
+	function formatFileSize(bytes) {
+		if (typeof bytes !== 'number') {
+		    return '';
+		}
+		
+		if (bytes >= 1000000000) {
+		    return (bytes / 1000000000).toFixed(2) + ' GB';
+		}
+		
+		if (bytes >= 1000000) {
+		    return (bytes / 1000000).toFixed(2) + ' MB';
+		}
+		return (bytes / 1000).toFixed(2) + ' KB';
+	}
 });

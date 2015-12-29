@@ -420,4 +420,58 @@ $conf['clientesListaBusqueda'] = array(
 	'js' => array('pedidos.class.js'),
 	'jsTemplate' => array('pedidos.js'),
 	'capa' => LAYOUT_AJAX);
+	
+/*Entregables en pedidos*/
+$conf['entregablesPed'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'entregables/panel.tpl',
+	'descripcion' => 'Catalogo de entregables',
+	'seguridad' => true,
+	'js' => array('entregables.class.js'),
+	'jsTemplate' => array('entregables.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listadoEntregables'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'entregables/lista.tpl',
+	'descripcion' => 'Lista de entregables',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+/* Estados */
+$conf['estadoPedidos'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'estadoPedidos/panel.tpl',
+	'descripcion' => 'Estado de los pedidos',
+	'seguridad' => true,
+	'js' => array('estados.class.js'),
+	'jsTemplate' => array('estados.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listadoEstados'] = array(
+	'controlador' => 'configPedidos.php',
+	'vista' => 'estadoPedidos/lista.tpl',
+	'descripcion' => 'Lista de estados para los pedidos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['cestados'] = array(
+	'controlador' => 'configPedidos.php',
+	'descripcion' => 'Controlador de estados',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cpedidos'] = array(
+	'controlador' => 'pedidos.php',
+	'descripcion' => 'Controlador de pedidos',
+	'seguridad' => true,
+	'debugSeg' => false,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaPedidos'] = array(
+	'controlador' => 'pedidos.php',
+	'vista' => 'pedidos/lista.tpl',
+	'descripcion' => 'Lista de pedidos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

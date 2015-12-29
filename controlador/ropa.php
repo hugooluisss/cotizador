@@ -40,13 +40,35 @@ switch($objModulo->getId()){
 				while(!$rs->EOF){
 					$el = array();
 					$el['id'] = $rs->fields['idItem'];
-					$el['label'] = $rs->fields['nombre'];
+					$el['label'] = $rs->fields['nombre'].' '.$rs->fields['marca'];
 					$el['identificador'] = $rs->fields['idItem'];
 					array_push($datos, $el);
 					$rs->moveNext();
 				}
 				
 				echo json_encode($datos);
+			break;
+			case 'getData':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from item a join ropa b using(idItem) where idItem = ".$_POST['id']);
+				
+				$rsTallas = $db->Execute("select * from talla where idItem = ".$_POST['id']);
+				$rs->fields['tallas'] = array();
+				$rs->fields['cantidad'] = array();
+				while(!$rsTallas->EOF){
+					$rs->fields['tallas'][$rsTallas->fields['nombre']] = $rsTallas->fields['idTalla'];
+					
+					if ($_POST['pedido'] == '')
+						$rs->fields['cantidad'][$rsTallas->fields['nombre']] = 0;
+					else{
+						$rsCantidad = $db->Execute("select cantidad from movped where idPedido = ".$_POST['pedido']." and idTalla = ".$rsTallas->fields['idTalla']);
+						$rs->fields['cantidad'][$rsTallas->fields['nombre']] = $rsCantidad->fields['cantidad'] == ''?0:$rsCantidad->fields['cantidad'];
+					}
+					
+					$rsTallas->moveNext();
+				}
+				
+				echo json_encode($rs->fields);
 			break;
 		}
 	break;

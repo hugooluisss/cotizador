@@ -75,6 +75,9 @@ switch($objModulo->getId()){
 					$el['id'] = $rs->fields['idCliente'];
 					$el['label'] = $rs->fields['nombre'];
 					$el['identificador'] = $rs->fields['idCliente'];
+					foreach($rs->fields as $key => $val)
+						$el[$key] = $val;
+						
 					array_push($datos, $el);
 					$rs->moveNext();
 				}

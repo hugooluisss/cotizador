@@ -499,16 +499,6 @@ $(document).ready(function(){
 		$.get("?mod=listaCotizaciones", function( data ) {
 			$("#winCotizaciones .modal-body").html(data);
 			
-			$("#tblCotizaciones").DataTable({
-				"responsive": true,
-				"language": espaniol,
-				"paging": true,
-				"lengthChange": false,
-				"ordering": true,
-				"info": true,
-				"autoWidth": false
-			});
-			
 			$("#winCotizaciones .modal-body tr[cotizacion]").click(function(){
 				var obj = new TCotizacion;
 				
@@ -539,6 +529,16 @@ $(document).ready(function(){
 						obj.total();
 					}
 				});
+			});
+			
+			$("#tblCotizaciones").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
 			});
 		});
 	}

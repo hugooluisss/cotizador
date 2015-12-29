@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-10-26 19:37:36
+<?php /* Smarty version Smarty-3.1.11, created on 2015-12-21 11:37:21
          compiled from "templates/plantillas/modulos/ropa/tallas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20857431195627c0476cd0d0-61603194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af9a0f4039d5922c0b1c7d49640565911984dd97' => 
     array (
       0 => 'templates/plantillas/modulos/ropa/tallas/lista.tpl',
-      1 => 1445468086,
+      1 => 1448516564,
       2 => 'file',
     ),
   ),
@@ -30,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<table id="tblTallas" class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Talla</th>
 					<th>Adicional</th>
 					<th>Precio neto</th>
@@ -43,6 +44,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idTalla'];?>
+</td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td><?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['row']->value['adicional']);?>
