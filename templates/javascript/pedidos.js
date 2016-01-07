@@ -1,3 +1,4 @@
+var ventanaPedido;
 $(document).ready(function(){
 	getLista();
 	$('#panelTabs a[href="#nuevo"]').tab('show');
@@ -286,6 +287,12 @@ $(document).ready(function(){
 							$("#pedido").val(data.pedido);
 							getLista();
 							alert("Pedido guardado");
+							if (ventanaPedido === undefined)
+								var ventanaPedido = window.open(data.documento, '_blank');
+							else
+								ventanaPedido.document.href = data.documento;
+							
+							ventanaPedido.focus();
 						}
 					}
 				});

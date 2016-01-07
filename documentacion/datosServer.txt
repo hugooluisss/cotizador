@@ -16,4 +16,4 @@ db = "ideactiv_cotizador"
 
 www.ideactiva.uy/cpanel ohttp://67.225.214.111/cpanel
 Username: ideactiva
-Password: 8g6p3yiiuz9k
+Password: czsi9f4767o6

@@ -115,7 +115,14 @@ switch($objModulo->getId()){
 					$obj->guardarItems(json_decode($_POST['remeras']));
 					$obj->guardarTipoImpresiones(json_decode($_POST['impresiones']));
 					$obj->guardarEntregables(json_decode($_POST['entregables']));
-					echo json_encode(array("band" => true, "pedido" => $obj->getId()));
+					
+					#se genera el documento pdf
+					require_once(getcwd()."/repositorio/pdf/pedido.php");
+					$pdf = new RPedido($obj->getId());
+					$pdf->generar();
+					
+					echo json_encode(array("band" => true, "pedido" => $obj->getId(), "documento" => $pdf->output()));
+					//echo json_encode(array("band" => true, "pedido" => $obj->getId()));
 				}else
 					echo json_encode(array("band" => false));
 			break;
