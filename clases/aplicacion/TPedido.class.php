@@ -10,10 +10,12 @@ class TPedido{
 	private $idPedido;
 	public $estado;
 	public $cliente;
+	public $usuario;
 	private $registro;
 	private $entrega;
 	private $entregables;
 	private $diseno;
+	private $observacionDiseno;
 	private $colores;
 	private $observaciones;
 	private $precio;
@@ -31,6 +33,7 @@ class TPedido{
 		$this->movimientos = array();
 		$this->cliente = new TCliente;
 		$this->estado = new TEstado;
+		$this->usuario = new TUsuario;
 		$this->setId($id);
 		
 		return true;
@@ -55,6 +58,7 @@ class TPedido{
 			switch($field){
 				case 'idCliente': $this->cliente = new TCliente($val); break;
 				case 'idEstado': $this->estado = new TEstado($val); break;
+				case 'idusuario': $this->usuario = new TUsuario($val);
 				default: $this->$field = $val;
 			}
 		}
@@ -221,6 +225,33 @@ class TPedido{
 	}
 	
 	/**
+	* Establece las observaciones al diseno
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setObservacionDiseno($val = ''){
+		$this->observacionDiseno = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna las observaciones al diseno
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getObservacionDiseno(){
+		return $this->observacionDiseno;
+	}
+	
+	/**
 	* Establece la lista de colores en json
 	*
 	* @autor Hugo
@@ -338,12 +369,13 @@ class TPedido{
 	
 	public function guardar(){
 		$db = TBase::conectaDB();
+		global $sesion;
 		
 		if ($this->cliente->getId() == '' or $this->estado->getId() == '')
 			return false;
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO pedido(idCliente, idEstado) VALUES(".$this->cliente->getId().", ".$this->estado->getId().");");
+			$rs = $db->Execute("INSERT INTO pedido(idCliente, idEstado, idUsuario) VALUES(".$this->cliente->getId().", ".$this->estado->getId().", ".$sesion['usuario'].");");
 			if (!$rs) return false;
 			
 			$this->idPedido = $db->Insert_ID();
@@ -360,6 +392,7 @@ class TPedido{
 				entrega = '".$this->getEntrega()."',
 				entregables = '".$this->getEntregables()."',
 				diseno = '".$this->getDiseno()."',
+				observacionDiseno = '".$this->getObservacionDiseno()."',
 				colores = '".$this->getColores()."',
 				observaciones = '".$this->getObservaciones()."',
 				precio = ".$this->getPrecio().",

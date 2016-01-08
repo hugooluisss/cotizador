@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-29 10:03:04
+<?php /* Smarty version Smarty-3.1.11, created on 2016-01-07 23:53:48
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1451404912,
+      1 => 1452232425,
       2 => 'file',
     ),
   ),
@@ -117,7 +117,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		<div class="row">
 			<div class="col-xs-6">
 				<h3>Impresión</h3>
-				<ul class="list-group">
+				
 				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['serviciosImpresion']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -125,30 +125,30 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-					<li class="list-group-item"><label class="checkbox-inline"><input type="checkbox" class="serviciosImpresion" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idImpresion'];?>
+					<div class="checkbox">
+						<label class="col-xs-4"><input type="checkbox" class="serviciosImpresion" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idImpresion'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
-</label></li>
+</label>
+					</div>
 				<?php } ?>
-				</ul>
 			</div>
 			<div class="col-xs-6">
-				<h3>Entregables</h3>
-				<ul class="list-group">
-					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+				<h3>Artículos</h3>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['entregables']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-					<li class="list-group-item"><label class="checkbox-inline"><input type="checkbox" class="entregables" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idEntregable'];?>
+					<div class="checkbox">
+						<label class="col-xs-4"><input type="checkbox" class="entregables" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idEntregable'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
-</label></li>
-					<?php } ?>
-					<li class="list-group-item">
-						<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
-					</li>
-				<ul>
+</label>
+					</div>
+				<?php } ?>
+				<br />
+				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
 			</div>
 		</div>
 	</div>
@@ -212,15 +212,13 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<option value="A pedido">A pedido
 					<option value="Envia por email">Envia por email
 				</select>
+				<textarea class="form-control" rows="4" id="txtDiseno" name="txtDiseno"></textarea>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<h3>Colores</h3>
-				<input type="text" value="" class="form-control" id="txtColor1">
-				<input type="text" value="" class="form-control" id="txtColor2">
-				<input type="text" value="" class="form-control" id="txtColor3">
-				<input type="text" value="" class="form-control" id="txtColor4">
+				<textarea class="form-control" rows="5" id="txtColores" name="txtColores"></textarea>
 			</div>
-			<div class="col-xs-5">
+			<div class="col-xs-3">
 				<h3>Observaciones</h3>
 				<textarea class="form-control" rows="5" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
@@ -230,12 +228,11 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		</div>
 		<div class="row">
 			<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
+				<input type="hidden" id="pedido" name="pedido" value="">
 				<input type="file" name="upl" multiple />
 				<ul class="elementos list-group">
 				<!-- The file list will be shown here -->
 				</ul>
-				
-				<input type="hidden" id="pedido" name="pedido" value="">
 			</form>
 		</div>
 	</div>

@@ -60,7 +60,7 @@ TPedido = function(id, tableRemeras){
 		$("#" + self.tableRemeras + " tbody tr").remove();
 	}
 	
-	this.guardar = function(id, estado, cliente, registro, entrega, entregables, diseno, colores, observaciones, precio, anticipo, remeras, impresiones, entregables, fn){
+	this.guardar = function(id, estado, cliente, registro, entrega, entregables, diseno, observacionDiseno, colores, observaciones, precio, anticipo, remeras, impresiones, entregables, fn){
 		if (fn.before !== undefined) fn.before();
 		$.post('?mod=cpedidos&action=guardar', {
 				"id": id,
@@ -70,6 +70,7 @@ TPedido = function(id, tableRemeras){
 				"entrega": entrega,
 				"entregables": entregables,
 				"diseno": diseno,
+				"observacionDiseno": observacionDiseno,
 				"colores": colores,
 				"observaciones": observaciones,
 				"precio": precio,

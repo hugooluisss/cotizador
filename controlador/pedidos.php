@@ -79,15 +79,18 @@ switch($objModulo->getId()){
 			default:
 				$sql = "";
 		}
-		$rs = $db->Execute("select * from pedido".$sql);
+		$rs = $db->Execute("select * from pedido a".$sql);
 		$datos = array();
 		$cliente = new TCliente();
 		$estado = new TEstado();
+		$usuario = new TUsuario();
 		while(!$rs->EOF){
+			$usuario->setId($rs->fields['idUsuario']);
 			$cliente->setId($rs->fields['idCliente']);
 			$estado->setId($rs->fields['idEstado']);
 			$rs->fields['cliente'] = $cliente->getNombre();
 			$rs->fields['color'] = $estado->getColor();
+			$rs->fields['usuario'] = $usuario->getNombre(); 
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
@@ -106,6 +109,7 @@ switch($objModulo->getId()){
 				$obj->setEntrega($_POST['entrega']);
 				$obj->setEntregables($_POST['entregables']);
 				$obj->setDiseno($_POST['diseno']);
+				$obj->setObservacionDiseno($_POST['observacionDiseno']);
 				$obj->setColores($_POST['colores']);
 				$obj->setObservaciones($_POST['observaciones']);
 				$obj->setPrecio($_POST['precio']);
@@ -176,11 +180,12 @@ switch($objModulo->getId()){
 				echo json_encode($rs->fields);
 			break;
 			case 'uploadfile':
-				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
-					if (!file_exists("repositorio/pedidos/orden_".$_POST['pedido']))
-						mkdir("repositorio/pedidos/orden_".$_POST['pedido'], 0766);
+				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0 && $_GET['pedido'] <> ''){
+					if (!file_exists("repositorio/pedidos/orden_".$_GET['pedido']))
+						mkdir("repositorio/pedidos/orden_".$_GET['pedido'], 0755);
 									
-					if(move_uploaded_file($_FILES['upl']['tmp_name'], "repositorio/pedidos/orden_".$_POST['pedido']."/".$_FILES['upl']['name'])){
+					if(move_uploaded_file($_FILES['upl']['tmp_name'], "repositorio/pedidos/orden_".$_GET['pedido']."/".$_FILES['upl']['name'])){
+						chmod("repositorio/pedidos/orden_".$_GET['pedido']."/".$_FILES['upl']['name'], 0755);
 						echo '{"status":"success"}';
 						exit;
 					}
@@ -189,7 +194,7 @@ switch($objModulo->getId()){
 				echo '{"status":"error"}';
 			break;
 			case 'delfile':	
-				$ruta = "repositorio/pedidos/orden_".$_POST['pedido']."/".$_POST['archivo'];
+				$ruta = "repositorio/pedidos/orden_".$_GET['pedido']."/".$_POST['archivo'];
 				
 				$band = unlink($ruta)?true:false;
 				

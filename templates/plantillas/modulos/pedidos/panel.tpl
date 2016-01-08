@@ -25,3 +25,5 @@
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="perfil" value="{$PAGE.tipoUsuario}" />

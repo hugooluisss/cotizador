@@ -1,7 +1,20 @@
 var ventanaPedido;
 $(document).ready(function(){
 	getLista();
-	$('#panelTabs a[href="#nuevo"]').tab('show');
+	if ($("#perfil").val() == 3){
+		$("#nuevo input, #nuevo textarea, #nuevo button, #nuevo select").each(function(){
+			$(this).attr('disabled', 'disabled');
+		});
+		
+		$("#nuevo input:file").removeAttr("disabled");
+	}
+		
+	
+	if ($("#perfil").val() == 3)
+		$('#panelTabs a[href="#lista"]').tab('show');
+	else
+		$('#panelTabs a[href="#nuevo"]').tab('show');
+		
 	$("#txtFecha, #txtEntrega").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
 	$("#btnLstClientes").click(function(){
@@ -229,11 +242,6 @@ $(document).ready(function(){
 		if (band){
 			var obj = new TPedido;
 			var entrega = $("#txtEntrega").val() + " " + $("#selHora").val() + ":" + $("#selMinuto").val() + ":00";
-			var colores = new Object();
-			colores.c1 = $("#txtColor1").val();
-			colores.c2 = $("#txtColor2").val();
-			colores.c3 = $("#txtColor3").val();
-			colores.c4 = $("#txtColor4").val();
 			
 			//todas las tallas
 			var tallas = new Array();
@@ -272,7 +280,8 @@ $(document).ready(function(){
 				entrega, 
 				$("#txtEntregables").val(), 
 				$("#selDiseno").val(), 
-				JSON.stringify(colores), 
+				$("#txtDiseno").val(), 
+				$("#txtColores").val(), 
 				$("#txtObservaciones").val(), 
 				$("#total").val(), 
 				$("#sena").val(), 
@@ -285,6 +294,7 @@ $(document).ready(function(){
 					after: function(data){
 						if (data.band){
 							$("#pedido").val(data.pedido);
+							$("#upload").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + data.pedido);
 							getLista();
 							alert("Pedido guardado");
 							if (ventanaPedido === undefined)
@@ -330,6 +340,7 @@ $(document).ready(function(){
 			tabla.clearTable();
 			
 			$("#selDiseno").val($("#selDiseno option:first").val());
+			$("#txtDiseno").val("");
 			$("#txtColor1").val("");
 			$("#txtColor2").val("");
 			$("#txtColor3").val("");
@@ -364,6 +375,7 @@ function getLista(){
 					"id": $(this).attr("pedido")
 				},function(datos){
 					$("#pedido").val(datos.idPedido);
+					$("#upload").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + datos.idPedido);
 					$("#txtCliente").val(datos.nombreCliente);
 					$("#txtCliente").attr("idCliente", datos.idCliente);
 					$("#txtFecha").val(datos.registro);
@@ -392,11 +404,8 @@ function getLista(){
 					});
 					
 					$("#selDiseno").val(datos.diseno);
-					var colores = jQuery.parseJSON(datos.colores);
-					$("#txtColor1").val(colores.c1);
-					$("#txtColor2").val(colores.c2);
-					$("#txtColor3").val(colores.c3);
-					$("#txtColor4").val(colores.c4);
+					$("#txtDiseno").val(datos.observacionDiseno);
+					$("#txtColores").val(datos.colores);
 					$("#txtObservaciones").val(datos.observaciones);
 					$("#total").val(datos.precio);
 					$("#sena").val(datos.anticipo);
@@ -405,8 +414,10 @@ function getLista(){
 					$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
 					
 					datos.archivos.forEach(function(el){
-					
-						var tpl = $('<li class="list-group-item">'+''+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a><a class="btn btn-danger btn-xs eliminar">Eliminar</a></li>' );
+						if ($("#perfil").val() == 3)
+							var tpl = $('<li class="list-group-item">'+''+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a></li>' );
+						else
+							var tpl = $('<li class="list-group-item">'+''+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a><a class="btn btn-danger btn-xs eliminar">Eliminar</a></li>' );
 			            
 			            // Append the file name and file size
 						tpl.find('p').text(el);
@@ -455,11 +466,21 @@ $(document).ready(function(){
 		// This function is called when a file is added to the queue
 		add: function (e, data) {
 			if($("#pedido").val() == ''){
-				alert("Primero debes de crear la orden, indica los datos principales y presiona guardar para despues poder subir archivos");
-				$("#txtCliente").focus();
+				if ($("#perfil").val() == 3){
+					alert("No puedes subir archivos a una orden vacia, selecciona una de la lista de capturadas");
+					$('#panelTabs a[href="#lista"]').tab('show');
+				}else{
+					alert("Primero debes de crear la orden, indica los datos principales y presiona guardar para despues poder subir archivos");
+					$("#txtCliente").focus();
+				}
 			}else{
 				//This area will contain file list and progress information.
-				var tpl = $('<li class="working list-group-item">'+
+				
+				if ($("#perfil").val() == 3)
+					var tpl = $('<li class="working list-group-item">'+
+			            '<input type="text" value="0" data-width="48" data-height="48" data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" />'+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a>' );
+			    else
+			    	var tpl = $('<li class="working list-group-item">'+
 			            '<input type="text" value="0" data-width="48" data-height="48" data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" />'+'<p></p><span></span><a class="btn btn-primary btn-xs vista">Vista previa</a><a class="btn btn-danger btn-xs eliminar">Eliminar</a></li>' );
 			            
 			     // Append the file name and file size

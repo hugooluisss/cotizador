@@ -63,22 +63,22 @@
 		<div class="row">
 			<div class="col-xs-6">
 				<h3>Impresión</h3>
-				<ul class="list-group">
+				
 				{foreach key=key item=item from=$serviciosImpresion}
-					<li class="list-group-item"><label class="checkbox-inline"><input type="checkbox" class="serviciosImpresion" value="{$item.idImpresion}">{$item.nombre}</label></li>
+					<div class="checkbox">
+						<label class="col-xs-4"><input type="checkbox" class="serviciosImpresion" value="{$item.idImpresion}">{$item.nombre}</label>
+					</div>
 				{/foreach}
-				</ul>
 			</div>
 			<div class="col-xs-6">
-				<h3>Entregables</h3>
-				<ul class="list-group">
-					{foreach key=key item=item from=$entregables}
-					<li class="list-group-item"><label class="checkbox-inline"><input type="checkbox" class="entregables" value="{$item.idEntregable}">{$item.nombre}</label></li>
-					{/foreach}
-					<li class="list-group-item">
-						<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
-					</li>
-				<ul>
+				<h3>Artículos</h3>
+				{foreach key=key item=item from=$entregables}
+					<div class="checkbox">
+						<label class="col-xs-4"><input type="checkbox" class="entregables" value="{$item.idEntregable}">{$item.nombre}</label>
+					</div>
+				{/foreach}
+				<br />
+				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
 			</div>
 		</div>
 	</div>
@@ -131,15 +131,13 @@
 					<option value="A pedido">A pedido
 					<option value="Envia por email">Envia por email
 				</select>
+				<textarea class="form-control" rows="4" id="txtDiseno" name="txtDiseno"></textarea>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<h3>Colores</h3>
-				<input type="text" value="" class="form-control" id="txtColor1">
-				<input type="text" value="" class="form-control" id="txtColor2">
-				<input type="text" value="" class="form-control" id="txtColor3">
-				<input type="text" value="" class="form-control" id="txtColor4">
+				<textarea class="form-control" rows="5" id="txtColores" name="txtColores"></textarea>
 			</div>
-			<div class="col-xs-5">
+			<div class="col-xs-3">
 				<h3>Observaciones</h3>
 				<textarea class="form-control" rows="5" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
@@ -149,12 +147,11 @@
 		</div>
 		<div class="row">
 			<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
+				<input type="hidden" id="pedido" name="pedido" value="">
 				<input type="file" name="upl" multiple />
 				<ul class="elementos list-group">
 				<!-- The file list will be shown here -->
 				</ul>
-				
-				<input type="hidden" id="pedido" name="pedido" value="">
 			</form>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-28 21:39:07
+<?php /* Smarty version Smarty-3.1.11, created on 2016-01-07 23:11:07
          compiled from "templates/plantillas/modulos/pedidos/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2774012305668731c725e83-64649492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2f94fded656dc413f8357fa5beedc039000400d5' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/panel.tpl',
-      1 => 1451360322,
+      1 => 1452229275,
       2 => 'file',
     ),
   ),
@@ -51,4 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+
+<input type="hidden" id="perfil" value="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario'];?>
+" /><?php }} ?>
