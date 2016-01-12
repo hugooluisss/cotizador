@@ -58,8 +58,9 @@
 						<button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
 					</div><!-- /.col -->
 				</div>
-			</form>		
+			</form>
 		</div><!-- /.login-box-body -->
+		<a href="?mod=vistaCliente">¿Eres cliente? haz click aquí</a>
 	</div>
     
     

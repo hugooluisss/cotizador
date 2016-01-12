@@ -272,22 +272,37 @@ $(document).ready(function(){
 				entregables.push(entregable);
 			});
 			
+			var formasPago = new Array();
+			$(".formasPago").each(function(){
+				var forma = new Object();
+				
+				forma.campo = $(this).attr("campo");
+				forma.valor = $(this).val();
+				formasPago.push(forma);
+			});
+
 			obj.guardar(
 				$("#pedido").val(), 
 				$("#selEstado").val(), 
 				$("#txtCliente").attr("idCliente"), 
+				$("#selFormaEntrega").val(), 
+				$("#txtDireccionEnvio").val(), 
 				$("#txtRegistro").val(), 
 				entrega, 
 				$("#txtEntregables").val(), 
-				$("#selDiseno").val(), 
-				$("#txtDiseno").val(), 
+				$("#selFuente").val(), 
 				$("#txtColores").val(), 
 				$("#txtObservaciones").val(), 
 				$("#total").val(), 
 				$("#sena").val(), 
 				JSON.stringify(tallas), 
 				JSON.stringify(impresiones), 
-				JSON.stringify(entregables), {
+				JSON.stringify(entregables), 
+				$("#selEnvoltorio").val(), 
+				$("#selPosicion").val(), 
+				$("#txtPosicion").val(),
+				JSON.stringify(formasPago),
+				{
 					before: function(){
 						
 					},
@@ -303,7 +318,8 @@ $(document).ready(function(){
 								ventanaPedido.document.href = data.documento;
 							
 							ventanaPedido.focus();
-						}
+						}else
+							alert("Ocurrió un error al guardar el documento...");
 					}
 				});
 		}
@@ -331,6 +347,9 @@ $(document).ready(function(){
 			$("#selMinuto").val(0);
 			$("#selEstado").val($("#selEstado option:first").val());
 			
+			$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
+			$("#txtDireccionEntrega").val("");
+			
 			$(".serviciosImpresion").prop("checked", false);
 			$(".entregables").prop("checked", false);
 			$("#txtEntregable").val("");
@@ -339,18 +358,17 @@ $(document).ready(function(){
 			
 			tabla.clearTable();
 			
-			$("#selDiseno").val($("#selDiseno option:first").val());
+			$("#selFuente").val($("#selFuente option:first").val());
 			$("#txtDiseno").val("");
-			$("#txtColor1").val("");
-			$("#txtColor2").val("");
-			$("#txtColor3").val("");
-			$("#txtColor4").val("");
+			$("#txtColores").val("");
 			$("#txtObservaciones").val("");
 			$("#total").val("0.00");
 			$("#sena").val("0.00");
 			
 			$("#saldo").val($("#total").val() - $("#sena").val());
 			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+			
+			$("#selEnvoltorio").val($("#selEnvoltorio option:first").val());
 		}
 	});
 });
@@ -384,6 +402,9 @@ function getLista(){
 					$("#selMinuto").val(datos.minutosEntrega);
 					$("#selEstado").val(datos.idEstado);
 					
+					$("#selFormaEntrega").val(datos.formaEntrega);
+					$("#txtDireccionEnvio").val(datos.direccionEnvio);
+					
 					$(".serviciosImpresion").prop("checked", false);
 					datos.impresion.forEach(function(el){
 						$(".serviciosImpresion[value=" + el.idImpresion + "]").prop("checked", true);
@@ -403,15 +424,27 @@ function getLista(){
 						tabla.addRemera(el.idItem, datos.idPedido, {});
 					});
 					
-					$("#selDiseno").val(datos.diseno);
-					$("#txtDiseno").val(datos.observacionDiseno);
+					$("#selFuente").val(datos.fuente);
 					$("#txtColores").val(datos.colores);
 					$("#txtObservaciones").val(datos.observaciones);
 					$("#total").val(datos.precio);
 					$("#sena").val(datos.anticipo);
 					
+					$("#selEnvoltorio").val(datos.envoltorio);
+					
+					$("#selPosicion").val(datos.posicion);
+					$("#txtPosicion").val(datos.observacionPosicion);
+					
 					$("#saldo").val($("#total").val() - $("#sena").val());
 					$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+					
+					datos.formasPago.forEach(function(el){
+						campo = $(".formasPago[campo="+ el.campo + "]");
+						if (campo.attr("type") == 'checkbox')
+							campo.prop("checked", true);
+						else
+							campo.val(el.valor);
+					});
 					
 					datos.archivos.forEach(function(el){
 						if ($("#perfil").val() == 3)
@@ -447,6 +480,22 @@ function getLista(){
 				},
 				"json"
 			);
+		});
+		
+		$("[action=imprimir]").click(function(){
+			$.post("?mod=cpedidos&action=imprimir", {
+					"pedido": $(this).attr("pedido")
+				},function(data){
+					if (data.documento != ''){
+						if (ventanaPedido === undefined)
+							var ventanaPedido = window.open(data.documento, '_blank');
+						else
+							ventanaPedido.document.href = data.documento;
+							
+						ventanaPedido.focus();
+					}else
+						alert("El documento no se pudo generar");
+				}, "json");
 		});
 		
 		$("#tblPedidos").DataTable({
@@ -557,4 +606,36 @@ $(document).ready(function(){
 		}
 		return (bytes / 1000).toFixed(2) + ' KB';
 	}
+});
+
+$(document).ready(function(){
+	$('#tabNombresNumeros a[href="#lista"]').tab('show');
+	
+	$("#btnNombresNumeros").click(function(){
+		$("#winNombresNumeros").modal();
+	});
+	
+	$("#frmNumerosLetras").submit(function(){
+		var obj = new TPedido;
+		
+		var ventana = $("#winNombresNumeros");
+		obj.addNumerosLetras($("#winNombresNumeros #txtNombre").val(), $("#winNombresNumeros #txtNumero").val(), $("#winNombresNumeros #selTalla").val(), {
+			after: function(){
+				$("#winNombresNumeros #txtNombre").val("");
+				$("#winNombresNumeros #txtNumero").val("");
+				$("#winNombresNumeros #selTalla").val($("#winNombresNumeros #selTalla option:first").val());
+				
+				$('#tabNombresNumeros a[href="#listaNombresNumeros"]').tab('show');
+			},
+			modificar: function(el){
+				$("#winNombresNumeros #txtNombre").val(el.attr("nombre"));
+				$("#winNombresNumeros #txtNumero").val(el.attr("numero"));
+				$("#winNombresNumeros #selTalla").val(el.attr("talle"));
+				
+				$('#tabNombresNumeros a[href="#nuevoNombreNumero"]').tab('show');
+				
+				el.attr("modificar", "si");
+			}
+		});
+	});
 });

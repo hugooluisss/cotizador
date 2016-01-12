@@ -17,42 +17,58 @@
 		</div>
 		<hr />
 		<div class="row">
-			<label class="col-xs-2" for="txtFecha">Fecha</label>
-			<div class="col-xs-3">
-				<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
-				<div id="datepicker"></div>
+			<div class="col-md-6">
+				<div class="row">
+					<label class="col-xs-4" for="txtFecha">Fecha</label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
+						<div id="datepicker"></div>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="txtEntrega">Entrega</label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="selHora">Hora</label>
+					<div class="col-xs-8">
+						<select class="form-contro" id="selHora" name="selHora">
+						{for $hora=0 to 23} 
+							<option value="{$hora}">{$hora}
+						{/for}
+						</select>
+						 : 
+						<select class="form-contro" id="selMinuto" name="selMinuto">
+						{for $minuto=0 to 59 step 15} 
+							<option value="{$minuto}">{$minuto}
+						{/for}
+						</select>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<label class="col-xs-2" for="txtEntrega">Entrega</label>
-			<div class="col-xs-2">
-				<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
-			</div>
-		</div>
-		<div class="row">
-			<label class="col-xs-2" for="selHora">Hora</label>
-			<div class="col-xs-2">
-				<select class="form-contro" id="selHora" name="selHora">
-				{for $hora=0 to 23} 
-					<option value="{$hora}">{$hora}
-				{/for}
-				</select>
-				 : 
-				<select class="form-contro" id="selMinuto" name="selMinuto">
-				{for $minuto=0 to 59 step 15} 
-					<option value="{$minuto}">{$minuto}
-				{/for}
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<label for="selEstado" class="col-xs-2">Estado</label>
-			<div class="col-xs-4">
-				<select id="selEstado" name="selEstado" class="form-control">
-					{foreach key=key item=item from=$estados}
-						<option value="{$item.idEstado}">{$item.nombre}
-					{/foreach}
-				</select>
+			<div class="col-md-6">
+				<div class="row">
+					<label for="selEstado" class="col-xs-4">Estado</label>
+					<div class="col-xs-8">
+						<select id="selEstado" name="selEstado" class="form-control">
+							{foreach key=key item=item from=$estados}
+								<option value="{$item.idEstado}">{$item.nombre}
+							{/foreach}
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<label for="selFuente" class="col-xs-4">Modo de ingreso</label>
+					<div class="col-xs-8">
+						<select id="selFuente" name="selFuente" class="form-control">
+								<option value="Local">Local
+								<option value="Email">Email
+								<option value="Teléfono">Teléfono
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -124,6 +140,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
+		<!--
 			<div class="col-xs-3">
 				<h3>Diseño</h3>
 				<select id="selDiseno">
@@ -133,30 +150,114 @@
 				</select>
 				<textarea class="form-control" rows="4" id="txtDiseno" name="txtDiseno"></textarea>
 			</div>
+		-->
+			<div class="col-xs-3">
+				<h3>Posición</h3>
+				<select id="selPosicion">
+					<option value="Frente">Frente
+					<option value="Espalda">Espalda
+					<option value="Manga">Manga
+					<option value="Frente y espalda">Frente y espalda
+					<option value="Frente y manga">Frente y manga
+					<option value="Frente, espalda y manga">Frente, espalda y manga
+					<option value="Manga y espalda">Manga y espalda
+				</select>
+				<textarea class="form-control" rows="5" id="txtPosicion" name="txtPosicion"></textarea>
+			</div>
 			<div class="col-xs-3">
 				<h3>Colores</h3>
-				<textarea class="form-control" rows="5" id="txtColores" name="txtColores"></textarea>
+				<textarea class="form-control" rows="6" id="txtColores" name="txtColores"></textarea>
 			</div>
-			<div class="col-xs-3">
+			
+			<div class="col-xs-6">
 				<h3>Observaciones</h3>
-				<textarea class="form-control" rows="5" id="txtObservaciones" name="txtObservaciones"></textarea>
+				<textarea class="form-control" rows="6" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4"><h3>Archivos</h3></div>
-		</div>
-		<div class="row">
-			<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
-				<input type="hidden" id="pedido" name="pedido" value="">
-				<input type="file" name="upl" multiple />
-				<ul class="elementos list-group">
-				<!-- The file list will be shown here -->
-				</ul>
-			</form>
 		</div>
 	</div>
 </div>
-
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-8"><h3>Archivos</h3></div>
+			<div class="col-xs-4"><h3>Nombres y números</h3></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
+					<input type="hidden" id="pedido" name="pedido" value="">
+					<input type="file" name="upl" multiple />
+					<ul class="elementos list-group">
+					<!-- The file list will be shown here -->
+					</ul>
+				</form>
+			</div>
+			<div class="col-xs-4 text-center">
+				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="row">
+				<div class="col-xs-6">
+					<label for="selFormaEntrega" class="col-xs-4">Forma de entrega</label>
+					<div class="col-xs-8">
+						<select id="selFormaEntrega" name="selFormaEntrega" class="form-control">
+							<option value="Retiro en local">Retiro en local
+							<option value="Envio a dominicilio">Envío a domicilio
+							<option value="Envio por encomienda">Envío por encomienda
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<label for="selEnvoltorio" class="col-xs-4">Envoltorio</label>
+					<div class="col-xs-8">
+						<select id="selEnvoltorio" name="selEnvoltorio" class="form-control">
+							<option value="Normal">Normal
+							<option value="Regalo">Regalo
+							<option value="A granel">A granel
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<label for="txtDireccionEnvio" class="col-xs-4">Dirección de envio</label>
+					<div class="col-xs-8">
+						<textarea id="txtDireccionEnvio" name="txtDireccionEnvio" rows="3" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<h3>Formas de pago</h3>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 text-center">
+				<label> Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
+			</div>
+			<div class="col-xs-2 text-center">
+				<label>Débito</label><br /><input type="checkbox" class="formasPago" campo="Debito">
+			</div>
+			<div class="col-xs-3 text-center">
+				<label>Giro</label><br /><input type="text" value="" class="formasPago" campo="Giro">
+			</div>
+			<div class="col-xs-3 text-center">
+				<label>Cheque</label><br /><input type="text" value="" class="formasPago" campo="Cheque">
+			</div>
+			<div class="col-xs-2 text-center">
+				<label>Tarjeta de crédito</label><br /><input type="checkbox" class="formasPago" campo="Credito">
+			</div>
+		</div>
+	</div>
+</div>
 <div class="panel panel-default">
 	<div class="panel-body">
 		<table id="tblTotales" class="table table-bordered">
@@ -187,3 +288,4 @@
 
 {include file=$PAGE.rutaModulos|cat:"modulos/pedidos/clientes.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/pedidos/remerasLista.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/winNombresNumeros.tpl"}

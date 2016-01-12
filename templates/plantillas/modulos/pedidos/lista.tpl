@@ -22,6 +22,7 @@
 						<td>{$row.usuario}</td>
 						<td>{$row.precio}</td>
 						<td style="text-align: right">
+							<button type="button" class="btn btn-circle" action="imprimir" title="Imprimir" pedido='{$row.idPedido}'><i class="fa fa-file-pdf-o"></i></button>
 							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" pedido='{$row.idPedido}'><i class="fa fa-pencil"></i></button>
 							{if $PAGE.tipoUsuario eq 1}
 							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" pedido="{$row.idPedido}"><i class="fa fa-times"></i></button>

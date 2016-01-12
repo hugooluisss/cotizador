@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-01-07 23:53:48
+<?php /* Smarty version Smarty-3.1.11, created on 2016-01-11 21:01:33
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1452232425,
+      1 => 1452567675,
       2 => 'file',
     ),
   ),
@@ -51,62 +51,78 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 		<hr />
 		<div class="row">
-			<label class="col-xs-2" for="txtFecha">Fecha</label>
-			<div class="col-xs-3">
-				<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+			<div class="col-md-6">
+				<div class="row">
+					<label class="col-xs-4" for="txtFecha">Fecha</label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 "/>
-				<div id="datepicker"></div>
-			</div>
-		</div>
-		<div class="row">
-			<label class="col-xs-2" for="txtEntrega">Entrega</label>
-			<div class="col-xs-2">
-				<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+						<div id="datepicker"></div>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="txtEntrega">Entrega</label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 "/>
-			</div>
-		</div>
-		<div class="row">
-			<label class="col-xs-2" for="selHora">Hora</label>
-			<div class="col-xs-2">
-				<select class="form-contro" id="selHora" name="selHora">
-				<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 23+1 - (0) : 0-(23)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="selHora">Hora</label>
+					<div class="col-xs-8">
+						<select class="form-contro" id="selHora" name="selHora">
+						<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 23+1 - (0) : 0-(23)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
 if ($_smarty_tpl->tpl_vars['hora']->total > 0){
 for ($_smarty_tpl->tpl_vars['hora']->value = 0, $_smarty_tpl->tpl_vars['hora']->iteration = 1;$_smarty_tpl->tpl_vars['hora']->iteration <= $_smarty_tpl->tpl_vars['hora']->total;$_smarty_tpl->tpl_vars['hora']->value += $_smarty_tpl->tpl_vars['hora']->step, $_smarty_tpl->tpl_vars['hora']->iteration++){
 $_smarty_tpl->tpl_vars['hora']->first = $_smarty_tpl->tpl_vars['hora']->iteration == 1;$_smarty_tpl->tpl_vars['hora']->last = $_smarty_tpl->tpl_vars['hora']->iteration == $_smarty_tpl->tpl_vars['hora']->total;?> 
-					<option value="<?php echo $_smarty_tpl->tpl_vars['hora']->value;?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['hora']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['hora']->value;?>
 
-				<?php }} ?>
-				</select>
-				 : 
-				<select class="form-contro" id="selMinuto" name="selMinuto">
-				<?php $_smarty_tpl->tpl_vars['minuto'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['minuto']->step = 15;$_smarty_tpl->tpl_vars['minuto']->total = (int)ceil(($_smarty_tpl->tpl_vars['minuto']->step > 0 ? 59+1 - (0) : 0-(59)+1)/abs($_smarty_tpl->tpl_vars['minuto']->step));
+						<?php }} ?>
+						</select>
+						 : 
+						<select class="form-contro" id="selMinuto" name="selMinuto">
+						<?php $_smarty_tpl->tpl_vars['minuto'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['minuto']->step = 15;$_smarty_tpl->tpl_vars['minuto']->total = (int)ceil(($_smarty_tpl->tpl_vars['minuto']->step > 0 ? 59+1 - (0) : 0-(59)+1)/abs($_smarty_tpl->tpl_vars['minuto']->step));
 if ($_smarty_tpl->tpl_vars['minuto']->total > 0){
 for ($_smarty_tpl->tpl_vars['minuto']->value = 0, $_smarty_tpl->tpl_vars['minuto']->iteration = 1;$_smarty_tpl->tpl_vars['minuto']->iteration <= $_smarty_tpl->tpl_vars['minuto']->total;$_smarty_tpl->tpl_vars['minuto']->value += $_smarty_tpl->tpl_vars['minuto']->step, $_smarty_tpl->tpl_vars['minuto']->iteration++){
 $_smarty_tpl->tpl_vars['minuto']->first = $_smarty_tpl->tpl_vars['minuto']->iteration == 1;$_smarty_tpl->tpl_vars['minuto']->last = $_smarty_tpl->tpl_vars['minuto']->iteration == $_smarty_tpl->tpl_vars['minuto']->total;?> 
-					<option value="<?php echo $_smarty_tpl->tpl_vars['minuto']->value;?>
+							<option value="<?php echo $_smarty_tpl->tpl_vars['minuto']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['minuto']->value;?>
 
-				<?php }} ?>
-				</select>
+						<?php }} ?>
+						</select>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<label for="selEstado" class="col-xs-2">Estado</label>
-			<div class="col-xs-4">
-				<select id="selEstado" name="selEstado" class="form-control">
-					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+			<div class="col-md-6">
+				<div class="row">
+					<label for="selEstado" class="col-xs-4">Estado</label>
+					<div class="col-xs-8">
+						<select id="selEstado" name="selEstado" class="form-control">
+							<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['estados']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-						<option value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idEstado'];?>
+								<option value="<?php echo $_smarty_tpl->tpl_vars['item']->value['idEstado'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['nombre'];?>
 
-					<?php } ?>
-				</select>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<label for="selFuente" class="col-xs-4">Modo de ingreso</label>
+					<div class="col-xs-8">
+						<select id="selFuente" name="selFuente" class="form-control">
+								<option value="Local">Local
+								<option value="Email">Email
+								<option value="Teléfono">Teléfono
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -205,6 +221,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
+		<!--
 			<div class="col-xs-3">
 				<h3>Diseño</h3>
 				<select id="selDiseno">
@@ -214,30 +231,114 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 				</select>
 				<textarea class="form-control" rows="4" id="txtDiseno" name="txtDiseno"></textarea>
 			</div>
+		-->
+			<div class="col-xs-3">
+				<h3>Posición</h3>
+				<select id="selPosicion">
+					<option value="Frente">Frente
+					<option value="Espalda">Espalda
+					<option value="Manga">Manga
+					<option value="Frente y espalda">Frente y espalda
+					<option value="Frente y manga">Frente y manga
+					<option value="Frente, espalda y manga">Frente, espalda y manga
+					<option value="Manga y espalda">Manga y espalda
+				</select>
+				<textarea class="form-control" rows="5" id="txtPosicion" name="txtPosicion"></textarea>
+			</div>
 			<div class="col-xs-3">
 				<h3>Colores</h3>
-				<textarea class="form-control" rows="5" id="txtColores" name="txtColores"></textarea>
+				<textarea class="form-control" rows="6" id="txtColores" name="txtColores"></textarea>
 			</div>
-			<div class="col-xs-3">
+			
+			<div class="col-xs-6">
 				<h3>Observaciones</h3>
-				<textarea class="form-control" rows="5" id="txtObservaciones" name="txtObservaciones"></textarea>
+				<textarea class="form-control" rows="6" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4"><h3>Archivos</h3></div>
-		</div>
-		<div class="row">
-			<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
-				<input type="hidden" id="pedido" name="pedido" value="">
-				<input type="file" name="upl" multiple />
-				<ul class="elementos list-group">
-				<!-- The file list will be shown here -->
-				</ul>
-			</form>
 		</div>
 	</div>
 </div>
-
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-8"><h3>Archivos</h3></div>
+			<div class="col-xs-4"><h3>Nombres y números</h3></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
+					<input type="hidden" id="pedido" name="pedido" value="">
+					<input type="file" name="upl" multiple />
+					<ul class="elementos list-group">
+					<!-- The file list will be shown here -->
+					</ul>
+				</form>
+			</div>
+			<div class="col-xs-4 text-center">
+				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="row">
+				<div class="col-xs-6">
+					<label for="selFormaEntrega" class="col-xs-4">Forma de entrega</label>
+					<div class="col-xs-8">
+						<select id="selFormaEntrega" name="selFormaEntrega" class="form-control">
+							<option value="Retiro en local">Retiro en local
+							<option value="Envio a dominicilio">Envío a domicilio
+							<option value="Envio por encomienda">Envío por encomienda
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<label for="selEnvoltorio" class="col-xs-4">Envoltorio</label>
+					<div class="col-xs-8">
+						<select id="selEnvoltorio" name="selEnvoltorio" class="form-control">
+							<option value="Normal">Normal
+							<option value="Regalo">Regalo
+							<option value="A granel">A granel
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<label for="txtDireccionEnvio" class="col-xs-4">Dirección de envio</label>
+					<div class="col-xs-8">
+						<textarea id="txtDireccionEnvio" name="txtDireccionEnvio" rows="3" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<h3>Formas de pago</h3>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 text-center">
+				<label> Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
+			</div>
+			<div class="col-xs-2 text-center">
+				<label>Débito</label><br /><input type="checkbox" class="formasPago" campo="Debito">
+			</div>
+			<div class="col-xs-3 text-center">
+				<label>Giro</label><br /><input type="text" value="" class="formasPago" campo="Giro">
+			</div>
+			<div class="col-xs-3 text-center">
+				<label>Cheque</label><br /><input type="text" value="" class="formasPago" campo="Cheque">
+			</div>
+			<div class="col-xs-2 text-center">
+				<label>Tarjeta de crédito</label><br /><input type="checkbox" class="formasPago" campo="Credito">
+			</div>
+		</div>
+	</div>
+</div>
 <div class="panel panel-default">
 	<div class="panel-body">
 		<table id="tblTotales" class="table table-bordered">
@@ -269,4 +370,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/clientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/remerasLista.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/winNombresNumeros.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

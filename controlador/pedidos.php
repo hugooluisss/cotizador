@@ -108,17 +108,23 @@ switch($objModulo->getId()){
 				$obj->setRegistro($_POST['registro']);
 				$obj->setEntrega($_POST['entrega']);
 				$obj->setEntregables($_POST['entregables']);
-				$obj->setDiseno($_POST['diseno']);
+				$obj->setFuente($_POST['fuente']);
 				$obj->setObservacionDiseno($_POST['observacionDiseno']);
 				$obj->setColores($_POST['colores']);
 				$obj->setObservaciones($_POST['observaciones']);
 				$obj->setPrecio($_POST['precio']);
 				$obj->setAnticipo($_POST['anticipo']);
+				$obj->setFormaEntrega($_POST['formaEntrega']);
+				$obj->setDireccionEnvio($_POST['direccionEnvio']);
+				$obj->setEnvoltorio($_POST['envoltorio']);
+				$obj->setPosicion($_POST['posicion']);
+				$obj->setObservacionPosicion($_POST['observacionPosicion']);
 				
 				if ($obj->guardar()){
 					$obj->guardarItems(json_decode($_POST['remeras']));
 					$obj->guardarTipoImpresiones(json_decode($_POST['impresiones']));
 					$obj->guardarEntregables(json_decode($_POST['entregables']));
+					$obj->guardarFormasPago(json_decode($_POST['formasPago']));
 					
 					#se genera el documento pdf
 					require_once(getcwd()."/repositorio/pdf/pedido.php");
@@ -168,6 +174,14 @@ switch($objModulo->getId()){
 					$rsAux->moveNext();
 				}
 				
+				$rsAux = $db->Execute("select campo, valor from formasPago where idPedido = ".$obj->getId());
+				$rs->fields['formasPago'] = array();
+				
+				while(!$rsAux->EOF){
+					array_push($rs->fields['formasPago'], $rsAux->fields);
+					$rsAux->moveNext();
+				}
+				
 				$archivos = array();
 				$directorio  = scandir("repositorio/pedidos/orden_".$obj->getId()."/");
 				foreach($directorio as $file){
@@ -199,6 +213,14 @@ switch($objModulo->getId()){
 				$band = unlink($ruta)?true:false;
 				
 				echo json_encode(array("band" => $band));
+			break;
+			case 'imprimir':
+				#se genera el documento pdf
+				require_once(getcwd()."/repositorio/pdf/pedido.php");
+				$pdf = new RPedido($_POST['pedido']);
+				$pdf->generar();
+				
+				echo json_encode(array("band" => true, "documento" => $pdf->output()));
 			break;
 		}
 	break;

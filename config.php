@@ -474,4 +474,13 @@ $conf['listaPedidos'] = array(
 	'descripcion' => 'Lista de pedidos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['vistaCliente'] = array(
+	'descripcion' => '',
+	'seguridad' => false,
+	#'controlador' => 'clientes.php',
+	'js' => array('cliente.class.js'),
+	'jsTemplate' => array('clientes.js'),
+	'capa' => LAYOUT_DEFECTO,
+	'vista' => 'pedidos/idPedido.tpl');
 ?>

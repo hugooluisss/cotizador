@@ -14,13 +14,16 @@ class TPedido{
 	private $registro;
 	private $entrega;
 	private $entregables;
-	private $diseno;
+	private $fuente;
 	private $observacionDiseno;
 	private $colores;
 	private $observaciones;
 	private $precio;
 	private $anticipo;
 	private $movimientos;
+	private $envoltorio;
+	private $posicion;
+	private $observacionPosicion;
 	
 	/**
 	* Constructor de la clase
@@ -198,7 +201,7 @@ class TPedido{
 	}
 	
 	/**
-	* Establece el tipo de diseño
+	* Establece la fuente de donde se capturó el pedido
 	*
 	* @autor Hugo
 	* @access public
@@ -206,22 +209,22 @@ class TPedido{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setDiseno($val = ''){
-		$this->diseno = $val;
+	public function setFuente($val = ''){
+		$this->fuente = $val;
 		
 		return true;
 	}
 	
 	/**
-	* Retorna el tipo de diseno
+	* Retorna el nombre del lugar donde se capturó el pedido
 	*
 	* @autor Hugo
 	* @access public
 	* @return string Texto
 	*/
 	
-	public function getDiseno(){
-		return $this->diseno;
+	public function getFuente(){
+		return $this->fuente;
 	}
 	
 	/**
@@ -360,6 +363,141 @@ class TPedido{
 	}
 	
 	/**
+	* Establece la forma de entrega
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setFormaEntrega($val = ""){
+		$this->formaEntrega = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la forma de entrega
+	*
+	* @autor Hugo
+	* @access public
+	* @return string decimal
+	*/
+	
+	public function getFormaEntrega(){
+		return $this->formaEntrega;
+	}
+	
+	/**
+	* Establece la dirección de envio
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setDireccionEnvio($val = ""){
+		$this->direccionEnvio = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la dirección de envio
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Direccion
+	*/
+	
+	public function getDireccionEnvio(){
+		return $this->direccionEnvio;
+	}
+	
+	/**
+	* Establece la envoltura
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEnvoltorio($val = ""){
+		$this->envoltorio = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la envoltura
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Direccion
+	*/
+	
+	public function getEnvoltorio(){
+		return $this->envoltorio;
+	}
+	
+	/**
+	* Establece la posicion
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPosicion($val = ""){
+		$this->posicion = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la posicion
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Direccion
+	*/
+	
+	public function getPosicion(){
+		return $this->posicion;
+	}
+	
+	/**
+	* Establece las observaciones de la posicion
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setObservacionPosicion($val = ""){
+		$this->observacionPosicion = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la observacion a la posicion
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Direccion
+	*/
+	
+	public function getObservacionPosicion(){
+		return $this->observacionPosicion;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -371,7 +509,7 @@ class TPedido{
 		$db = TBase::conectaDB();
 		global $sesion;
 		
-		if ($this->cliente->getId() == '' or $this->estado->getId() == '')
+		if ($this->cliente->getId() == '' or $this->estado->getId() == '' or $sesion['usuario'] == '')
 			return false;
 		
 		if ($this->getId() == ''){
@@ -391,12 +529,16 @@ class TPedido{
 				registro = '".$this->getRegistro()."',
 				entrega = '".$this->getEntrega()."',
 				entregables = '".$this->getEntregables()."',
-				diseno = '".$this->getDiseno()."',
-				observacionDiseno = '".$this->getObservacionDiseno()."',
+				fuente = '".$this->getFuente()."',
 				colores = '".$this->getColores()."',
 				observaciones = '".$this->getObservaciones()."',
 				precio = ".$this->getPrecio().",
-				anticipo = ".$this->getAnticipo()."
+				anticipo = ".$this->getAnticipo().",
+				formaEntrega = '".$this->getFormaEntrega()."',
+				direccionEnvio = '".$this->getDireccionEnvio()."',
+				envoltorio = '".$this->getEnvoltorio()."',
+				posicion = '".$this->getPosicion()."',
+				observacionPosicion = '".$this->getObservacionPosicion()."'
 			WHERE idPedido = ".$this->getId());
 			
 		return $rs?true:false;
@@ -471,6 +613,31 @@ class TPedido{
 		
 		foreach($items as $item){
 			$rs = $db->Execute("insert into pedidoentregables (idPedido, idEntregable) values (".$this->getId().", ".$item->id.")");
+			if (! $rs) return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	* Guarda las formas de pago
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function guardarFormasPago($items){
+		if($this->getId() == '')
+			return false;
+		 	
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from formasPago where idPedido = ".$this->getId());
+		 
+		if (!$rs) return false;
+		
+		foreach($items as $item){
+			$rs = $db->Execute("insert into formasPago (idPedido, campo, valor) values (".$this->getId().", '".$item->campo."', '".$item->valor."')");
 			if (! $rs) return false;
 		}
 		
