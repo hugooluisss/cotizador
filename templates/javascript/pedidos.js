@@ -369,6 +369,14 @@ $(document).ready(function(){
 			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
 			
 			$("#selEnvoltorio").val($("#selEnvoltorio option:first").val());
+			
+			datos.formasPago.forEach(function(el){
+				campo = $(".formasPago[campo="+ el.campo + "]");
+				if (campo.attr("type") == 'checkbox')
+					campo.prop("checked", false);
+				else
+					campo.val("");
+			});
 		}
 	});
 });
@@ -422,6 +430,10 @@ function getLista(){
 					tabla.clearTable();
 					datos.remeras.forEach(function(el){
 						tabla.addRemera(el.idItem, datos.idPedido, {});
+					});
+					
+					datos.numerosLetras.forEach(function(el){
+						tabla.addNumerosLetras(el.letras, el.numeros, el.talla);
 					});
 					
 					$("#selFuente").val(datos.fuente);

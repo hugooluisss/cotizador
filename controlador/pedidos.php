@@ -125,6 +125,7 @@ switch($objModulo->getId()){
 					$obj->guardarTipoImpresiones(json_decode($_POST['impresiones']));
 					$obj->guardarEntregables(json_decode($_POST['entregables']));
 					$obj->guardarFormasPago(json_decode($_POST['formasPago']));
+					$obj->guardarNumerosLetras(json_decode($_POST['numerosLetras']));
 					
 					#se genera el documento pdf
 					require_once(getcwd()."/repositorio/pdf/pedido.php");
@@ -179,6 +180,14 @@ switch($objModulo->getId()){
 				
 				while(!$rsAux->EOF){
 					array_push($rs->fields['formasPago'], $rsAux->fields);
+					$rsAux->moveNext();
+				}
+				
+				$rsAux = $db->Execute("select numeros, letras, talla from pedidonumerosletras where idPedido = ".$obj->getId());
+				$rs->fields['numerosLetras'] = array();
+				
+				while(!$rsAux->EOF){
+					array_push($rs->fields['numerosLetras'], $rsAux->fields);
 					$rsAux->moveNext();
 				}
 				

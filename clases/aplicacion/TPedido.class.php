@@ -644,6 +644,31 @@ class TPedido{
 		return true;
 	}
 	
+	/**
+	* Guarda la lista de numeros y letras
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function guardarNumerosLetras($items){
+		if($this->getId() == '')
+			return false;
+		 	
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from pedidonumerosletras where idPedido = ".$this->getId());
+		 
+		if (!$rs) return false;
+		
+		foreach($items as $item){
+			$rs = $db->Execute("insert into pedidonumerosletras (idPedido, numeros, letras, talla) values (".$this->getId().", '".$item->numero."', '".$item->nombre."', '".$item->talla."')");
+			if (! $rs) return false;
+		}
+		
+		return true;
+	}
+	
 	public function eliminar(){
 		if ($this->getId() == '') return false;
 		

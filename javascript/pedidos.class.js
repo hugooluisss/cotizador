@@ -63,10 +63,23 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 	
 	this.clearTable = function(){
 		$("#" + self.tableRemeras + " tbody tr").remove();
+		$("#" + self.tableNumerosLetras + " tbody tr").remove();
 	}
 	
 	this.guardar = function(id, estado, cliente, formaEntrega, direccionEnvio, registro, entrega, entregables, fuente, colores, observaciones, precio, anticipo, remeras, impresiones, entregables, envoltorio, posicion, observacionPosicion, formasPago, fn){
+
 		if (fn.before !== undefined) fn.before();
+		
+		var numerosLetras = new Array();
+		$("#" + self.tableNumerosLetras + " tbody tr").each(function(){
+			var datos = new Object;
+			
+			datos.nombre = $(this).attr("nombre");
+			datos.numero = $(this).attr("numero");
+			datos.talla = $(this).attr("talle");
+			
+			numerosLetras.push(datos);
+		});
 		
 		$.post('?mod=cpedidos&action=guardar', {
 				"id": id,
@@ -88,7 +101,8 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 				"envoltorio": envoltorio,
 				"posicion": posicion,
 				"observacionPosicion": observacionPosicion,
-				"formasPago": formasPago
+				"formasPago": formasPago,
+				"numerosLetras": JSON.stringify(numerosLetras)
 			}, function(data){
 				if (fn.after !== undefined) fn.after(data);
 				
@@ -160,7 +174,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 			el.append($("<td />").html(nombre));
 			el.append($("<td />").html(numero));
 			el.append($("<td />").html(talle));
-			el.append($("<td />").append(btnModificar).append(btnEliminar));
+			el.append($("<td />", {"class": "text-right"}).append(btnModificar).append(btnEliminar));
 			
 			$("table#" + self.tableNumerosLetras + " > tbody").append(el);
 		}
