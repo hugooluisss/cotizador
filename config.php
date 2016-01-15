@@ -478,9 +478,16 @@ $conf['listaPedidos'] = array(
 $conf['vistaCliente'] = array(
 	'descripcion' => '',
 	'seguridad' => false,
-	#'controlador' => 'clientes.php',
-	'js' => array('cliente.class.js'),
-	'jsTemplate' => array('clientes.js'),
+	'controlador' => 'seguimientoPedidos.php',
+	#'js' => array('cliente.class.js'),
+	'jsTemplate' => array('seguimiento.js'),
 	'capa' => LAYOUT_DEFECTO,
-	'vista' => 'pedidos/idPedido.tpl');
+	'vista' => 'pedidos/seguimiento.tpl');
+	
+$conf['cseguimiento'] = array(
+	'controlador' => 'seguimientoPedidos.php',
+	'descripcion' => 'Controlador del seguimiento',
+	'seguridad' => false,
+	'debugSeg' => false,
+	'capa' => LAYOUT_AJAX);
 ?>

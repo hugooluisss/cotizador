@@ -43,6 +43,15 @@ switch($objModulo->getId()){
 				
 				header ("Location: index.php");
 			break;
+			case 'validarPedido':
+				$obj = new TPedido;
+				$obj->setId($_POST['orden']);
+
+				if(strtolower($obj->cliente->getEmail()) == strtolower($_POST['email']))
+					echo json_encode(array("band" => true, "cliente" => $obj->cliente->getNombre()));
+				else
+					echo json_encode(array("band" => false));
+			break;
 		}
 	break;
 }

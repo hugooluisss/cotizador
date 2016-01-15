@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-01-10 18:45:17
+<?php /* Smarty version Smarty-3.1.11, created on 2016-01-12 20:45:15
          compiled from "templates/plantillas/layout/login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:44077714855e5a55ba527b5-54558036%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5b8753aeb60af718a5f9de931383e28721a5592' => 
     array (
       0 => 'templates/plantillas/layout/login.tpl',
-      1 => 1452473116,
+      1 => 1452653114,
       2 => 'file',
     ),
   ),
@@ -78,32 +78,69 @@ plugins/iCheck/square/blue.css">
 			<div class="login-logo">
 				<a href="index.php"><b>Cotizador</b>Web</a>
 			</div><!-- /.login-logo -->
-		<div class="login-box-body">
-			<p class="login-box-msg">
-				<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+			<div class="login-box-body">
+				<p class="login-box-msg">
+					<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 img/logo.png" class="img-rounded"/>
+					<br />
+					Identificate para iniciar sesión
+				</p>
+
+				<form action="#" id="frmLogin" method="post">
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" placeholder="e-mail" id="txtUsuario" name="txtUsuario" autocomplete="no">
+						<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					</div>
+					<div class="form-group has-feedback">
+						<input type="password" class="form-control" placeholder="contraseña" id="txtPass" name="txtPass">
+						<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					</div>
+					<div class="row">
+						<!-- /.col -->
+						<div class="col-xs-offset-8 col-xs-4">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+						</div><!-- /.col -->
+					</div>
+				</form>
 				<br />
-				Identificate para iniciar sesión
-			</p>
-			<form action="#" id="frmLogin" method="post">
-				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="e-mail" id="txtUsuario" name="txtUsuario" autocomplete="no">
-					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="contraseña" id="txtPass" name="txtPass">
-					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
 				<div class="row">
-					<!-- /.col -->
-					<div class="col-xs-offset-8 col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
-					</div><!-- /.col -->
+					<button class="btn btn-info btn-xs" id="btnSeguimientoPedidos">Seguimiento de pedidos</button>
 				</div>
-			</form>
-		</div><!-- /.login-box-body -->
-		<a href="?mod=vistaCliente">¿Eres cliente? haz click aquí</a>
-	</div>
+			</div><!-- /.login-box-body -->
+		</div>
+		
+		<div class="modal fade" id="winPedidos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1>Seguimiento de pedidos</h1>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-success">
+							<strong>Instrucciones</strong> Ingrese el número de la orden y su correo electrónico
+						</div>
+						
+						<div class="row">
+							<label for="txtClave" class="col-xs-4">Número de orden</label>
+							<div class="col-xs-4">
+								<input type="text" value="" class="form-control" id="txtCodigo" name="txtCodigo" />
+							</div>
+						</div>
+						
+						<div class="row">
+							<label for="txtClave" class="col-xs-4">Email</label>
+							<div class="col-xs-8">
+								<input type="text" value="" class="form-control" id="txtEmail" name="txtEmail" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="btnConsultarPedido" class="btn btn-info">Obtener datos</button>
+					</div>
+				</div>
+			</div>
+		</div>
     
     
     <!-- jQuery 2.1.4 -->

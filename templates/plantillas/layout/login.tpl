@@ -37,31 +37,68 @@
 			<div class="login-logo">
 				<a href="index.php"><b>Cotizador</b>Web</a>
 			</div><!-- /.login-logo -->
-		<div class="login-box-body">
-			<p class="login-box-msg">
-				<img src="{$PAGE.ruta}img/logo.png" class="img-rounded"/>
+			<div class="login-box-body">
+				<p class="login-box-msg">
+					<img src="{$PAGE.ruta}img/logo.png" class="img-rounded"/>
+					<br />
+					Identificate para iniciar sesión
+				</p>
+
+				<form action="#" id="frmLogin" method="post">
+					<div class="form-group has-feedback">
+						<input type="text" class="form-control" placeholder="e-mail" id="txtUsuario" name="txtUsuario" autocomplete="no">
+						<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					</div>
+					<div class="form-group has-feedback">
+						<input type="password" class="form-control" placeholder="contraseña" id="txtPass" name="txtPass">
+						<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					</div>
+					<div class="row">
+						<!-- /.col -->
+						<div class="col-xs-offset-8 col-xs-4">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+						</div><!-- /.col -->
+					</div>
+				</form>
 				<br />
-				Identificate para iniciar sesión
-			</p>
-			<form action="#" id="frmLogin" method="post">
-				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="e-mail" id="txtUsuario" name="txtUsuario" autocomplete="no">
-					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="contraseña" id="txtPass" name="txtPass">
-					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
 				<div class="row">
-					<!-- /.col -->
-					<div class="col-xs-offset-8 col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
-					</div><!-- /.col -->
+					<button class="btn btn-info btn-xs" id="btnSeguimientoPedidos">Seguimiento de pedidos</button>
 				</div>
-			</form>
-		</div><!-- /.login-box-body -->
-		<a href="?mod=vistaCliente">¿Eres cliente? haz click aquí</a>
-	</div>
+			</div><!-- /.login-box-body -->
+		</div>
+		
+		<div class="modal fade" id="winPedidos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1>Seguimiento de pedidos</h1>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-success">
+							<strong>Instrucciones</strong> Ingrese el número de la orden y su correo electrónico
+						</div>
+						
+						<div class="row">
+							<label for="txtClave" class="col-xs-4">Número de orden</label>
+							<div class="col-xs-4">
+								<input type="text" value="" class="form-control" id="txtCodigo" name="txtCodigo" />
+							</div>
+						</div>
+						
+						<div class="row">
+							<label for="txtClave" class="col-xs-4">Email</label>
+							<div class="col-xs-8">
+								<input type="text" value="" class="form-control" id="txtEmail" name="txtEmail" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="btnConsultarPedido" class="btn btn-info">Obtener datos</button>
+					</div>
+				</div>
+			</div>
+		</div>
     
     
     <!-- jQuery 2.1.4 -->

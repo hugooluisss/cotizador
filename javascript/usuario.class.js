@@ -79,4 +79,20 @@ TUsuario = function(){
 			}
 		}, "json");
 	}
+	
+	this.getPedido = function(orden, email, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('?mod=clogin&action=validarPedido', {
+			"orden": orden,
+			"email": email
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+				
+			if (data.band == 'false'){
+				console.log("Los datos del usuario no son válidos");
+			}
+		}, "json");
+	}
 };

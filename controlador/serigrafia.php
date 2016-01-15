@@ -27,7 +27,6 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("limites", $datos);
-
 	break;
 	case 'definicionPrecios':
 		$limite = $_GET['limite'];
