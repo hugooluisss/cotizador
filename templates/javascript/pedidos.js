@@ -130,17 +130,33 @@ $(document).ready(function(){
 				number: true
 			},
 			txtCelular: {
-				required : false,
+				required : true,
 				minlength: 7,
 				maxlength: 15,
 				number: true
+			},
+			txtEmail: {
+				email: true,
+				required: true
 			}
 		},
 		wrapper: 'span', 
 		messages: {
 			txtNombre: "Este campo es necesario",
-			txtTelefono: "Solo acepta número de entre 7 y 15 dígitos",
-			txtCelular: "Solo acepta número de entre 7 y 15 dígitos"
+			txtCelular: {
+				required: "Este campo es necesario",
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtTelefono: {
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtCelular: "Solo acepta número de entre 7 y 15 dígitos",
+			txtEmail: {
+				required: "Este campo es necesario",
+				email: "Escribe un correo electrónico válido"
+			}
 		},
 		submitHandler: function(form){
 			var obj = new TCliente;
@@ -219,28 +235,70 @@ $(document).ready(function(){
 //Guardar
 $(document).ready(function(){
 	$("#btnGuardar").click(function(){
+		var obj = new TPedido;
 		var band = true;
 		if ($("#txtCliente").attr("idCliente") == '' || $("#txtCliente").attr("idCliente") === undefined){
 			alert("Debes de indicar un cliente");
 			$("#winClientes").modal();
 			band = false;
-		}
-		
-		if ($("#txtFecha").val() == '' || $("#txtRegistro").val() == ''){
+		}else if ($("#txtFecha").val() == '' || $("#txtRegistro").val() == ''){
 			alert("La fecha de registro y entrega son necesarias");
 			$("#txtFecha").focus();
 			band = false;
-		}
-		
-		if ($("#txtPrecio").val() == ''){
+		}else if ($("#txtPrecio").val() == ''){
 			alert("Indica un precio");
 			$("#txtPrecio").focus();
+			
+			band = false;
+		}else if ($("#txtEntrega").val() == ''){
+			alert("Es necesario indicar la fecha de entrega");
+			$("#txtEntrega").focus();
+			
+			band = false;
+		}else if ($("#selFuente").val() == ''){
+			alert("Es necesario indicar el modo de ingreso de la orden");
+			$("#selFuente").focus();
+			
+			band = false;
+		}else if ($(".serviciosImpresion:checked").size() == 0){
+			alert("Selecciona al menos una técnica de impresion");
+			$("#selFuente").focus();
+			
+			band = false;
+		}else if ($(".entregables:checked").size() == 0){
+			alert("Selecciona al menos algún tipo de artículo a entregar");
+			$("#selFuente").focus();
+			
+			band = false;
+		}else if (obj.countRemeras() == 0){
+			alert("No existen talles ni colores en la lista, agrega uno para dar de alta la orden");
+			$("#txtNombreRemera").focus();
+			
+			band = false;
+		}else if ($("#selPosicion").val() == ''){
+			alert("Indica una posición de la lista");
+			$("#selPosicion").focus();
+			
+			band = false;
+		}else if ($("#selFormaEntrega").val() == ''){
+			alert("Indica cual es la foma de entrega");
+			$("#selFormaEntrega").focus();
+			
+			band = false;
+		}else if ($(".formasPago:checked").size() == 0){
+			alert("Selecciona al menos una forma de pago");
+			$(".formasPago[campo=Efectivo]").focus();
+			
+			band = false;
+		}else if ($("#total").val() == '' || $("#total").val() == 0){
+			alert("El campo precio final es necesario");
+			$("#total").focus();
 			
 			band = false;
 		}
 		
 		if (band){
-			var obj = new TPedido;
+			
 			var entrega = $("#txtEntrega").val() + " " + $("#selHora").val() + ":" + $("#selMinuto").val() + ":00";
 			
 			//todas las tallas
@@ -277,7 +335,10 @@ $(document).ready(function(){
 				var forma = new Object();
 				
 				forma.campo = $(this).attr("campo");
-				forma.valor = $(this).val();
+				if ($(this).attr("type") == 'checkbox')
+					forma.valor = $(this).prop("checked")?"on":"";
+				else
+					forma.valor = $(this).val();
 				formasPago.push(forma);
 			});
 
@@ -452,9 +513,12 @@ function getLista(){
 					
 					datos.formasPago.forEach(function(el){
 						campo = $(".formasPago[campo="+ el.campo + "]");
-						if (campo.attr("type") == 'checkbox')
-							campo.prop("checked", true);
-						else
+						if (campo.attr("type") == 'checkbox'){
+							if (el.valor == 'on')
+								campo.prop("checked", true);
+							else
+								campo.prop("checked", false);
+						}else
 							campo.val(el.valor);
 					});
 					

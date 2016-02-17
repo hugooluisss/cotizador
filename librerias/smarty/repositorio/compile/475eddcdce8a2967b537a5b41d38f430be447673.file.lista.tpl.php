@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-01-10 18:36:04
+<?php /* Smarty version Smarty-3.1.11, created on 2016-02-16 23:32:46
          compiled from "templates/plantillas/modulos/pedidos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:157187380456687c0b757af7-92334875%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '475eddcdce8a2967b537a5b41d38f430be447673' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/lista.tpl',
-      1 => 1452472561,
+      1 => 1455687163,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56687c0b758181_40822611')) {function content_56687c0b758181_40822611($_smarty_tpl) {?><div class="box">
-	<div class="box-body">
+	<div class="box-body" style="overflow: scroll">
 		<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
 			<thead>
 				<tr>

@@ -1,5 +1,5 @@
 <div class="box">
-	<div class="box-body">
+	<div class="box-body" style="overflow: scroll">
 		<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
 			<thead>
 				<tr>

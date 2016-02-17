@@ -1,5 +1,5 @@
 <div class="box">
-	<div class="box-body">
+	<div class="box-body" style="overflow: scroll">
 		<table id="tblNumerosLetras" class="table table-bordered table-hover">
 			<thead>
 				<tr>

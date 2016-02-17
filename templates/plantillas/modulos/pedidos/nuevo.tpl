@@ -7,17 +7,17 @@
 		</div>
 		<div class="row">
 			<label class="col-xs-2" for="txtCliente">Cliente</label>
-			<div class="col-xs-5">
+			<div class="col-sm-5">
 				<input type="text" class="form-control" id="txtCliente" cliente placeholder="Nombre del cliente">
 			</div>
-			<div class="col-xs-5">
+			<div class="col-sm-5">
 				<button type="button" class="btn btn-success" id="btnLstClientes" value="Buscar" /><i class="fa fa-search"></i> Buscar</button>
 				<input type="button" class="btn btn-success" id="btnNuevoCliente" value="Nuevo" />
 			</div>
 		</div>
 		<hr />
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-sm-6">
 				<div class="row">
 					<label class="col-xs-4" for="txtFecha">Fecha</label>
 					<div class="col-xs-8">
@@ -48,10 +48,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-sm-6">
 				<div class="row">
-					<label for="selEstado" class="col-xs-4">Estado</label>
-					<div class="col-xs-8">
+					<label for="selEstado" class="col-xs-12 col-sm-4">Estado</label>
+					<div class="col-xs-12 col-sm-8">
 						<select id="selEstado" name="selEstado" class="form-control">
 							{foreach key=key item=item from=$estados}
 								<option value="{$item.idEstado}">{$item.nombre}
@@ -60,8 +60,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<label for="selFuente" class="col-xs-4">Modo de ingreso</label>
-					<div class="col-xs-8">
+					<label for="selFuente" class="col-xs-12 col-sm-4">Modo de ingreso</label>
+					<div class="col-xs-12 col-sm-8">
 						<select id="selFuente" name="selFuente" class="form-control">
 								<option value="Local">Local
 								<option value="Email">Email
@@ -77,20 +77,20 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-sm-12 col-md-6">
 				<h3>Impresión</h3>
 				
 				{foreach key=key item=item from=$serviciosImpresion}
 					<div class="checkbox">
-						<label class="col-xs-4"><input type="checkbox" class="serviciosImpresion" value="{$item.idImpresion}">{$item.nombre}</label>
+						<label class="col-xs-12 col-sm-4"><input type="checkbox" class="serviciosImpresion" value="{$item.idImpresion}">{$item.nombre}</label>
 					</div>
 				{/foreach}
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-12 col-md-6">
 				<h3>Artículos</h3>
 				{foreach key=key item=item from=$entregables}
 					<div class="checkbox">
-						<label class="col-xs-4"><input type="checkbox" class="entregables" value="{$item.idEntregable}">{$item.nombre}</label>
+						<label class="col-xs-12 col-sm-4"><input type="checkbox" class="entregables" value="{$item.idEntregable}">{$item.nombre}</label>
 					</div>
 				{/foreach}
 				<br />
@@ -102,12 +102,12 @@
 
 <div class="panel panel-default">
 	<div class="panel-head">
-		<h3>Remeras</h3>
+		<h3>Talles y colores</h3>
 	</div>
 	<div class="panel-body">
 		<div class="row">
-			<label class="col-xs-2" for="txtNombreRemera">Nombre</label>
-			<div class="col-xs-6">
+			<label class="col-xs-12 col-sm-2" for="txtNombreRemera">Nombre</label>
+			<div class="col-xs-12 col-sm-6">
 				<input type="text" class="form-control" id="txtNombreRemera" name="txtNombreRemera">
 			</div>
 			<div class="col-xs-4">
@@ -115,7 +115,7 @@
 			</div>
 		</div>
 		<br />
-		<div class="row">
+		<div class="row" style="overflow: scroll">
 			<table id="tblTalles" class="table table-bordered" totalTallas="{count($tallas)}">
 				<thead>
 					<tr>
@@ -151,7 +151,7 @@
 				<textarea class="form-control" rows="4" id="txtDiseno" name="txtDiseno"></textarea>
 			</div>
 		-->
-			<div class="col-xs-3">
+			<div class="col-xs-12col-sm-3">
 				<h3>Posición</h3>
 				<select id="selPosicion">
 					<option value="Frente">Frente
@@ -164,12 +164,12 @@
 				</select>
 				<textarea class="form-control" rows="5" id="txtPosicion" name="txtPosicion"></textarea>
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-12 col-md-3">
 				<h3>Colores</h3>
 				<textarea class="form-control" rows="6" id="txtColores" name="txtColores"></textarea>
 			</div>
 			
-			<div class="col-xs-6">
+			<div class="col-xs-12 col-md-6">
 				<h3>Observaciones</h3>
 				<textarea class="form-control" rows="6" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
@@ -179,11 +179,8 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-xs-8"><h3>Archivos</h3></div>
-			<div class="col-xs-4"><h3>Nombres y números</h3></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-8">
+			<div class="col-xs-12 col-md-8">
+				<h3>Archivos</h3>
 				<form id="upload" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
 					<input type="hidden" id="pedido" name="pedido" value="">
 					<input type="file" name="upl" multiple />
@@ -192,7 +189,8 @@
 					</ul>
 				</form>
 			</div>
-			<div class="col-xs-4 text-center">
+			<div class="col-xs-12 col-md-4 text-center">
+				<h3>Nombres y números</h3>
 				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
 			</div>
 		</div>
@@ -202,8 +200,8 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="row">
-				<div class="col-xs-6">
-					<label for="selFormaEntrega" class="col-xs-4">Forma de entrega</label>
+				<div class="col-xs-12 col-md-6">
+					<label for="selFormaEntrega" class="col-xs-12 col-sm-4">Forma de entrega</label>
 					<div class="col-xs-8">
 						<select id="selFormaEntrega" name="selFormaEntrega" class="form-control">
 							<option value="Retiro en local">Retiro en local
@@ -212,8 +210,8 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-xs-6">
-					<label for="selEnvoltorio" class="col-xs-4">Envoltorio</label>
+				<div class="col-xs-12 col-md-6">
+					<label for="selEnvoltorio" class="col-xs-12 col-sm-4">Envoltorio</label>
 					<div class="col-xs-8">
 						<select id="selEnvoltorio" name="selEnvoltorio" class="form-control">
 							<option value="Normal">Normal
@@ -224,9 +222,9 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-6">
-					<label for="txtDireccionEnvio" class="col-xs-4">Dirección de envio</label>
-					<div class="col-xs-8">
+				<div class="col-xs-12 col-md-6">
+					<label for="txtDireccionEnvio" class="col-xs-12 col-sm-4">Dirección de envio</label>
+					<div class="col-xs-12 col-sm-8">
 						<textarea id="txtDireccionEnvio" name="txtDireccionEnvio" rows="3" class="form-control"></textarea>
 					</div>
 				</div>
@@ -240,19 +238,19 @@
 			<h3>Formas de pago</h3>
 		</div>
 		<div class="row">
-			<div class="col-xs-2 text-center">
+			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
 				<label> Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
 			</div>
-			<div class="col-xs-2 text-center">
+			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
 				<label>Débito</label><br /><input type="checkbox" class="formasPago" campo="Debito">
 			</div>
-			<div class="col-xs-3 text-center">
+			<div class="col-xs-12 col-sm-6 col-md-3 text-center">
 				<label>Giro</label><br /><input type="text" value="" class="formasPago" campo="Giro">
 			</div>
-			<div class="col-xs-3 text-center">
+			<div class="col-xs-12 col-sm-6 col-md-3 text-center">
 				<label>Cheque</label><br /><input type="text" value="" class="formasPago" campo="Cheque">
 			</div>
-			<div class="col-xs-2 text-center">
+			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
 				<label>Tarjeta de crédito</label><br /><input type="checkbox" class="formasPago" campo="Credito">
 			</div>
 		</div>

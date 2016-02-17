@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-01-11 21:40:49
+<?php /* Smarty version Smarty-3.1.11, created on 2016-02-16 23:45:48
          compiled from "templates/plantillas/modulos/pedidos/nombresNumeros/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:35644432756946c8dd885d0-35031714%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8125c8fabe7670fc68242fe9060354de9ee4c773' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nombresNumeros/lista.tpl',
-      1 => 1452570015,
+      1 => 1455687947,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56946c8dd89fd5_90765813')) {function content_56946c8dd89fd5_90765813($_smarty_tpl) {?><div class="box">
-	<div class="box-body">
+	<div class="box-body" style="overflow: scroll">
 		<table id="tblNumerosLetras" class="table table-bordered table-hover">
 			<thead>
 				<tr>

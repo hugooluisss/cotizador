@@ -15,6 +15,17 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 	
 	for (x = 0 ; x < $("#" + self.tableRemeras).attr("totalTallas") ; x++)
 		self.tallas[x] = $("#" + self.tableRemeras + " [talla=" + x +"]").attr("nombre");
+		
+	this.countRemeras = function(){
+		total = 0;
+		$("table#" + self.tableRemeras + " > tbody tr td input").each(function(){
+			total += $(this).val() == ''?0:$(this).val();
+		});
+		
+		console.log("Total de remeras: " + total);
+		
+		return total;
+	}
 	
 	this.addRemera = function(id, pedido, fn){
 		if ($(".eliminarItem[item=" + id + "]").length > 0)
@@ -122,6 +133,10 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 				alert("Ocurrió un error al eliminar el pedido");
 			}
 		}, "json");
+	}
+	
+	this.countNumerosLetras = function(){
+		return $("table#" + self.tableNumerosLetras + " tbody tr").length;
 	}
 	
 	this.addNumerosLetras = function(nombre, numero, talle, fn){
