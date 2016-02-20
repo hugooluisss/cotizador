@@ -77,7 +77,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 		$("#" + self.tableNumerosLetras + " tbody tr").remove();
 	}
 	
-	this.guardar = function(id, estado, cliente, formaEntrega, direccionEnvio, registro, entrega, entregables, fuente, colores, observaciones, precio, anticipo, remeras, impresiones, entregables, envoltorio, posicion, observacionPosicion, formasPago, fn){
+	this.guardar = function(id, estado, cliente, formaEntrega, direccionEnvio, registro, entrega, entregables, fuente, colores, observaciones, precio, anticipo, remeras, impresiones, entregablesJson, envoltorio, posicion, observacionPosicion, formasPago, fn){
 
 		if (fn.before !== undefined) fn.before();
 		
@@ -91,6 +91,8 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 			
 			numerosLetras.push(datos);
 		});
+		
+		console.log("Guardando pedido con id " + id);
 		
 		$.post('?mod=cpedidos&action=guardar', {
 				"id": id,
@@ -108,7 +110,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 				"anticipo": anticipo,
 				"remeras": remeras,
 				"impresiones": impresiones,
-				"entregables": entregables,
+				"entregablesJson": entregablesJson,
 				"envoltorio": envoltorio,
 				"posicion": posicion,
 				"observacionPosicion": observacionPosicion,

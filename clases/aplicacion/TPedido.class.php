@@ -525,9 +525,9 @@ class TPedido{
 		$rs = $db->Execute("UPDATE pedido
 			SET
 				idEstado = ".$this->estado->getId().",
-				idCliente = ".$this->cliente->getId().",
-				registro = '".$this->getRegistro()."',
-				entrega = '".$this->getEntrega()."',
+				idCliente = ".$this->cliente->getId().", ".
+				#registro = '".$this->getRegistro()."',
+				"entrega = '".$this->getEntrega()."',
 				entregables = '".$this->getEntregables()."',
 				fuente = '".$this->getFuente()."',
 				colores = '".$this->getColores()."',

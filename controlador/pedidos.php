@@ -123,7 +123,7 @@ switch($objModulo->getId()){
 				if ($obj->guardar()){
 					$obj->guardarItems(json_decode($_POST['remeras']));
 					$obj->guardarTipoImpresiones(json_decode($_POST['impresiones']));
-					$obj->guardarEntregables(json_decode($_POST['entregables']));
+					$obj->guardarEntregables(json_decode($_POST['entregablesJson']));
 					$obj->guardarFormasPago(json_decode($_POST['formasPago']));
 					$obj->guardarNumerosLetras(json_decode($_POST['numerosLetras']));
 					

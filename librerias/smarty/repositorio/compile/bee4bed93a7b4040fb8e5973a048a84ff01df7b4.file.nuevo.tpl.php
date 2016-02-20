@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-02-16 23:43:05
+<?php /* Smarty version Smarty-3.1.11, created on 2016-02-20 01:17:36
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1455687784,
+      1 => 1455948688,
       2 => 'file',
     ),
   ),
@@ -164,7 +164,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					</div>
 				<?php } ?>
 				<br />
-				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
+				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control" maxlength="45"/>
 			</div>
 		</div>
 	</div>

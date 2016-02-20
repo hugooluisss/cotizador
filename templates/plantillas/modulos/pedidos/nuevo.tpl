@@ -94,7 +94,7 @@
 					</div>
 				{/foreach}
 				<br />
-				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control"/>
+				<input type="text" value="" id="txtEntregables" name="txtEntregables" class="form-control" maxlength="45"/>
 			</div>
 		</div>
 	</div>

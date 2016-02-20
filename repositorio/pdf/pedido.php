@@ -21,24 +21,131 @@ class RPedido extends tFPDF{
 	}	
 	
 	public function Header($nombre){   	
-    	$this->SetFont('Arial', 'B', 20);
-    	$this->Ln(10);
-    	$this->Image('repositorio/img/logo.jpg', 90, 5, 35, 55);
-    	$this->SetFont('Sans', '', 12);
-    	$this->SetY(65);
-    	$this->Cell(0, 5, ".:: PEDIDO ::.", 0, 1, 'C');
     	$this->SetFont('Arial', '', 10);
-    	//$this->Cell(0, 5, $this->pedido->getFecha(), 0, 1, 'C');
-    	$this->SetY(75);
-    	$this->Ln(5);
 	}
 	
 	public function generar($id){
 		$this->AddPage();
+		$this->Image('repositorio/img/ordendetrabajo.jpg', 0, 0);
+		
 		
 		$pedido = $this->pedido;
-		$this->Cell(0, 5, "C. ".$pedido->cliente->getNombre(), 0, 1);
-		$this->Ln(10);
+		$this->SetXY(33, 48);
+		$this->Cell(0, 5, $pedido->cliente->getNombre(), 0);
+		$this->SetXY(33, 60);
+		$this->Cell(0, 5, $pedido->cliente->getCelular(), 0);
+		$this->SetXY(33, 72);
+		$this->Cell(0, 5, $pedido->cliente->getEmail(), 0);
+		
+		#registro
+		$registro = explode("-", $pedido->getRegistro());
+		$this->SetXY(50, 28); $this->Cell(0, 5, $registro[2], 0);
+		$this->SetXY(59, 28); $this->Cell(0, 5, $registro[1], 0);
+		$this->SetXY(68, 28); $this->Cell(0, 5, $registro[0], 0);
+		
+		#entrega
+		$entrega = explode("-", $pedido->getEntrega());
+		$entregaAux = explode(" ", $entrega[2]);
+		$entrega[2] = $entregaAux[0];
+		$entregaHora = explode(":", $entregaAux[1]);
+		$this->SetXY(50, 37); $this->Cell(0, 5, $entrega[2].'-'.$entrega[1].'-'.$entrega[0], 0);
+		$this->SetXY(88, 37); $this->Cell(0, 5, $entregaHora[0], 0);
+		$this->SetXY(96, 37); $this->Cell(0, 5, $entregaHora[1], 0);
+		
+		#Impresiones
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 4");
+		if (!$rs->EOF){
+			$this->SetXY(142, 47); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 5");
+		if (!$rs->EOF){
+			$this->SetXY(142, 51.5); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 6");
+		if (!$rs->EOF){
+			$this->SetXY(142, 56); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 7");
+		if (!$rs->EOF){
+			$this->SetXY(142, 60.5); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 8");
+		if (!$rs->EOF){
+			$this->SetXY(142, 65); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		#articulos
+		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 10");
+		if (!$rs->EOF){
+			$this->SetXY(155, 47); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 11");
+		if (!$rs->EOF){
+			$this->SetXY(155, 51.5); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+			
+		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 12");
+		if (!$rs->EOF){
+			$this->SetXY(155, 56); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 13");
+		if (!$rs->EOF){
+			$this->SetXY(155, 60.5); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+		
+		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 14");
+		if (!$rs->EOF){
+			$this->SetXY(155, 65); $this->Cell(4, 2, "", 0, 0, 'L', 1);
+		}
+			
+		
+		$this->SetXY(105, 71); $this->Cell(100, 3, $pedido->getEntregables());
+		
+		#Remeras
+		$rs = $db->Execute("select * from movped where idPedido = ".$pedido->getId()." limit 2");
+		
+		$tallas = array(1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 'S', 'M', 'L', 'XL', 'XLL');
+		$y = 91;
+		while(!$rs->EOF){
+			$x = 25;
+			$item = '';
+			foreach($tallas as $talla){
+				$rs2 = $db->Execute("select * from movped join talla using(idTalla) join ropa using(idItem) where idPedido = ".$pedido->getId()." and talla.nombre = 'Talle ".$talla."'");
+				
+				$this->SetXY($x, $y); $this->Cell(7, 5, $rs2->fields['cantidad'] == ''?0:$rs2->fields['cantidad'], 0, 0, 'R');
+				$x += 9.1;
+				$item = !$rs2->EOF?($rs2->fields['idItem'].' '.$rs2->fields['descripcion']):$item;
+			}
+			$this->SetXY(170, $y); $this->Cell(7, 5, substr($item, 0, 14), 0, 0, 'L');
+			$y += 9;
+			
+			$rs->moveNext();
+		}
+		
+		#posiciones, no se ponen
+		
+		#colores;
+		$this->SetXY(88, 153); $this->Cell(7, 5, substr($pedido->getColores(), 0, 17), 0, 0, 'L');
+		$this->SetXY(88, 161); $this->Cell(7, 5, substr($pedido->getColores(), 17, 17), 0, 0, 'L');
+		$this->SetXY(88, 169); $this->Cell(7, 5, substr($pedido->getColores(), 34, 17), 0, 0, 'L');
+		$this->SetXY(88, 177); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17), 0, 0, 'L');
+		
+		#Observaciones
+		$this->SetXy(77, 210); $this->MultiCell(117, 5, $pedido->getObservaciones(), 0, 'J');
+		$this->SetXY(60, 252); $this->Cell(22, 5, $pedido->getPrecio(), 0, 0, 'R');
+		$this->SetXY(110, 252); $this->Cell(22, 5, $pedido->getAnticipo(), 0, 0, 'R');
+		$this->SetXY(162, 252); $this->Cell(22, 5, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), 0, 0, 'R');
+		
+		#Diseño
+			
+		/*$this->Ln(10);
 		$this->Write(5, utf8_decode("Estimado cliente, por medio del presente, le hago entrega del detalle de su pedido. Cualquier duda favor de contactarnos, con gusto se las resolveremos"));
 		
 		
@@ -81,6 +188,7 @@ class RPedido extends tFPDF{
 		$this->Cell(30, 8, $pedido->getAnticipo(), "B", 1, 'R');
 		$this->Cell(165, 8, "Resta", 0, 0, 'R');
 		$this->Cell(30, 8, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), "B", 1, 'R');
+		*/
 		
 	}
 		
@@ -110,18 +218,6 @@ class RPedido extends tFPDF{
 	}
 	
 	function Footer(){
-		$this->SetY(-15);
-		$this->SetFont('Arial', 'I', 8);
-		$this->Cell(0, 10, utf8_decode('Página ').$this->PageNo(), 0, 0, 'C');
-		
-		$this->SetY(-30);
-		$this->write(5, utf8_decode("Estos precios están sujetos a cambios sin previo aviso. La presenta aplica para cualquier forma de pago. La cotización no representa forma alguna, reserva de inventario"));
-		
-		$this->SetY(-55);
-		$this->Cell(0, 5, "______________________________________________", 0, 1, 'C');
-		global $sesion;
-		$usuario = new TUsuario($sesion['usuario']);
-		$this->Cell(0, 5, utf8_decode($usuario->getNombre().' '.$usuario->getApp()), 0, 1, 'C');
 	}
 
 }

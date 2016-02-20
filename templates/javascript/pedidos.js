@@ -494,7 +494,7 @@ function getLista(){
 					});
 					
 					datos.numerosLetras.forEach(function(el){
-						tabla.addNumerosLetras(el.letras, el.numeros, el.talla);
+						tabla.addNumerosLetras(el.letras, el.numeros, el.talla, {});
 					});
 					
 					$("#selFuente").val(datos.fuente);
