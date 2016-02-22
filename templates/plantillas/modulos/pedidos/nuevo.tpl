@@ -190,7 +190,7 @@
 				</form>
 			</div>
 			<div class="col-xs-12 col-md-4 text-center">
-				<h3>Nombres y números</h3>
+				<h3>Nombres y números <span class="badge totalNumeroLetras">0 registrados</span></h3>
 				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
 			</div>
 		</div>

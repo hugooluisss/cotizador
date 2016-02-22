@@ -138,6 +138,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 	}
 	
 	this.countNumerosLetras = function(){
+		console.log("Total de nombres y letras: " + $("table#" + self.tableNumerosLetras + " tbody tr").length);
 		return $("table#" + self.tableNumerosLetras + " tbody tr").length;
 	}
 	
@@ -184,8 +185,10 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 			}));
 			
 			btnEliminar.click(function(){
-				if(confirm("¿Seguro?"))
+				if(confirm("¿Seguro?")){
 					btnEliminar.parent().parent().remove();
+					$(".totalNumeroLetras").html(self.countNumerosLetras() + " registrados");
+				}
 			});
 			
 			el.append($("<td />").html(nombre));

@@ -445,6 +445,8 @@ function limpiar(){
 		else
 			campo.val("");
 	});
+	
+	$('#upload .elementos').html("");
 }
 
 function getLista(){
@@ -466,6 +468,7 @@ function getLista(){
 			$.post("?mod=cpedidos&action=getData", {
 					"id": $(this).attr("pedido")
 				},function(datos){
+					limpiar();
 					$("#pedido").val(datos.idPedido);
 					$("#upload").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + datos.idPedido);
 					$("#txtCliente").val(datos.nombreCliente);
@@ -501,6 +504,8 @@ function getLista(){
 					datos.numerosLetras.forEach(function(el){
 						tabla.addNumerosLetras(el.letras, el.numeros, el.talla, {});
 					});
+					
+					$(".totalNumeroLetras").html(tabla.countNumerosLetras() + " registrados");
 					
 					$("#selFuente").val(datos.fuente);
 					$("#txtColores").val(datos.colores);
@@ -711,6 +716,8 @@ $(document).ready(function(){
 				$("#winNombresNumeros #selTalla").val($("#winNombresNumeros #selTalla option:first").val());
 				
 				$('#tabNombresNumeros a[href="#listaNombresNumeros"]').tab('show');
+				
+				$(".totalNumeroLetras").html(obj.countNumerosLetras() + " registrados");
 			},
 			modificar: function(el){
 				$("#winNombresNumeros #txtNombre").val(el.attr("nombre"));

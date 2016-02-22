@@ -479,7 +479,6 @@ $conf['vistaCliente'] = array(
 	'descripcion' => '',
 	'seguridad' => false,
 	'controlador' => 'seguimientoPedidos.php',
-	#'js' => array('cliente.class.js'),
 	'jsTemplate' => array('seguimiento.js'),
 	'capa' => LAYOUT_DEFECTO,
 	'vista' => 'pedidos/seguimiento.tpl');

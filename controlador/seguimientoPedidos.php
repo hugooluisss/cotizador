@@ -21,6 +21,17 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("archivos", $archivos);
+		
+		$rs = $db->Execute("select distinct nombre from talla;");
+		$datos = array();
+		while(!$rs->EOF){
+			$rs->fields['nombre2'] = str_replace("Talle ", "", $rs->fields['nombre']);
+			$rs->fields['json'] = json_encode($rs->fields);
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("tallas", $datos);
 	break;
 	case 'cseguimiento':
 		switch($objModulo->getAction()){

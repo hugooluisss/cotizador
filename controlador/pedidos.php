@@ -217,7 +217,7 @@ switch($objModulo->getId()){
 				echo '{"status":"error"}';
 			break;
 			case 'delfile':	
-				$ruta = "repositorio/pedidos/orden_".$_GET['pedido']."/".$_POST['archivo'];
+				$ruta = "repositorio/pedidos/orden_".$_POST['pedido']."/".$_POST['archivo'];
 				
 				$band = unlink($ruta)?true:false;
 				

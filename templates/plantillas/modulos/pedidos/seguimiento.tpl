@@ -24,7 +24,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-4"><label>Estado</label></div>
-			<div class="col-xs-8">{$pedido->estado->getNombre()}</div>
+			<div class="col-xs-8"><span style="background: {$pedido->estado->getColor()}">&nbsp;&nbsp;&nbsp;&nbsp;</span> {$pedido->estado->getNombre()}</div>
 		</div>
 		<hr />
 		<h3>Cliente</h3>
@@ -36,7 +36,13 @@
 			<div class="col-xs-4"><label>Email</label></div>
 			<div class="col-xs-8">{$pedido->cliente->getEmail()}</div>
 		</div>
+		<!--
 		<hr />
+		<h3>Nombres y números</h3>
+		{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/nombresNumeros/nuevo.tpl"}
+		<div id="dvListaNombresNumeros">
+			{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/nombresNumeros/lista.tpl"}
+		</div>-->
 		<h3>Archivos</h3>
 		<form id="upload" method="post" action="?mod=cseguimiento&action=uploadfile" enctype="multipart/form-data">
 			<input type="hidden" id="pedido" name="pedido" value="{$pedido->getId()}">
