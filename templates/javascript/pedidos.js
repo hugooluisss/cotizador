@@ -378,6 +378,7 @@ $(document).ready(function(){
 							else
 								ventanaPedido.document.href = data.documento;
 							
+							limpiar();
 							ventanaPedido.focus();
 						}else
 							alert("Ocurrió un error al guardar el documento...");
@@ -395,52 +396,56 @@ $(document).ready(function(){
 		getLista();
 	});
 	
-	$("#btnNuevoPedido").click(function(){
-		if (confirm("¿Seguro?")){
-			$("#pedido").val("");
-			$("#txtCliente").val("");
-			$("#txtCliente").attr("idCliente", "");
-			var f = new Date();
-			fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
-			$("#txtFecha").val(fecha);
-			$("#txtEntrega").val(fecha);
-			$("#selHora").val(0);
-			$("#selMinuto").val(0);
-			$("#selEstado").val($("#selEstado option:first").val());
-			
-			$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
-			$("#txtDireccionEntrega").val("");
-			
-			$(".serviciosImpresion").prop("checked", false);
-			$(".entregables").prop("checked", false);
-			$("#txtEntregable").val("");
-			
-			var tabla = new TPedido();
-			
-			tabla.clearTable();
-			
-			$("#selFuente").val($("#selFuente option:first").val());
-			$("#txtDiseno").val("");
-			$("#txtColores").val("");
-			$("#txtObservaciones").val("");
-			$("#total").val("0.00");
-			$("#sena").val("0.00");
-			
-			$("#saldo").val($("#total").val() - $("#sena").val());
-			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
-			
-			$("#selEnvoltorio").val($("#selEnvoltorio option:first").val());
-			
-			datos.formasPago.forEach(function(el){
-				campo = $(".formasPago[campo="+ el.campo + "]");
-				if (campo.attr("type") == 'checkbox')
-					campo.prop("checked", false);
-				else
-					campo.val("");
-			});
-		}
+	$(".btnNuevoPedido").click(function(){
+		if (confirm("¿Seguro?"))
+			limpiar();
 	});
 });
+
+function limpiar(){
+	$("#pedido").val("");
+	$("#txtCliente").val("");
+	$("#txtCliente").attr("idCliente", "");
+	var f = new Date();
+	fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+	$("#txtFecha").val(fecha);
+	$("#txtEntrega").val(fecha);
+	$("#selHora").val(0);
+	$("#selMinuto").val(0);
+	$("#selEstado").val($("#selEstado option:first").val());
+	
+	$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
+	$("#txtDireccionEntrega").val("");
+	
+	$(".serviciosImpresion").prop("checked", false);
+	$(".entregables").prop("checked", false);
+	$("#txtEntregable").val("");
+	
+	var tabla = new TPedido();
+	
+	tabla.clearTable();
+	
+	$("#selFuente").val($("#selFuente option:first").val());
+	$("#txtDiseno").val("");
+	$("#txtColores").val("");
+	$("#txtObservaciones").val("");
+	$("#total").val("0.00");
+	$("#sena").val("0.00");
+	
+	$("#saldo").val($("#total").val() - $("#sena").val());
+	$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+	
+	$("#selEnvoltorio").val($("#selEnvoltorio option:first").val());
+	
+	$(".formasPago").each(function(el){
+		campo = $(this);
+		
+		if (campo.attr("type") == 'checkbox')
+			campo.prop("checked", false);
+		else
+			campo.val("");
+	});
+}
 
 function getLista(){
 	$.get("?mod=listaPedidos&inicio=" + $("#txtInicioBus").val() + "&fin=" + $("#txtFinBus").val() + "&tipo=" + $("#selTipoBusqueda").val(), function( data ) {
@@ -559,9 +564,13 @@ function getLista(){
 		});
 		
 		$("[action=imprimir]").click(function(){
+			var el = $(this)
+			el.prop("disabled", true);
+			
 			$.post("?mod=cpedidos&action=imprimir", {
 					"pedido": $(this).attr("pedido")
 				},function(data){
+					el.prop("disabled", false);
 					if (data.documento != ''){
 						if (ventanaPedido === undefined)
 							var ventanaPedido = window.open(data.documento, '_blank');

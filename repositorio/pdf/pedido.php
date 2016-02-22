@@ -30,6 +30,12 @@ class RPedido extends tFPDF{
 		
 		
 		$pedido = $this->pedido;
+		
+		$this->SetFont('Arial', 'B', 10);
+		$this->SetXY(15, 21); $this->Cell(15, 4, "No. Orden: ", 0, 0, 'L');
+		$this->SetFont('Arial', '', 10);
+		$this->SetXY(40, 21); $this->Cell(40, 4, (string )$pedido->getId(), 'B', 0, 'R');
+		
 		$this->SetXY(33, 48);
 		$this->Cell(0, 5, $pedido->cliente->getNombre(), 0);
 		$this->SetXY(33, 60);

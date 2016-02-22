@@ -2,7 +2,7 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-xs-12">
-				<button class="btn btn-danger" id="btnNuevoPedido">Nuevo pedido</button>
+				<button class="btn btn-danger btnNuevoPedido">Nuevo pedido</button>
 			</div>
 		</div>
 		<div class="row">
@@ -36,13 +36,13 @@
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
 						{for $hora=0 to 23} 
-							<option value="{$hora}">{$hora}
+							<option value="{$hora}">{$hora|string_format:"%02s"}
 						{/for}
 						</select>
 						 : 
 						<select class="form-contro" id="selMinuto" name="selMinuto">
 						{for $minuto=0 to 59 step 15} 
-							<option value="{$minuto}">{$minuto}
+							<option value="{$minuto}">{$minuto|string_format:"%02s"}
 						{/for}
 						</select>
 					</div>
@@ -280,7 +280,7 @@
 <div class="panel panel-default">
 	<div class="panel-body text-right">
 		<button class="btn btn-success" id="btnGuardar">Guardar</button>
-		<button class="btn btn-danger" id="btnCancelar">Cancelar</button>
+		<button class="btn btn-danger btnNuevoPedido">Cancelar</button>
 	</div>
 </div>
 

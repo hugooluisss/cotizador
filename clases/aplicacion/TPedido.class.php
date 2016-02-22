@@ -513,7 +513,7 @@ class TPedido{
 			return false;
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO pedido(idCliente, idEstado, idUsuario) VALUES(".$this->cliente->getId().", ".$this->estado->getId().", ".$sesion['usuario'].");");
+			$rs = $db->Execute("INSERT INTO pedido(idCliente, idEstado, idUsuario, registro) VALUES(".$this->cliente->getId().", ".$this->estado->getId().", ".$sesion['usuario'].", now());");
 			if (!$rs) return false;
 			
 			$this->idPedido = $db->Insert_ID();
