@@ -10,6 +10,14 @@
 				</tr>
 			</thead>
 			<tbody>
+				{foreach from=$nombresNumeros item="row"}
+					<tr>
+						<td>{$row.letras}</td>
+						<td>{$row.numeros}</td>
+						<td>{$row.talla}</td>
+						<td></td>
+					</tr>
+				{/foreach}
 			</tbody>
 		</table>
 	</div>

@@ -22,16 +22,15 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("archivos", $archivos);
 		
-		$rs = $db->Execute("select distinct nombre from talla;");
+		$rs = $db->Execute("select a.* from pedidonumerosletras a where idPedido = ".$pedido->getId());
 		$datos = array();
 		while(!$rs->EOF){
-			$rs->fields['nombre2'] = str_replace("Talle ", "", $rs->fields['nombre']);
-			$rs->fields['json'] = json_encode($rs->fields);
 			array_push($datos, $rs->fields);
+			
 			$rs->moveNext();
 		}
 		
-		$smarty->assign("tallas", $datos);
+		$smarty->assign("nombresNumeros", $datos);
 	break;
 	case 'cseguimiento':
 		switch($objModulo->getAction()){
