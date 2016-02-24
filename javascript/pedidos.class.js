@@ -187,7 +187,11 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 			btnEliminar.click(function(){
 				if(confirm("¿Seguro?")){
 					btnEliminar.parent().parent().remove();
-					$(".totalNumeroLetras").html(self.countNumerosLetras() + " registrados");
+					//$(".totalNumeroLetras").html(self.countNumerosLetras() + " registrados");
+					if (self.countNumerosLetras() > 0)
+						$("#btnNombresNumeros").parent().css({"border": "red 2px solid", "border-radius": "10px"});
+					else
+						$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});
 				}
 			});
 			

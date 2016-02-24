@@ -35,7 +35,7 @@
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
-						{for $hora=0 to 23} 
+						{for $hora=9 to 19} 
 							<option value="{$hora}">{$hora|string_format:"%02s"}
 						{/for}
 						</select>
@@ -189,7 +189,7 @@
 					</ul>
 				</form>
 			</div>
-			<div class="col-xs-12 col-md-4 text-center" style="border: red 2px solid; border-radius: 10px; ">
+			<div class="col-xs-12 col-md-4 text-center">
 				<h3>Nombres y números</h3>
 				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
 				<br />

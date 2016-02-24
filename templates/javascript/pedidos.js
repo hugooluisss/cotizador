@@ -505,7 +505,11 @@ function getLista(){
 						tabla.addNumerosLetras(el.letras, el.numeros, el.talla, {});
 					});
 					
-					$(".totalNumeroLetras").html(tabla.countNumerosLetras() + " registrados");
+					//$(".totalNumeroLetras").html(tabla.countNumerosLetras() + " registrados");
+					if (obj.countNumerosLetras() > 0)
+						$("#btnNombresNumeros").parent().css({"border": "red 2px solid", "border-radius": "10px"});
+					else
+						$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});
 					
 					$("#selFuente").val(datos.fuente);
 					$("#txtColores").val(datos.colores);
@@ -717,7 +721,11 @@ $(document).ready(function(){
 				
 				$('#tabNombresNumeros a[href="#listaNombresNumeros"]').tab('show');
 				
-				$(".totalNumeroLetras").html(obj.countNumerosLetras() + " registrados");
+				//$(".totalNumeroLetras").html(obj.countNumerosLetras() + " registrados");
+				if (obj.countNumerosLetras() > 0)
+					$("#btnNombresNumeros").parent().css({"border": "red 2px solid", "border-radius": "10px"});
+				else
+					$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});
 			},
 			modificar: function(el){
 				$("#winNombresNumeros #txtNombre").val(el.attr("nombre"));
