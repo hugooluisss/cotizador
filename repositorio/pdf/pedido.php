@@ -28,6 +28,9 @@ class RPedido extends tFPDF{
 	}
 	
 	public function generar($id){
+		$adicionalY = -20;
+		$adicionalX = -5;
+
 		$this->AddPage();
 		if ($formatoFondo)
 			$this->Image('repositorio/img/orden.jpg', 0, 0, 190, 240);
@@ -36,101 +39,106 @@ class RPedido extends tFPDF{
 		$pedido = $this->pedido;
 		
 		$this->SetFont('Arial', 'B', 8);
-		$this->SetXY(95, 32); $this->Cell(15, 4, "No. Orden: ", 0, 0, 'L');
+		$this->SetXY(96 + $adicionalX, 31.5 + $adicionalY); $this->Cell(15, 4, "No. Orden: ", 0, 0, 'L');
 		$this->SetFont('Arial', '', 8);
-		$this->SetXY(110, 32); $this->Cell(40, 4, (string )$pedido->getId(), 0, 0, 'R');
+		$this->SetXY(110 + $adicionalX, 31.5 + $adicionalY); $this->Cell(25, 4, (string )$pedido->getId(), 0, 0, 'R');
 		
-		$this->SetXY(24, 46);
+		$this->SetXY(24 + $adicionalX, 46 + $adicionalY);
 		$this->Cell(0, 5, $pedido->cliente->getNombre(), 0);
-		$this->SetXY(24, 56);
-		$this->Cell(0, 5, $pedido->cliente->getCelular(), 0);
-		$this->SetXY(24, 65);
+		$this->SetXY(24 + $adicionalX, 54.5 + $adicionalY);
+		$this->Cell(0, 5, $pedido->cliente->getCelular().'asdf', 0);
+		$this->SetXY(24 + $adicionalX, 63 + $adicionalY);
 		$this->Cell(0, 5, $pedido->cliente->getEmail(), 0);
 		
 		#registro
-		$this->SetXY(40, 29); $this->Cell(0, 5, $pedido->getRegistro(), 0);
+		$this->SetXY(40 + $adicionalX, 29.5 + $adicionalY); $this->Cell(0, 5, $pedido->getRegistro(), 0);
 		
 		#entrega
 		$entrega = explode("-", $pedido->getEntrega());
 		$entregaAux = explode(" ", $entrega[2]);
 		$entrega[2] = $entregaAux[0];
 		$entregaHora = explode(":", $entregaAux[1]);
-		$this->SetXY(40, 37); $this->Cell(0, 5, $entrega[2].'-'.$entrega[1].'-'.$entrega[0], 0);
-		$this->SetXY(70, 37); $this->Cell(0, 5, $entregaHora[0], 0);
-		$this->SetXY(76, 37); $this->Cell(0, 5, $entregaHora[1], 0);
+		$this->SetXY(40 + $adicionalX, 37 + $adicionalY); $this->Cell(0, 5, $entrega[2].'-'.$entrega[1].'-'.$entrega[0], 0);
+		$this->SetXY(65 + $adicionalX, 37 + $adicionalY); $this->Cell(0, 5, $entregaHora[0], 0);
+		$this->SetXY(71 + $adicionalX, 37 + $adicionalY); $this->Cell(0, 5, $entregaHora[1], 0);
 		
 		#Impresiones
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 4");
-		if (!$rs->EOF){
-			$this->SetXY(116.3, 45); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(106.5 + $adicionalX, 44.5 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 5");
-		if (!$rs->EOF){
-			$this->SetXY(116.3, 48.8); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(106.5 + $adicionalX, 48 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 6");
-		if (!$rs->EOF){
-			$this->SetXY(116.3, 53); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(106.5 + $adicionalX, 51.6  + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 7");
-		if (!$rs->EOF){
-			$this->SetXY(116.3, 56.4); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(106.5 + $adicionalX, 55.1 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoimpresion where idPedido = ".$pedido->getId()." and idImpresion = 8");
-		if (!$rs->EOF){
-			$this->SetXY(116.3, 60.2); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(106.5 + $adicionalX, 58.9 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		#articulos
 		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 10");
-		if (!$rs->EOF){
-			$this->SetXY(127, 45); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(117 + $adicionalX, 44.5 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 11");
-		if (!$rs->EOF){
-			$this->SetXY(127, 48.8); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(117 + $adicionalX, 48 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 			
 		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 12");
-		if (!$rs->EOF){
-			$this->SetXY(127, 53); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(117 + $adicionalX, 51.6 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 13");
-		if (!$rs->EOF){
-			$this->SetXY(127, 56.4); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(117 + $adicionalX, 55.1 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 		
 		$rs = $db->Execute("select * from pedidoentregables where idPedido = ".$pedido->getId()." and idEntregable = 14");
-		if (!$rs->EOF){
-			$this->SetXY(127, 60.2); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
+		if ($rs->EOF){
+			$this->SetXY(117 + $adicionalX, 58.9 + $adicionalY); $this->Cell(3.5, 2, "", 0, 0, 'L', 1);
 		}
 			
 		
-		$this->SetXY(85, 65); $this->Cell(100, 3, $pedido->getEntregables().'asdf');
+		$this->SetXY(82 + $adicionalX, 63 + $adicionalY); $this->Cell(100, 3, $pedido->getEntregables().'asdf');
 		
 		#Remeras
 		$rs = $db->Execute("select * from movped where idPedido = ".$pedido->getId()." limit 2");
 		
 		$tallas = array(1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 'S', 'M', 'L', 'XL', 'XLL');
-		$y = 82;
+		#$colores = array("rojo", "roja", "azul", "amarillo", "amarilla", "verde", "gris claro", "gris oscuro", "beige", "blanco", "negro", "blanca", "azul francia", "azul marino", "azul piedra", "celeste", "bordo", "naranja", "verde militar", "verde meletton", "verde manzana", "verde ingles", "uva", "fucsia", "violeta", "turquesa", "verde italia", "arena", "marron", "marròn");
+		
+		#$y = 78 + $adicionalY;
+		$y = 83.5 + $adicionalY;
 		while(!$rs->EOF){
-			$x = 16.5;
+			$x = 16.5 + $adicionalX;
 			$item = '';
+			$descripcion = "";
 			foreach($tallas as $talla){
 				$rs2 = $db->Execute("select * from movped join talla using(idTalla) join ropa using(idItem) where idPedido = ".$pedido->getId()." and talla.nombre = 'Talle ".$talla."'");
 				
 				$this->SetXY($x, $y); $this->Cell(7, 5, $rs2->fields['cantidad'] == ''?0:$rs2->fields['cantidad'], 0, 0, 'R');
-				$x += 7.6;
+				$x += 6.8;
+				
 				$item = !$rs2->EOF?($rs2->fields['idItem'].' '.$rs2->fields['descripcion']):$item;
 			}
-			$this->SetXY(140, $y); $this->Cell(7, 5, substr($item, 0, 14), 0, 0, 'L');
+			$this->SetXY(128 + $adicionalX, $y); $this->Cell(7, 5, substr($item, 0, 20), 0, 0, 'L');
 			$y += 7;
 			
 			$rs->moveNext();
@@ -139,17 +147,17 @@ class RPedido extends tFPDF{
 		#posiciones, no se ponen
 		
 		#colores;
-		$this->SetXY(71, 133); $this->Cell(7, 5, substr($pedido->getColores(), 0, 17), 0, 0, 'L');
-		$this->SetXY(71, 139); $this->Cell(7, 5, substr($pedido->getColores(), 17, 17), 0, 0, 'L');
-		$this->SetXY(71, 146); $this->Cell(7, 5, substr($pedido->getColores(), 34, 17), 0, 0, 'L');
-		$this->SetXY(71, 152); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17), 0, 0, 'L');
-		$this->SetXY(71, 158.7); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 124 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 0, 17).'asdf', 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 130 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 17, 17).'asdf', 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 136 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 34, 17).'asdf', 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 142 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17).'asdf', 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 148 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17).'asdf', 0, 0, 'L');
 		
 		#Observaciones
-		$this->SetXY(62, 180); $this->MultiCell(117, 5, $pedido->getObservaciones(), 0, 'J');
-		$this->SetXY(43, 215); $this->Cell(22, 5, $pedido->getPrecio(), 0, 0, 'R');
-		$this->SetXY(85, 215); $this->Cell(22, 5, $pedido->getAnticipo(), 0, 0, 'R');
-		$this->SetXY(128, 215); $this->Cell(22, 5, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), 0, 0, 'R');
+		$this->SetXY(62 + $adicionalX, 169 + $adicionalY); $this->MultiCell(117, 5, $pedido->getObservaciones().'asdf', 0, 'J');
+		$this->SetXY(40 + $adicionalX, 197 + $adicionalY); $this->Cell(22, 5, $pedido->getPrecio(), 0, 0, 'R');
+		$this->SetXY(78 + $adicionalX, 197 + $adicionalY); $this->Cell(22, 5, $pedido->getAnticipo(), 0, 0, 'R');
+		$this->SetXY(117 + $adicionalX, 197 + $adicionalY); $this->Cell(22, 5, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), 0, 0, 'R');
 	}
 		
 	private function cleanFiles(){
