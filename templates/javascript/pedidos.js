@@ -506,7 +506,7 @@ function getLista(){
 					});
 					
 					//$(".totalNumeroLetras").html(tabla.countNumerosLetras() + " registrados");
-					if (obj.countNumerosLetras() > 0)
+					if (tabla.countNumerosLetras() > 0)
 						$("#btnNombresNumeros").parent().css({"border": "red 2px solid", "border-radius": "10px"});
 					else
 						$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});

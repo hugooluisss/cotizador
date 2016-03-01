@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-02-16 23:32:46
+<?php /* Smarty version Smarty-3.1.11, created on 2016-02-29 20:16:02
          compiled from "templates/plantillas/modulos/pedidos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:157187380456687c0b757af7-92334875%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '475eddcdce8a2967b537a5b41d38f430be447673' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/lista.tpl',
-      1 => 1455687163,
+      1 => 1456112227,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-circle" action="imprimir" title="Imprimir" pedido='<?php echo $_smarty_tpl->tpl_vars['row']->value['idPedido'];?>
-'><i class="fa fa-file-pdf-o"></i></button>
+'><i class="fa fa-print"></i></button>
 							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" pedido='<?php echo $_smarty_tpl->tpl_vars['row']->value['idPedido'];?>
 '><i class="fa fa-pencil"></i></button>
 							<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>

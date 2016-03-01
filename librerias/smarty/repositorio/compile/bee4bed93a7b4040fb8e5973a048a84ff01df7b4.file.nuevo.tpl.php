@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-02-20 01:17:36
+<?php /* Smarty version Smarty-3.1.11, created on 2016-02-29 20:16:01
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1455948688,
+      1 => 1456546581,
       2 => 'file',
     ),
   ),
@@ -36,7 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-xs-12">
-				<button class="btn btn-danger" id="btnNuevoPedido">Nuevo pedido</button>
+				<button class="btn btn-danger btnNuevoPedido">Nuevo pedido</button>
 			</div>
 		</div>
 		<div class="row">
@@ -71,12 +71,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
-						<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 23+1 - (0) : 0-(23)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
+						<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 19+1 - (9) : 9-(19)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
 if ($_smarty_tpl->tpl_vars['hora']->total > 0){
-for ($_smarty_tpl->tpl_vars['hora']->value = 0, $_smarty_tpl->tpl_vars['hora']->iteration = 1;$_smarty_tpl->tpl_vars['hora']->iteration <= $_smarty_tpl->tpl_vars['hora']->total;$_smarty_tpl->tpl_vars['hora']->value += $_smarty_tpl->tpl_vars['hora']->step, $_smarty_tpl->tpl_vars['hora']->iteration++){
+for ($_smarty_tpl->tpl_vars['hora']->value = 9, $_smarty_tpl->tpl_vars['hora']->iteration = 1;$_smarty_tpl->tpl_vars['hora']->iteration <= $_smarty_tpl->tpl_vars['hora']->total;$_smarty_tpl->tpl_vars['hora']->value += $_smarty_tpl->tpl_vars['hora']->step, $_smarty_tpl->tpl_vars['hora']->iteration++){
 $_smarty_tpl->tpl_vars['hora']->first = $_smarty_tpl->tpl_vars['hora']->iteration == 1;$_smarty_tpl->tpl_vars['hora']->last = $_smarty_tpl->tpl_vars['hora']->iteration == $_smarty_tpl->tpl_vars['hora']->total;?> 
 							<option value="<?php echo $_smarty_tpl->tpl_vars['hora']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['hora']->value;?>
+"><?php echo sprintf("%02s",$_smarty_tpl->tpl_vars['hora']->value);?>
 
 						<?php }} ?>
 						</select>
@@ -87,7 +87,7 @@ if ($_smarty_tpl->tpl_vars['minuto']->total > 0){
 for ($_smarty_tpl->tpl_vars['minuto']->value = 0, $_smarty_tpl->tpl_vars['minuto']->iteration = 1;$_smarty_tpl->tpl_vars['minuto']->iteration <= $_smarty_tpl->tpl_vars['minuto']->total;$_smarty_tpl->tpl_vars['minuto']->value += $_smarty_tpl->tpl_vars['minuto']->step, $_smarty_tpl->tpl_vars['minuto']->iteration++){
 $_smarty_tpl->tpl_vars['minuto']->first = $_smarty_tpl->tpl_vars['minuto']->iteration == 1;$_smarty_tpl->tpl_vars['minuto']->last = $_smarty_tpl->tpl_vars['minuto']->iteration == $_smarty_tpl->tpl_vars['minuto']->total;?> 
 							<option value="<?php echo $_smarty_tpl->tpl_vars['minuto']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['minuto']->value;?>
+"><?php echo sprintf("%02s",$_smarty_tpl->tpl_vars['minuto']->value);?>
 
 						<?php }} ?>
 						</select>
@@ -273,6 +273,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			<div class="col-xs-12 col-md-4 text-center">
 				<h3>Nombres y números</h3>
 				<button class="btn btn-success" id="btnNombresNumeros"><i class="fa fa-pencil"></i> Crear Lista</button>
+				<br />
+				<br />
 			</div>
 		</div>
 	</div>
@@ -361,7 +363,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <div class="panel panel-default">
 	<div class="panel-body text-right">
 		<button class="btn btn-success" id="btnGuardar">Guardar</button>
-		<button class="btn btn-danger" id="btnCancelar">Cancelar</button>
+		<button class="btn btn-danger btnNuevoPedido">Cancelar</button>
 	</div>
 </div>
 
