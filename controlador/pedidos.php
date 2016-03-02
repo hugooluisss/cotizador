@@ -119,6 +119,7 @@ switch($objModulo->getId()){
 				$obj->setEnvoltorio($_POST['envoltorio']);
 				$obj->setPosicion($_POST['posicion']);
 				$obj->setObservacionPosicion($_POST['observacionPosicion']);
+				$obj->setArchivo($_POST['archivo']);
 				
 				if ($obj->guardar()){
 					$obj->guardarItems(json_decode($_POST['remeras']));

@@ -24,6 +24,7 @@ class TPedido{
 	private $envoltorio;
 	private $posicion;
 	private $observacionPosicion;
+	private $archivo;
 	
 	/**
 	* Constructor de la clase
@@ -498,6 +499,33 @@ class TPedido{
 	}
 	
 	/**
+	* Establece el nombre de archivo a mostrar para el cliente
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setArchivo($val = ""){
+		$this->archivo = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el nombre de archivo
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Direccion
+	*/
+	
+	public function getArchivo(){
+		return $this->archivo;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -538,6 +566,7 @@ class TPedido{
 				direccionEnvio = '".$this->getDireccionEnvio()."',
 				envoltorio = '".$this->getEnvoltorio()."',
 				posicion = '".$this->getPosicion()."',
+				archivo = '".$this->getarchivo()."',
 				observacionPosicion = '".$this->getObservacionPosicion()."'
 			WHERE idPedido = ".$this->getId());
 			

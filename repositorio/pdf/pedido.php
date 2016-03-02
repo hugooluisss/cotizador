@@ -135,7 +135,7 @@ class RPedido extends tFPDF{
 				$this->SetXY($x, $y); $this->Cell(7, 5, $rs2->fields['cantidad'] == ''?0:$rs2->fields['cantidad'], 0, 0, 'R');
 				$x += 6.9;
 				
-				$item = !$rs2->EOF?($rs2->fields['idItem'].' '.$rs2->fields['descripcion']):$item;
+				$item = !$rs2->EOF?($rs2->fields['descripcion']):$item;
 			}
 			$this->SetXY(128 + $adicionalX, $y); $this->Cell(7, 5, substr($item, 0, 20), 0, 0, 'L');
 			$y += 5.7;
@@ -146,17 +146,19 @@ class RPedido extends tFPDF{
 		#posiciones, no se ponen
 		
 		#colores;
-		$this->SetXY(68 + $adicionalX, 124 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 0, 17), 0, 0, 'L');
-		$this->SetXY(68 + $adicionalX, 130 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 17, 17), 0, 0, 'L');
-		$this->SetXY(68 + $adicionalX, 136 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 34, 17), 0, 0, 'L');
-		$this->SetXY(68 + $adicionalX, 142 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17), 0, 0, 'L');
-		$this->SetXY(68 + $adicionalX, 148 + $adicionalY); $this->Cell(7, 5, substr($pedido->getColores(), 51, 17), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 124 + $adicionalY); $this->Cell(7, 5, utf8_decode(substr($pedido->getColores(), 0, 17)), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 130 + $adicionalY); $this->Cell(7, 5, utf8_decode(substr($pedido->getColores(), 17, 17)), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 136 + $adicionalY); $this->Cell(7, 5, utf8_decode(substr($pedido->getColores(), 34, 17)), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 142 + $adicionalY); $this->Cell(7, 5, utf8_decode(substr($pedido->getColores(), 51, 17)), 0, 0, 'L');
+		$this->SetXY(68 + $adicionalX, 148 + $adicionalY); $this->Cell(7, 5, utf8_decode(substr($pedido->getColores(), 51, 17)), 0, 0, 'L');
 		
 		#Observaciones
-		$this->SetXY(62 + $adicionalX, 169 + $adicionalY); $this->MultiCell(117, 5, $pedido->getObservaciones(), 0, 'J');
+		$this->SetXY(62 + $adicionalX, 169 + $adicionalY); $this->MultiCell(117, 5, utf8_decode($pedido->getObservaciones()), 0, 'J');
 		$this->SetXY(40 + $adicionalX, 199 + $adicionalY); $this->Cell(22, 5, $pedido->getPrecio(), 0, 0, 'R');
 		$this->SetXY(78 + $adicionalX, 199 + $adicionalY); $this->Cell(22, 5, $pedido->getAnticipo(), 0, 0, 'R');
 		$this->SetXY(117 + $adicionalX, 199 + $adicionalY); $this->Cell(22, 5, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), 0, 0, 'R');
+		
+		$this->SetXY(15 + $adicionalX, 185 + $adicionalY); $this->Cell(40, 5, $pedido->getArchivo(), 0, 0, 'C');
 	}
 		
 	private function cleanFiles(){

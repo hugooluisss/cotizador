@@ -16,7 +16,7 @@ class TCliente{
 	private $razonsocial;
 	private $localidad;
 	private $telefono;
-	private $celular;
+	private $cel;
 	private $observaciones;
 	
 	/**
@@ -283,7 +283,7 @@ class TCliente{
 	*/
 	
 	public function setCelular($val = ''){
-		$this->celular = $val;
+		$this->cel = $val;
 		return true;
 	}
 	
@@ -296,7 +296,7 @@ class TCliente{
 	*/
 	
 	public function getCelular(){
-		return $this->celular;
+		return $this->cel;
 	}
 	
 	/**

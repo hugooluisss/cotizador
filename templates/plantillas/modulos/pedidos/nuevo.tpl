@@ -35,12 +35,14 @@
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
+							<option value="">
 						{for $hora=9 to 19} 
 							<option value="{$hora}">{$hora|string_format:"%02s"}
 						{/for}
 						</select>
 						 : 
 						<select class="form-contro" id="selMinuto" name="selMinuto">
+							<option value="">
 						{for $minuto=0 to 59 step 15} 
 							<option value="{$minuto}">{$minuto|string_format:"%02s"}
 						{/for}
@@ -188,6 +190,13 @@
 					<!-- The file list will be shown here -->
 					</ul>
 				</form>
+				
+				<div class="row">
+					<label class="col-xs-4" for="selHora">Archivo</label>
+					<div class="col-xs-12 col-md-4">
+						<input type="text" class="form-control" id="txtNombreArchivo" archivo placeholder="Nombre de archivo" maxlength="100">
+					</div>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-4 text-center">
 				<h3>Nombres y números</h3>

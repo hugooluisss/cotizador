@@ -245,6 +245,10 @@ $(document).ready(function(){
 			alert("La fecha de registro y entrega son necesarias");
 			$("#txtFecha").focus();
 			band = false;
+		}else if ($("#selHora").val() == '' || $("#selMinuto").val() == ''){
+			alert("La hora de entrega es necesaria");
+			$("#selHora").focus();
+			band = false;
 		}else if ($("#txtPrecio").val() == ''){
 			alert("Indica un precio");
 			$("#txtPrecio").focus();
@@ -362,6 +366,7 @@ $(document).ready(function(){
 				$("#selEnvoltorio").val(), 
 				$("#selPosicion").val(), 
 				$("#txtPosicion").val(),
+				$("#txtNombreArchivo").val(),
 				JSON.stringify(formasPago),
 				{
 					before: function(){
@@ -405,6 +410,7 @@ $(document).ready(function(){
 function limpiar(){
 	$("#pedido").val("");
 	$("#txtCliente").val("");
+	$("#txtNombreArchivo").val("");
 	$("#txtCliente").attr("idCliente", "");
 	var f = new Date();
 	fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
@@ -478,6 +484,7 @@ function getLista(){
 					$("#selHora").val(datos.horaEntrega);
 					$("#selMinuto").val(datos.minutosEntrega);
 					$("#selEstado").val(datos.idEstado);
+					$("#txtNombreArchivo").val(datos.archivo);
 					
 					$("#selFormaEntrega").val(datos.formaEntrega);
 					$("#txtDireccionEnvio").val(datos.direccionEnvio);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-02-29 20:16:01
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-01 21:55:07
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1456546581,
+      1 => 1456890905,
       2 => 'file',
     ),
   ),
@@ -71,6 +71,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
+							<option value="">
 						<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 19+1 - (9) : 9-(19)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
 if ($_smarty_tpl->tpl_vars['hora']->total > 0){
 for ($_smarty_tpl->tpl_vars['hora']->value = 9, $_smarty_tpl->tpl_vars['hora']->iteration = 1;$_smarty_tpl->tpl_vars['hora']->iteration <= $_smarty_tpl->tpl_vars['hora']->total;$_smarty_tpl->tpl_vars['hora']->value += $_smarty_tpl->tpl_vars['hora']->step, $_smarty_tpl->tpl_vars['hora']->iteration++){
@@ -82,6 +83,7 @@ $_smarty_tpl->tpl_vars['hora']->first = $_smarty_tpl->tpl_vars['hora']->iteratio
 						</select>
 						 : 
 						<select class="form-contro" id="selMinuto" name="selMinuto">
+							<option value="">
 						<?php $_smarty_tpl->tpl_vars['minuto'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['minuto']->step = 15;$_smarty_tpl->tpl_vars['minuto']->total = (int)ceil(($_smarty_tpl->tpl_vars['minuto']->step > 0 ? 59+1 - (0) : 0-(59)+1)/abs($_smarty_tpl->tpl_vars['minuto']->step));
 if ($_smarty_tpl->tpl_vars['minuto']->total > 0){
 for ($_smarty_tpl->tpl_vars['minuto']->value = 0, $_smarty_tpl->tpl_vars['minuto']->iteration = 1;$_smarty_tpl->tpl_vars['minuto']->iteration <= $_smarty_tpl->tpl_vars['minuto']->total;$_smarty_tpl->tpl_vars['minuto']->value += $_smarty_tpl->tpl_vars['minuto']->step, $_smarty_tpl->tpl_vars['minuto']->iteration++){
@@ -269,6 +271,13 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<!-- The file list will be shown here -->
 					</ul>
 				</form>
+				
+				<div class="row">
+					<label class="col-xs-4" for="selHora">Archivo</label>
+					<div class="col-xs-12 col-md-4">
+						<input type="text" class="form-control" id="txtNombreArchivo" archivo placeholder="Nombre de archivo" maxlength="100">
+					</div>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-4 text-center">
 				<h3>Nombres y números</h3>
