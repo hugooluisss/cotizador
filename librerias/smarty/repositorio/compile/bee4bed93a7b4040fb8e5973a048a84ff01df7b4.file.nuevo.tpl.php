@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-01 21:55:07
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-02 09:20:10
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1456890905,
+      1 => 1456931992,
       2 => 'file',
     ),
   ),
@@ -71,7 +71,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
-							<option value="">
+							<option value=""></option>
 						<?php $_smarty_tpl->tpl_vars['hora'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['hora']->step = 1;$_smarty_tpl->tpl_vars['hora']->total = (int)ceil(($_smarty_tpl->tpl_vars['hora']->step > 0 ? 19+1 - (9) : 9-(19)+1)/abs($_smarty_tpl->tpl_vars['hora']->step));
 if ($_smarty_tpl->tpl_vars['hora']->total > 0){
 for ($_smarty_tpl->tpl_vars['hora']->value = 9, $_smarty_tpl->tpl_vars['hora']->iteration = 1;$_smarty_tpl->tpl_vars['hora']->iteration <= $_smarty_tpl->tpl_vars['hora']->total;$_smarty_tpl->tpl_vars['hora']->value += $_smarty_tpl->tpl_vars['hora']->step, $_smarty_tpl->tpl_vars['hora']->iteration++){
@@ -83,7 +83,7 @@ $_smarty_tpl->tpl_vars['hora']->first = $_smarty_tpl->tpl_vars['hora']->iteratio
 						</select>
 						 : 
 						<select class="form-contro" id="selMinuto" name="selMinuto">
-							<option value="">
+							<option value=""></option>
 						<?php $_smarty_tpl->tpl_vars['minuto'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['minuto']->step = 15;$_smarty_tpl->tpl_vars['minuto']->total = (int)ceil(($_smarty_tpl->tpl_vars['minuto']->step > 0 ? 59+1 - (0) : 0-(59)+1)/abs($_smarty_tpl->tpl_vars['minuto']->step));
 if ($_smarty_tpl->tpl_vars['minuto']->total > 0){
 for ($_smarty_tpl->tpl_vars['minuto']->value = 0, $_smarty_tpl->tpl_vars['minuto']->iteration = 1;$_smarty_tpl->tpl_vars['minuto']->iteration <= $_smarty_tpl->tpl_vars['minuto']->total;$_smarty_tpl->tpl_vars['minuto']->value += $_smarty_tpl->tpl_vars['minuto']->step, $_smarty_tpl->tpl_vars['minuto']->iteration++){
@@ -119,9 +119,10 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<label for="selFuente" class="col-xs-12 col-sm-4">Modo de ingreso</label>
 					<div class="col-xs-12 col-sm-8">
 						<select id="selFuente" name="selFuente" class="form-control">
-								<option value="Local">Local
-								<option value="Email">Email
-								<option value="Teléfono">Teléfono
+							<option value="">Sin especificar</option>
+							<option value="Local">Local
+							<option value="Email">Email
+							<option value="Teléfono">Teléfono
 						</select>
 					</div>
 				</div>
@@ -296,6 +297,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<label for="selFormaEntrega" class="col-xs-12 col-sm-4">Forma de entrega</label>
 					<div class="col-xs-8">
 						<select id="selFormaEntrega" name="selFormaEntrega" class="form-control">
+							<option value=""></option>
 							<option value="Retiro en local">Retiro en local
 							<option value="Envio a dominicilio">Envío a domicilio
 							<option value="Envio por encomienda">Envío por encomienda
@@ -306,6 +308,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<label for="selEnvoltorio" class="col-xs-12 col-sm-4">Envoltorio</label>
 					<div class="col-xs-8">
 						<select id="selEnvoltorio" name="selEnvoltorio" class="form-control">
+							<option value="">Sin especificar
 							<option value="Normal">Normal
 							<option value="Regalo">Regalo
 							<option value="A granel">A granel

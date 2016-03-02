@@ -289,6 +289,11 @@ $(document).ready(function(){
 			$("#selFormaEntrega").focus();
 			
 			band = false;
+		}else if ($("#selEnvoltorio").val() == ''){
+			alert("Indica el valor del envoltorio");
+			$("#selEnvoltorio").focus();
+			
+			band = false;
 		}else if ($(".formasPago:checked").size() == 0){
 			alert("Selecciona al menos una forma de pago");
 			$(".formasPago[campo=Efectivo]").focus();

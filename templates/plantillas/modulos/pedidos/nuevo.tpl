@@ -35,14 +35,14 @@
 					<label class="col-xs-4" for="selHora">Hora</label>
 					<div class="col-xs-8">
 						<select class="form-contro" id="selHora" name="selHora">
-							<option value="">
+							<option value=""></option>
 						{for $hora=9 to 19} 
 							<option value="{$hora}">{$hora|string_format:"%02s"}
 						{/for}
 						</select>
 						 : 
 						<select class="form-contro" id="selMinuto" name="selMinuto">
-							<option value="">
+							<option value=""></option>
 						{for $minuto=0 to 59 step 15} 
 							<option value="{$minuto}">{$minuto|string_format:"%02s"}
 						{/for}
@@ -65,9 +65,10 @@
 					<label for="selFuente" class="col-xs-12 col-sm-4">Modo de ingreso</label>
 					<div class="col-xs-12 col-sm-8">
 						<select id="selFuente" name="selFuente" class="form-control">
-								<option value="Local">Local
-								<option value="Email">Email
-								<option value="Teléfono">Teléfono
+							<option value="">Sin especificar</option>
+							<option value="Local">Local
+							<option value="Email">Email
+							<option value="Teléfono">Teléfono
 						</select>
 					</div>
 				</div>
@@ -215,6 +216,7 @@
 					<label for="selFormaEntrega" class="col-xs-12 col-sm-4">Forma de entrega</label>
 					<div class="col-xs-8">
 						<select id="selFormaEntrega" name="selFormaEntrega" class="form-control">
+							<option value=""></option>
 							<option value="Retiro en local">Retiro en local
 							<option value="Envio a dominicilio">Envío a domicilio
 							<option value="Envio por encomienda">Envío por encomienda
@@ -225,6 +227,7 @@
 					<label for="selEnvoltorio" class="col-xs-12 col-sm-4">Envoltorio</label>
 					<div class="col-xs-8">
 						<select id="selEnvoltorio" name="selEnvoltorio" class="form-control">
+							<option value="">Sin especificar
 							<option value="Normal">Normal
 							<option value="Regalo">Regalo
 							<option value="A granel">A granel

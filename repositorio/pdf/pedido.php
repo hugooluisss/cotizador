@@ -158,7 +158,7 @@ class RPedido extends tFPDF{
 		$this->SetXY(78 + $adicionalX, 199 + $adicionalY); $this->Cell(22, 5, $pedido->getAnticipo(), 0, 0, 'R');
 		$this->SetXY(117 + $adicionalX, 199 + $adicionalY); $this->Cell(22, 5, (string) sprintf("%0.2f", $pedido->getPrecio() - $pedido->getAnticipo()), 0, 0, 'R');
 		
-		$this->SetXY(15 + $adicionalX, 185 + $adicionalY); $this->Cell(40, 5, $pedido->getArchivo(), 0, 0, 'C');
+		$this->SetXY(12 + $adicionalX, 187 + $adicionalY); $this->Cell(40, 5, $pedido->getArchivo(), 0, 0, 'C');
 	}
 		
 	private function cleanFiles(){
