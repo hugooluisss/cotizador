@@ -41,16 +41,34 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("remeras", $datos);
 		
-		$rs = $db->Execute("select distinct nombre from talla;");
+		$rs = $db->Execute("select distinct nombre from talla order by nombre;");
 		$datos = array();
+		$nombres = array();
 		while(!$rs->EOF){
 			$rs->fields['nombre2'] = str_replace("Talle ", "", $rs->fields['nombre']);
+			switch($rs->fields['nombre2']){
+				case 'L': array_push($nombres, 100004); break;
+				case 'M': array_push($nombres, 100003); break;
+				case 'S': array_push($nombres, 100002); break;
+				case 'XL': array_push($nombres, 100005); break;
+				case 'XLL': array_push($nombres, 100006); break;
+				case 'XS': array_push($nombres, 100001); break;
+				case 'XXL': array_push($nombres, 100007); break;
+				default:
+					array_push($nombres, $rs->fields['nombre2']);
+			}
+			
 			$rs->fields['json'] = json_encode($rs->fields);
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
+		natsort($nombres);
+		$data = array();
+		foreach($nombres as $key => $val){
+			array_push($data, $datos[$key]);
+		}
 		
-		$smarty->assign("tallas", $datos);
+		$smarty->assign("tallas", $data);
 	break;
 	case 'clientesListaBusqueda':
 		#clientes

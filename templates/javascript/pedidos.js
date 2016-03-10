@@ -274,12 +274,12 @@ $(document).ready(function(){
 			$("#selFuente").focus();
 			
 			band = false;
-		}else if (obj.countRemeras() == 0){
+		}/*else if (obj.countRemeras() == 0){
 			alert("No existen talles ni colores en la lista, agrega uno para dar de alta la orden");
 			$("#txtNombreRemera").focus();
 			
 			band = false;
-		}else if ($("#selPosicion").val() == ''){
+		}*/ else if ($("#selPosicion").val() == ''){
 			alert("Indica una posición de la lista");
 			$("#selPosicion").focus();
 			
