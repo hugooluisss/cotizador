@@ -427,10 +427,11 @@ function limpiar(){
 	
 	$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
 	$("#txtDireccionEntrega").val("");
+	$("#txtPosicion").val("");
 	
 	$(".serviciosImpresion").prop("checked", false);
 	$(".entregables").prop("checked", false);
-	$("#txtEntregable").val("");
+	$("#txtEntregables").val("");
 	
 	var tabla = new TPedido();
 	
@@ -458,6 +459,8 @@ function limpiar(){
 	});
 	
 	$('#upload .elementos').html("");
+	
+	$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});
 }
 
 function getLista(){
