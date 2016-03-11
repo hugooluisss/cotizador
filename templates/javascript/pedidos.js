@@ -503,11 +503,11 @@ function getLista(){
 					});
 					
 					$(".entregables").prop("checked", false);
-					datos.entregables.forEach(function(el){
+					datos.entregablesList.forEach(function(el){
 						$(".entregables[value=" + el.idEntregable + "]").prop("checked", true);
 					});
 					
-					$("#txtEntregable").val(datos.entregable);
+					$("#txtEntregables").val(datos.entregables);
 					
 					var tabla = new TPedido();
 					

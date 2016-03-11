@@ -179,10 +179,10 @@ switch($objModulo->getId()){
 				}
 				
 				$rsAux = $db->Execute("select * from pedidoentregables where idPedido = ".$obj->getId());
-				$rs->fields['entregables'] = array();
+				$rs->fields['entregablesList'] = array();
 				
 				while(!$rsAux->EOF){
-					array_push($rs->fields['entregables'], $rsAux->fields);
+					array_push($rs->fields['entregablesList'], $rsAux->fields);
 					$rsAux->moveNext();
 				}
 				

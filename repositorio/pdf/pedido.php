@@ -118,7 +118,7 @@ class RPedido extends tFPDF{
 		$this->SetXY(82 + $adicionalX, 63 + $adicionalY); $this->Cell(100, 3, $pedido->getEntregables());
 		
 		#Remeras
-		$rs = $db->Execute("select idItem, idTalla from movped a join talla b using(idTalla) join ropa c using(idItem) where idPedido = ".$pedido->getId()." limit 2");
+		$rs = $db->Execute("select distinct idItem from movped a join talla b using(idTalla) join ropa c using(idItem) where idPedido = ".$pedido->getId()." limit 2");
 		
 		$tallas = array(1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 'S', 'M', 'L', 'XL', 'XLL');
 		#$colores = array("rojo", "roja", "azul", "amarillo", "amarilla", "verde", "gris claro", "gris oscuro", "beige", "blanco", "negro", "blanca", "azul francia", "azul marino", "azul piedra", "celeste", "bordo", "naranja", "verde militar", "verde meletton", "verde manzana", "verde ingles", "uva", "fucsia", "violeta", "turquesa", "verde italia", "arena", "marron", "marròn");
