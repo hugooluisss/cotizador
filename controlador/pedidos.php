@@ -97,6 +97,13 @@ switch($objModulo->getId()){
 			default:
 				$sql = "";
 		}
+		
+		if($_GET['tecnica'] <> ''){
+			$sql .= ($sql == '')?"where ":" and ";
+			
+			$sql .= "a.idPedido in (select idPedido from pedidoimpresion where idImpresion = ".$_GET['tecnica'].")";
+		}
+		
 		$rs = $db->Execute("select * from pedido a".$sql);
 		$datos = array();
 		$cliente = new TCliente();
@@ -150,8 +157,33 @@ switch($objModulo->getId()){
 					require_once(getcwd()."/repositorio/pdf/pedido.php");
 					$pdf = new RPedido($obj->getId());
 					$pdf->generar();
+					$documento = $pdf->Output();
 					
-					echo json_encode(array("band" => true, "pedido" => $obj->getId(), "documento" => $pdf->output()));
+					if ($_POST['estado'] == 7){
+						$pedido = $obj;
+						$email = new TMail;
+						$email->setTema("Su pedido casi está listo");
+						$email->setDestino($pedido->cliente->getEmail(), utf8_decode($pedido->cliente->getNombre()));
+						
+						$datos = array();
+						$datos['nombreCompleto'] = $pedido->cliente->getNombre();
+						$datos['folioOrden'] = $pedido->getId();
+						
+						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/casiListo.html"), $datos)));
+						//$email->adjuntar($documento);
+						
+						$email->addImg("repositorio/img/palomita.png", "palomita", "palomita.png");
+						$email->addImg("repositorio/img/pin.png", "pin", "pin.png");
+						$email->addImg("repositorio/img/point.png", "point", "point.png");
+						$email->addImg("repositorio/img/reloj.png", "reloj", "reloj.png");
+						$email->addImg("repositorio/img/telefono.png", "telefono", "telefono.png");
+						$email->addImg("repositorio/img/whatsapp.png", "whatsapp", "whatsapp.png");
+						$email->addImg("repositorio/img/email.png", "email", "email.png");
+						
+						$email->send();
+					}
+					
+					echo json_encode(array("band" => true, "pedido" => $obj->getId(), "documento" => $documento));
 					//echo json_encode(array("band" => true, "pedido" => $obj->getId()));
 				}else
 					echo json_encode(array("band" => false));

@@ -32,7 +32,7 @@ class TMail{
 		$this->phpMailer->SMTPAuth = true;
 		$this->phpMailer->Username = $ini['mail']['user'];
 		$this->phpMailer->Password = $ini['mail']['pass'];
-		$this->phpMailer->IsHTML (true);
+		$this->phpMailer->IsHTML(true);
 		$this->phpMailer->FromName = utf8_decode($ini['sistema']['nombre']);
 		$this->setDirOrigen($ini['mail']['user']);
 		$this->phpMailer->SMTPSecure = 'tls';
@@ -40,6 +40,9 @@ class TMail{
 			$this->phpMailer->AddReplyTo($ini['mail']['contestarA']);
 			
 		$this->permitir = true;
+		
+		if (file_exists("templates/img/logomail.png"))
+			$this->addLogo("templates/img/logomail.png");
 	}
 	
 	public function setUser($val){
@@ -125,6 +128,17 @@ class TMail{
 */
 	public function setDirOrigen($dir){
 		$this->phpMailer->From = $dir;
+		
+		return true;
+	}
+	
+	public function addLogo($file){
+		$this->phpMailer->AddEmbeddedImage($file, "logo", "logo.png");
+		return true;
+	}
+	
+	public function addImg($file, $nombre, $nombreArchivo){
+		$this->phpMailer->AddEmbeddedImage($file, $nombre, $nombreArchivo);
 		
 		return true;
 	}

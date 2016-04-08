@@ -1,6 +1,10 @@
 var ventanaPedido;
 $(document).ready(function(){
 	getLista();
+	
+	$("#btnAyuda").click(function(){
+		$("#winAyuda").modal();
+	});
 	if ($("#perfil").val() == 3){
 		$("#nuevo input, #nuevo textarea, #nuevo button, #nuevo select").each(function(){
 			$(this).attr('disabled', 'disabled');
@@ -464,7 +468,7 @@ function limpiar(){
 }
 
 function getLista(){
-	$.get("?mod=listaPedidos&inicio=" + $("#txtInicioBus").val() + "&fin=" + $("#txtFinBus").val() + "&tipo=" + $("#selTipoBusqueda").val(), function( data ) {
+	$.get("?mod=listaPedidos&inicio=" + $("#txtInicioBus").val() + "&fin=" + $("#txtFinBus").val() + "&tipo=" + $("#selTipoBusqueda").val() + "&tecnica=" + $("#selTecnica").val(), function( data ) {
 		$("#dvLista").html(data);
 		
 		$("[action=eliminar]").click(function(){
