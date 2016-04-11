@@ -72,6 +72,31 @@ $(document).ready(function(){
 			$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
 		});
 	});
+	
+	
+	$(".serviciosImpresion").each(function(){
+		var el = $(this);
+		
+		el.click(function(){
+			if (el.prop("checked")){
+				var objImpresion = new TImpresionPedidos;
+				
+				objImpresion.getLimite(el.val(), $("#txtEntrega").val(), {
+					before: function(){
+						el.prop("disabled", true);
+					},
+					after: function(resp){
+						el.prop("disabled", false);
+						
+						superior = resp.band == true?resp.limite:1;
+						
+						if (superior-1 < 0)
+							alert("Se alcanzó el limite de entregas de esta técnica de impresión para el dia " + $("#txtEntrega").val());
+					}
+				});
+			}
+		});
+	});
 });
 
 function getClientes(){

@@ -1,12 +1,13 @@
 TImpresionPedidos = function(){
 	var self = this;
 	
-	this.add = function(id,	nombre, fn){
+	this.add = function(id,	nombre, limite, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('?mod=cCatalogoPedidos&action=add', {
 				"id": id,
-				"nombre": nombre
+				"nombre": nombre,
+				"limite": limite
 			}, function(data){
 				if (data.band == 'false')
 					console.log(data.mensaje);
@@ -27,4 +28,18 @@ TImpresionPedidos = function(){
 			}
 		}, "json");
 	};
+	
+	this.getLimite = function(id, fecha, fn){
+		$.post('?mod=cCatalogoPedidos&action=getLimite', {
+			"id": id,
+			"fecha": fecha
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+				
+			if (data.band == 'false'){
+				console.log("No se pudo obtener el límite superior");
+			}
+		}, "json");
+	}
 };

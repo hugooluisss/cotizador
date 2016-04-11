@@ -408,7 +408,7 @@ $conf['pedidos'] = array(
 	'vista' => 'pedidos/panel.tpl',
 	'descripcion' => 'Pedidos',
 	'seguridad' => true,
-	'js' => array('pedidos.class.js', 'cliente.class.js'),
+	'js' => array('pedidos.class.js', 'cliente.class.js', "impresionPedidos.class.js"),
 	'jsTemplate' => array('pedidos.js'),
 	'capa' => LAYOUT_DEFECTO);
 

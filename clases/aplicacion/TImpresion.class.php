@@ -8,6 +8,7 @@
 class TImpresion{
 	private $idImpresion;
 	private $nombre;
+	private $limite;
 	
 	/**
 	* Constructor de la clase
@@ -82,6 +83,32 @@ class TImpresion{
 	}
 	
 	/**
+	* Establece el limite
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setLimite($val = 0){
+		$this->limite = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el limite
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getLimite(){
+		return $this->limite;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -93,7 +120,7 @@ class TImpresion{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO catalogoimpresion(nombre) VALUES('".$this->getNombre()."');");
+			$rs = $db->Execute("INSERT INTO catalogoimpresion(nombre, limite) VALUES('".$this->getNombre()."', 0);");
 			if (!$rs) return false;
 			
 			$this->idImpresion = $db->Insert_ID();
@@ -104,7 +131,8 @@ class TImpresion{
 			
 		$rs = $db->Execute("UPDATE catalogoimpresion
 			SET
-				nombre = '".$this->getNombre()."'
+				nombre = '".$this->getNombre()."',
+				limite = '".$this->getLimite()."'
 			WHERE idImpresion = ".$this->getId());
 			
 		return $rs?true:false;

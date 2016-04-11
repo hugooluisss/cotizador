@@ -26,6 +26,12 @@
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="txtLimite" class="col-lg-2">Límite</label>
+						<div class="col-lg-1">
+							<input class="form-control" id="txtLimite" name="txtLimite">
+						</div>
+					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

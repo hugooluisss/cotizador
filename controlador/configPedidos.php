@@ -49,12 +49,23 @@ switch($objModulo->getId()){
 				$obj = new TImpresion();
 				$obj->setId($_POST['id']);
 				$obj->setNombre($_POST['nombre']);
+				$obj->setLimite($_POST['limite']);
 				
 				echo json_encode(array("band" => $obj->guardar()));
 			break;
 			case 'del':
 				$obj = new TImpresion($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
+			break;
+			case 'getLimite':
+				$obj = new TImpresion($_POST['id']);
+				
+				$limite = $obj->getLimite();
+				$db = TBase::conectaDB();
+				
+				$rs = $db->Execute("select count(*) as total from pedido a join pedidoimpresion b using(idPedido)  where cast(entrega as date) = '".$_POST['fecha']."'");
+				
+				echo json_encode(array("limite" => $limite - $rs->fields['total'], "band" => true));
 			break;
 		}
 	break;

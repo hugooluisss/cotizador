@@ -15,16 +15,19 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtNombre: "required",
+			txtLimite: "required",
 		},
 		wrapper: 'span', 
 		messages: {
 			txtNombre: "Este campo es necesario",
+			txtLimite: "Indica el límite de pedidos por dia que pueden tener esta técnica"
 		},
 		submitHandler: function(form){
 			var obj = new TImpresionPedidos;
 			obj.add(
 				$("#id").val(), 
 				$("#txtNombre").val(), 
+				$("#txtLimite").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -61,6 +64,7 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idImpresion);
 				$("#txtNombre").val(el.nombre);
+				$("#txtLimite").val(el.limite);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			

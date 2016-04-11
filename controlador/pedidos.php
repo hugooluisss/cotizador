@@ -162,7 +162,7 @@ switch($objModulo->getId()){
 					if ($_POST['estado'] == 7){
 						$pedido = $obj;
 						$email = new TMail;
-						$email->setTema("Su pedido casi está listo");
+						$email->setTema("Su pedido está listo");
 						$email->setDestino($pedido->cliente->getEmail(), utf8_decode($pedido->cliente->getNombre()));
 						
 						$datos = array();
