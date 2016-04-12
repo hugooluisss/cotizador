@@ -22,7 +22,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-xs-12 text-right">
-						<a href="#" id="btnAyuda" class="btn btn-primary"><i class="fa fa-bullhorn"></i> Ayuda</a>
+						<a href="#" id="btnAyuda" class="btn btn-primary"><i class="fa fa-bullhorn"></i> Ayuda de estados</a>
 					</div>
 				</div>
 				<br />
@@ -40,7 +40,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h1>Lista de nombres y números</h1>
+				<h1>Guía de Colores Pedidos</h1>
 			</div>
 			<div class="modal-body">
 				<table id="tblEstados" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
