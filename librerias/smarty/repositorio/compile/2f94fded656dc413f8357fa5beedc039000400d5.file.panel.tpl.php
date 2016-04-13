@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-06 20:22:44
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-13 12:57:40
          compiled from "templates/plantillas/modulos/pedidos/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2774012305668731c725e83-64649492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2f94fded656dc413f8357fa5beedc039000400d5' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/panel.tpl',
-      1 => 1459992163,
+      1 => 1460482314,
       2 => 'file',
     ),
   ),
@@ -50,7 +50,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="box-body">
 				<div class="row">
 					<div class="col-xs-12 text-right">
-						<a href="#" id="btnAyuda" class="btn btn-primary"><i class="fa fa-bullhorn"></i> Ayuda</a>
+						<a href="#" id="btnAyuda" class="btn btn-primary"><i class="fa fa-bullhorn"></i> Ayuda de estados</a>
 					</div>
 				</div>
 				<br />
@@ -70,7 +70,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h1>Lista de nombres y números</h1>
+				<h1>Guía de Colores Pedidos</h1>
 			</div>
 			<div class="modal-body">
 				<table id="tblEstados" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>

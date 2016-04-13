@@ -100,6 +100,7 @@
 						<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
 						<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
 						<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
+						<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
 						<br />
 						{/if}
 						

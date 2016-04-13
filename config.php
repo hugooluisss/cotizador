@@ -489,4 +489,19 @@ $conf['cseguimiento'] = array(
 	'seguridad' => false,
 	'debugSeg' => false,
 	'capa' => LAYOUT_AJAX);
+
+$conf['horarios'] = array(
+	'controlador' => 'horarios.php',
+	'vista' => 'horarios/panel.tpl',
+	'descripcion' => 'Horarios',
+	'seguridad' => true,
+	'jsTemplate' => array('horario.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['chorarios'] = array(
+	'controlador' => 'horarios.php',
+	'descripcion' => 'Controlador de horarios',
+	'seguridad' => true,
+	'debugSeg' => false,
+	'capa' => LAYOUT_AJAX);
 ?>

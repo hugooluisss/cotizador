@@ -20,7 +20,10 @@ $(document).ready(function(){
 					if (datos.band)
 						location.href = "?mod=bienvenida";
 					else{
-						alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
+						if (datos.mensaje == undefined)
+							alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
+						else
+							alert(datos.mensaje);
 					}
 				}
 			});

@@ -24,8 +24,24 @@ switch($objModulo->getId()){
 					$obj = new TUsuario($rs->fields['idUsuario']);
 					if ($obj->getId() == '')
 						$result = array('band' => false, 'mensaje' => 'Acceso denegado');
-					else
-						$result = array('band' => true);
+					else{
+						if ($obj->getIdTipo() == 2){
+							switch(date("w")){
+								case 0: $result = array('band' => false); break;
+								case 6: 
+									$rs2 = $db->Execute("select * from horario where now() between sabadoEntrada and sabadoSalida");
+									
+									$result = array('band' => !$rs2->EOF, 'mensaje' => 'Acceso denegado en este horario');
+								break;
+								default:
+									$rs2 = $db->Execute("select * from horario where now() between lunesEntrada and lunesSalida");
+									
+									$result = array('band' => !$rs2->EOF, 'mensaje' => 'Acceso denegado en este horario');
+							}
+						}else{
+							$result = array('band' => true);
+						}
+					}
 				}
 					
 				
