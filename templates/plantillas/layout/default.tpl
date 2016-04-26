@@ -101,11 +101,16 @@
 						<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
 						<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 						<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
+						<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
 						<br />
 						{/if}
-						
+						{if $PAGE.tipoUsuario eq 4 or $PAGE.tipoUsuario eq 2}
+						<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+						{/if}
+						{if $PAGE.tipoUsuario neq 4}
 						<li {if $PAGE.modulo eq 'cotizador'}class="active"{/if}><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
 						<li {if $PAGE.modulo eq 'pedidos'}class="active"{/if}><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
+						{/if}
 					</ul>
 				</section>
 				<!-- /.sidebar -->

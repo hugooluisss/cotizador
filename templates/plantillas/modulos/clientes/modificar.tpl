@@ -9,6 +9,15 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="selTipo" class="col-lg-2">Tipo</label>
+				<div class="col-lg-3">
+					<select class="form-control" id="selTipo" name="selTipo">
+						<option value="F" {if $cliente->getTipo() eq 'F'}selected{/if}>Persona
+						<option value="E" {if $cliente->getTipo() eq 'M'}selected{/if}>Empresa
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="txtRazonSocial" class="col-lg-2">Razón social</label>
 				<div class="col-lg-3">
 					<input class="form-control" id="txtRazonSocial" name="txtRazonSocial" value="{$cliente->getRazonSocial()}">

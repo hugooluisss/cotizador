@@ -63,9 +63,9 @@ switch($objModulo->getId()){
 				$limite = $obj->getLimite();
 				$db = TBase::conectaDB();
 				
-				$rs = $db->Execute("select count(*) as total from pedido a join pedidoimpresion b using(idPedido)  where cast(entrega as date) = '".$_POST['fecha']."'");
+				$rs = $db->Execute("select count(*) as total from pedido a join pedidoimpresion b using(idPedido) where cast(entrega as date) = '".$_POST['fecha']."' group by idPedido");
 				
-				echo json_encode(array("limite" => $limite - $rs->fields['total'], "band" => true));
+				echo json_encode(array("limite" => $limite - $rs->RecordCount(), "sup" => $limite, "total" => $rs->RecordCount(), "band" => true));
 			break;
 		}
 	break;

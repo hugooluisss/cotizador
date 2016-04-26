@@ -17,6 +17,15 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label for="selTipo" class="col-lg-4">Tipo</label>
+								<div class="col-lg-7">
+									<select class="form-control" id="selTipo" name="selTipo">
+										<option value="F">Persona
+										<option value="E">Empresa
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="txtRazonSocial" class="col-lg-4">Razón social</label>
 								<div class="col-lg-7">
 									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">

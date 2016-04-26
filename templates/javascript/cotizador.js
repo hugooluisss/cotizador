@@ -327,6 +327,7 @@ $(document).ready(function(){
 				$("#winModificarCliente #txtTelefono").val(),
 				$("#winModificarCliente #txtCelular").val(),
 				$("#winModificarCliente #txtObservaciones").val(),
+				$("#selTipo").val(),
 				{
 					after: function(datos){
 						if (datos.band){

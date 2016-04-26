@@ -504,4 +504,37 @@ $conf['chorarios'] = array(
 	'seguridad' => true,
 	'debugSeg' => false,
 	'capa' => LAYOUT_AJAX);
+
+/* Reportes */	
+$conf['reportes'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/panel.tpl',
+	'descripcion' => 'Reportes',
+	'seguridad' => true,
+	'jsTemplate' => array('reportes.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['rventaremeras'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/remeras.tpl',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['rventastotales'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/ventas.tpl',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['rtecnicas'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/tecnicas.tpl',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['rtipoclientes'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/tipoCliente.tpl',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-12-18 13:13:49
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-24 21:49:35
          compiled from "templates/plantillas/modulos/cotizador/modificarCliente.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1832655399565d30c3d5b8c0-54018829%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '86df248a3441369d5972424b02696eb5f43063b0' => 
     array (
       0 => 'templates/plantillas/modulos/cotizador/modificarCliente.tpl',
-      1 => 1449034870,
+      1 => 1461552574,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<label for="txtRUT" class="col-lg-4">RUT</label>
 								<div class="col-lg-7">
 									<input class="form-control" id="txtRUT" name="txtRUT">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selTipo" class="col-lg-4">Tipo</label>
+								<div class="col-lg-7">
+									<select class="form-control" id="selTipo" name="selTipo">
+										<option value="F">Persona
+										<option value="E">Empresa
+									</select>
 								</div>
 							</div>
 							<div class="form-group">

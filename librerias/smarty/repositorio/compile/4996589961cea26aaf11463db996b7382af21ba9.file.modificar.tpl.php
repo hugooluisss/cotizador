@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 23:19:37
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-24 21:44:18
          compiled from "templates/plantillas/modulos/clientes/modificar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1153187898565c995d6ade12-70250530%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4996589961cea26aaf11463db996b7382af21ba9' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/modificar.tpl',
-      1 => 1448946902,
+      1 => 1461552245,
       2 => 'file',
     ),
   ),
@@ -33,6 +33,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="col-lg-3">
 					<input class="form-control" id="txtRUT" name="txtRUT" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getRUT();?>
 ">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="selTipo" class="col-lg-2">Tipo</label>
+				<div class="col-lg-3">
+					<select class="form-control" id="selTipo" name="selTipo">
+						<option value="F" <?php if ($_smarty_tpl->tpl_vars['cliente']->value->getTipo()=='F'){?>selected<?php }?>>Persona
+						<option value="E" <?php if ($_smarty_tpl->tpl_vars['cliente']->value->getTipo()=='M'){?>selected<?php }?>>Empresa
+					</select>
 				</div>
 			</div>
 			<div class="form-group">

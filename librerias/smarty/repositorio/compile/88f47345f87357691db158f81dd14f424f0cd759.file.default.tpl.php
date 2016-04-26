@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-13 12:09:21
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-25 10:52:30
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1460567295,
+      1 => 1461599492,
       2 => 'file',
     ),
   ),
@@ -145,11 +145,16 @@ img/logo-min.png" class="img-rounded"/></span>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='entregablesPed'){?>class="active"<?php }?>><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estadoPedidos'){?>class="active"<?php }?>><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='horarios'){?>class="active"<?php }?>><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
 						<br />
 						<?php }?>
-						
+						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==4||$_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==2){?>
+						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']!=4){?>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='cotizador'){?>class="active"<?php }?>><a href="?mod=cotizador"><i class="fa fa-calculator"></i> Cotizador</a></li>
 						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='pedidos'){?>class="active"<?php }?>><a href="?mod=pedidos"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
+						<?php }?>
 					</ul>
 				</section>
 				<!-- /.sidebar -->

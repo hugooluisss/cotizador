@@ -53,6 +53,7 @@ switch($objModulo->getId()){
 				$obj->setTelefono($_POST['telefono']);
 				$obj->setCelular($_POST['celular']);
 				$obj->setObservaciones($_POST['observaciones']);
+				$obj->setTipo($_POST['tipo']);
 				
 				if ($obj->guardar()){
 					$rs = $db->Execute("select * from cliente where idCliente = ".$obj->getId());

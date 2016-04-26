@@ -18,6 +18,7 @@ class TCliente{
 	private $telefono;
 	private $cel;
 	private $observaciones;
+	private $tipo;
 	
 	/**
 	* Constructor de la clase
@@ -326,6 +327,32 @@ class TCliente{
 	}
 	
 	/**
+	* Establece el tipo (fisica o moral)
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setTipo($val = 'F'){
+		$this->tipo = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el tipo
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getTipo(){
+		return $this->tipo;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -357,7 +384,8 @@ class TCliente{
 				localidad = '".$this->getLocalidad()."',
 				tel = '".$this->getTelefono()."',
 				cel = '".$this->getCelular()."',
-				observaciones = '".$this->getObservaciones()."'
+				observaciones = '".$this->getObservaciones()."',
+				tipo = '".$this->getTipo()."'
 			WHERE idCliente = ".$this->getId());
 			
 		return $rs?true:false;

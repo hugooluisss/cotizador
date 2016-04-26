@@ -50,6 +50,7 @@ $(document).ready(function(){
 				$("#txtTelefono").val(),
 				$("#txtCelular").val(),
 				$("#txtObservaciones").val(),
+				$("#selTipo").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -100,6 +101,7 @@ $(document).ready(function(){
 				$("#txtTelefono").val(el.tel);
 				$("#txtCelular").val(el.cel);
 				$("#txtObservaciones").val(el.observaciones);
+				$("#selTipo").val(el.tipo);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			

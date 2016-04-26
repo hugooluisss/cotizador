@@ -58,6 +58,7 @@ $(document).ready(function(){
 			$("#winModificarCliente #txtTelefono").val(el.item.tel);
 			$("#winModificarCliente #txtCelular").val(el.item.cel);
 			$("#winModificarCliente #txtObservaciones").val(el.item.observaciones);
+			$("#winModificarCliente #selTipo").val(el.item.tipo);
 		}
 	});
 	
@@ -126,6 +127,7 @@ function getClientes(){
 					$("#winModificarCliente #txtRFC").val(data.rfc);
 					$("#winModificarCliente #txtEmail").val(data.email);
 					$("#winModificarCliente #txtObservaciones").val(data.observaciones);
+					$("#winModificarCliente #selTipo").val(data.tipo);
 					$("#winModificarCliente #id").val(data.idCliente);
 					
 					$("#winClientes").modal("hide");
@@ -201,6 +203,7 @@ $(document).ready(function(){
 				$("#winModificarCliente #txtTelefono").val(),
 				$("#winModificarCliente #txtCelular").val(),
 				$("#winModificarCliente #txtObservaciones").val(),
+				$("#winModificarCliente #selTipo").val(),
 				{
 					after: function(datos){
 						if (datos.band){
@@ -331,6 +334,11 @@ $(document).ready(function(){
 		}else if ($("#total").val() == '' || $("#total").val() == 0){
 			alert("El campo precio final es necesario");
 			$("#total").focus();
+			
+			band = false;
+		}else if ($("#txtNombreArchivo").val() == ''){
+			alert("El campo Archivo es necesario");
+			$("#txtNombreArchivo").focus();
 			
 			band = false;
 		}
