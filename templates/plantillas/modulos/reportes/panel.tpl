@@ -20,6 +20,7 @@
 			</div>
 			<div class="col-md-3">
 				<select id="selEstado" name="selEstado" class="form-control">
+					<option value="">Todos
 					{foreach key=key item=item from=$estados}
 						<option value="{$item.idEstado}">{$item.nombre}
 					{/foreach}
