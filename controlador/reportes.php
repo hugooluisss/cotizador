@@ -26,7 +26,7 @@ switch($objModulo->getId()){
 				join ropa e using(idItem)
 			where ".$_POST['tipo']." between '".$_POST['inicio'].$aux1."' and '".$_POST['fin'].$aux2."'
 				and idEstado = ".$_POST['estado']."
-			group by e.idItem;");
+			group by c.idTalla;");
 			
 		$datos = array();
 		while(!$rs->EOF){
