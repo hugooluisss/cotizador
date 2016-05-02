@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-06 20:19:36
+<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 12:50:43
          compiled from "templates/plantillas/modulos/pedidos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:157187380456687c0b757af7-92334875%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '475eddcdce8a2967b537a5b41d38f430be447673' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/lista.tpl',
-      1 => 1459991903,
+      1 => 1462211441,
       2 => 'file',
     ),
   ),
@@ -31,6 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Excede</th>
 					<th>Fecha</th>
 					<th>Entregar el</th>
 					<th>Cliente</th>
@@ -49,6 +50,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ">
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idPedido'];?>
 </td>
+						<td class="text-center"><?php if ($_smarty_tpl->tpl_vars['row']->value['excede']==1){?><i class="fa fa-star fa-2x" aria-hidden="true"></i><?php }?></td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['registro'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['entrega'];?>

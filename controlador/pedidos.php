@@ -109,17 +109,20 @@ switch($objModulo->getId()){
 		$cliente = new TCliente();
 		$estado = new TEstado();
 		$usuario = new TUsuario();
+		$orden = new TPedido();
 		while(!$rs->EOF){
 			$usuario->setId($rs->fields['idUsuario']);
 			$cliente->setId($rs->fields['idCliente']);
 			$estado->setId($rs->fields['idEstado']);
+			$orden->setId($rs->fields['idPedido']);
 			$rs->fields['cliente'] = $cliente->getNombre();
 			$rs->fields['color'] = $estado->getColor();
 			$rs->fields['usuario'] = $usuario->getNombre(); 
+			$rs->fields['excede'] = $orden->getExcede()?1:0;
+			
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
-		
 		$smarty->assign("lista", $datos);
 	break;
 	case 'cpedidos':

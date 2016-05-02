@@ -38,6 +38,8 @@ class TPedido{
 		$this->cliente = new TCliente;
 		$this->estado = new TEstado;
 		$this->usuario = new TUsuario;
+		$this->excedelimite = false;
+		
 		$this->setId($id);
 		
 		return true;
@@ -63,6 +65,7 @@ class TPedido{
 				case 'idCliente': $this->cliente = new TCliente($val); break;
 				case 'idEstado': $this->estado = new TEstado($val); break;
 				case 'idusuario': $this->usuario = new TUsuario($val);
+				case 'excedelimite': $this->excedelimite = $val == 1;
 				default: $this->$field = $val;
 			}
 		}
@@ -524,7 +527,7 @@ class TPedido{
 	public function getArchivo(){
 		return $this->archivo;
 	}
-	
+		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
@@ -616,7 +619,7 @@ class TPedido{
 		if (!$rs) return false;
 		
 		foreach($items as $item){
-			$rs = $db->Execute("insert into pedidoimpresion (idPedido, idImpresion) values (".$this->getId().", ".$item->id.")");
+			$rs = $db->Execute("insert into pedidoimpresion (idPedido, idImpresion, excede) values (".$this->getId().", ".$item->id.", ".$item->excede.")");
 			if (! $rs) return false;
 		}
 		
@@ -671,6 +674,23 @@ class TPedido{
 		}
 		
 		return true;
+	}
+	
+	/**
+	* Indica si alguna técnica de impresión se sobre pasa
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getExcede(){
+		if($this->getId() == '')
+			return false;
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select count(*) as total from pedidoimpresion where idPedido = ".$this->getId()." and excede = 1");
+		
+		return $rs->fields['total'] > 0;
 	}
 	
 	/**

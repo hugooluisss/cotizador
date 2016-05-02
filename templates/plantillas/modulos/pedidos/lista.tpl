@@ -4,6 +4,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Excede</th>
 					<th>Fecha</th>
 					<th>Entregar el</th>
 					<th>Cliente</th>
@@ -16,6 +17,7 @@
 				{foreach from=$lista item="row"}
 					<tr style="background-color: {$row.color}">
 						<td>{$row.idPedido}</td>
+						<td class="text-center">{if $row.excede eq 1}<i class="fa fa-star fa-2x" aria-hidden="true"></i>{/if}</td>
 						<td>{$row.registro}</td>
 						<td>{$row.entrega}</td>
 						<td>{$row.cliente}</td>

@@ -91,8 +91,11 @@ $(document).ready(function(){
 						
 						superior = resp.band == true?resp.limite:1;
 						
-						if (superior-1 < 0)
+						if (superior-1 < 0){
 							alert("Se alcanzó el limite de entregas de esta técnica de impresión para el dia " + $("#txtEntrega").val());
+							el.attr("excede", 1);
+						}else
+							el.attr("excede", 0);
 					}
 				});
 			}
@@ -365,6 +368,7 @@ $(document).ready(function(){
 				var impresion = new Object();
 				
 				impresion.id = $(this).val();
+				impresion.excede = $(this).attr("excede");
 				impresiones.push(impresion);
 			});
 			
@@ -467,6 +471,7 @@ function limpiar(){
 	$("#txtPosicion").val("");
 	
 	$(".serviciosImpresion").prop("checked", false);
+	$(".serviciosImpresion").attr("excede", 0);
 	$(".entregables").prop("checked", false);
 	$("#txtEntregables").val("");
 	
@@ -537,6 +542,7 @@ function getLista(){
 					$(".serviciosImpresion").prop("checked", false);
 					datos.impresion.forEach(function(el){
 						$(".serviciosImpresion[value=" + el.idImpresion + "]").prop("checked", true);
+						$(".serviciosImpresion[value=" + el.idImpresion + "]").attr("excede", el.excede);
 					});
 					
 					$(".entregables").prop("checked", false);
