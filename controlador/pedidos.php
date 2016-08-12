@@ -182,6 +182,16 @@ switch($objModulo->getId()){
 						$email->addImg("repositorio/img/telefono.png", "telefono", "telefono.png");
 						$email->addImg("repositorio/img/whatsapp.png", "whatsapp", "whatsapp.png");
 						$email->addImg("repositorio/img/email.png", "email", "email.png");
+						/*
+						$email->addImg("repositorio/img/mail/positivo-icono.jpg", "positivo-icono", "positivo-icono.jpg");
+						$email->addImg("repositorio/img/mail/logo.jpg", "logo", "logo.jpg");
+						$email->addImg("repositorio/img/mail/pin.jpg", "pin", "pin.jpg");
+						$email->addImg("repositorio/img/mail/reloj.jpg", "reloj", "reloj.jpg");
+						$email->addImg("repositorio/img/mail/telefono-icono.jpg", "telefono-icono", "telefono-icono.jpg");
+						$email->addImg("repositorio/img/mail/wahts-icono.jpg", "wahts-icono", "wahts-icono.jpg");
+						$email->addImg("repositorio/img/mail/mail-icono.jpg", "mail-icono", "mail-icono.jpg");
+						$email->addImg("repositorio/img/mail/web-icono.jpg", "web-icono", "web-icono.jpg");
+						*/
 						
 						$email->send();
 					}
