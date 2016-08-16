@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-16 13:53:18
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-16 13:57:08
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1471373596,
+      1 => 1471373825,
       2 => 'file',
     ),
   ),
@@ -84,10 +84,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 		<div class="col-md-7">
 			<h1 class="page-header">Historial de pedidos</h1>
-			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
+			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Exc</th>
 						<th>Fecha</th>
 						<th>Entrega el</th>
 						<th>Precio</th>
@@ -104,6 +105,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 							<td style="border-left: 3px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['idPedido'];?>
 </td>
+							<td class="text-center"><?php if ($_smarty_tpl->tpl_vars['row']->value['excede']==1){?><i class="fa fa-star" aria-hidden="true"></i><?php }?></td>
 							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['registro'];?>
 </td>
 							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['entrega'];?>

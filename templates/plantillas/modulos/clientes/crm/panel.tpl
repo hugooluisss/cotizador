@@ -52,10 +52,11 @@
 		</div>
 		<div class="col-md-7">
 			<h1 class="page-header">Historial de pedidos</h1>
-			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
+			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Exc</th>
 						<th>Fecha</th>
 						<th>Entrega el</th>
 						<th>Precio</th>
@@ -66,6 +67,7 @@
 					{foreach from=$ordenes item="row"}
 						<tr>
 							<td style="border-left: 3px solid {$row.color}">{$row.idPedido}</td>
+							<td class="text-center">{if $row.excede eq 1}<i class="fa fa-star" aria-hidden="true"></i>{/if}</td>
 							<td>{$row.registro}</td>
 							<td>{$row.entrega}</td>
 							<td>{$row.precio}</td>
