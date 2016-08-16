@@ -49,7 +49,6 @@ switch($objModulo->getId()){
 	case 'cserigrafia':
 		switch($objModulo->getAction()){
 			case 'add':
-				$db = TBase::conectaDB();
 				$obj = new TSerigrafia();
 				
 				$obj->setId($_POST['id']);
@@ -74,6 +73,31 @@ switch($objModulo->getId()){
 				$precio = $obj->getPrecio($_POST['colores'], $_POST['tam'], $_POST['cantidad']);
 				
 				echo json_encode(array("precio" => $precio, "band" => !$precio?"No existe un precio definido para esa cantidad":""));
+			break;
+			case 'setPrecioGlobal':
+				$db = TBase::conectaDB();
+				
+				if($_POST['tipo'] == 'aumentar'){
+					if ($_POST['en'] == 'porcentaje'){
+						$cantidad = $_POST['cantidad'] / 100;
+						$s = "precio = precio + precio*".$cantidad;
+					}else{
+						$cantidad = $_POST['cantidad'];
+						$s = "precio = precio + ".$cantidad;
+					}
+				}else{
+					if ($_POST['en'] == 'porcentaje'){
+						$cantidad = $_POST['cantidad'] / 100;
+						$s = "precio = precio - precio*".$cantidad;
+					}else{
+						$cantidad = $_POST['cantidad'];
+						$s = "precio = precio - ".$cantidad;
+					}
+				}
+				
+				$rs = $db->Execute("update precioserigrafia set ".$s);
+				
+				echo json_encode(array("band" => $rs?true:false));
 			break;
 		}
 	break;

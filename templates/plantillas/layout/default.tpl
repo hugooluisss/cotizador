@@ -86,22 +86,29 @@
 					<ul class="sidebar-menu">
 						<li class="header">MENÚ PRINCIPAL</li>
 						{if $PAGE.tipoUsuario eq 1}
-						<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
-						<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
-						<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
-						<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
-						<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
-						<li {if $PAGE.modulo eq 'corteVinilo'}class="active"{/if}><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
-						<li {if $PAGE.modulo eq 'numerosLetras'}class="active"{/if}><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
-						<li {if $PAGE.modulo eq 'tecnicasImpresion'}class="active"{/if}><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
-						<li {if $PAGE.modulo eq 'otrosServicios'}class="active"{/if}><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
-						<br />
-						
-						<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
-						<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
-						<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
-						<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
-						<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+						<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'clientes', 'ropa', 'serigrafia', 'serigrafiaDigital', 'corteVinilo', 'numerosLetras', 'tecnicasImpresion', 'otrosServicios', 'catImpresionesPed', 'entregablesPed', 'estadoPedidos', 'horarios', 'reportes'))}active{/if} treeview">
+							<a href="#">
+								<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+								<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+								<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
+								<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
+								<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
+								<li {if $PAGE.modulo eq 'corteVinilo'}class="active"{/if}><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
+								<li {if $PAGE.modulo eq 'numerosLetras'}class="active"{/if}><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
+								<li {if $PAGE.modulo eq 'tecnicasImpresion'}class="active"{/if}><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
+								<li {if $PAGE.modulo eq 'otrosServicios'}class="active"{/if}><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
+								<br />
+								
+								<li {if $PAGE.modulo eq 'catImpresionesPed'}class="active"{/if}><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
+								<li {if $PAGE.modulo eq 'entregablesPed'}class="active"{/if}><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
+								<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
+								<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
+								<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+							</ul>
+						</li>
 						<br />
 						{/if}
 						{if $PAGE.tipoUsuario eq 4 or $PAGE.tipoUsuario eq 2}
@@ -171,6 +178,7 @@
     <script src="{$PAGE.ruta}plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="{$PAGE.ruta}plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.js"></script>
     
     <link rel="stylesheet" href="{$PAGE.ruta}plugins/datatables/dataTables.bootstrap.css">

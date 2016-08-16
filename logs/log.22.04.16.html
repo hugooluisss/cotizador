@@ -1,8 +1,0 @@
-<b style="color:RED;">Error del Usuario</b><strong> Error en la linea <span style="color:BLUE">77</span> del archivo <span style="color:BLUE">/Library/WebServer/Documents/cotizador/librerias/adodb/adodb-errorhandler.inc.php - MOD: rventaremeras,</span> el dia <span style="color:BLUE">22/04/2016 21:04,</span><br /></strong><strong><p>El mensaje Mandado es :</p></strong>mysql error: [1052: Column 'idItem' in group statement is ambiguous] in EXECUTE("select d.*, e.*, c.nombre as talla, count(*) as total
-			from pedido a join movped b using(idPedido) 
-				join talla c using(idTalla)
-				join item d using(idItem)
-				join ropa e using(idItem)
-			where entrega between '2016-01-22' and '2016-04-22'
-			group by idItem;")
-<br /><hr>

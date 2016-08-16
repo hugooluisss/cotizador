@@ -1,6 +1,39 @@
 $(document).ready(function(){
 	getLista();
 	
+	$('#panelTabs a[href="#listas"]').tab('show');
+	
+	$("#btnWinActualizarPrecios").click(function(){
+		$("#winPrecios").modal();
+	});
+	
+	$("#frmDefinicionPrecios").validate({
+		debug: true,
+		rules: {
+			txtCantidad: {
+				required: true,
+				number: true,
+				min: 1
+			}
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			var obj = new TSerigrafia;
+			obj.setPrecioGlobal($("#selQuiero").val(), $("#selEn").val(), $("#txtCantidad").val(), {
+				before: function(){
+					$(form).find("[type=submit]").prop("disabled", true);
+				}, after: function(resp){
+					$(form).find("[type=submit]").prop("disabled", false);
+					
+					if(resp.band){
+						alert("La actualización terminó");
+						$("#winPrecios").modal("hide");
+					}
+				}
+			});
+		}
+	});
+	
 	$("#panelTabs li a[href=#add]").click(function(){
 		$("#frmAdd").get(0).reset();
 		$("#id").val("");

@@ -63,4 +63,20 @@ TSerigrafia = function(){
 					fn.after(data);
 			}, "json");
 	}
+	
+	this.setPrecioGlobal = function(tipo, en, cantidad, fn){
+		if (fn.before !== undefined) fn.before();
+		
+		$.post('?mod=cserigrafia&action=setPrecioGlobal', {
+				"tipo": tipo,
+				"en": en,
+				"cantidad": cantidad
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (fn.after !== undefined)
+					fn.after(data);
+			}, "json");
+	}
 };

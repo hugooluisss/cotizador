@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 11:47:14
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-13 08:43:47
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1461764260,
+      1 => 1471095825,
       2 => 'file',
     ),
   ),
@@ -130,22 +130,29 @@ img/logo-min.png" class="img-rounded"/></span>
 					<ul class="sidebar-menu">
 						<li class="header">MENÚ PRINCIPAL</li>
 						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafia'){?>class="active"<?php }?>><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafiaDigital'){?>class="active"<?php }?>><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='corteVinilo'){?>class="active"<?php }?>><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='numerosLetras'){?>class="active"<?php }?>><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tecnicasImpresion'){?>class="active"<?php }?>><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='otrosServicios'){?>class="active"<?php }?>><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
-						<br />
-						
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='catImpresionesPed'){?>class="active"<?php }?>><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='entregablesPed'){?>class="active"<?php }?>><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estadoPedidos'){?>class="active"<?php }?>><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='horarios'){?>class="active"<?php }?>><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
-						<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','clientes','ropa','serigrafia','serigrafiaDigital','corteVinilo','numerosLetras','tecnicasImpresion','otrosServicios','catImpresionesPed','entregablesPed','estadoPedidos','horarios','reportes'))){?>active<?php }?> treeview">
+							<a href="#">
+								<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='ropa'){?>class="active"<?php }?>><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafia'){?>class="active"<?php }?>><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='serigrafiaDigital'){?>class="active"<?php }?>><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='corteVinilo'){?>class="active"<?php }?>><a href="?mod=corteVinilo"><i class="fa fa-cut"></i> Vinilo de corte</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='numerosLetras'){?>class="active"<?php }?>><a href="?mod=numerosLetras"><i class="fa fa-slack"></i> Números y letras</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='tecnicasImpresion'){?>class="active"<?php }?>><a href="?mod=tecnicasImpresion"><i class="fa fa-language"></i> Otras técnicas</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='otrosServicios'){?>class="active"<?php }?>><a href="?mod=otrosServicios"><i class="fa fa-codepen"></i> Servicios adicionales</a></li>
+								<br />
+								
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='catImpresionesPed'){?>class="active"<?php }?>><a href="?mod=catImpresionesPed"><i class="fa fa-print"></i> Impresiones pedidos</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='entregablesPed'){?>class="active"<?php }?>><a href="?mod=entregablesPed"><i class="fa fa-truck"></i> Entregables</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estadoPedidos'){?>class="active"<?php }?>><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='horarios'){?>class="active"<?php }?>><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+							</ul>
+						</li>
 						<br />
 						<?php }?>
 						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==4||$_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==2){?>
@@ -232,6 +239,8 @@ plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/validate/validate.js"></script>
     
