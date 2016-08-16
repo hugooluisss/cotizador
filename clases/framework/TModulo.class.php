@@ -13,7 +13,6 @@ class TModulo{
 	private $vista;
 	private $controlador;
 	private $capa;
-	private $debugSeg;
 	
 	public function TModulo($id = null){
 		$this->setId($id);
@@ -30,7 +29,6 @@ class TModulo{
 		$this->idModulo = $id;
 		$this->categoria = $conf[$id]["categoria"] == ''?"Sin especificar":$conf[$id]["categoria"];
 		$this->seguridad = $conf[$id]["seguridad"];
-		$this->debugSeg = $conf[$id]["debugSeg"];
 		$this->scriptsJS = array();
 		
 		if (isset($conf[$id]['js'])){
@@ -62,7 +60,9 @@ class TModulo{
 	public function requiereSeguridad(){
 		if ($this->idModulo == '')
 			return false;
-			
+		
+		if ($_POST['movil'] == 1) return false;
+		
 		return $this->seguridad === true or $this->seguridad == 1;
 	}
 	
@@ -107,7 +107,11 @@ class TModulo{
 	
 	public function getRutaCapa(){
 		if (isset($this->capa))
-			return $this->capa;
+			#if ($_POST['movil'] == 1 and $_POST['json'] == true)
+			if ($_POST['json'] == true)
+				return LAYOUT_JSON;
+			else
+				return $this->capa;
 		
 		return '';
 	}
@@ -117,7 +121,7 @@ class TModulo{
 	}
 	
 	public function getAction(){
-		return $_GET['action'];
+		return $_POST['action'] == ''?$_GET['action']:$_POST['action'];
 	}
 	
 	public function getDebugSeguridad(){

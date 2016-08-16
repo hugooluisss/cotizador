@@ -105,6 +105,12 @@ $(document).ready(function(){
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
+			$("[action=crm]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				
+				location.href = "?mod=crm&id=" + el.idCliente;
+			});
+			
 			$("#tblClientes").DataTable({
 				"responsive": true,
 				"language": espaniol,

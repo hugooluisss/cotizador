@@ -86,13 +86,13 @@
 					<ul class="sidebar-menu">
 						<li class="header">MENÚ PRINCIPAL</li>
 						{if $PAGE.tipoUsuario eq 1}
-						<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'clientes', 'ropa', 'serigrafia', 'serigrafiaDigital', 'corteVinilo', 'numerosLetras', 'tecnicasImpresion', 'otrosServicios', 'catImpresionesPed', 'entregablesPed', 'estadoPedidos', 'horarios', 'reportes'))}active{/if} treeview">
+						<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'clientes', 'ropa', 'serigrafia', 'serigrafiaDigital', 'corteVinilo', 'numerosLetras', 'tecnicasImpresion', 'otrosServicios', 'catImpresionesPed', 'entregablesPed', 'estadoPedidos', 'horarios', 'reportes', 'crm'))}active{/if} treeview">
 							<a href="#">
 								<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
 								<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
-								<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
+								<li {if $PAGE.modulo eq 'clientes' or $PAGE.modulo eq 'crm'}class="active"{/if}><a href="?mod=clientes"><i class="fa fa-book"></i> Clientes</a></li>
 								<li {if $PAGE.modulo eq 'ropa'}class="active"{/if}><a href="?mod=ropa"><i class="fa fa-shopping-cart"></i> Ropa</a></li>
 								<li {if $PAGE.modulo eq 'serigrafia'}class="active"{/if}><a href="?mod=serigrafia"><i class="fa fa-tint"></i> Serigrafía</a></li>
 								<li {if $PAGE.modulo eq 'serigrafiaDigital'}class="active"{/if}><a href="?mod=serigrafiaDigital"><i class="fa fa-print"></i> Serigrafía digital</a></li>

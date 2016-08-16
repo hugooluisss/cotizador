@@ -537,4 +537,20 @@ $conf['rtipoclientes'] = array(
 	'vista' => 'reportes/tipoCliente.tpl',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+/* CRM */
+$conf['crm'] = array(
+	'controlador' => 'crm.php',
+	'vista' => 'clientes/crm/panel.tpl',
+	'descripcion' => 'crm',
+	'seguridad' => true,
+	#'js' => array('entregables.class.js'),
+	'jsTemplate' => array('crm.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['centregables'] = array(
+	'controlador' => 'configPedidos.php',
+	'descripcion' => 'Controlador de entregables en pedidos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
