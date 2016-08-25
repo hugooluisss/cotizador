@@ -17,6 +17,9 @@
 					<label for="selTipo" class="col-lg-5 control-label">Tipo de cliente</label>
 					<div class="col-lg-7">
 						<select class="form-control" id="selTipo" name="selTipo">
+							{foreach from=$tipoClientes item="row"}
+								<option value="{$row.idTipoCliente}" {if $cliente->getClasificacion() eq $row.idTipoCliente}selected{/if}>{$row.nombre}</option>
+							{/foreach}
 						</select>
 					</div>
 				</div>
@@ -48,6 +51,8 @@
 					<label for="" class="col-lg-5 control-label">Última compra</label>
 					<div class="col-lg-7"></div>
 				</div>
+				
+				<input type="hidden" id="id" name="id" value="{$cliente->getId()}" />
 			</form>
 		</div>
 		<div class="col-md-7">
@@ -83,9 +88,68 @@
 	<div class="row">
 		<div class="col-md-7">
 			<h1 class="page-header">Productos comprados</h1>
+			<table id="tblComprados" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Descripción</th>
+						<th>Marca</th>
+						<th>Talla</th>
+						<th>Cantidad</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach from=$comprados item="row"}
+						<tr>
+							<td>{$row.idTalla}</td>
+							<td>{$row.ropa}</td>
+							<td>{$row.marca}</td>
+							<td>{$row.talla}</td>
+							<td>{$row.cantidad}</td>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
 		</div>
 		<div class="col-md-5">
-			<button class="btn btn-success">+ Añadir comentario</button>
+			<button class="btn btn-success" id="btnComentario">+ Añadir comentario</button>
+			<div class="panel-group" id="accordion">
+				{assign var="primercomentario" value="1"}
+				{foreach from=$comentarios item="row"}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#comentario{$row.idComentario}">{$row.fecha}</a>
+							</h4>
+						</div>
+						<div id="comentario{$row.idComentario}" class="panel-collapse collapse {if $primercomentario eq 1}in{/if}">
+							<div class="panel-body">{$row.texto}</div>
+						</div>
+					</div>
+					
+					{assign var="primercomentario" value="0"}
+				{/foreach}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<b>Total en compras</b>
+			<input class="text-right" id="txtMontoTotal" name="txtMontoTotal" value="$ {$montoTotal}" readonly disabled="true"/>
+		</div>
+		<div class="col-md-2">
+			Meses en los que compra
+		</div>
+		<div class="col-md-6">
+			{foreach from=$meses item="row"}
+				<div class="mesesCRM">
+				{if $row.totalCompras > 0}
+					<b>{$row.nombre}</b>
+				{else}
+					{$row.nombre}
+				{/if}
+				</div>
+			{/foreach}
 		</div>
 	</div>
 </div>

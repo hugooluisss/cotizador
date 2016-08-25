@@ -18,7 +18,7 @@ class TCliente{
 	private $telefono;
 	private $cel;
 	private $observaciones;
-	private $tipo;
+	private $tipoCliente;
 	
 	/**
 	* Constructor de la clase
@@ -353,6 +353,32 @@ class TCliente{
 	}
 	
 	/**
+	* Establece la clasificacion
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setClasificacion($val = 1){
+		$this->idTipoCliente = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el tipo de clasificacion
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getClasificacion(){
+		return $this->idTipoCliente == ''?1:$this->idTipoCliente;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -364,7 +390,7 @@ class TCliente{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO cliente(nombre) VALUES('".$this->getNombre()."');");
+			$rs = $db->Execute("INSERT INTO cliente(idTipoCliente, nombre) VALUES(".$this->getClasificacion().", '".$this->getNombre()."');");
 			if (!$rs) return false;
 				
 			$this->idCliente = $db->Insert_ID();
@@ -385,7 +411,8 @@ class TCliente{
 				tel = '".$this->getTelefono()."',
 				cel = '".$this->getCelular()."',
 				observaciones = '".$this->getObservaciones()."',
-				tipo = '".$this->getTipo()."'
+				tipo = '".$this->getTipo()."',
+				idTipoCliente = '".$this->getClasificacion()."'
 			WHERE idCliente = ".$this->getId());
 			
 		return $rs?true:false;

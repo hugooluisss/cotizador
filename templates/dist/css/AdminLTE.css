@@ -4727,3 +4727,13 @@ table.text-center th {
     white-space: normal!important;
   }
 }
+
+.mesesCRM{
+	float: left;
+	margin-right: 10px;
+	height: 30px;
+}
+
+.mesesCRM b{
+	color: red;
+}

@@ -548,9 +548,9 @@ $conf['crm'] = array(
 	'jsTemplate' => array('crm.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
-$conf['centregables'] = array(
-	'controlador' => 'configPedidos.php',
-	'descripcion' => 'Controlador de entregables en pedidos',
+$conf['ccrm'] = array(
+	'controlador' => 'crm.php',
+	'descripcion' => 'Controlador del crm',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>
