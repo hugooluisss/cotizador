@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-22 13:32:31
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-28 22:13:03
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1471890748,
+      1 => 1472440382,
       2 => 'file',
     ),
   ),
@@ -40,6 +40,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header"><i class="fa fa-sign-language fa-4x" aria-hidden="true"></i> Seguimiento de clientes</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 text-rigth">
+			<div class="btn-toolbar" role="toolbar">
+				<div class="btn-group btn-xs">
+					<button type="button" id="btnCliente" class="btn btn-default">Clientes</button>
+				</div>
+				<div class="btn-group btn-xs">
+					<button type="button" id="btnAvisos" class="btn btn-warning">Avisos</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -140,6 +152,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</table>
 		</div>
 	</div>
+	<hr />
 	<div class="row">
 		<div class="col-md-7">
 			<h1 class="page-header">Productos comprados</h1>
@@ -212,7 +225,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 		<div class="col-md-2">
 			Meses en los que compra
-		</div>
+		</div>
 		<div class="col-md-6">
 			<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['meses']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -232,5 +245,18 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 	</div>
 </div>
-<div class="box">
+
+
+
+<div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog moda-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Avisos</h1>
+			</div>
+			<div class="modal-body">
+			</div>
+		</div>
+	</div>
 </div><?php }} ?>

@@ -10,6 +10,18 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-lg-12">
+			<div class="btn-toolbar" role="toolbar">
+				<div class="btn-group btn-xs">
+					<button type="button" id="btnCliente" class="btn btn-default">Clientes</button>
+				</div>
+				<div class="btn-group btn-xs">
+					<button type="button" id="btnAvisos" class="btn btn-warning">Avisos</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-5">
 			<h1 class="page-header">Contacto</h1>
 			<form class="form-horizontal" role="form">
@@ -85,6 +97,7 @@
 			</table>
 		</div>
 	</div>
+	<hr />
 	<div class="row">
 		<div class="col-md-7">
 			<h1 class="page-header">Productos comprados</h1>
@@ -153,5 +166,18 @@
 		</div>
 	</div>
 </div>
-<div class="box">
+
+
+
+<div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog moda-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Avisos</h1>
+			</div>
+			<div class="modal-body">
+			</div>
+		</div>
+	</div>
 </div>

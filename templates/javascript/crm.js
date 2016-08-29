@@ -57,4 +57,12 @@ $(document).ready(function(){
 			}, "json");
 		}
 	});
+	
+	$("#btnClientes").click(function(){
+		location.href = "clientes";
+	});
+	
+	$("#btnAvisos").click(function(){
+		$("#winAvisos").modal();
+	});
 });
