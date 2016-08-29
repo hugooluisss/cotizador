@@ -77,7 +77,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 		$("#" + self.tableNumerosLetras + " tbody tr").remove();
 	}
 	
-	this.guardar = function(id, estado, cliente, formaEntrega, direccionEnvio, registro, entrega, entregables, fuente, colores, observaciones, precio, anticipo, remeras, impresiones, entregablesJson, envoltorio, posicion, observacionPosicion, archivo, formasPago, fn){
+	this.guardar = function(id, estado, cliente, formaEntrega, direccionEnvio, registro, entrega, entregaCliente, entregables, fuente, colores, observaciones, precio, anticipo, remeras, impresiones, entregablesJson, envoltorio, posicion, observacionPosicion, archivo, formasPago, fn){
 
 		if (fn.before !== undefined) fn.before();
 		
@@ -102,6 +102,7 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 				"direccionEnvio": direccionEnvio,
 				"registro": registro,
 				"entrega": entrega,
+				"entregaCliente": entregaCliente,
 				"entregables": entregables,
 				"fuente": fuente,
 				"colores": colores,

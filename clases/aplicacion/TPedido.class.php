@@ -13,6 +13,7 @@ class TPedido{
 	public $usuario;
 	private $registro;
 	private $entrega;
+	private $entregaCliente;
 	private $entregables;
 	private $fuente;
 	private $observacionDiseno;
@@ -175,6 +176,33 @@ class TPedido{
 	
 	public function getEntrega(){
 		return $this->entrega;
+	}
+	
+	/**
+	* Establece la entrega al cliente
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEntregaCliente($val = ''){
+		$this->entregaCliente = ($val == '')?date("Y-m-d h:i:s"):$val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la fecha de entrega
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getEntregaCliente(){
+		return $this->entregaCliente;
 	}
 	
 	/**
@@ -559,6 +587,7 @@ class TPedido{
 				idCliente = ".$this->cliente->getId().", ".
 				#registro = '".$this->getRegistro()."',
 				"entrega = '".$this->getEntrega()."',
+				entregaCliente = '".$this->getEntregaCliente()."',
 				entregables = '".$this->getEntregables()."',
 				fuente = '".$this->getFuente()."',
 				colores = '".$this->getColores()."',

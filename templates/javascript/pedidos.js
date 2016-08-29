@@ -19,7 +19,7 @@ $(document).ready(function(){
 	else
 		$('#panelTabs a[href="#nuevo"]').tab('show');
 		
-	$("#txtFecha, #txtEntrega").datepicker( "option", "dateFormat", "yy-mm-dd" );
+	$("#txtFecha, #txtEntrega, #txtEntregaCliente").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
 	$("#btnLstClientes").click(function(){
 		$("#winClientes").modal();
@@ -400,6 +400,7 @@ $(document).ready(function(){
 				$("#txtDireccionEnvio").val(), 
 				$("#txtRegistro").val(), 
 				entrega, 
+				$("#txtEntregaCliente").val(),
 				$("#txtEntregables").val(), 
 				$("#selFuente").val(), 
 				$("#txtColores").val(), 
@@ -462,6 +463,7 @@ function limpiar(){
 	fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
 	$("#txtFecha").val(fecha);
 	$("#txtEntrega").val(fecha);
+	$("#txtEntregaCliente").val(fecha);
 	$("#selHora").val(0);
 	$("#selMinuto").val(0);
 	$("#selEstado").val($("#selEstado option:first").val());
@@ -531,6 +533,7 @@ function getLista(){
 					$("#txtCliente").attr("idCliente", datos.idCliente);
 					$("#txtFecha").val(datos.registro);
 					$("#txtEntrega").val(datos.entrega);
+					$("#txtEntregaCliente").val(datos.entregaCliente);
 					$("#selHora").val(datos.horaEntrega);
 					$("#selMinuto").val(datos.minutosEntrega);
 					$("#selEstado").val(datos.idEstado);

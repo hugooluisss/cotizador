@@ -19,16 +19,22 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="row">
-					<label class="col-xs-4" for="txtFecha">Fecha</label>
+					<label class="col-xs-4" for="txtFecha">Fecha <small>Ingreso</small></label>
 					<div class="col-xs-8">
 						<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
 						<div id="datepicker"></div>
 					</div>
 				</div>
 				<div class="row">
-					<label class="col-xs-4" for="txtEntrega">Entrega</label>
+					<label class="col-xs-4" for="txtEntrega">Fecha <small>sistema</small></label>
 					<div class="col-xs-8">
 						<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="txtEntrega">Entrega <small>cliente</small></label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtEntregaCliente" name="txtEntregaCliente" placeholder="Y-m-d" value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
 					</div>
 				</div>
 				<div class="row">

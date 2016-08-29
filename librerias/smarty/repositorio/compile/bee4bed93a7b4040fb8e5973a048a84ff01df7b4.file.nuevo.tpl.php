@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 12:16:45
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-29 11:12:59
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1462209081,
+      1 => 1472487174,
       2 => 'file',
     ),
   ),
@@ -53,7 +53,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="row">
-					<label class="col-xs-4" for="txtFecha">Fecha</label>
+					<label class="col-xs-4" for="txtFecha">Fecha <small>Ingreso</small></label>
 					<div class="col-xs-8">
 						<input type="input" class="from-control" id="txtFecha" name="txtFecha" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 "/>
@@ -61,9 +61,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 				</div>
 				<div class="row">
-					<label class="col-xs-4" for="txtEntrega">Entrega</label>
+					<label class="col-xs-4" for="txtEntrega">Fecha <small>sistema</small></label>
 					<div class="col-xs-8">
 						<input type="input" class="from-control" id="txtEntrega" name="txtEntrega" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+"/>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-xs-4" for="txtEntrega">Entrega <small>cliente</small></label>
+					<div class="col-xs-8">
+						<input type="input" class="from-control" id="txtEntregaCliente" name="txtEntregaCliente" placeholder="Y-m-d" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 "/>
 					</div>
 				</div>

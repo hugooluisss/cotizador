@@ -6,7 +6,8 @@
 				<div class="col-md-8">
 					<select id="selTipoBusqueda" class="form-control">
 						<option value="registro">Registro
-						<option value="entrega">Entrega
+						<option value="entrega">Entrega sistema
+						<option value="entregaCliente">Entrega cliente
 					</select>
 				</div>
 			</div>

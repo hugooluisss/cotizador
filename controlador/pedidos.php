@@ -94,6 +94,9 @@ switch($objModulo->getId()){
 			case 'entrega':
 				$sql = " where cast(entrega as date) between '".$_GET['inicio']."' and '".$_GET['fin']."'";
 			break;
+			case 'entregaCliente':
+				$sql = " where cast(entregaCliente as date) between '".$_GET['inicio']."' and '".$_GET['fin']."'";
+			break;
 			default:
 				$sql = "";
 		}
@@ -135,6 +138,7 @@ switch($objModulo->getId()){
 				$obj->setCliente($_POST['cliente']);
 				$obj->setRegistro($_POST['registro']);
 				$obj->setEntrega($_POST['entrega']);
+				$obj->setEntregaCliente($_POST['entregaCliente']);
 				$obj->setEntregables($_POST['entregables']);
 				$obj->setFuente($_POST['fuente']);
 				$obj->setObservacionDiseno($_POST['observacionDiseno']);
