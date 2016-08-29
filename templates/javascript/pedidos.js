@@ -423,6 +423,7 @@ $(document).ready(function(){
 						if (data.band){
 							$("#pedido").val(data.pedido);
 							$("#upload").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + data.pedido);
+							$("#upload2").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + data.pedido);
 							getLista();
 							alert("Pedido guardado");
 							if (ventanaPedido === undefined)
@@ -503,6 +504,7 @@ function limpiar(){
 	});
 	
 	$('#upload .elementos').html("");
+	$('#upload2 .elementos').html("");
 	
 	$("#btnNombresNumeros").parent().css({"border": "", "border-radius": ""});
 }
@@ -529,6 +531,7 @@ function getLista(){
 					limpiar();
 					$("#pedido").val(datos.idPedido);
 					$("#upload").attr("action", "?mod=cpedidos&action=uploadfile&pedido=" + datos.idPedido);
+					$("#upload2").attr("action", "?mod=cpedidos&action=uploadfile2&pedido=" + datos.idPedido);
 					$("#txtCliente").val(datos.nombreCliente);
 					$("#txtCliente").attr("idCliente", datos.idCliente);
 					$("#txtFecha").val(datos.registro);
@@ -745,6 +748,39 @@ $(document).ready(function(){
 			console.log("Error en el servidor al subir el archivo, checa permisos de la carpeta repositorio");
 		}
 	});
+	
+	
+	$('#upload2').fileupload({
+		// This function is called when a file is added to the queue
+		add: function (e, data) {
+			if($("#pedido").val() == ''){
+				alert("Primero debes de crear la orden, indica los datos principales y presiona guardar para despues poder subir archivos");
+				$("#txtCliente").focus();
+			}else{
+			
+				// Automatically upload the file once it is added to the queue
+				var jqXHR = data.submit();
+			}
+		},
+		progress: function(e, data){
+		    // Calculate the completion percentage of the upload
+		    var progress = parseInt(data.loaded / data.total * 100, 10);
+		
+		    // Update the hidden input field and trigger a change
+		    // so that the jQuery knob plugin knows to update the dial
+		    data.context.find('input').val(progress).change();
+		
+		    if(progress == 100){
+		        data.context.removeClass('working');
+		    }
+		},
+		fail: function(){
+			alert("Ocurrió un problema en el servidor, contacta al administrador del sistema");
+			
+			console.log("Error en el servidor al subir el archivo, checa permisos de la carpeta repositorio");
+		}
+	});
+
 	
 	//Helper function for calculation of progress
 	function formatFileSize(bytes) {
