@@ -54,7 +54,7 @@ class RPedido extends tFPDF{
 		$this->SetXY(40 + $adicionalX, 30 + $adicionalY); $this->Cell(0, 5, $pedido->getRegistro(), 0);
 		
 		#entrega
-		$entrega = explode("-", $pedido->getEntrega());
+		$entrega = explode("-", $pedido->getEntregaCliente() == ''?$pedido->getEntrega():$pedido->getEntregaCliente());
 		$entregaAux = explode(" ", $entrega[2]);
 		$entrega[2] = $entregaAux[0];
 		$entregaHora = explode(":", $entregaAux[1]);
