@@ -175,23 +175,26 @@
 			</div>
 			<div class="col-xs-12 col-md-3">
 				<h3>Colores</h3>
-				<textarea class="form-control" rows="6" id="txtColores" name="txtColores"></textarea>
+				<textarea class="form-control" rows="10" id="txtColores" name="txtColores"></textarea>
 			</div>
 			
 			<div class="col-xs-12 col-md-5">
 				<h3>Observaciones</h3>
-				<textarea class="form-control" rows="6" id="txtObservaciones" name="txtObservaciones"></textarea>
+				<textarea class="form-control" rows="10" id="txtObservaciones" name="txtObservaciones"></textarea>
 			</div>
 			
 			<div class="col-xs-12 col-md-4">
 				<h3>Captura</h3>
-				<form id="upload2" method="post" action="?mod=cpedidos&action=uploadfile" enctype="multipart/form-data">
+				<form id="upload2" method="post" action="?mod=cpedidos&action=uploadfile2" enctype="multipart/form-data">
 					<input type="hidden" id="pedido2" name="pedido2" value="">
 					<input type="file" name="upl" multiple />
 					<ul class="elementos list-group">
 					<!-- The file list will be shown here -->
 					</ul>
 				</form>
+				<div class="row text-center">
+					<img src="./repositorio/img/user.png" id="imgCapturaPantalla" style="width: 60%; max-width: 150px;" onerror="this.onerror=null;this.src='./repositorio/img/user.png';"/>
+				</div>
 			</div>
 		</div>
 	</div>

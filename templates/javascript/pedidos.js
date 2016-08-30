@@ -477,7 +477,7 @@ function limpiar(){
 	$(".serviciosImpresion").attr("excede", 0);
 	$(".entregables").prop("checked", false);
 	$("#txtEntregables").val("");
-	
+	$("#imgCapturaPantalla").prop("src", "./repositorio/img/user.png");
 	var tabla = new TPedido();
 	
 	tabla.clearTable();
@@ -588,6 +588,8 @@ function getLista(){
 					
 					$("#saldo").val($("#total").val() - $("#sena").val());
 					$("#saldo").val(parseFloat($("#saldo").val()).toFixed(2));
+					
+					$("#imgCapturaPantalla").prop("src", "repositorio/capturas/img_" + $("#pedido").val() + ".jpg");
 					
 					datos.formasPago.forEach(function(el){
 						campo = $(".formasPago[campo="+ el.campo + "]");
@@ -768,10 +770,11 @@ $(document).ready(function(){
 		
 		    // Update the hidden input field and trigger a change
 		    // so that the jQuery knob plugin knows to update the dial
-		    data.context.find('input').val(progress).change();
+		    //data.context.find('input').val(progress).change();
 		
 		    if(progress == 100){
-		        data.context.removeClass('working');
+		        //data.context.removeClass('working');
+		        $("#imgCapturaPantalla").prop("src", "repositorio/capturas/img_" + $("#pedido").val() + ".jpg");
 		    }
 		},
 		fail: function(){

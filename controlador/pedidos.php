@@ -284,6 +284,19 @@ switch($objModulo->getId()){
 				
 				echo '{"status":"error"}';
 			break;
+			case 'uploadfile2':
+				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0 && $_GET['pedido'] <> ''){
+					$s = explode(".", $_FILES['upl']['name']);
+				
+					if(move_uploaded_file($_FILES['upl']['tmp_name'], "repositorio/capturas/img_".$_GET['pedido'].".jpg")){
+						chmod("repositorio/capturas/img_".$_GET['pedido'].".jpg", 0755);
+						echo '{"status":"success"}';
+						exit;
+					}
+				}
+				
+				echo '{"status":"error"}';
+			break;
 			case 'delfile':	
 				$ruta = "repositorio/pedidos/orden_".$_POST['pedido']."/".$_POST['archivo'];
 				
