@@ -12,7 +12,6 @@ $(document).ready(function(){
 		
 		$("#nuevo input:file").removeAttr("disabled");
 	}
-		
 	
 	if ($("#perfil").val() == 3)
 		$('#panelTabs a[href="#lista"]').tab('show');

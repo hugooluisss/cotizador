@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-28 22:13:03
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-29 23:03:05
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1472440382,
+      1 => 1472440391,
       2 => 'file',
     ),
   ),
@@ -43,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-12 text-rigth">
+		<div class="col-lg-12">
 			<div class="btn-toolbar" role="toolbar">
 				<div class="btn-group btn-xs">
 					<button type="button" id="btnCliente" class="btn btn-default">Clientes</button>
