@@ -24,8 +24,8 @@
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/morris/morris.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/datepicker/datepicker3.css">
+		<link rel="stylesheet" href="{$PAGE.ruta}plugins/timepicker/bootstrap-timepicker.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/daterangepicker/daterangepicker-bs3.css">
-		<link rel="stylesheet" href="{$PAGE.ruta}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/upload/css/jquery.fileupload.css">
 
@@ -195,6 +195,9 @@
     
     <script type="text/javascript" src="{$PAGE.ruta}plugins/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="{$PAGE.ruta}plugins/datepicker/locales/bootstrap-datepicker.es.js"></script>
+    
+    <script type="text/javascript" src="{$PAGE.ruta}plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    
     <link rel="stylesheet" href="{$PAGE.ruta}plugins/datepicker/datepicker3.css" />
      
     <script src="{$PAGE.ruta}plugins/input-mask/jquery.inputmask.js"></script>

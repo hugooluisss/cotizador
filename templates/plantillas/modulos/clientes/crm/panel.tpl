@@ -170,14 +170,61 @@
 
 
 <div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog moda-lg" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1>Avisos</h1>
 			</div>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary" id="btnAgregar">Agregar</button>
+						</div>
+					</div>
+				</div>
+				<div id="dvListaAvisos">
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="winAddAviso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Avisos</h1>
+			</div>
+			<div class="modal-body">
+				<form role="form" id="frmAddAviso" class="form-horizontal" onsubmit="javascript: return false;">
+					<div class="box">
+						<div class="box-body">			
+							<div class="form-group">
+								<label for="txtFecha" class="col-lg-2">Fecha</label>
+								<div class="col-lg-3">
+									<input class="form-control" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}" data-inputmask="'mask': '9999-99-99 99:99:99'">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for=" txtMensaje" class="col-lg-2">Mensaje</label>
+								<div class="col-lg-10">
+									<textarea id="txtMensaje" name="txtMensaje" class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="box-footer">
+							<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
+							<button type="submit" class="btn btn-info pull-right">Guardar</button>
+							<input type="hidden" id="id"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input id="cliente" value="{$cliente->getId()}" type="hidden" />

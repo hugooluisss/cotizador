@@ -544,13 +544,26 @@ $conf['crm'] = array(
 	'vista' => 'clientes/crm/panel.tpl',
 	'descripcion' => 'crm',
 	'seguridad' => true,
-	#'js' => array('entregables.class.js'),
+	'js' => array('aviso.class.js'),
 	'jsTemplate' => array('crm.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
 $conf['ccrm'] = array(
 	'controlador' => 'crm.php',
 	'descripcion' => 'Controlador del crm',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaAvisos'] = array(
+	'controlador' => 'avisos.php',
+	'vista' => 'clientes/crm/listaAvisos.tpl',
+	'descripcion' => 'Lista de avisos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cavisos'] = array(
+	'controlador' => 'avisos.php',
+	'descripcion' => 'Controlador de avisos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

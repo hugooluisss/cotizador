@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-18 21:41:00
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-30 13:03:08
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1471373898,
+      1 => 1472580183,
       2 => 'file',
     ),
   ),
@@ -63,9 +63,9 @@ plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/datepicker/datepicker3.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-plugins/daterangepicker/daterangepicker-bs3.css">
+plugins/timepicker/bootstrap-timepicker.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+plugins/daterangepicker/daterangepicker-bs3.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
@@ -267,6 +267,10 @@ plugins/upload/js/jquery.fileupload.js"></script>
 plugins/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/datepicker/locales/bootstrap-datepicker.es.js"></script>
+    
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/datepicker/datepicker3.css" />
      

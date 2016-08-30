@@ -1,4 +1,9 @@
 $(document).ready(function(){
+	$("[data-inputmask]").each(function(){
+		var el = $(this);
+		el.inputmask("9999-99-99 99:99:99");
+	});
+	
 	$("#tblPedidos").find("[action=imprimir]").click(function(){
 		var el = $(this)
 		el.prop("disabled", true);
@@ -63,6 +68,70 @@ $(document).ready(function(){
 	});
 	
 	$("#btnAvisos").click(function(){
+		getListaAvisos();
 		$("#winAvisos").modal();
 	});
+	
+	$("#winAvisos").find("#btnAgregar").click(function(){
+		$("#winAddAviso").modal("show");
+	});
+	
+	$("#winAddAviso").on('show.bs.modal', function() {
+		$("#winAvisos").modal("hide");
+	}).on('hidden.bs.modal', function(){
+		$("#winAvisos").modal("show");
+	});
+	
+	$("#frmAddAviso").validate({
+		debug: true,
+		rules: {
+			txtMensaje: "required",
+			txtFecha: "required",
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			form = $(form);
+			var obj = new TAviso;
+			obj.add(
+				form.find("#id").val(),
+				$("#cliente").val(),
+				form.find("#txtFecha").val(),
+				form.find("#txtMensaje").val(),
+				{
+					before: function(){
+						form.find("[type=submit]").prop("disabled", true);	
+					},
+					after: function(datos){
+						form.find("[type=submit]").prop("disabled", false);	
+						if (datos.band){
+							getListaAvisos();
+							$("#winAddAviso").modal("hide");
+						}else{
+							alert("Upps... " + datos.mensaje);
+						}
+					}
+				}
+			);
+        }
+
+    });
+    
+    function getListaAvisos(){
+	    $.post("listaAvisos", {
+				"cliente": $("#id").val()
+			},function(data){
+				$("#dvListaAvisos").html(data);
+				
+				$("#winAvisos").find("#tblDatos").DataTable({
+					"responsive": true,
+					"language": espaniol,
+					"paging": false,
+					"lengthChange": false,
+					"ordering": true,
+					"info": true,
+					"autoWidth": false
+				});
+			}
+		);
+	}
 });

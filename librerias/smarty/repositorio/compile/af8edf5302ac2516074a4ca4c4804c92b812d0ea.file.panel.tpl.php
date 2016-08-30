@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-29 23:03:05
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-30 13:58:37
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1472440391,
+      1 => 1472583515,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57b34ef59f27c2_54734959')) {function content_57b34ef59f27c2_54734959($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_57b34ef59f27c2_54734959')) {function content_57b34ef59f27c2_54734959($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/cotizador/librerias/smarty/plugins/modifier.date_format.php';
+?><div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Administración de clientes</h1>
 	</div>
@@ -249,14 +250,63 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 
 
 <div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog moda-lg" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h1>Avisos</h1>
 			</div>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary" id="btnAgregar">Agregar</button>
+						</div>
+					</div>
+				</div>
+				<div id="dvListaAvisos">
+				</div>
 			</div>
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+
+<div class="modal fade" id="winAddAviso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Avisos</h1>
+			</div>
+			<div class="modal-body">
+				<form role="form" id="frmAddAviso" class="form-horizontal" onsubmit="javascript: return false;">
+					<div class="box">
+						<div class="box-body">			
+							<div class="form-group">
+								<label for="txtFecha" class="col-lg-2">Fecha</label>
+								<div class="col-lg-3">
+									<input class="form-control" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
+" data-inputmask="'mask': '9999-99-99 99:99:99'">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for=" txtMensaje" class="col-lg-2">Mensaje</label>
+								<div class="col-lg-10">
+									<textarea id="txtMensaje" name="txtMensaje" class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="box-footer">
+							<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
+							<button type="submit" class="btn btn-info pull-right">Guardar</button>
+							<input type="hidden" id="id"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input id="cliente" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getId();?>
+" type="hidden" /><?php }} ?>
