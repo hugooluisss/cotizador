@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-18 21:41:24
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 09:17:56
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1717749068562451df214162-43774788%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1471373898,
+      1 => 1472652992,
       2 => 'file',
     ),
   ),
@@ -26,13 +26,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_562451df28ccc7_81928227')) {function content_562451df28ccc7_81928227($_smarty_tpl) {?><div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Lista de clientes</h3>
+		<div class="text-left">
+			<div class="btn-group">
+				<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+					Marketing<span class="caret"></span>
+				</button>
+				
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#" id="btnGenerarEmail">Generar lista</a></li>
+					<li class="divider"></li>
+					<li><a href="#" id="btnTodosEmail">Seleccionar todos</a></li>
+					<li><a href="#" id="btnLimpiarEmail">Limpiar selección</a></li>
+				</ul>
+			</div>
+		</div>
 	</div><!-- /.box-header -->
 	<div class="box-body">
 		<table id="tblClientes" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>#</th>
+					<th></th>
 					<th>Nombre</th>
 					<th>E-mail</th>
 					<th>RFC</th>
@@ -46,8 +59,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
-</td>
+						<td><input type="checkbox" class="email" email="<?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>
+" /></td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>

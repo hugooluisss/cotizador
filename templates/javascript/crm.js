@@ -105,6 +105,7 @@ $(document).ready(function(){
 						form.find("[type=submit]").prop("disabled", false);	
 						if (datos.band){
 							getListaAvisos();
+							$("#frmAddAviso").get(0).reset();
 							$("#winAddAviso").modal("hide");
 						}else{
 							alert("Upps... " + datos.mensaje);
@@ -121,6 +122,27 @@ $(document).ready(function(){
 				"cliente": $("#id").val()
 			},function(data){
 				$("#dvListaAvisos").html(data);
+				
+				$("#winAvisos").find("[action=modificar]").click(function(){
+					var el = jQuery.parseJSON($(this).attr("datos"));
+					
+					$("#winAddAviso").find("#id").val(el.idAviso);
+					$("#winAddAviso").find("#txtFecha").val(el.alerta);
+					$("#winAddAviso").find("#txtMensaje").val(el.mensaje);
+					$("#winAddAviso").modal("show");
+				});
+				
+				
+				$("#winAvisos").find("[action=eliminar]").click(function(){
+					if(confirm("¿Seguro?")){
+						var obj = new TAviso;
+						obj.del($(this).attr("identificador"), {
+							after: function(data){
+								getListaAvisos();
+							}
+						});
+					}
+				});
 				
 				$("#winAvisos").find("#tblDatos").DataTable({
 					"responsive": true,

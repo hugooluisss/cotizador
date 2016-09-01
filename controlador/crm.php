@@ -62,6 +62,17 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("meses", $datos);
+		
+		$rs = $db->Execute("select entrega, entregaCliente from pedido where idCliente = ".$_GET['id']." order by entregaCliente, entrega");
+		
+		$smarty->assign("ultimaCompra", $rs->fields['entregaCliente'] == ''?$rs->fields['entrega']:$rs->fields['entregaCliente']);
+		
+		$fecha = new DateTime($rs->fields['entregaCliente'] == ''?$rs->fields['entrega']:$rs->fields['entregaCliente']);
+		$now = new DateTime();
+		
+		$interval = $now->diff($fecha);
+		$smarty->assign("diferenciaUltimaCompra", array("mes" => $interval->format('%m'), "dias" => $interval->format('%d')));
+		
 	break;
 	case 'ccrm':
 		switch($objModulo->getAction()){

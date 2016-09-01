@@ -566,4 +566,11 @@ $conf['cavisos'] = array(
 	'descripcion' => 'Controlador de avisos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['getAviso'] = array(
+	'controlador' => 'avisos.php',
+	'descripcion' => 'Vista del aviso',
+	'vista' => 'clientes/crm/aviso.tpl',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

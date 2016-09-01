@@ -103,6 +103,7 @@ foreach($_POST as $indice => $valor){
 
 define('TAMPAG', $ini['config']['TAMPAG']);
 define('NUMPAG', $ini['config']['NUMPAG']);
+require('controlador/index.php');
 
 if ($objModulo->getRutaControlador() <> '')
 	require('controlador/'.$objModulo->getRutaControlador());

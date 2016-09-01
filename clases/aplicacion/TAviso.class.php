@@ -42,8 +42,6 @@ class TAviso{
 	public function setId($id = ''){
 		if ($id == '') return false;
 		
-		if (! parent::setId($id)) return false;
-		
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select * from aviso where idAviso = ".$id);
 		

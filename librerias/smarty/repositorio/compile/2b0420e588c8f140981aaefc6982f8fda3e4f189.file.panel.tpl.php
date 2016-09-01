@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-11-30 23:19:37
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 09:52:52
          compiled from "templates/plantillas/modulos/clientes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:103054651856244bfd1920b3-48419279%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2b0420e588c8f140981aaefc6982f8fda3e4f189' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/panel.tpl',
-      1 => 1448946902,
+      1 => 1472655147,
       2 => 'file',
     ),
   ),
@@ -44,5 +44,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div id="add" class="tab-pane fade">
 		<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/clientes/modificar.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
+	</div>
+</div>
+
+<div class="modal fade" id="winEmailLista" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h1>Lista de correos</h1>
+			</div>
+			<div class="modal-body">
+			</div>
+		</div>
 	</div>
 </div><?php }} ?>

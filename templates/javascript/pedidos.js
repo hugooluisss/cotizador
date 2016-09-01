@@ -18,6 +18,10 @@ $(document).ready(function(){
 	else
 		$('#panelTabs a[href="#nuevo"]').tab('show');
 		
+	$('#panelTabs a[href="#nuevo"]').click(function(){
+		limpiar();
+	});
+		
 	$("#txtFecha, #txtEntrega, #txtEntregaCliente").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
 	$("#btnLstClientes").click(function(){
@@ -430,8 +434,11 @@ $(document).ready(function(){
 							else
 								ventanaPedido.document.href = data.documento;
 							
-							limpiar();
-							ventanaPedido.focus();
+							if (confirm("¿Deseas cerrar la orden?")){
+								limpiar();
+								ventanaPedido.focus();
+							}else
+								ventanaPedido.focus();
 						}else
 							alert("Ocurrió un error al guardar el documento...");
 					}
@@ -469,7 +476,7 @@ function limpiar(){
 	$("#selEstado").val($("#selEstado option:first").val());
 	
 	$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
-	$("#txtDireccionEntrega").val("");
+	$("#txtDireccionEnvio").val("");
 	$("#txtPosicion").val("");
 	
 	$(".serviciosImpresion").prop("checked", false);

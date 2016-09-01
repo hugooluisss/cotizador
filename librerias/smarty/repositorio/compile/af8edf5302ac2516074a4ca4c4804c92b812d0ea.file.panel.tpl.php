@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-30 13:58:37
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 19:01:51
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1472583515,
+      1 => 1472688110,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'tipoClientes' => 0,
     'row' => 0,
     'cliente' => 0,
+    'ultimaCompra' => 0,
+    'diferenciaUltimaCompra' => 0,
     'ordenes' => 0,
     'comprados' => 0,
     'comentarios' => 0,
@@ -40,14 +42,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="box">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header"><i class="fa fa-sign-language fa-4x" aria-hidden="true"></i> Seguimiento de clientes</h1>
+			<h1 class="page-header" style="border-bottom: 5px solid #00AF00"><i class="fa fa-sign-language fa-4x" aria-hidden="true"></i> Seguimiento de clientes</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="btn-toolbar" role="toolbar">
 				<div class="btn-group btn-xs">
-					<button type="button" id="btnCliente" class="btn btn-default">Clientes</button>
+					<button type="button" id="btnClientes" class="btn btn-default">Clientes</button>
 				</div>
 				<div class="btn-group btn-xs">
 					<button type="button" id="btnAvisos" class="btn btn-warning">Avisos</button>
@@ -56,8 +58,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-5">
-			<h1 class="page-header">Contacto</h1>
+		<div class="col-md-4">
+			<h1 class="page-header" style="color: green">Contacto</h1>
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
 					<label for="selTipo" class="col-lg-5 control-label">Tipo de cliente</label>
@@ -76,45 +78,56 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="" class="col-lg-5 control-label">Tipo</label>
+					<div class="col-lg-7"><b><?php if ($_smarty_tpl->tpl_vars['cliente']->value->getTipo()=='F'){?>persona Física<?php }else{ ?>Moral<?php }?></b></div>
+				</div>
+				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Nombre</label>
-					<div class="col-lg-7"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getNombre();?>
-</div>
+					<div class="col-lg-7"><b><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getNombre();?>
+</b></div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Dirección</label>
-					<div class="col-lg-7"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getDireccion();?>
-</div>
+					<div class="col-lg-7"><b><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getDireccion();?>
+</b></div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Teléfono</label>
-					<div class="col-lg-7"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getTelefono();?>
-</div>
+					<div class="col-lg-7"><b><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getTelefono();?>
+</b></div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Celular</label>
-					<div class="col-lg-7"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getCelular();?>
-</div>
+					<div class="col-lg-7" style="color: blue"><b><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getCelular();?>
+</b></div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Email</label>
-					<div class="col-lg-7"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getEmail();?>
-</div>
+					<div class="col-lg-7"><b><a href="mailto:<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getEmail();?>
+" style="color: blue"><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getEmail();?>
+</a></b></div>
 				</div>
+				<!--
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Estado</label>
 					<div class="col-lg-7"></div>
-				</div>
+				</div>-->
 				<div class="form-group">
 					<label for="" class="col-lg-5 control-label">Última compra</label>
-					<div class="col-lg-7"></div>
+					<div class="col-lg-7"><b><?php echo $_smarty_tpl->tpl_vars['ultimaCompra']->value;?>
+</b></div>
 				</div>
 				
 				<input type="hidden" id="id" name="id" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getId();?>
 " />
+				<br />
+				<div class="text-center" style="font-size: 16px; border: 1px solid red; padding: 7px;">Hace <b><?php echo $_smarty_tpl->tpl_vars['diferenciaUltimaCompra']->value['mes'];?>
+ meses</b> y <?php echo $_smarty_tpl->tpl_vars['diferenciaUltimaCompra']->value['dias'];?>
+ dias más que no compra</div>
 			</form>
 		</div>
-		<div class="col-md-7">
-			<h1 class="page-header">Historial de pedidos</h1>
+		<div class="col-md-8">
+			<h1 class="page-header" style="color: green">Historial de pedidos</h1>
 			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
 				<thead>
 					<tr>
@@ -132,8 +145,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
-						<tr>
-							<td style="border-left: 3px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
+						<tr style="background: <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
+">
+							<td style="<?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['idPedido'];?>
 </td>
 							<td class="text-center"><?php if ($_smarty_tpl->tpl_vars['row']->value['excede']==1){?><i class="fa fa-star" aria-hidden="true"></i><?php }?></td>
@@ -156,42 +170,44 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	<hr />
 	<div class="row">
 		<div class="col-md-7">
-			<h1 class="page-header">Productos comprados</h1>
-			<table id="tblComprados" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Descripción</th>
-						<th>Marca</th>
-						<th>Talla</th>
-						<th>Cantidad</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+			<h1 class="page-header" style="color: green">Productos comprados</h1>
+			<div style="border: 1px solid #00AF00">
+				<table id="tblComprados" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Descripción</th>
+							<th>Marca</th>
+							<th>Talla</th>
+							<th>Cantidad</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['comprados']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
-						<tr>
-							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idTalla'];?>
+							<tr>
+								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idTalla'];?>
 </td>
-							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['ropa'];?>
+								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['ropa'];?>
 </td>
-							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['marca'];?>
+								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['marca'];?>
 </td>
-							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['talla'];?>
+								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['talla'];?>
 </td>
-							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
+								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
 </td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="col-md-5">
 			<button class="btn btn-success" id="btnComentario">+ Añadir comentario</button>
-			<div class="panel-group" id="accordion">
+			<div class="panel-group" id="accordion" style="margin-top: 30px">
 				<?php $_smarty_tpl->tpl_vars["primercomentario"] = new Smarty_variable("1", null, 0);?>
 				<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['comentarios']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -219,15 +235,16 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-5" style="font-size: 18px; color: green">
 			<b>Total en compras</b>
-			<input class="text-right" id="txtMontoTotal" name="txtMontoTotal" value="$ <?php echo $_smarty_tpl->tpl_vars['montoTotal']->value;?>
+			<input class="text-right" style="height: 60px; font-size: 28px; width: 200px;" id="txtMontoTotal" name="txtMontoTotal" value="$ <?php echo $_smarty_tpl->tpl_vars['montoTotal']->value;?>
 " readonly disabled="true"/>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2" style="color: green">
 			Meses en los que compra
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-5">
+			<div style="position: relative; border: 2px solid green; height: 70px; vertical-align: middle; padding: 10px;">
 			<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['meses']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
@@ -243,8 +260,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<?php }?>
 				</div>
 			<?php } ?>
+			</div>
 		</div>
 	</div>
+	<br />
 </div>
 
 

@@ -17,6 +17,15 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("lista", $datos);
 	break;
+	case 'getAviso':
+		global $tempUsuario;
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select a.*, b.nombre as cliente from aviso a join cliente b using(idCliente) where idAviso = ".$_POST['id']);
+		$smarty->assign("aviso", $rs->fields);
+		
+		$db->Execute("update aviso set estado = 0 where idAviso = ".$_POST['id']);
+	break;
 	case 'cavisos':
 		switch($objModulo->getAction()){
 			case 'add':
