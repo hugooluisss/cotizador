@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 19:01:51
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-01 13:05:07
          compiled from "templates/plantillas/modulos/clientes/crm/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:184498470257b34ef59ac638-84354251%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af8edf5302ac2516074a4ca4c4804c92b812d0ea' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/crm/panel.tpl',
-      1 => 1472688110,
+      1 => 1472753057,
       2 => 'file',
     ),
   ),
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="box">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header" style="border-bottom: 5px solid #00AF00"><i class="fa fa-sign-language fa-4x" aria-hidden="true"></i> Seguimiento de clientes</h1>
+			<h1 class="page-header" style="border-bottom: 5px solid #00AF00; color: #009200; font-size: 30px">&nbsp;&nbsp;&nbsp;&nbsp;<img src="repositorio/img/manos.png" style="width: 120px" /> Seguimiento de clientes</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -128,13 +128,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div>
 		<div class="col-md-8">
 			<h1 class="page-header" style="color: green">Historial de pedidos</h1>
-			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
+			<table id="tblPedidosCRM" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Exc</th>
 						<th>Fecha</th>
 						<th>Entrega el</th>
+						<th>Cliente</th>
+						<th>Vendedor</th>
 						<th>Precio</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -154,6 +156,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['registro'];?>
 </td>
 							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['entrega'];?>
+</td>
+							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cliente'];?>
+</td>
+							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['vendedor'];?>
 </td>
 							<td><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
 </td>
@@ -234,6 +240,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div>
 	</div>
+	<br />
 	<div class="row">
 		<div class="col-md-5" style="font-size: 18px; color: green">
 			<b>Total en compras</b>
@@ -265,7 +272,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	</div>
 	<br />
 </div>
-
 
 
 <div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -304,12 +310,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 							<div class="form-group">
 								<label for="txtFecha" class="col-lg-2">Fecha</label>
 								<div class="col-lg-3">
-									<input class="form-control" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
-" data-inputmask="'mask': '9999-99-99 99:99:99'">
+									<input class="form-control" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+" data-inputmask="'mask': '9999-99-99'">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for=" txtMensaje" class="col-lg-2">Mensaje</label>
+								<label for="txtMensaje" class="col-lg-2">Mensaje</label>
 								<div class="col-lg-10">
 									<textarea id="txtMensaje" name="txtMensaje" class="form-control"></textarea>
 								</div>

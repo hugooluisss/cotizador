@@ -4737,3 +4737,19 @@ table.text-center th {
 .mesesCRM b{
 	color: red;
 }
+
+#tblPedidosCRM_wrapper{
+	height: 500px;
+	border: 1px solid #bdbdbd;
+	margin-right: 5px;
+}
+
+#tblPedidosCRM_wrapper #tblPedidosCRM{
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+#tblPedidosCRM_wrapper div.row:nth-child(3){
+	bottom: 0px;
+	position: absolute;
+}

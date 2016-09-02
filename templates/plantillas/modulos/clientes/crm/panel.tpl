@@ -6,7 +6,7 @@
 <div class="box">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header" style="border-bottom: 5px solid #00AF00"><i class="fa fa-sign-language fa-4x" aria-hidden="true"></i> Seguimiento de clientes</h1>
+			<h1 class="page-header" style="border-bottom: 5px solid #00AF00; color: #009200; font-size: 30px">&nbsp;&nbsp;&nbsp;&nbsp;<img src="repositorio/img/manos.png" style="width: 120px" /> Seguimiento de clientes</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -76,13 +76,15 @@
 		</div>
 		<div class="col-md-8">
 			<h1 class="page-header" style="color: green">Historial de pedidos</h1>
-			<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
+			<table id="tblPedidosCRM" class="table table-bordered table-hover" data-order='[[ 2, "desc" ]]'>
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Exc</th>
 						<th>Fecha</th>
 						<th>Entrega el</th>
+						<th>Cliente</th>
+						<th>Vendedor</th>
 						<th>Precio</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -94,6 +96,8 @@
 							<td class="text-center">{if $row.excede eq 1}<i class="fa fa-star" aria-hidden="true"></i>{/if}</td>
 							<td>{$row.registro}</td>
 							<td>{$row.entrega}</td>
+							<td>{$row.cliente}</td>
+							<td>{$row.vendedor}</td>
 							<td>{$row.precio}</td>
 							<td style="text-align: right">
 								<button type="button" class="btn btn-circle" action="imprimir" title="Imprimir" pedido='{$row.idPedido}'><i class="fa fa-print"></i></button>
@@ -154,6 +158,7 @@
 			</div>
 		</div>
 	</div>
+	<br />
 	<div class="row">
 		<div class="col-md-5" style="font-size: 18px; color: green">
 			<b>Total en compras</b>
@@ -178,7 +183,6 @@
 	</div>
 	<br />
 </div>
-
 
 
 <div class="modal fade" id="winAvisos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -217,11 +221,11 @@
 							<div class="form-group">
 								<label for="txtFecha" class="col-lg-2">Fecha</label>
 								<div class="col-lg-3">
-									<input class="form-control" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}" data-inputmask="'mask': '9999-99-99 99:99:99'">
+									<input class="form-control" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" data-inputmask="'mask': '9999-99-99'">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for=" txtMensaje" class="col-lg-2">Mensaje</label>
+								<label for="txtMensaje" class="col-lg-2">Mensaje</label>
 								<div class="col-lg-10">
 									<textarea id="txtMensaje" name="txtMensaje" class="form-control"></textarea>
 								</div>

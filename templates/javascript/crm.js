@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("[data-inputmask]").each(function(){
 		var el = $(this);
-		el.inputmask("9999-99-99 99:99:99");
+		el.inputmask("9999-99-99");
 	});
 	
 	$("#tblPedidos").find("[action=imprimir]").click(function(){
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			}, "json");
 	});
 	
-	$("#tblPedidos").DataTable({
+	$("#tblPedidosCRM").DataTable({
 		"responsive": true,
 		"language": espaniol,
 		"searching": false,

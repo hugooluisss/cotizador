@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 09:17:56
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-01 11:55:17
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1717749068562451df214162-43774788%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1472652992,
+      1 => 1472748907,
       2 => 'file',
     ),
   ),
@@ -68,11 +68,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['rfc'];?>
 </td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-info btn-circle" action="crm" title="Seguimiento de clientes" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-sign-language"></i></button>
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<button type="button" class="btn btn-success" style="padding: 6px 7px 6.5px 7px;" action="crm" title="Seguimiento de clientes" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><img src="repositorio/img/manosBlancas.png" style="width: 25px; height: 15px;" /></button>
+							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" cliente="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" cliente="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

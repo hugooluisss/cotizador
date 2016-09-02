@@ -193,7 +193,7 @@
 					</ul>
 				</form>
 				<div class="row text-center">
-					<img src="./repositorio/img/user.png" id="imgCapturaPantalla" style="width: 60%; max-width: 150px;" onerror="this.onerror=null;this.src='./repositorio/img/user.png';"/>
+					<img src="repositorio/img/user.png" id="imgCapturaPantalla" style="width: 60%; max-width: 150px;" onerror="this.src='repositorio/img/user.png';"/>
 				</div>
 			</div>
 		</div>

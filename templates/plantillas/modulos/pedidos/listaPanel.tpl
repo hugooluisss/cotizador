@@ -7,7 +7,6 @@
 					<select id="selTipoBusqueda" class="form-control">
 						<option value="registro">Registro
 						<option value="entrega">Entrega sistema
-						<option value="entregaCliente">Entrega cliente
 					</select>
 				</div>
 			</div>

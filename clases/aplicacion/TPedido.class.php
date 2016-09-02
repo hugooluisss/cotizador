@@ -65,7 +65,7 @@ class TPedido{
 			switch($field){
 				case 'idCliente': $this->cliente = new TCliente($val); break;
 				case 'idEstado': $this->estado = new TEstado($val); break;
-				case 'idusuario': $this->usuario = new TUsuario($val);
+				case 'idUsuario': $this->usuario = new TUsuario($val);
 				case 'excedelimite': $this->excedelimite = $val == 1;
 				default: $this->$field = $val;
 			}

@@ -34,9 +34,9 @@
 						<td>{$row.email}</td>
 						<td>{$row.rfc}</td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-info btn-circle" action="crm" title="Seguimiento de clientes" datos='{$row.json}'><i class="fa fa-sign-language"></i></button>
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" cliente="{$row.idCliente}"><i class="fa fa-times"></i></button>
+							<button type="button" class="btn btn-success" style="padding: 6px 7px 6.5px 7px;" action="crm" title="Seguimiento de clientes" datos='{$row.json}'><img src="repositorio/img/manosBlancas.png" style="width: 25px; height: 15px;" /></button>
+							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" cliente="{$row.idCliente}"><i class="fa fa-times"></i></button>
 						</td>
 					</tr>
 				{/foreach}

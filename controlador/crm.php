@@ -18,6 +18,8 @@ switch($objModulo->getId()){
 			$orden->setId($rs->fields['idPedido']);
 			$rs->fields['color'] = $estado->getColor();
 			$rs->fields['excede'] = $orden->getExcede()?1:0;
+			$rs->fields['cliente'] = $orden->cliente->getNombre();
+			$rs->fields['vendedor'] = $orden->usuario->getNombre();
 			
 			$precio += $orden->getPrecio();
 			
