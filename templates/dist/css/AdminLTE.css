@@ -4753,3 +4753,7 @@ table.text-center th {
 	bottom: 0px;
 	position: absolute;
 }
+
+.listaAvisos .nuevo{
+	background: #c7ffd8;
+}

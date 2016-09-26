@@ -3,7 +3,7 @@ $(document).ready(function(){
 		$("#winAlertasMensajes").modal();
 		var el = $(this);
 		
-		$("#winAlertasMensajes").find(".modal-footer").find("a").attr("href", "?mod=crm&id=" + el.attr("cliente"))
+		$("#winAlertasMensajes").find(".modal-footer").find("a").attr("href", "?mod=crm&id=" + el.attr("cliente"));
 		
 		$.post("getAviso", {
 			"id": el.attr("aviso"),
@@ -21,6 +21,6 @@ $(document).ready(function(){
 			l.html(total);
 		});
 		
-		el.remove();
+		el.parent().removeClass("nuevo");
 	});
 });

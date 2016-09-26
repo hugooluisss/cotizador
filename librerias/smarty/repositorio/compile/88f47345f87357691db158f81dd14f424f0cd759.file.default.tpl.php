@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-31 08:50:59
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 09:12:09
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1472651452,
+      1 => 1472825526,
       2 => 'file',
     ),
   ),
@@ -119,7 +119,7 @@ img/logo-min.png" class="img-rounded"/></span>
 foreach ($_from as $_smarty_tpl->tpl_vars["rowAviso"]->key => $_smarty_tpl->tpl_vars["rowAviso"]->value){
 $_smarty_tpl->tpl_vars["rowAviso"]->_loop = true;
 ?>
-											<li>
+											<li <?php if ($_smarty_tpl->tpl_vars['rowAviso']->value['estado']==1){?>class="nuevo"<?php }?>>
 												<a href="#" class="btnAvisos" aviso="<?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['idAviso'];?>
 " cliente="<?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['idCliente'];?>
 ">

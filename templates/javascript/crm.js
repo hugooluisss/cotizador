@@ -4,7 +4,7 @@ $(document).ready(function(){
 		el.inputmask("9999-99-99");
 	});
 	
-	$("#tblPedidos").find("[action=imprimir]").click(function(){
+	$("#tblPedidosCRM").find("[action=imprimir]").click(function(){
 		var el = $(this)
 		el.prop("disabled", true);
 		

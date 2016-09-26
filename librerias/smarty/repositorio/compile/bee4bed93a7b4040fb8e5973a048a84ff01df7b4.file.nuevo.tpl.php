@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-29 22:51:20
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 17:12:26
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1472529078,
+      1 => 1472824484,
       2 => 'file',
     ),
   ),
@@ -275,7 +275,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					</ul>
 				</form>
 				<div class="row text-center">
-					<img src="./repositorio/img/user.png" id="imgCapturaPantalla" style="width: 60%; max-width: 150px;" onerror="this.onerror=null;this.src='./repositorio/img/user.png';"/>
+					<img src="repositorio/img/user.png" id="imgCapturaPantalla" style="width: 60%; max-width: 150px;" onerror="this.src='repositorio/img/user.png';"/>
 				</div>
 			</div>
 		</div>

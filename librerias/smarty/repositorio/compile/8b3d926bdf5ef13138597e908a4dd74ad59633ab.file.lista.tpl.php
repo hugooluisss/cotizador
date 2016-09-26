@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-09-01 11:55:17
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 12:16:55
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1717749068562451df214162-43774788%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1472748907,
+      1 => 1472836488,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#" id="btnGenerarEmail">Generar lista</a></li>
 					<li class="divider"></li>
+					<li><a href="#" id="btnTodasEmpresas">Seleccionar a las empresas</a></li>
+					<li><a href="#" id="btnTodasPersonas">Seleccionar unitarios</a></li>
+					<li class="divider"></li>
 					<li><a href="#" id="btnTodosEmail">Seleccionar todos</a></li>
 					<li><a href="#" id="btnLimpiarEmail">Limpiar selección</a></li>
 				</ul>
@@ -60,7 +63,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
 						<td><input type="checkbox" class="email" email="<?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>
-" /></td>
+" tipo="<?php echo $_smarty_tpl->tpl_vars['row']->value['tipo'];?>
+"/></td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>

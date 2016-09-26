@@ -9,6 +9,9 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#" id="btnGenerarEmail">Generar lista</a></li>
 					<li class="divider"></li>
+					<li><a href="#" id="btnTodasEmpresas">Seleccionar a las empresas</a></li>
+					<li><a href="#" id="btnTodasPersonas">Seleccionar unitarios</a></li>
+					<li class="divider"></li>
 					<li><a href="#" id="btnTodosEmail">Seleccionar todos</a></li>
 					<li><a href="#" id="btnLimpiarEmail">Limpiar selección</a></li>
 				</ul>
@@ -29,7 +32,7 @@
 			<tbody>
 				{foreach from=$lista item="row"}
 					<tr>
-						<td><input type="checkbox" class="email" email="{$row.email}" /></td>
+						<td><input type="checkbox" class="email" email="{$row.email}" tipo="{$row.tipo}"/></td>
 						<td>{$row.nombre}</td>
 						<td>{$row.email}</td>
 						<td>{$row.rfc}</td>

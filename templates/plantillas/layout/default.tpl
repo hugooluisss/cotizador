@@ -67,7 +67,7 @@
 									<!-- inner menu: contains the actual data -->
 										<ul class="menu listaAvisos">
 											{foreach from=$avisos item="rowAviso"}
-											<li>
+											<li {if $rowAviso.estado eq 1}class="nuevo"{/if}>
 												<a href="#" class="btnAvisos" aviso="{$rowAviso.idAviso}" cliente="{$rowAviso.idCliente}">
 													<i class="fa fa-users text-aqua"></i>{$rowAviso.cliente} <small>{$rowAviso.alerta}</small>
 												</a>

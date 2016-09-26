@@ -434,11 +434,15 @@ $(document).ready(function(){
 							else
 								ventanaPedido.document.href = data.documento;
 							
+							/*
 							if (confirm("¿Deseas cerrar la orden?")){
 								limpiar();
 								ventanaPedido.focus();
 							}else
 								ventanaPedido.focus();
+							*/
+							limpiar();
+							ventanaPedido.focus();
 						}else
 							alert("Ocurrió un error al guardar el documento...");
 					}

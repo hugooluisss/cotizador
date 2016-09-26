@@ -128,6 +128,20 @@ $(document).ready(function(){
 				tblClientes.page.len(10).draw();
 			});
 			
+			$("#btnTodasEmpresas").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[tipo=M]").prop("checked", true);
+				
+				tblClientes.page.len(10).draw();
+			});
+			
+			$("#btnTodasPersonas").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[tipo=F]").prop("checked", true);
+				
+				tblClientes.page.len(10).draw();
+			});
+			
 			$("#btnLimpiarEmail").click(function(){
 				tblClientes.page.len(-1).draw();
 				$("[email]").removeAttr("checked");
