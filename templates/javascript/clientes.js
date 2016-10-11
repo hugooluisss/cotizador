@@ -111,7 +111,7 @@ $(document).ready(function(){
 				location.href = "?mod=crm&id=" + el.idCliente;
 			});
 			
-			$("#tblClientes").DataTable({
+			var tblClientes = $("#tblClientes").DataTable({
 				"responsive": true,
 				"language": espaniol,
 				"paging": true,
@@ -119,6 +119,49 @@ $(document).ready(function(){
 				"ordering": true,
 				"info": true,
 				"autoWidth": false
+			});
+			
+			$("#btnTodosEmail").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[email]").prop("checked", true);
+				
+				tblClientes.page.len(10).draw();
+			});
+			
+			$("#btnTodasEmpresas").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[tipo=M]").prop("checked", true);
+				
+				tblClientes.page.len(10).draw();
+			});
+			
+			$("#btnTodasPersonas").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[tipo=F]").prop("checked", true);
+				
+				tblClientes.page.len(10).draw();
+			});
+			
+			$("#btnLimpiarEmail").click(function(){
+				tblClientes.page.len(-1).draw();
+				$("[email]").removeAttr("checked");
+				
+				tblClientes.page.len(10).draw();
+			});
+			
+			$("#btnGenerarEmail").click(function(){
+				tblClientes.page.len(-1).draw();
+				var s = "";
+				$("[email]:checked").each(function(){
+					var l = $(this);
+					if (l.attr("email") != '')
+						s += l.attr("email") + ", ";
+				});
+				
+				tblClientes.page.len(10).draw();
+				
+				$("#winEmailLista").find(".modal-body").html(s);
+				$("#winEmailLista").modal();
 			});
 		});
 	}

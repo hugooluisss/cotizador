@@ -55,6 +55,29 @@
 				{if $PAGE.tipoUsuario neq ''}
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
+							<!-- Notifications: style can be found in dropdown.less -->
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-bell-o"></i>
+									<span class="label label-warning totalAvisos">{$totalAvisos}</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Tienes <span class="totalAvisos">{$totalAvisos}</span> avisos</li>
+									<li>
+									<!-- inner menu: contains the actual data -->
+										<ul class="menu listaAvisos">
+											{foreach from=$avisos item="rowAviso"}
+											<li {if $rowAviso.estado eq 1}class="nuevo"{/if}>
+												<a href="#" class="btnAvisos" aviso="{$rowAviso.idAviso}" cliente="{$rowAviso.idCliente}">
+													<i class="fa fa-users text-aqua"></i>{$rowAviso.cliente} <small>{$rowAviso.alerta}</small>
+												</a>
+											</li>
+											{/foreach}
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
 							<li class="dropdown messages-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-gears"></i> {$PAGE.nombreUsuario}
@@ -213,7 +236,7 @@
 	<script src="{$PAGE.ruta}plugins/upload/js/jquery.iframe-transport.js"></script>
 	<script src="{$PAGE.ruta}plugins/upload/js/jquery.fileupload.js"></script>
 		
-		
+	<script type="text/javascript" src="templates/javascript/app.js?{rand()}"></script>
     {foreach from=$PAGE.scriptsJS item=script}
 		<script type="text/javascript" src="{$script}?{rand()}"></script>
 	{/foreach}
@@ -234,5 +257,25 @@
     <style type="text/css"> 
     	.ui-autocomplete { z-index:2147483647; }
     </style>
+    
+    
+    
+    
+    
+    <div class="modal fade" id="winAlertasMensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h1>Avisos</h1>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<a href="" class="btn btn-success">Ir a CRM</a>
+				</div>
+			</div>
+		</div>
+	</div>
   </body>
 </html>

@@ -18,6 +18,10 @@ $(document).ready(function(){
 	else
 		$('#panelTabs a[href="#nuevo"]').tab('show');
 		
+	$('#panelTabs a[href="#nuevo"]').click(function(){
+		limpiar();
+	});
+		
 	$("#txtFecha, #txtEntrega, #txtEntregaCliente").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
 	$("#btnLstClientes").click(function(){
@@ -430,6 +434,13 @@ $(document).ready(function(){
 							else
 								ventanaPedido.document.href = data.documento;
 							
+							/*
+							if (confirm("¿Deseas cerrar la orden?")){
+								limpiar();
+								ventanaPedido.focus();
+							}else
+								ventanaPedido.focus();
+							*/
 							limpiar();
 							ventanaPedido.focus();
 						}else
@@ -469,7 +480,7 @@ function limpiar(){
 	$("#selEstado").val($("#selEstado option:first").val());
 	
 	$("#selFormaEntrega").val($("#selFormaEntrega option:first").val());
-	$("#txtDireccionEntrega").val("");
+	$("#txtDireccionEnvio").val("");
 	$("#txtPosicion").val("");
 	
 	$(".serviciosImpresion").prop("checked", false);

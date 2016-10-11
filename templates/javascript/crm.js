@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	$("[data-inputmask]").each(function(){
 		var el = $(this);
-		el.inputmask("9999-99-99 99:99:99");
+		el.inputmask("9999-99-99");
 	});
 	
-	$("#tblPedidos").find("[action=imprimir]").click(function(){
+	$("#tblPedidosCRM").find("[action=imprimir]").click(function(){
 		var el = $(this)
 		el.prop("disabled", true);
 		
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			}, "json");
 	});
 	
-	$("#tblPedidos").DataTable({
+	$("#tblPedidosCRM").DataTable({
 		"responsive": true,
 		"language": espaniol,
 		"searching": false,
@@ -105,6 +105,7 @@ $(document).ready(function(){
 						form.find("[type=submit]").prop("disabled", false);	
 						if (datos.band){
 							getListaAvisos();
+							$("#frmAddAviso").get(0).reset();
 							$("#winAddAviso").modal("hide");
 						}else{
 							alert("Upps... " + datos.mensaje);
@@ -121,6 +122,27 @@ $(document).ready(function(){
 				"cliente": $("#id").val()
 			},function(data){
 				$("#dvListaAvisos").html(data);
+				
+				$("#winAvisos").find("[action=modificar]").click(function(){
+					var el = jQuery.parseJSON($(this).attr("datos"));
+					
+					$("#winAddAviso").find("#id").val(el.idAviso);
+					$("#winAddAviso").find("#txtFecha").val(el.alerta);
+					$("#winAddAviso").find("#txtMensaje").val(el.mensaje);
+					$("#winAddAviso").modal("show");
+				});
+				
+				
+				$("#winAvisos").find("[action=eliminar]").click(function(){
+					if(confirm("¿Seguro?")){
+						var obj = new TAviso;
+						obj.del($(this).attr("identificador"), {
+							after: function(data){
+								getListaAvisos();
+							}
+						});
+					}
+				});
 				
 				$("#winAvisos").find("#tblDatos").DataTable({
 					"responsive": true,

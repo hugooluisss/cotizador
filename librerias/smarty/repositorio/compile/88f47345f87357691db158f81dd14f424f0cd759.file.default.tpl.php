@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-30 13:03:08
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 09:12:09
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1472580183,
+      1 => 1472825526,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'PAGE' => 0,
+    'totalAvisos' => 0,
+    'avisos' => 0,
+    'rowAviso' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
@@ -98,6 +101,39 @@ img/logo-min.png" class="img-rounded"/></span>
 				<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']!=''){?>
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
+							<!-- Notifications: style can be found in dropdown.less -->
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-bell-o"></i>
+									<span class="label label-warning totalAvisos"><?php echo $_smarty_tpl->tpl_vars['totalAvisos']->value;?>
+</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Tienes <span class="totalAvisos"><?php echo $_smarty_tpl->tpl_vars['totalAvisos']->value;?>
+</span> avisos</li>
+									<li>
+									<!-- inner menu: contains the actual data -->
+										<ul class="menu listaAvisos">
+											<?php  $_smarty_tpl->tpl_vars["rowAviso"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["rowAviso"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['avisos']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["rowAviso"]->key => $_smarty_tpl->tpl_vars["rowAviso"]->value){
+$_smarty_tpl->tpl_vars["rowAviso"]->_loop = true;
+?>
+											<li <?php if ($_smarty_tpl->tpl_vars['rowAviso']->value['estado']==1){?>class="nuevo"<?php }?>>
+												<a href="#" class="btnAvisos" aviso="<?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['idAviso'];?>
+" cliente="<?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['idCliente'];?>
+">
+													<i class="fa fa-users text-aqua"></i><?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['cliente'];?>
+ <small><?php echo $_smarty_tpl->tpl_vars['rowAviso']->value['alerta'];?>
+</small>
+												</a>
+											</li>
+											<?php } ?>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
 							<li class="dropdown messages-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-gears"></i> <?php echo $_smarty_tpl->tpl_vars['PAGE']->value['nombreUsuario'];?>
@@ -296,7 +332,8 @@ plugins/upload/js/jquery.iframe-transport.js"></script>
 	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/upload/js/jquery.fileupload.js"></script>
 		
-		
+	<script type="text/javascript" src="templates/javascript/app.js?<?php echo rand();?>
+"></script>
     <?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['PAGE']->value['scriptsJS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['script']->key => $_smarty_tpl->tpl_vars['script']->value){
@@ -324,6 +361,26 @@ javascript/cambiarPass.js"></script>
     <style type="text/css"> 
     	.ui-autocomplete { z-index:2147483647; }
     </style>
+    
+    
+    
+    
+    
+    <div class="modal fade" id="winAlertasMensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h1>Avisos</h1>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<a href="" class="btn btn-success">Ir a CRM</a>
+				</div>
+			</div>
+		</div>
+	</div>
   </body>
 </html>
 <?php }} ?>
