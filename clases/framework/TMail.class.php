@@ -43,8 +43,8 @@ class TMail{
 			
 		$this->permitir = true;
 		
-		if (file_exists("templates/img/logomail.png"))
-			$this->addLogo("templates/img/logomail.png");
+		#if (file_exists("templates/img/logomail.png"))
+		#	$this->addLogo("templates/img/logomail.png");
 	}
 	
 	public function setUser($val){
