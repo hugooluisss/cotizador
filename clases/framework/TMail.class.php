@@ -25,17 +25,19 @@ class TMail{
 		global $ini;
 		
 		$this->empresa['nombreCorto'] = utf8_decode($ini['sistema']['nombreEmpresa']);
-		$this->phpMailer->IsSMTP();
+		#$this->phpMailer->IsSMTP();
 		$this->phpMailer->Port = 25;
 		$this->phpMailer->Host = $ini['mail']['server'];
-
+		#$this->phpMailer->Host = "localhost";
+		
 		$this->phpMailer->SMTPAuth = true;
 		$this->phpMailer->Username = $ini['mail']['user'];
 		$this->phpMailer->Password = $ini['mail']['pass'];
 		$this->phpMailer->IsHTML(true);
 		$this->phpMailer->FromName = utf8_decode($ini['sistema']['nombre']);
 		$this->setDirOrigen($ini['mail']['user']);
-		$this->phpMailer->SMTPSecure = 'tls';
+		#$this->phpMailer->SMTPSecure = 'tls';
+		#$this->phpMailer->SMTPDebug  = 2;
 		if ($ini['mail']['contestarA'] <> '')
 			$this->phpMailer->AddReplyTo($ini['mail']['contestarA']);
 			

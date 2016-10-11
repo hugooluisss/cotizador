@@ -176,9 +176,9 @@ switch($objModulo->getId()){
 						$datos['nombreCompleto'] = $pedido->cliente->getNombre();
 						$datos['folioOrden'] = $pedido->getId();
 						
-						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/casiListo.html"), $datos)));
+						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/casiListo2.html"), $datos)));
 						//$email->adjuntar($documento);
-						
+						/*
 						$email->addImg("repositorio/img/palomita.png", "palomita", "palomita.png");
 						$email->addImg("repositorio/img/pin.png", "pin", "pin.png");
 						$email->addImg("repositorio/img/point.png", "point", "point.png");
@@ -186,7 +186,7 @@ switch($objModulo->getId()){
 						$email->addImg("repositorio/img/telefono.png", "telefono", "telefono.png");
 						$email->addImg("repositorio/img/whatsapp.png", "whatsapp", "whatsapp.png");
 						$email->addImg("repositorio/img/email.png", "email", "email.png");
-						/*
+						*/
 						$email->addImg("repositorio/img/mail/positivo-icono.jpg", "positivo-icono", "positivo-icono.jpg");
 						$email->addImg("repositorio/img/mail/logo.jpg", "logo", "logo.jpg");
 						$email->addImg("repositorio/img/mail/pin.jpg", "pin", "pin.jpg");
@@ -195,7 +195,6 @@ switch($objModulo->getId()){
 						$email->addImg("repositorio/img/mail/wahts-icono.jpg", "wahts-icono", "wahts-icono.jpg");
 						$email->addImg("repositorio/img/mail/mail-icono.jpg", "mail-icono", "mail-icono.jpg");
 						$email->addImg("repositorio/img/mail/web-icono.jpg", "web-icono", "web-icono.jpg");
-						*/
 						
 						$email->send();
 					}
