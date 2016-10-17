@@ -573,4 +573,13 @@ $conf['getAviso'] = array(
 	'vista' => 'clientes/crm/aviso.tpl',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['pedidos2'] = array(
+	'controlador' => 'pedidos.php',
+	'vista' => 'pedidos/panel2.tpl',
+	'descripcion' => 'Pedidos',
+	'seguridad' => true,
+	#'js' => array('pedidos.class.js', 'cliente.class.js', "impresionPedidos.class.js"),
+	'jsTemplate' => array('pedidos2.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

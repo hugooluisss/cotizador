@@ -4757,3 +4757,21 @@ table.text-center th {
 .listaAvisos .nuevo{
 	background: #c7ffd8;
 }
+
+[role=wizard] .nav-pills > li.active > a, [role=wizard] .nav-pills > li.active > a:hover, [role=wizard] .nav-pills > li.active > a:focus {
+	background: #282E72;
+}
+
+[role=wizard] .nav-pills > li > a, [role=wizard] .nav-pills > li > a:hover, [role=wizard] .nav-pills > li > a:focus {
+	background: #34D058;
+	color: white;
+	font-weight: bold;
+}
+
+[role=wizard] .flecha{
+	width:0px;
+    height:0px;
+    border-style: solid;
+    border-width: 25px 45px 0px 45px;
+    border-color: blue transparent transparent transparent;
+}

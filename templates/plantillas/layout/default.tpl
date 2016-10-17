@@ -235,6 +235,8 @@
     
 	<script src="{$PAGE.ruta}plugins/upload/js/jquery.iframe-transport.js"></script>
 	<script src="{$PAGE.ruta}plugins/upload/js/jquery.fileupload.js"></script>
+	
+	<script src="{$PAGE.ruta}plugins/twitter-bootstrap-wizard-master/jquery.bootstrap.wizard.min"></script>
 		
 	<script type="text/javascript" src="templates/javascript/app.js?{rand()}"></script>
     {foreach from=$PAGE.scriptsJS item=script}

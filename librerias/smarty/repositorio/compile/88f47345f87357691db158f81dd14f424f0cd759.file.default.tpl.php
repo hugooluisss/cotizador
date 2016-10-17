@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 09:12:09
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-17 13:13:27
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1472825526,
+      1 => 1476727972,
       2 => 'file',
     ),
   ),
@@ -331,6 +331,9 @@ plugins/upload/js/jquery.fileupload.js" type="javascript"></script>
 plugins/upload/js/jquery.iframe-transport.js"></script>
 	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/upload/js/jquery.fileupload.js"></script>
+	
+	<script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/twitter-bootstrap-wizard-master/jquery.bootstrap.wizard.min"></script>
 		
 	<script type="text/javascript" src="templates/javascript/app.js?<?php echo rand();?>
 "></script>
