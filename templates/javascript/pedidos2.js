@@ -2,9 +2,73 @@ var ventanaPedido;
 $(document).ready(function(){
 	getLista();
 	
-	$("#rootwizard").find(".navbar").find("li").css({"width": (99 / $("#rootwizard").find(".navbar").find("li").length) + "%"});
 	
+	$("#btnAyuda").click(function(){
+		$("#winAyuda").modal();
+	});
+	if ($("#perfil").val() == 3){
+		$("#nuevo input, #nuevo textarea, #nuevo button, #nuevo select").each(function(){
+			$(this).attr('disabled', 'disabled');
+		});
+		
+		$("#nuevo input:file").removeAttr("disabled");
+	}
 	
+	if ($("#perfil").val() == 3)
+		$('#panelTabs a[href="#lista"]').tab('show');
+	else
+		$('#panelTabs a[href="#nuevo"]').tab('show');
+		
+	$('#panelTabs a[href="#nuevo"]').click(function(){
+		limpiar();
+	});
+		
+	$("#txtFecha, #txtEntrega, #txtEntregaCliente").datepicker( "option", "dateFormat", "yy-mm-dd" );
+
+	$("#btnLstClientes").click(function(){
+		$("#winClientes").modal();
+	});
+	
+	$("#txtCliente").autocomplete({
+		source: "index.php?mod=cclientes&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
+			$("#txtCliente").val(el.item.label);
+			$("#txtCliente").attr("idCliente", el.item.identificador);
+		}
+	});
+	
+	$("#btnNuevoCliente").click(function(){
+		$("#winModificarCliente").modal();
+		//$("#winModificarCliente #frmAdd").reset();
+		$("#winModificarCliente #frmAdd input, #winModificarCliente #frmAdd textarea").each(function(){
+			$(this).val("");
+		});
+		$("#winModificarCliente #txtNombre").focus();
+	});
+	
+	$("#winModificarCliente #txtNombre").autocomplete({
+		source: "index.php?mod=cclientes&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
+			$("#winModificarCliente #txtNombre").val(el.item.nombre);
+			$("#winModificarCliente #id").val(el.item.identificador);
+			$("#winModificarCliente #txtRUT").val(el.item.rut);
+			$("#winModificarCliente #txtRazonSocial").val(el.item.razonsocial);
+			$("#winModificarCliente #txtRFC").val(el.item.rfc);
+			$("#winModificarCliente #txtEmail").val(el.item.email);
+			$("#winModificarCliente #txtDireccion").val(el.item.direccion);
+			$("#winModificarCliente #txtLocalidad").val(el.item.localidad);
+			$("#winModificarCliente #txtTelefono").val(el.item.tel);
+			$("#winModificarCliente #txtCelular").val(el.item.cel);
+			$("#winModificarCliente #txtObservaciones").val(el.item.observaciones);
+			$("#winModificarCliente #selTipo").val(el.item.tipo);
+		}
+	});
+	
+	getClientes();
+	
+	$("#rootwizard").find(".navbar").find("li").css({"width": (93 / $("#rootwizard").find(".navbar").find("li").length) + "%"});
 	
 	$('#rootwizard').bootstrapWizard({
 		onTabShow: function(tab, navigation, index) {
@@ -13,6 +77,33 @@ $(document).ready(function(){
 			var $percent = ($current/$total) * 100;
 			$('#rootwizard').find('.progress-bar').css({"width": $percent + "%"}).attr("aria-valuenow", $percent);
 		}
+	});
+	
+	$(".serviciosImpresion").each(function(){
+		var el = $(this);
+		
+		el.click(function(){
+			if (el.prop("checked")){
+				var objImpresion = new TImpresionPedidos;
+				
+				objImpresion.getLimite(el.val(), $("#txtEntrega").val(), {
+					before: function(){
+						el.prop("disabled", true);
+					},
+					after: function(resp){
+						el.prop("disabled", false);
+						
+						superior = resp.band == true?resp.limite:1;
+						
+						if (superior-1 < 0){
+							alert("Se alcanzó el limite de entregas de esta técnica de impresión para el dia " + $("#txtEntrega").val());
+							el.attr("excede", 1);
+						}else
+							el.attr("excede", 0);
+					}
+				});
+			}
+		});
 	});
 });
 
@@ -344,5 +435,171 @@ $(document).ready(function(){
 				el.attr("modificar", "si");
 			}
 		});
+	});
+});
+
+//Remeras
+$(document).ready(function(){
+	$("#txtNombreRemera").autocomplete({
+		source: "index.php?mod=cropa&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
+			var obj = new TPedido;
+			obj.addRemera(el.item.identificador, $("#pedido").val(), {
+				after: function(data){
+					$("#txtNombreRemera").val("");
+				}
+			});
+		}
+	});
+	
+	$("#winRemeras #tblRemeras button[action=seleccionar]").click(function(){
+		var el =  jQuery.parseJSON($(this).attr("item"));
+		
+		$("#txtNombreRemera").val("");
+		var obj = new TPedido;
+		obj.addRemera(el.idItem);
+		
+		$("#winRemeras").modal("hide");
+	});
+		
+	$("#tblRemeras").DataTable({
+		"responsive": true,
+		"language": espaniol,
+		"paging": true,
+		"lengthChange": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false
+	});
+	
+	$("#btnLstRemeras").click(function(){
+		$("#winRemeras").modal();
+	});
+});
+
+
+
+function getClientes(){
+	$.get("?mod=clientesListaBusqueda", function( data ) {
+		$("#winClientes .modal-body").html(data);
+		
+		$("#winClientes #tblClientes button[action=seleccionar]").click(function(){
+			var el =  jQuery.parseJSON($(this).attr("cliente"));
+			
+			$("#txtCliente").val(el.nombre);
+			$("#txtCliente").attr("idCliente", el.idCliente);
+			$("#winClientes").modal("hide");
+		});
+		
+		$("#winClientes #tblClientes button[action=modificar]").click(function(){
+			var cliente = new TCliente();
+			
+			cliente.getData($(this).attr("cliente"), {
+				after: function(data){
+					$("#winModificarCliente #txtRUT").val(data.rut);
+					$("#winModificarCliente #txtRazonSocial").val(data.razonsocial);
+					$("#winModificarCliente #txtNombre").val(data.nombre);
+					$("#winModificarCliente #txtDireccion").val(data.direccion);
+					$("#winModificarCliente #txtLocalidad").val(data.localidad);
+					$("#winModificarCliente #txtTelefono").val(data.tel);
+					$("#winModificarCliente #txtCelular").val(data.cel);
+					$("#winModificarCliente #txtRFC").val(data.rfc);
+					$("#winModificarCliente #txtEmail").val(data.email);
+					$("#winModificarCliente #txtObservaciones").val(data.observaciones);
+					$("#winModificarCliente #selTipo").val(data.tipo);
+					$("#winModificarCliente #id").val(data.idCliente);
+					
+					$("#winClientes").modal("hide");
+					$("#winModificarCliente").modal();
+				}
+			});
+		});
+		
+		$("#tblClientes").DataTable({
+			"responsive": true,
+			"language": espaniol,
+			"paging": true,
+			"lengthChange": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
+		});
+	});
+}
+
+//ModificarCliente
+$(document).ready(function(){
+	$("#winModificarCliente #frmAdd").validate({
+		debug: true,
+		rules: {
+			txtNombre: "required",
+			txtTelefono: {
+				required : false,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			},
+			txtCelular: {
+				required : true,
+				minlength: 7,
+				maxlength: 15,
+				number: true
+			},
+			txtEmail: {
+				email: true,
+				required: true
+			}
+		},
+		wrapper: 'span', 
+		messages: {
+			txtNombre: "Este campo es necesario",
+			txtCelular: {
+				required: "Este campo es necesario",
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtTelefono: {
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtCelular: "Solo acepta número de entre 7 y 15 dígitos",
+			txtEmail: {
+				required: "Este campo es necesario",
+				email: "Escribe un correo electrónico válido"
+			}
+		},
+		submitHandler: function(form){
+			var obj = new TCliente;
+			obj.add(
+				$("#winModificarCliente #id").val(), 
+				$("#winModificarCliente #txtNombre").val(), 
+				$("#winModificarCliente #txtEmail").val(),
+				$("#winModificarCliente #txtRFC").val(),
+				$("#winModificarCliente #txtDireccion").val(),
+				$("#winModificarCliente #txtRUT").val(),
+				$("#winModificarCliente #txtRazonSocial").val(),
+				$("#winModificarCliente #txtLocalidad").val(),
+				$("#winModificarCliente #txtTelefono").val(),
+				$("#winModificarCliente #txtCelular").val(),
+				$("#winModificarCliente #txtObservaciones").val(),
+				$("#winModificarCliente #selTipo").val(),
+				{
+					after: function(datos){
+						if (datos.band){
+							getClientes();
+							
+							$("#txtCliente").val($("#winModificarCliente #txtNombre").val());
+							$("#txtCliente").attr("idCliente", $("#winModificarCliente #id").val());
+			
+							$("#winModificarCliente #frmAdd").get(0).reset();
+							$("#winModificarCliente").modal('hide');
+						}else{
+							alert("Upps... " + datos.mensaje);
+						}
+					}
+				}
+			);
+		}
 	});
 });

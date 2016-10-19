@@ -1,7 +1,7 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'pedidos':
+	case 'pedidos': case 'pedidos2':
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select * from estadopedido order by idEstado");
