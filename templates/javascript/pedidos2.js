@@ -458,7 +458,7 @@ $(document).ready(function(){
 		
 		$("#txtNombreRemera").val("");
 		var obj = new TPedido;
-		obj.addRemera(el.idItem);
+		obj.addRemera(el.idItem, $("#pedido").val(), {});
 		
 		$("#winRemeras").modal("hide");
 	});
