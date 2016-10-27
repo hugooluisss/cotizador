@@ -1,27 +1,9 @@
 var ventanaPedido;
+var wizard;
+
+//Inicial, con los datos del cliente
 $(document).ready(function(){
 	getLista();
-	
-	
-	$("#btnAyuda").click(function(){
-		$("#winAyuda").modal();
-	});
-	if ($("#perfil").val() == 3){
-		$("#nuevo input, #nuevo textarea, #nuevo button, #nuevo select").each(function(){
-			$(this).attr('disabled', 'disabled');
-		});
-		
-		$("#nuevo input:file").removeAttr("disabled");
-	}
-	
-	if ($("#perfil").val() == 3)
-		$('#panelTabs a[href="#lista"]').tab('show');
-	else
-		$('#panelTabs a[href="#nuevo"]').tab('show');
-		
-	$('#panelTabs a[href="#nuevo"]').click(function(){
-		limpiar();
-	});
 		
 	$("#txtFecha, #txtEntrega, #txtEntregaCliente").datepicker( "option", "dateFormat", "yy-mm-dd" );
 
@@ -70,7 +52,7 @@ $(document).ready(function(){
 	
 	$("#rootwizard").find(".navbar").find("li").css({"width": (93 / $("#rootwizard").find(".navbar").find("li").length) + "%"});
 	
-	$('#rootwizard').bootstrapWizard({
+	wizard = $('#rootwizard').bootstrapWizard({
 		onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
 			var $current = index+1;
@@ -79,31 +61,62 @@ $(document).ready(function(){
 		}
 	});
 	
-	$(".serviciosImpresion").each(function(){
-		var el = $(this);
+	$("#tabCliente").find("#btnGuardar").click(function(){
+		var band = true;
+		if ($("#txtCliente").attr("idCliente") == '' || $("#txtCliente").attr("idCliente") === undefined){
+			alert("Debes de indicar un cliente");
+			$("#winClientes").modal();
+			band = false;
+		}else if ($("#txtFecha").val() == '' || $("#txtRegistro").val() == ''){
+			alert("La fecha de registro y entrega son necesarias");
+			$("#txtFecha").focus();
+			band = false;
+		}else if ($("#selHora").val() == '' || $("#selMinuto").val() == ''){
+			alert("La hora de entrega es necesaria");
+			$("#selHora").focus();
+			band = false;
+		}
 		
-		el.click(function(){
-			if (el.prop("checked")){
-				var objImpresion = new TImpresionPedidos;
-				
-				objImpresion.getLimite(el.val(), $("#txtEntrega").val(), {
+		if (band){
+			var obj = new TPedido;
+			
+			obj.guardar(
+				$("#pedido").val(), 
+				$("#selEstado").val(), 
+				$("#txtCliente").attr("idCliente"), 
+				$("#selFormaEntrega").val(), 
+				$("#txtDireccionEnvio").val(), 
+				$("#txtRegistro").val(), 
+				new Array(), //entrega, 
+				$("#txtEntregaCliente").val(),
+				$("#txtEntregables").val(), 
+				$("#selFuente").val(), 
+				$("#txtColores").val(), 
+				$("#txtObservaciones").val(), 
+				$("#total").val(), 
+				$("#sena").val(), 
+				JSON.stringify(new Array()), //JSON.stringify(tallas), 
+				JSON.stringify(new Array()), //JSON.stringify(impresiones), 
+				JSON.stringify(new Array()), //JSON.stringify(entregables), 
+				$("#selEnvoltorio").val(), 
+				$("#selPosicion").val(), 
+				$("#txtPosicion").val(),
+				$("#txtNombreArchivo").val(),
+				JSON.stringify(new Array()), //JSON.stringify(formasPago),
+				{
 					before: function(){
-						el.prop("disabled", true);
+						
 					},
-					after: function(resp){
-						el.prop("disabled", false);
-						
-						superior = resp.band == true?resp.limite:1;
-						
-						if (superior-1 < 0){
-							alert("Se alcanzó el limite de entregas de esta técnica de impresión para el dia " + $("#txtEntrega").val());
-							el.attr("excede", 1);
+					after: function(data){
+						if (data.band){
+							$("#pedido").val(data.pedido);
+							wizard.next();
+							alert($('#rootwizard').currentIndex());
 						}else
-							el.attr("excede", 0);
+							alert("Ocurrió un error al guardar el documento...");
 					}
 				});
-			}
-		});
+		}
 	});
 });
 
@@ -268,6 +281,8 @@ function getLista(){
 	});
 }
 
+
+//////// Upload
 $(document).ready(function(){
 	$('#upload').fileupload({
 		// This function is called when a file is added to the queue
@@ -602,4 +617,90 @@ $(document).ready(function(){
 			);
 		}
 	});
+});
+
+
+
+
+///// Lista de técnicas de impresión
+
+$(document).ready(function(){
+	getListaImpresion();
+	
+	$("#frmAddImpresion").validate({
+		debug: true,
+		rules: {
+			selTecnica: "required",
+			txtCantidad: {
+				required : true,
+				min: 1,
+				number: true
+			},
+			txtColor: "required"
+		},
+		wrapper: 'span', 
+		messages: {
+			txtNombre: "Este campo es necesario",
+			txtCelular: {
+				required: "Este campo es necesario",
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtTelefono: {
+				minlength: "Solo acepta número de entre 7 y 15 dígitos",
+				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			},
+			txtCelular: "Solo acepta número de entre 7 y 15 dígitos",
+			txtEmail: {
+				required: "Este campo es necesario",
+				email: "Escribe un correo electrónico válido"
+			}
+		},
+		submitHandler: function(form){
+			var obj = new TCliente;
+			obj.add(
+				$("#winModificarCliente #id").val(), 
+				$("#winModificarCliente #txtNombre").val(), 
+				$("#winModificarCliente #txtEmail").val(),
+				$("#winModificarCliente #txtRFC").val(),
+				$("#winModificarCliente #txtDireccion").val(),
+				$("#winModificarCliente #txtRUT").val(),
+				$("#winModificarCliente #txtRazonSocial").val(),
+				$("#winModificarCliente #txtLocalidad").val(),
+				$("#winModificarCliente #txtTelefono").val(),
+				$("#winModificarCliente #txtCelular").val(),
+				$("#winModificarCliente #txtObservaciones").val(),
+				$("#winModificarCliente #selTipo").val(),
+				{
+					after: function(datos){
+						if (datos.band){
+							getClientes();
+							
+							$("#txtCliente").val($("#winModificarCliente #txtNombre").val());
+							$("#txtCliente").attr("idCliente", $("#winModificarCliente #id").val());
+			
+							$("#winModificarCliente #frmAdd").get(0).reset();
+							$("#winModificarCliente").modal('hide');
+						}else{
+							alert("Upps... " + datos.mensaje);
+						}
+					}
+				}
+			);
+		}
+	});
+	
+	$("#tabImpresion").find("#addImpresion").click(function(){
+		$("#winTecnicaImpresion").modal();
+	});
+	
+	function getListaImpresion(){
+		var pedido = $("#pedido").val();
+		
+		$.post('lstImpresion', {
+			"pedido": pedido
+		}, function(resp){
+			$("#tabImpresion").find("#lstImpresion").html(resp);
+		});
+	}
 });

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-19 11:14:54
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-26 23:31:26
          compiled from "templates/plantillas/modulos/pedidos/nuevo2.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1521134929580516798bc998-94984103%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b1598fe4302bbcc246a3ebab6190aa6a15f231a9' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo2.tpl',
-      1 => 1476893652,
+      1 => 1477542662,
       2 => 'file',
     ),
   ),
@@ -35,9 +35,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="navbar-inner">
 			<div class="container">
 				<ul style="width: 100%">
-					<li class="flecha"><a href="#tab1" data-toggle="tab">CLIENTE</a></li>
-					<li><a href="#tab2" data-toggle="tab">PRODUCTO</a></li>
-					<li><a href="#tab3" data-toggle="tab">IMPRESIÓN</a></li>
+					<li class="flecha"><a href="#tabCliente" data-toggle="tab">CLIENTE</a></li>
+					<li><a href="#tabProductos" data-toggle="tab">PRODUCTO</a></li>
+					<li><a href="#tabImpresion" data-toggle="tab">IMPRESIÓN</a></li>
 					<li><a href="#tab4" data-toggle="tab">DISEÑO</a></li>
 					<li><a href="#tab5" data-toggle="tab">CAJA</a></li>
 				</ul>
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuemin="0" aria-valuenow="º0" style="width: 0%"></div>
 	</div>
 	<div class="tab-content">
-		<div class="tab-pane" id="tab1">
+		<div class="tab-pane" id="tabCliente">
 			<div class="row">
 				<label class="col-xs-2" for="txtCliente">Cliente</label>
 				<div class="col-sm-5">
@@ -144,8 +144,13 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<button class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
+				</div>
+			</div>
 		</div>
-		<div class="tab-pane" id="tab2">
+		<div class="tab-pane" id="tabProductos">
 			<div class="row">
 				<label class="col-xs-12 col-sm-2" for="txtNombreRemera">Nombre</label>
 				<div class="col-xs-12 col-sm-6">
@@ -187,8 +192,17 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 				</table>
 			</div>
 		</div>
-		<div class="tab-pane" id="tab3">
-			3
+		<div class="tab-pane" id="tabImpresion">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="#" class="btn btn-primary pull-right" id="addImpresion">AÑADIR IMPRESIÓN</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" id="lstImpresion">
+					
+				</div>
+			</div>
 		</div>
 		<div class="tab-pane" id="tab4">
 			4
@@ -202,12 +216,14 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		<div class="tab-pane" id="tab7">
 			7
 		</div>
+		<!--
 		<ul class="pager wizard">
 			<li class="previous first" style="display:none;"><a href="javascript:;">Inicio</a></li>
 			<li class="previous"><a href="javascript:;">Anterior</a></li>
 			<li class="next last" style="display:none;"><a href="javascript:;">Fin</a></li>
 			<li class="next"><a href="javascript:;">Siguiente</a></li>
 		</ul>
+		-->
 	</div>
 </div>
 
@@ -216,4 +232,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/remerasLista.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/winNombresNumeros.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/winTecnicaImpresion.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

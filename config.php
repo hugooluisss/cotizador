@@ -582,4 +582,11 @@ $conf['pedidos2'] = array(
 	'js' => array('pedidos.class.js', 'cliente.class.js', "impresionPedidos.class.js"),
 	'jsTemplate' => array('pedidos2.js'),
 	'capa' => LAYOUT_DEFECTO);
+	
+$conf['lstImpresion'] = array(
+	'controlador' => 'pedidos.php',
+	'vista' => 'pedidos/listaImpresion.tpl',
+	'descripcion' => 'Lista de impresión',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

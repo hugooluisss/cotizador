@@ -273,7 +273,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
-				<label> Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
+				<label>Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
 				<label>Débito</label><br /><input type="checkbox" class="formasPago" campo="Debito">
