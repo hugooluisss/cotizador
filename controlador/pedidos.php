@@ -311,6 +311,12 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => true, "documento" => $pdf->output()));
 			break;
+			
+			case 'addTecnica':
+				($id, $tecnica, $color, $cantidad, $ubicacion, $size, $medidas, $precio){
+				$pedido = new TPedido($_POST['pedido']);
+				echo json_encode(array("band" => $pedido->addTecnica($_POST['id'], $_POST['tecnica'], $_POST['color'], $_POST['cantidad'], $_POST['ubicacion'], $_POST['size'], $_POST['medidas'], $_POST['precio']));
+			break;
 		}
 	break;
 };

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-17 13:15:11
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 10:19:22
          compiled from "templates/plantillas/modulos/pedidos/nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:95892486856687c0b7552c1-76016921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bee4bed93a7b4040fb8e5973a048a84ff01df7b4' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo.tpl',
-      1 => 1476195374,
+      1 => 1477581137,
       2 => 'file',
     ),
   ),
@@ -355,7 +355,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
-				<label> Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
+				<label>Efectivo</label><br /><input type="checkbox" class="formasPago" campo="Efectivo">
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-2 text-center">
 				<label>Débito</label><br /><input type="checkbox" class="formasPago" campo="Debito">

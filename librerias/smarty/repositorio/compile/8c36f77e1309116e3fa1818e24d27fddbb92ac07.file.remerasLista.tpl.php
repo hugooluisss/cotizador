@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 11:51:28
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 11:14:55
          compiled from "templates/plantillas/modulos/pedidos/remerasLista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7473146545674e86053bd91-46471476%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c36f77e1309116e3fa1818e24d27fddbb92ac07' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/remerasLista.tpl',
-      1 => 1455824286,
+      1 => 1477584894,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5674e86056c499_85128962')) {function content_5674e86056c499_85128962($_smarty_tpl) {?><div class="modal fade" id="winRemeras" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

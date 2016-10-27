@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-26 22:40:09
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 10:19:25
          compiled from "templates/plantillas/modulos/pedidos/winTecnicaImpresion.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:796747165811726dcf80b6-74205505%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a89ae1dabda8b17d477b7c2029b09c3c94b5e55f' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/winTecnicaImpresion.tpl',
-      1 => 1477539608,
+      1 => 1477581137,
       2 => 'file',
     ),
   ),

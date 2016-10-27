@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 11:51:29
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 10:29:24
          compiled from "templates/plantillas/modulos/pedidos/clientesLista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2037936342566884e2655461-48769858%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '298f957542bc7f93f9cad7579cde2a807ccbf2fd' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/clientesLista.tpl',
-      1 => 1455824286,
+      1 => 1477582156,
       2 => 'file',
     ),
   ),
@@ -44,7 +44,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
-			<td>
+			<td class="text-right">
 				<button type="button" class="btn btn-success" action="seleccionar" title="Seleccionar" cliente='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>
 					<i class="fa fa-hand-pointer-o"></i>

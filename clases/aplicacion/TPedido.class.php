@@ -755,5 +755,36 @@ class TPedido{
 		
 		return true;
 	}
+	
+	
+	
+	
+	public function addTecnica($id, $tecnica, $color, $cantidad, $ubicacion, $size, $medidas, $precio){
+		if($this->getId() == '')
+			return false;
+		 	
+		$db = TBase::conectaDB();
+		
+		if ($id == ''){
+			$rs = $db->Execute("insert into pedidotecnicaimpresion(idPedido, idImpresion, color) values (".$this->getId().", ".$tecnica.", '".$color."')");
+			
+			$id = $db->Insert_ID();
+		}
+		
+		if ($id <> ''){
+			$rs = $db->Execute("update pedidotecnicaimpresion set 
+					idImpresion = ".$tecnica.",
+					color = ".$color.",
+					cantidad = ".$cantidad.",
+					ubicacion = ".$ubicacion.",
+					size = ".$size.",
+					medidas = ".$medidas.",
+					precio = ".$precio."
+				where idImpresion = ".$id."
+			");
+		}
+		
+		return $rs?true:false;
+	}
 }
 ?>

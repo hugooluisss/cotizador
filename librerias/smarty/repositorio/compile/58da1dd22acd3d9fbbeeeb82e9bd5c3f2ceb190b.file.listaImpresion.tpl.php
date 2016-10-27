@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 13:05:32
-         compiled from "templates/plantillas/modulos/pedidos/listaImpresion.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:60592279958116fc070c473-49271797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 13:12:01
+         compiled from "templates/plantillas/modulos/pedidos/wizard/listaImpresion.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:10818594665812430ab60c04-41399106%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'a9a40e80a0f067426722f10277fb1e1f2928f50e' => 
+    '58da1dd22acd3d9fbbeeeb82e9bd5c3f2ceb190b' => 
     array (
-      0 => 'templates/plantillas/modulos/pedidos/listaImpresion.tpl',
-      1 => 1477581137,
+      0 => 'templates/plantillas/modulos/pedidos/wizard/listaImpresion.tpl',
+      1 => 1477591914,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '60592279958116fc070c473-49271797',
+  'nocache_hash' => '10818594665812430ab60c04-41399106',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_58116fc0804344_20492592',
+  'unifunc' => 'content_5812430abd8508_39510777',
   'variables' => 
   array (
     'lista' => 0,
@@ -24,7 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58116fc0804344_20492592')) {function content_58116fc0804344_20492592($_smarty_tpl) {?><div class="box">
+<?php if ($_valid && !is_callable('content_5812430abd8508_39510777')) {function content_5812430abd8508_39510777($_smarty_tpl) {?><br />
+<div class="box">
 	<div class="box-body" style="overflow: scroll">
 		<table id="tblPedidos" class="table table-bordered table-hover" data-order='[[ 1, "desc" ]]'>
 			<thead>
@@ -59,6 +60,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td></td>
 						<td></td>
 						<td></td>
+					</tr>
+				<?php }
+if (!$_smarty_tpl->tpl_vars["row"]->_loop) {
+?>
+					<tr>
+						<td colspan="9" class="text-center">Sin elementos</td>
 					</tr>
 				<?php } ?>
 			</tbody>

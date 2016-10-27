@@ -1,5 +1,4 @@
 var ventanaPedido;
-var wizard;
 
 //Inicial, con los datos del cliente
 $(document).ready(function(){
@@ -52,7 +51,7 @@ $(document).ready(function(){
 	
 	$("#rootwizard").find(".navbar").find("li").css({"width": (93 / $("#rootwizard").find(".navbar").find("li").length) + "%"});
 	
-	wizard = $('#rootwizard').bootstrapWizard({
+	$('#rootwizard').bootstrapWizard({
 		onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
 			var $current = index+1;
@@ -105,13 +104,13 @@ $(document).ready(function(){
 				JSON.stringify(new Array()), //JSON.stringify(formasPago),
 				{
 					before: function(){
-						
+						$("#tabClientes").find(".mensajeGuardar").show();
 					},
 					after: function(data){
 						if (data.band){
+							$("#tabClientes").find(".mensajeGuardar").hide();
 							$("#pedido").val(data.pedido);
-							wizard.next();
-							alert($('#rootwizard').currentIndex());
+							$('#rootwizard').bootstrapWizard('next');
 						}else
 							alert("Ocurrió un error al guardar el documento...");
 					}
@@ -459,12 +458,18 @@ $(document).ready(function(){
 		source: "index.php?mod=cropa&action=autocomplete",
 		minLength: 2,
 		select: function(e, el){
-			var obj = new TPedido;
-			obj.addRemera(el.item.identificador, $("#pedido").val(), {
-				after: function(data){
-					$("#txtNombreRemera").val("");
-				}
-			});
+			if ($("#pedido").val() == ''){
+				alert("Es necesario primero definir el encabezado de la orden");
+				$('#rootwizard').bootstrapWizard('first');
+				$("#txtNombreRemera").val("");
+			}else{
+				var obj = new TPedido;
+				obj.addRemera(el.item.identificador, $("#pedido").val(), {
+					after: function(data){
+						$("#txtNombreRemera").val("");
+					}
+				});
+			}
 		}
 	});
 	
@@ -489,7 +494,12 @@ $(document).ready(function(){
 	});
 	
 	$("#btnLstRemeras").click(function(){
-		$("#winRemeras").modal();
+		if ($("#pedido").val() == ''){
+			alert("Es necesario primero definir el encabezado de la orden");
+			$('#rootwizard').bootstrapWizard('first');
+			$("#txtNombreRemera").val("");
+		}else
+			$("#winRemeras").modal();
 	});
 });
 
@@ -691,7 +701,12 @@ $(document).ready(function(){
 	});
 	
 	$("#tabImpresion").find("#addImpresion").click(function(){
-		$("#winTecnicaImpresion").modal();
+		if ($("#pedido").val() == ''){
+			alert("Es necesario primero definir el encabezado de la orden");
+			$('#rootwizard').bootstrapWizard('first');
+			$("#txtNombreRemera").val("");
+		}else
+			$("#winTecnicaImpresion").modal();
 	});
 	
 	function getListaImpresion(){

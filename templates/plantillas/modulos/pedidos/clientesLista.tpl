@@ -11,7 +11,7 @@
 		<tr cliente='{$row.json}'>
 			<td>{$row.idCliente}</td>
 			<td>{$row.nombre}</td>
-			<td>
+			<td class="text-right">
 				<button type="button" class="btn btn-success" action="seleccionar" title="Seleccionar" cliente='{$row.json}'>
 					<i class="fa fa-hand-pointer-o"></i>
 				</button>
