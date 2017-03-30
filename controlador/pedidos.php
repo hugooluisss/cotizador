@@ -128,6 +128,18 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
+	case 'lstImpresion':
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select * from pedidotecnicaimpresion join catalogoimpresion b using(idImpresion) where idPedido = ".$_POST['pedido']);
+		
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("lista", $datos);
+	break;
 	case 'cpedidos':
 		switch($objModulo->getAction()){
 			case 'guardar':
@@ -286,6 +298,8 @@ switch($objModulo->getId()){
 			case 'uploadfile2':
 				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0 && $_GET['pedido'] <> ''){
 					$s = explode(".", $_FILES['upl']['name']);
+					if (file_exists("repositorio/capturas/img_".$_GET['pedido'].".jpg"))
+						unlink("repositorio/capturas/img_".$_GET['pedido'].".jpg");
 				
 					if(move_uploaded_file($_FILES['upl']['tmp_name'], "repositorio/capturas/img_".$_GET['pedido'].".jpg")){
 						chmod("repositorio/capturas/img_".$_GET['pedido'].".jpg", 0755);
@@ -313,9 +327,13 @@ switch($objModulo->getId()){
 			break;
 			
 			case 'addTecnica':
-				($id, $tecnica, $color, $cantidad, $ubicacion, $size, $medidas, $precio){
+				#($id, $tecnica, $color, $cantidad, $ubicacion, $size, $medidas, $precio){
 				$pedido = new TPedido($_POST['pedido']);
-				echo json_encode(array("band" => $pedido->addTecnica($_POST['id'], $_POST['tecnica'], $_POST['color'], $_POST['cantidad'], $_POST['ubicacion'], $_POST['size'], $_POST['medidas'], $_POST['precio']));
+				echo json_encode(array("band" => $pedido->addTecnica($_POST['id'], $_POST['tecnica'], $_POST['color'], $_POST['cantidad'], $_POST['ubicacion'], $_POST['size'], $_POST['medidas'], $_POST['precio'])));
+			break;
+			case 'delTecnica':
+				$pedido = new TPedido($_POST['pedido']);
+				echo json_encode(array("band" => $pedido->delTecnica($_POST['id'])));
 			break;
 		}
 	break;

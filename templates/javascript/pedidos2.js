@@ -110,6 +110,8 @@ $(document).ready(function(){
 						if (data.band){
 							$("#tabClientes").find(".mensajeGuardar").hide();
 							$("#pedido").val(data.pedido);
+							
+							$("#upload2").prop("action", "?mod=cpedidos&action=uploadfile2&pedido=" + data.pedido);
 							$('#rootwizard').bootstrapWizard('next');
 						}else
 							alert("Ocurrió un error al guardar el documento...");
@@ -386,7 +388,7 @@ $(document).ready(function(){
 		
 		    if(progress == 100){
 		        //data.context.removeClass('working');
-		        $("#imgCapturaPantalla").prop("src", "repositorio/capturas/img_" + $("#pedido").val() + ".jpg");
+		        $("#imgCapturaPantalla").attr("src", "repositorio/capturas/img_" + $("#pedido").val() + ".jpg");
 		    }
 		},
 		fail: function(){
@@ -646,57 +648,30 @@ $(document).ready(function(){
 				min: 1,
 				number: true
 			},
-			txtColor: "required"
-		},
-		wrapper: 'span', 
-		messages: {
-			txtNombre: "Este campo es necesario",
-			txtCelular: {
-				required: "Este campo es necesario",
-				minlength: "Solo acepta número de entre 7 y 15 dígitos",
-				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
+			txtColor: "required",
+			txtCantidad: {
+				required : true,
+				min: 1,
+				digits: true
 			},
-			txtTelefono: {
-				minlength: "Solo acepta número de entre 7 y 15 dígitos",
-				maxlength: "Solo acepta número de entre 7 y 15 dígitos"
-			},
-			txtCelular: "Solo acepta número de entre 7 y 15 dígitos",
-			txtEmail: {
-				required: "Este campo es necesario",
-				email: "Escribe un correo electrónico válido"
-			}
 		},
+		wrapper: 'span',
 		submitHandler: function(form){
-			var obj = new TCliente;
-			obj.add(
-				$("#winModificarCliente #id").val(), 
-				$("#winModificarCliente #txtNombre").val(), 
-				$("#winModificarCliente #txtEmail").val(),
-				$("#winModificarCliente #txtRFC").val(),
-				$("#winModificarCliente #txtDireccion").val(),
-				$("#winModificarCliente #txtRUT").val(),
-				$("#winModificarCliente #txtRazonSocial").val(),
-				$("#winModificarCliente #txtLocalidad").val(),
-				$("#winModificarCliente #txtTelefono").val(),
-				$("#winModificarCliente #txtCelular").val(),
-				$("#winModificarCliente #txtObservaciones").val(),
-				$("#winModificarCliente #selTipo").val(),
-				{
-					after: function(datos){
-						if (datos.band){
-							getClientes();
-							
-							$("#txtCliente").val($("#winModificarCliente #txtNombre").val());
-							$("#txtCliente").attr("idCliente", $("#winModificarCliente #id").val());
-			
-							$("#winModificarCliente #frmAdd").get(0).reset();
-							$("#winModificarCliente").modal('hide');
-						}else{
-							alert("Upps... " + datos.mensaje);
-						}
-					}
+			var obj = new TPedido;
+			form = $(form);
+			obj.addImpresion(form.find("#id").val(), $("#pedido").val(), form.find("#selTecnica").val(), form.find("#txtColor").val(), form.find("#txtCantidad").val(), form.find("#selUbicacion").val(), form.find("#selSize").val(), form.find("#txtMedidas").val(), form.find("#txtPrecio").val(), {
+				before: function(){
+					form.find("button[type=submit]").prop("disabled", true);
+				}, after: function(resp){
+					form.find("button[type=submit]").prop("disabled", false);
+					if (resp.band){
+						getListaImpresion();
+						form[0].reset();
+						$("#winTecnicaImpresion").modal("hide");
+					}else
+						alert("No se pudo agregar la técnica");
 				}
-			);
+			});
 		}
 	});
 	
@@ -712,10 +687,31 @@ $(document).ready(function(){
 	function getListaImpresion(){
 		var pedido = $("#pedido").val();
 		
+		$("#upload2").prop("action", "?mod=cpedidos&action=uploadfile2&pedido=" + pedido);
+		$("#upload").prop("action", "?mod=cpedidos&action=uploadfile&pedido=" + pedido);
+		
 		$.post('lstImpresion', {
 			"pedido": pedido
 		}, function(resp){
 			$("#tabImpresion").find("#lstImpresion").html(resp);
+			
+			$("#tabImpresion").find("#lstImpresion").find("[accion=quitar]").click(function(){
+				var btn = $(this);
+				var obj = new TPedido;
+				
+				obj.delImpresion(btn.attr("tecnica"), $("#pedido").val(), {
+					before: function(){
+						btn.prop("disabled", true);
+					}, after: function(resp){
+						btn.prop("disabled", false);
+						
+						if (resp.band){
+							getListaImpresion();
+						}else
+							alert("No se pudo eliminar la técnica");
+					}
+				});
+			});
 		});
 	}
 });

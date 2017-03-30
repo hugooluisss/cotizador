@@ -9,6 +9,7 @@ define('STATUS', 'En desarrollo');
 
 define('LAYOUT_DEFECTO', 'layout/default.tpl');
 define('LAYOUT_AJAX', 'layout/update.tpl');
+define('LAYOUT_VOTOS', 'layout/votos.tpl');
 
 #Login y su controlador	
 $conf['inicio'] = array(
@@ -589,4 +590,6 @@ $conf['lstImpresion'] = array(
 	'descripcion' => 'Lista de impresión',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+include_once("config/campania.php");
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 13:04:46
+<?php /* Smarty version Smarty-3.1.11, created on 2017-02-02 21:31:52
          compiled from "templates/plantillas/modulos/pedidos/nuevo2.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1521134929580516798bc998-94984103%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b1598fe4302bbcc246a3ebab6190aa6a15f231a9' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/nuevo2.tpl',
-      1 => 1477591484,
+      1 => 1486092687,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_580516798bdcc4_05229458')) {function content_580516798bdcc4_05229458($_smarty_tpl) {?><input type="hidden" id="pedido" name="pedido" value="">
+<?php if ($_valid && !is_callable('content_580516798bdcc4_05229458')) {function content_580516798bdcc4_05229458($_smarty_tpl) {?><input type="hidden" id="pedido" name="pedido" value="844">
 
 <div id="rootwizard" role="wizard">
 	<div class="navbar">
@@ -56,7 +56,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		</div>
 		<div class="tab-pane" id="tab4">
-			4
+			<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/wizard/diseno.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 		</div>
 		<div class="tab-pane" id="tab5">
 			5
@@ -85,5 +86,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/winNombresNumeros.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/winTecnicaImpresion.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/pedidos/wizard/winTecnicaImpresion.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

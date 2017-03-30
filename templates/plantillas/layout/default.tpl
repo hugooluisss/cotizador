@@ -130,6 +130,8 @@
 								<li {if $PAGE.modulo eq 'estadoPedidos'}class="active"{/if}><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 								<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
 								<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+								<li {if $PAGE.modulo eq 'campania'}class="active"{/if}><a href="?mod=campania"><i class="fa fa-commenting-o" aria-hidden="true"></i> Campañas</a></li>
+
 							</ul>
 						</li>
 						<br />

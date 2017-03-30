@@ -46,16 +46,29 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="selTamaño">Tamaño</label>
 						<div class="col-sm-4">
-							<select id="selTamaño" name="selTamaño" class="form-control">
+							<select id="selSize" name="selSize" class="form-control">
 								<option value="Chico">Chico</option>
 								<option value="Mediano">Mediano</option>
 								<option value="Grande">Grande</option>
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="txtMedidas">Medidas</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="txtMedidas" name="txtMedidas">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="txtPrecio">Precio</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="txtPrecio" name="txtPrecio">
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<button type="submit" class="btn btn-success pull-right">Agregar</button>
+							<input type="hidden" id="id" name="id" value="" />
 						</div>
 					</div>
 				</form>

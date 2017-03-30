@@ -1,4 +1,4 @@
-<input type="hidden" id="pedido" name="pedido" value="">
+<input type="hidden" id="pedido" name="pedido" value="844">
 
 <div id="rootwizard" role="wizard">
 	<div class="navbar">
@@ -28,7 +28,7 @@
 			{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/wizard/impresion.tpl"}
 		</div>
 		<div class="tab-pane" id="tab4">
-			4
+			{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/wizard/diseno.tpl"}
 		</div>
 		<div class="tab-pane" id="tab5">
 			5
@@ -54,4 +54,4 @@
 {include file=$PAGE.rutaModulos|cat:"modulos/pedidos/remerasLista.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/pedidos/winNombresNumeros.tpl"}
 
-{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/winTecnicaImpresion.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/pedidos/wizard/winTecnicaImpresion.tpl"}

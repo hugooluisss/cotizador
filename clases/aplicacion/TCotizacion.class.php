@@ -277,8 +277,7 @@ class TCotizacion{
 				fecha = '".$this->getFecha()."',
 				comentarios = '".$this->getComentarios()."',
 				total = ".$this->getTotal().",
-				unidades = ".$this->getUnidades().",
-				excedelimite = ".($this->getExcedeLimite()?1:0)."
+				unidades = ".$this->getUnidades()."
 			WHERE idCotizacion = ".$this->getId());
 		
 		#Ahora van los items

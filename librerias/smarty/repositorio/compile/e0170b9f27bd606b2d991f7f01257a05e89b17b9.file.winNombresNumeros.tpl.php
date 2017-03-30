@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-05-02 11:51:28
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-30 02:40:16
          compiled from "templates/plantillas/modulos/pedidos/winNombresNumeros.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84693939256946c8dd20f76-87368630%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e0170b9f27bd606b2d991f7f01257a05e89b17b9' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/winNombresNumeros.tpl',
-      1 => 1460388042,
+      1 => 1477816814,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56946c8dd4aa42_79099574')) {function content_56946c8dd4aa42_79099574($_smarty_tpl) {?><div class="modal fade" id="winNombresNumeros" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

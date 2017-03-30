@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 10:29:24
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-30 01:22:35
          compiled from "templates/plantillas/modulos/pedidos/clientesLista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2037936342566884e2655461-48769858%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '298f957542bc7f93f9cad7579cde2a807ccbf2fd' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/clientesLista.tpl',
-      1 => 1477582156,
+      1 => 1477594911,
       2 => 'file',
     ),
   ),

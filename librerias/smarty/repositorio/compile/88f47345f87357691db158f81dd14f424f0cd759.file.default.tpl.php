@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-18 08:34:06
+<?php /* Smarty version Smarty-3.1.11, created on 2017-02-22 19:28:54
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1476730988,
+      1 => 1487813333,
       2 => 'file',
     ),
   ),
@@ -187,6 +187,8 @@ $_smarty_tpl->tpl_vars["rowAviso"]->_loop = true;
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estadoPedidos'){?>class="active"<?php }?>><a href="?mod=estadoPedidos"><i class="fa fa-circle"></i> Estado de los pedidos</a></li>
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='horarios'){?>class="active"<?php }?>><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='campania'){?>class="active"<?php }?>><a href="?mod=campania"><i class="fa fa-commenting-o" aria-hidden="true"></i> Campañas</a></li>
+
 							</ul>
 						</li>
 						<br />

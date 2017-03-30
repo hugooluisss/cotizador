@@ -764,7 +764,6 @@ class TPedido{
 			return false;
 		 	
 		$db = TBase::conectaDB();
-		
 		if ($id == ''){
 			$rs = $db->Execute("insert into pedidotecnicaimpresion(idPedido, idImpresion, color) values (".$this->getId().", ".$tecnica.", '".$color."')");
 			
@@ -774,15 +773,25 @@ class TPedido{
 		if ($id <> ''){
 			$rs = $db->Execute("update pedidotecnicaimpresion set 
 					idImpresion = ".$tecnica.",
-					color = ".$color.",
+					color = '".$color."',
 					cantidad = ".$cantidad.",
-					ubicacion = ".$ubicacion.",
-					size = ".$size.",
-					medidas = ".$medidas.",
+					ubicacion = '".$ubicacion."',
+					size = '".$size."',
+					medidas = '".$medidas."',
 					precio = ".$precio."
-				where idImpresion = ".$id."
+				where idTecnica = ".$id."
 			");
 		}
+		
+		return $rs?true:false;
+	}
+	
+	public function delTecnica($id = ''){
+		if ($this->getId() == '') return false;
+		if ($id == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from pedidotecnicaimpresion where idPedido = ".$this->getId()." and idTecnica = ".$id);
 		
 		return $rs?true:false;
 	}

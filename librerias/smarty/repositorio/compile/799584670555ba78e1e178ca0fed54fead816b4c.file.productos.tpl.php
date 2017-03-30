@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-10-27 13:02:51
+<?php /* Smarty version Smarty-3.1.11, created on 2016-10-30 01:22:33
          compiled from "templates/plantillas/modulos/pedidos/wizard/productos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:528221825812414b37b389-04198857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '799584670555ba78e1e178ca0fed54fead816b4c' => 
     array (
       0 => 'templates/plantillas/modulos/pedidos/wizard/productos.tpl',
-      1 => 1477591325,
+      1 => 1477594911,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5812414b4707a1_78703716',
   'variables' => 
   array (
     'tallas' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5812414b4707a1_78703716',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5812414b4707a1_78703716')) {function content_5812414b4707a1_78703716($_smarty_tpl) {?><div class="row">
 	<label class="col-xs-12 col-sm-2" for="txtNombreRemera">Nombre</label>

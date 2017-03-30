@@ -32,9 +32,10 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 			alert("La remera se encuentra en la lista");
 		else{
 			//primero a obtener los datos de la remera
-			$.post('?mod=cropa&action=getData', {
+			$.post('cropa', {
 					"id": id,
-					"pedido": pedido
+					"pedido": pedido,
+					"action": "getData"
 				}, function(data){
 					var s = '<tr><td>' + data.nombre + ' ' + data.marca + '<br /><button setAction=0 class="btn btn-danger btn-sm eliminarItem" item="' + id + '"><i class="fa fa-times"></i></button></td>';
 					self.tallas.forEach(function(talla){
@@ -211,12 +212,13 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 	
 	
 	
-	this.addImpresion = function(id, tecnica, color, cantidad, ubicacion, size, medidas, precio, fn){
+	this.addImpresion = function(id, pedido, tecnica, color, cantidad, ubicacion, size, medidas, precio, fn){
 		if (fn.before !== undefined)
 			fn.before();
 			
 		$.post('cpedidos', {
 			"id": id,
+			"pedido": pedido,
 			"tecnica": tecnica, 
 			"color": color, 
 			"cantidad": cantidad, 
@@ -231,6 +233,23 @@ TPedido = function(id, tableRemeras, tableNumerosLetras){
 				
 			if (data.band == 'false'){
 				console.log("No se pudo agregar la tecnica de impresión");
+			}
+		}, "json");
+	}
+	
+	this.delImpresion = function(id, pedido, fn){
+		if (fn.before !== undefined)
+			fn.before();
+		$.post('cpedidos', {
+			"id": id,
+			"pedido": pedido,
+			"action": "delTecnica"
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+				
+			if (data.band == 'false'){
+				console.log("No se pudo eliminar la tecnica de impresión");
 			}
 		}, "json");
 	}
