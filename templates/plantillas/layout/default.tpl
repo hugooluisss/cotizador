@@ -109,7 +109,7 @@
 					<ul class="sidebar-menu">
 						<li class="header">MENÚ PRINCIPAL</li>
 						{if $PAGE.tipoUsuario eq 1}
-						<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'clientes', 'ropa', 'serigrafia', 'serigrafiaDigital', 'corteVinilo', 'numerosLetras', 'tecnicasImpresion', 'otrosServicios', 'catImpresionesPed', 'entregablesPed', 'estadoPedidos', 'horarios', 'reportes', 'crm'))}active{/if} treeview">
+						<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'clientes', 'ropa', 'serigrafia', 'serigrafiaDigital', 'corteVinilo', 'numerosLetras', 'tecnicasImpresion', 'otrosServicios', 'catImpresionesPed', 'entregablesPed', 'estadoPedidos', 'horarios', 'reportes', 'crm', 'gastos'))}active{/if} treeview">
 							<a href="#">
 								<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
@@ -131,6 +131,8 @@
 								<li {if $PAGE.modulo eq 'horarios'}class="active"{/if}><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
 								<li {if $PAGE.modulo eq 'reportes'}class="active"{/if}><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
 								<li {if $PAGE.modulo eq 'campania'}class="active"{/if}><a href="?mod=campania"><i class="fa fa-commenting-o" aria-hidden="true"></i> Campañas</a></li>
+								<br />
+								<li {if $PAGE.modulo eq 'gastos'}class="active"{/if}><a href="?mod=gastos"><i class="fa fa-money" aria-hidden="true"></i> Gastos</a></li>
 
 							</ul>
 						</li>

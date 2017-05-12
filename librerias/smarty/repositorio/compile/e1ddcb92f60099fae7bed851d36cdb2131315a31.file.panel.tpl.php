@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-13 08:23:58
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-03 22:48:55
          compiled from "templates/plantillas/modulos/reportes/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:367569085561d3c4f0f47d8-54983434%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1ddcb92f60099fae7bed851d36cdb2131315a31' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/panel.tpl',
-      1 => 1461819635,
+      1 => 1493869733,
       2 => 'file',
     ),
   ),
@@ -126,6 +126,17 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			</h4>
 		</div>
 		<div id="tipoClientes" class="panel-collapse collapse">
+			<div class="panel-body"></div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#utilidad">Utilidad</a>
+			</h4>
+		</div>
+		<div id="utilidad" class="panel-collapse collapse">
 			<div class="panel-body"></div>
 		</div>
 	</div>

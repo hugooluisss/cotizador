@@ -623,7 +623,10 @@ class TPedido{
 		if (!$rs) return false;
 		
 		foreach($items as $item){
-			$rs = $db->Execute("insert into movped (idPedido, idTalla, cantidad) values (".$this->getId().", ".$item->id.", ".$item->cantidad.")");
+			$rsAux = $db->Execute("select precio + adicional as precio from talla a join ropa b using(idItem) where idTalla = ".$item->id);
+			$precio = $rsAux->fields['precio'] == ''?0:$rsAux->fields['precio'];
+			
+			$rs = $db->Execute("insert into movped (idPedido, idTalla, cantidad, precio) values (".$this->getId().", ".$item->id.", ".$item->cantidad.", ".$precio.")");
 			if (! $rs) return false;
 		}
 		

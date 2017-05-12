@@ -592,4 +592,5 @@ $conf['lstImpresion'] = array(
 	'capa' => LAYOUT_AJAX);
 	
 include_once("config/campania.php");
+include_once("config/gastos.php");
 ?>

@@ -91,5 +91,16 @@
 			<div class="panel-body"></div>
 		</div>
 	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#utilidad">Utilidad</a>
+			</h4>
+		</div>
+		<div id="utilidad" class="panel-collapse collapse">
+			<div class="panel-body"></div>
+		</div>
+	</div>
 	{/if}
 </div>

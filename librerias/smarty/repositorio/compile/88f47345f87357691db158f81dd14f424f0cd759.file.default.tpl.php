@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-02-22 19:28:54
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-08 21:30:04
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1487813333,
+      1 => 1494296968,
       2 => 'file',
     ),
   ),
@@ -166,7 +166,7 @@ $_smarty_tpl->tpl_vars["rowAviso"]->_loop = true;
 					<ul class="sidebar-menu">
 						<li class="header">MENÚ PRINCIPAL</li>
 						<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['tipoUsuario']==1){?>
-						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','clientes','ropa','serigrafia','serigrafiaDigital','corteVinilo','numerosLetras','tecnicasImpresion','otrosServicios','catImpresionesPed','entregablesPed','estadoPedidos','horarios','reportes','crm'))){?>active<?php }?> treeview">
+						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','clientes','ropa','serigrafia','serigrafiaDigital','corteVinilo','numerosLetras','tecnicasImpresion','otrosServicios','catImpresionesPed','entregablesPed','estadoPedidos','horarios','reportes','crm','gastos'))){?>active<?php }?> treeview">
 							<a href="#">
 								<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
@@ -188,6 +188,8 @@ $_smarty_tpl->tpl_vars["rowAviso"]->_loop = true;
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='horarios'){?>class="active"<?php }?>><a href="?mod=horarios"><i class="fa fa-clock-o"></i> Horarios</a></li>
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='reportes'){?>class="active"<?php }?>><a href="?mod=reportes"><i class="fa fa-file-word-o"></i> Reportes</a></li>
 								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='campania'){?>class="active"<?php }?>><a href="?mod=campania"><i class="fa fa-commenting-o" aria-hidden="true"></i> Campañas</a></li>
+								<br />
+								<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='gastos'){?>class="active"<?php }?>><a href="?mod=gastos"><i class="fa fa-money" aria-hidden="true"></i> Gastos</a></li>
 
 							</ul>
 						</li>
