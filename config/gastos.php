@@ -6,30 +6,27 @@ $conf['gastos'] = array(
 	'descripcion' => 'Control de gastos',
 	'vista' => 'gastos/panel.tpl',
 	'seguridad' => true,
-	#'js' => array('campania.class.js'),
-	#'jsTemplate' => array('campanias.js'),
+	'js' => array('gasto.class.js'),
+	'jsTemplate' => array('gastos.js'),
 	'capa' => LAYOUT_DEFECTO);
 
-$conf['listaCampania'] = array(
-	'controlador' => 'campania.php',
-	'vista' => 'campania/lista.tpl',
-	'descripcion' => 'Lista de campañas',
+$conf['listaGastosAnio'] = array(
+	'controlador' => 'gastos.php',
+	'vista' => 'gastos/listaAnio.tpl',
+	'descripcion' => 'Lista de ventas por año',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-$conf['ccampania'] = array(
-	'controlador' => 'campania.php',
-	'descripcion' => 'Controlador de campañas',
+$conf['listaGastos'] = array(
+	'controlador' => 'gastos.php',
+	'vista' => 'gastos/lista.tpl',
+	'descripcion' => 'detalle de gastos registrados en el mes',
 	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);	
+	'capa' => LAYOUT_AJAX);
 	
-$conf['voto'] = array(
-	'controlador' => 'campania.php',
-	'descripcion' => 'Captura el voto',
-	'vista' => 'campania/voto.tpl',
-	'seguridad' => false,
-	'js' => array('campania.class.js'),
-	'jsTemplate' => array('campanias.js'),
-	'capa' => LAYOUT_VOTOS);
-
+$conf['cgastos'] = array(
+	'controlador' => 'gastos.php',
+	'descripcion' => 'Controlador de gastos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
